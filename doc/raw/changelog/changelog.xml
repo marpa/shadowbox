@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- 
+ @package shadown.docs
+ 
+ @copyright Copyright &copy; 2005, Alex Chapin
+ @license http://www.gnu.org/copyleft/gpl.html GNU General Public License (GPL)
+ 
+ @version $Id: changelog.xml,v 1.282 2008/04/21 19:53:33 achapin Exp $
+ -->
+<!DOCTYPE changelog SYSTEM "../dtds/changelog.dtd">
+
+<changelog name="ShadowBox">
+	<version number="1.0.3" date="the future">
+		<releaseNotes>
+			This release adds more RSS links to various pages of theme
+		</releaseNotes>
+		<new author='alex' date='2009-10-2'>
+			RSS: added links to category and tag RSS feeds in the archive view
+		</new>
+		
+	</version>	
+	<version number="1.0.2" date="2009-09-24">
+		<releaseNotes>
+			First release of ShadowBox WordPress Theme
+		</releaseNotes>
+	</version>	
+	
+	<about>
+		ShadowBox is a customizable, flexible and extensible theme for WordPress
+	</about>
+	
+	<info>
+		<title>Downloads</title>
+		<description>For the latest and archived versions, please download from WordPress.</description>
+		<url>http://wordpress.org/extend/themes/shadowbox</url>
+	</info>
+	<info>
+		<title>Documentation</title>
+		<description>
+			ShadowBox documentation can
+			be found online at:
+		</description>
+		<url>http://segueproject.org/wordpress/themes/shadowbox-documentation/</url>
+	</info>
+	<info>
+		<title>Installation</title>
+		<description>
+			See the INSTALL.txt file:
+		</description>
+		<url></url>
+	</info>
+	<info>
+		<title>Bug Tracker</title>
+		<url></url>
+	</info>
+	
+	<authors>
+		<name short="alex">Alex Chapin</name>
+	</authors>
+	<reporters>
+		<reporter short="alex">
+			<name>Alex Chapin</name>
+		</reporter>
+	</reporters>
+	<reftypes>
+		<reftype name="bug" group="82171" tracker='565234'/>
+		<reftype name="fr" group="82171" tracker='565237'/>
+		<reftype name="patch" group="82171" tracker='565236'/>
+		<reftype name="security" group="82171" tracker='1098812'/>	
+		
+		<reftype name="segue_bug" group="82171" tracker='565234'/>
+		<reftype name="segue_fr" group="82171" tracker='565237'/>
+		<reftype name="segue_patch" group="82171" tracker='565236'/>
+		
+		<reftype name="harmoni_bug" group="82873" tracker='567473'/>
+		<reftype name="harmoni_fr" group="82873" tracker='567476'/>
+		<reftype name="harmoni_patch" group="82873" tracker='567475'/>
+		
+		<reftype name="concerto_bug" group="88266" tracker='586054'/>
+		<reftype name="concerto_fr" group="88266" tracker='586057'/>
+		<reftype name="concerto_patch" group="88266" tracker='586056'/>
+	</reftypes>
+</changelog>
