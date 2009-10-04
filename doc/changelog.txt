@@ -2,7 +2,20 @@
 ShadowBox Change Log
 
 
-v. 1.0.1 (2009-09-24)
+v. 1.0.3 (the future)
+----------------------------------------------------
+This release adds more RSS links to various pages of theme
+		
+		
+	* New feature: 
+		RSS: added links to category and tag RSS feeds in the archive view
+		(2009-10-2 - Alex Chapin)
+		
+	
+
+
+
+v. 1.0.2 (2009-09-24)
 ----------------------------------------------------
 First release of ShadowBox WordPress Theme
 		
