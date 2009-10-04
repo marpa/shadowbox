@@ -27,9 +27,15 @@ if (is_category() && $options['sidebar-left-width'] != 0) {
 
  	  <?php $post = $posts[0]; // Hack. Set $post so that the_date() works. ?>
  	  <?php /* If this is a category archive */ if (is_category()) { ?>
+		<div id="syndication">
+		<a href="<?php get_category_feed_link( $cat_id, $feed ); ?>feed" class="feed">&#8216;<?php single_cat_title(); ?>&#8217; Category RSS</a>
+		</div>
 		<h2 class="pagetitle">Archive for the &#8216;<?php single_cat_title(); ?>&#8217; Category</h2>
  	  <?php /* If this is a tag archive */ } elseif( is_tag() ) { ?>
-		<h2 class="pagetitle">Posts Tagged &#8216;<?php single_tag_title(); ?>&#8217;</h2>
+ 	  	<div id="syndication">
+		<a href="<?php get_tag_feed_link( $cat_id, $feed ); ?>feed" class="feed">&#8216;<?php single_cat_title(); ?>&#8217; Tag RSS</a>
+		</div>
+		<h2 single_tag_title="pagetitle">Posts Tagged &#8216;<?php single_tag_title(); ?>&#8217;</h2>
  	  <?php /* If this is a daily archive */ } elseif (is_day()) { ?>
 		<h2 class="pagetitle">Archive for <?php the_time('F jS, Y'); ?></h2>
  	  <?php /* If this is a monthly archive */ } elseif (is_month()) { ?>
@@ -55,7 +61,7 @@ if (is_category() && $options['sidebar-left-width'] != 0) {
 				<a href="<?php the_permalink() ?>" rel="bookmark" title="Permanent Link to <?php the_title_attribute(); ?>"><?php the_title(); ?></a></h2>
 				
 				<div class="postmetadata">
-				Posted in <span class='category'><?php the_category('</span><span class=\'category\'>') ?></span></div>
+				Posted in <span class='category'><?php the_category('</span> <span class=\'category\'>') ?></span></div>
 
 				<small><?php the_time('F jS, Y') ?>  by <?php the_author() ?></small>
 				
@@ -64,7 +70,7 @@ if (is_category() && $options['sidebar-left-width'] != 0) {
 				</div>
 				
 				<div class="postmetadata">
-				<?php the_tags('Tags: <span class=\'tag\'>','</span><span class=\'tag\'>', '</span><br/>',' '); ?></div>
+				<?php the_tags('Tags: <span class=\'tag\'>','</span> <span class=\'tag\'>', '</span><br/>',' '); ?></div>
 
 				<div class="postmetadata" style="text-align: right">
 				<?php comments_popup_link('No Comments &#187;', '1 Comment &#187;', '% Comments &#187;'); ?></div>
