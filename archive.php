@@ -63,7 +63,7 @@ if (is_category() && $options['sidebar-left-width'] != 0) {
 				<div class="postmetadata">
 				Posted in <span class='category'><?php the_category('</span> <span class=\'category\'>') ?></span></div>
 
-				<small><?php the_time('F jS, Y') ?>  by <?php the_author() ?></small>
+				<small><?php the_time('F jS, Y') ?>  by <?php the_author_posts_link(); ?></p></small>
 				
 				<div class="entry">
 					<?php the_content() ?>
