@@ -26,7 +26,7 @@ if ($options['sidebar-left-width'] != 0) {
 				endif;
 			?>			
 			
-			<?php echo get_avatar($curauth->ID, '96' ); ?>
+			<?php echo get_avatar($curauth->ID, '64' ); ?>
 			<h2>Author: <?php echo $curauth->nickname; ?></h2>
 			Member Since: <?php echo $curauth->user_registered; ?><br/>
 			<?php if($curauth->user_url != "" && $curauth->user_url != "http://") : ?>
