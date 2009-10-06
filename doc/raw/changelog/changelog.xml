@@ -17,7 +17,10 @@
 		<new author='alex' date='2009-10-2'>
 			RSS: added links to category and tag RSS feeds in the archive view
 		</new>
-		
+		<change author='alex' date='2009-10-6' reporter='mike'>
+			Comments: changed the color of text in comments field from gray to black 
+			for better usability.
+		</change>		
 	</version>	
 	<version number="1.0.2" date="2009-09-24">
 		<releaseNotes>
@@ -60,6 +63,9 @@
 	<reporters>
 		<reporter short="alex">
 			<name>Alex Chapin</name>
+		</reporter>
+		<reporter short="mike">
+			<name>Mike Roy</name>
 		</reporter>
 	</reporters>
 	<reftypes>
