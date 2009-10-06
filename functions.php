@@ -1302,7 +1302,7 @@ function set_variation_options() {
 	
 	$options['thread-even-bgcolor'] = "#FFFFFF";
 	$options['thread-alt-bgcolor'] = "#f8f8f8";
-	$options['commentfield'] = "#999999";
+	$options['commentfield'] = "#000000";
 
 	
 	/*********************************************************
