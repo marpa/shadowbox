@@ -1,4 +1,10 @@
 <?php
+if (file_exists(dirname(__FILE__).'/config.php')) {
+	require_once('config.php');
+} else {
+	require_once('config-sample.php');
+}
+
 
 /*********************************************************
  *  Register sidebars
@@ -140,7 +146,7 @@ function header_style() {
  *********************************************************/
 
 function shadowbox_options() {
-    global $options, $options_values, $shadowbox_css, $model_main_column_width;
+    global $shadowbox_config, $options, $options_values, $shadowbox_css, $model_main_column_width;
 	
 	set_variation_options();	
 		
@@ -157,6 +163,7 @@ function shadowbox_options() {
     $model_main_column_width = $model_site_width - ($model_right_sidebar_width + $model_left_sidebar_width) - 100;
     $model_content_width = $options['site-width'] - ($options['sidebar-left-width'] + $options['sidebar-right-width']);
 
+	
 	/*********************************************************
 	 * Define theme model css
 	 * model css uses most of the actual theme's css except
@@ -282,11 +289,14 @@ function shadowbox_options() {
 		<tr>
 			<td width='20%'>
 				<span style='font-size: 9px;'>Header Links:</span>
-				<select name='appgroups' style='font-size: 10px;'  onchange='this.form.submit();'>
-					<option value='blogs' ".($options['appgroups'] == 'blogs' ? ' selected' : '') . ">Blog Sign Up</option>
-					<option value='custom' ".($options['appgroups'] == 'custom' ? ' selected' : '') . ">Custom</option>
-				</select>
-
+				<select name='appgroups' style='font-size: 10px;'  onchange='this.form.submit();'>";
+					foreach (array_keys($shadowbox_config['meta_left_options']) as $meta_left_option) {						
+						print "<option value='".$shadowbox_config['meta_left_options'][$meta_left_option]['option_name']."' ";
+						print ($options['appgroups'] == $shadowbox_config['meta_left_options'][$meta_left_option]['option_name'] ? ' selected' : '') . ">";
+						print $shadowbox_config['meta_left_options'][$meta_left_option]['option_label']."</option>";						
+					}
+					print "</select>";
+			print "
 			</td>
 			<td width='60%' align='left'>
 			<div class='instructions' style='font-size: 9px;'>	
@@ -1636,17 +1646,21 @@ function set_variation_options() {
  *********************************************************/
 
 function set_derivative_options() {
-	global $_POST, $options, $options_values;
+	global $shadowbox_config, $_POST, $options, $options_values;
 
 	/******************************************************************************
 	 * Header left links
 	 ******************************************************************************/
 	
-	if ($options['appgroups'] == 'blogs') {
-		$options['headerleft'] = "<a href='http:".$current_site->domain . $current_site->path."wp-signup.php' title='View your Blogs'>WordPress</a>";
-	} else if ($options['appgroups'] == 'custom') {
-		$options['headerleft'] = stripslashes($options['headerleftcustom']);
-	}
+	
+		if ($options['appgroups'] == 'blogs' && $config['meta_left_options']['blog'] == "") {
+			$options['headerleft'] = "<a href='http:".$current_site->domain . $current_site->path."wp-signup.php' title='View your Blogs'>WordPress</a>";
+		} else if ($options['appgroups'] == 'custom') {
+			$options['headerleft'] = stripslashes($options['headerleftcustom']);
+		} else {
+			$options['headerleft'] = $shadowbox_config['meta_left_options'][$options['appgroups']]['option_value'];					
+		}
+
 
 	/******************************************************************************
 	 * Blog title and description display option
