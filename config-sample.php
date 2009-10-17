@@ -1,7 +1,11 @@
 <?php
-/**
+/*********************************************************
+ * 
  * Configuration otions for ShadowBox theme
- */
+ * To create your own configuration options save this file
+ * as config.php
+ *
+ *********************************************************/
 
 
 $shadowbox_config = array();
@@ -18,4 +22,5 @@ $shadowbox_config['meta_left_options']['custom'] = array (
 		option_value => ''
 	);
 
-		
+$shadowbox_config['headerimage'] = "header-sample.png";
+

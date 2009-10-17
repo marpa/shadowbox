@@ -79,9 +79,11 @@ if ( function_exists('add_custom_image_header') ) {
   add_custom_image_header('header_style', 'admin_header_style');
 }
 
+$header_image = "%s/images/".$shadowbox_config['headerimage'];
 $header_image_width = $options['site-width'] - 105;
 
-define('HEADER_IMAGE', '%s/images/header.png'); // %s is theme dir uri
+
+define('HEADER_IMAGE', $header_image); // %s is theme dir uri
 define('HEADER_IMAGE_WIDTH', $header_image_width);
 define('HEADER_IMAGE_HEIGHT', 70);
 define('HEADER_TEXTCOLOR', $options['headertext']);
@@ -281,6 +283,7 @@ function shadowbox_options() {
 
 	/*********************************************************
 	 *  Header meta options
+	 *  Header meta left set in config
 	 *********************************************************/
 	
 	print 
