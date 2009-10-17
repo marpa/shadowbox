@@ -11,6 +11,11 @@ This release adds more RSS links to various pages of theme
 		RSS: added links to category and tag RSS feeds in the archive view
 		(2009-10-2 - Alex Chapin)
 		
+	* Change: 
+		Comments: changed the color of text in comments field from gray to black for
+		better usability.
+		(2009-10-6 - Alex Chapin)
+		(reported by Mike Roy)		
 	
 
 

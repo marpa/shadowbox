@@ -14,6 +14,13 @@
 		<releaseNotes>
 			This release adds more RSS links to various pages of theme
 		</releaseNotes>
+		<new author='alex' date='2009-10-17'>
+			Configuration: added a config option for default header image.
+		</new>
+		<new author='alex' date='2009-10-17'>
+			Configuration: added a config-sample file that can be saved as config.php and used
+			by blog admins to set default theme options.
+		</new>
 		<new author='alex' date='2009-10-2'>
 			RSS: added links to category and tag RSS feeds in the archive view
 		</new>
