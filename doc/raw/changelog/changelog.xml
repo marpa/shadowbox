@@ -17,6 +17,13 @@
 		<new author='alex' date='2009-10-17'>
 			Configuration: added a config option for default header image.
 		</new>
+		<change author='alex' date='2009-11-7'>
+			Options: changed header text option to include position of the blog title and
+			description within the header block or hide (top, middlebury, bottom, hide).
+		</change>
+		<new author='alex' date='2009-11-7'>
+			Options: added an primary option for setting the height of the header block.
+		</new>
 		<new author='alex' date='2009-10-17'>
 			Configuration: added a config-sample file that can be saved as config.php and used
 			by blog admins to set default theme options.

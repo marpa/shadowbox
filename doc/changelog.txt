@@ -8,6 +8,25 @@ This release adds more RSS links to various pages of theme
 		
 		
 	* New feature: 
+		Configuration: added a config option for default header image.
+		(2009-10-17 - Alex Chapin)
+		
+	* Change: 
+		Options: changed header text option to include position of the blog title
+		and description within the header block or hide (top, middlebury, bottom,
+		hide). 
+		(2009-11-7 - Alex Chapin)
+		
+	* New feature: 
+		Options:added an primary option for setting the height of the header block.
+		(2009-11-7 - Alex Chapin)
+		
+	* New feature: 
+		Configuration: added a config-sample file that can be saved as config.php
+		and used by blog admins to set default theme options.
+		(2009-10-17 - Alex Chapin)
+		
+	* New feature: 
 		RSS: added links to category and tag RSS feeds in the archive view
 		(2009-10-2 - Alex Chapin)
 		
