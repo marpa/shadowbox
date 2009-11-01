@@ -897,6 +897,10 @@ div .hr {
 	border-right: 1px solid #FFFFFF;
 }
 
+.sidebarleft h2 {
+	color: #999999;
+}
+
 .sidebarright {
 	width: 138px;
 	visibility: visible;
@@ -908,6 +912,11 @@ div .hr {
 	border-left: 1px solid #999999;
 	border-right: 1px solid #999999;;
 }
+
+.sidebarright h2 {
+	color: #999999;
+}
+
 
 a, h2 a:hover, h3 a:hover {
 	color: #003366;
