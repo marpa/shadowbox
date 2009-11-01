@@ -49,7 +49,7 @@
 				<small><?php the_time('F jS, Y') ?>  by <?php the_author_posts_link(); ?></p></small>
 
 				<div class="entry">
-					<?php the_content('Read the rest of this entry &raquo;'); ?>
+					<?php the_content('Read the rest of this entry &raquo;'); ?> 
 				</div>
 
 				<?php edit_post_link('Edit', '<div class="editlink">', '</div>'); ?>
