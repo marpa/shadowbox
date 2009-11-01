@@ -11,7 +11,7 @@ Current Version Notes
 ---------------------
 This release adds more RSS links to various pages of theme, custom author pages, new
 options for header height and blog title text position. Also added configuration
-options for header image and header left meta options
+file for saving custom header image files and header left meta options
 
 
 Downloads
@@ -55,7 +55,7 @@ v. 1.1.0 (the future)
 ----------------------------------------------------
 This release adds more RSS links to various pages of theme, custom author pages, new
 options for header height and blog title text position. Also added configuration
-options for header image and header left meta options
+file for saving custom header image files and header left meta options
 
 
 
