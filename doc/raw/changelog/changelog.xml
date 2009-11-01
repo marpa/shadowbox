@@ -34,6 +34,12 @@
 			Configuration: added a config-sample file that can be saved as config.php and used
 			by blog admins to set default theme options.
 		</new>
+		<new author='alex' date='2009-10-4'>
+			Documentation: added docs directory with changelog files
+		</new>
+		<new author='alex' date='2009-10-4'>
+			Aggregation: added custom author pages and links to these from post attribution line
+		</new>
 		<new author='alex' date='2009-10-2'>
 			RSS: added links to category and tag RSS feeds in the archive view
 		</new>

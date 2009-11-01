@@ -34,6 +34,15 @@ options for header image and header left meta options
 		(2009-10-17 - Alex Chapin)
 		
 	* New feature: 
+		Documentation: added docs directory with changelog files
+		(2009-10-4 - Alex Chapin)
+		
+	* New feature: 
+		Aggregation: added custom author pages and links to these from post
+		attribution line
+		(2009-10-4 - Alex Chapin)
+		
+	* New feature: 
 		RSS: added links to category and tag RSS feeds in the archive view
 		(2009-10-2 - Alex Chapin)
 		
