@@ -10,18 +10,22 @@
 <!DOCTYPE changelog SYSTEM "../dtds/changelog.dtd">
 
 <changelog name="ShadowBox">
-	<version number="1.0.3" date="the future">
+	<version number="1.1.0" date="the future">
 		<releaseNotes>
 			This release adds more RSS links to various pages of theme
 		</releaseNotes>
+		<change author='alex' date='2009-11-1'>
+			Options: changed sidebar title color derivative option to be determined by sidebar
+			color.
+		</change>
 		<new author='alex' date='2009-10-17'>
 			Configuration: added a config option for default header image.
 		</new>
-		<change author='alex' date='2009-11-7'>
+		<change author='alex' date='2009-11-1'>
 			Options: changed header text option to include position of the blog title and
 			description within the header block or hide (top, middlebury, bottom, hide).
 		</change>
-		<new author='alex' date='2009-11-7'>
+		<new author='alex' date='2009-11-1'>
 			Options: added an primary option for setting the height of the header block.
 		</new>
 		<new author='alex' date='2009-10-17'>

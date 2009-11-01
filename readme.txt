@@ -1,5 +1,5 @@
 
-ShadowBox v. 1.0.3 (the future)
+ShadowBox v. 1.1.0 (the future)
 =================================
 
 What is ShadowBox?
@@ -49,7 +49,7 @@ Bug Tracker
 ===================================================================
 
 
-v. 1.0.3 (the future)
+v. 1.1.0 (the future)
 ----------------------------------------------------
 This release adds more RSS links to various pages of theme
 

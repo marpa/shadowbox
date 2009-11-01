@@ -2,10 +2,15 @@
 ShadowBox Change Log
 
 
-v. 1.0.3 (the future)
+v. 1.1.0 (the future)
 ----------------------------------------------------
 This release adds more RSS links to various pages of theme
 		
+		
+	* Change: 
+		Options: changed sidebar title color derivative option to be determined by
+		sidebar color.
+		(2009-11-1 - Alex Chapin)
 		
 	* New feature: 
 		Configuration: added a config option for default header image.
@@ -15,11 +20,11 @@ This release adds more RSS links to various pages of theme
 		Options: changed header text option to include position of the blog title
 		and description within the header block or hide (top, middlebury, bottom,
 		hide). 
-		(2009-11-7 - Alex Chapin)
+		(2009-11-1 - Alex Chapin)
 		
 	* New feature: 
 		Options:added an primary option for setting the height of the header block.
-		(2009-11-7 - Alex Chapin)
+		(2009-11-1 - Alex Chapin)
 		
 	* New feature: 
 		Configuration: added a config-sample file that can be saved as config.php
