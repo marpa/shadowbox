@@ -372,11 +372,8 @@ function shadowbox_options() {
 
 	<tr>
 		<td width='20%'>
-<!-- 
-		<input type='checkbox' name='header-text-display' id='header-text-display'" .($options['header-text-display'] == "on" ? ' checked' : '')." onchange='this.form.submit();'/>
- -->
 		
-		<span style='color:".$options['bgtextcolor']."; font-size: 10px;'>Title position
+		<span style='color:".$options['bgtextcolor']."; font-size: 10px;'>Blog Title Position:
 		<select name='header-text-display' style='font-size: 10px;' onchange='this.form.submit();'>
 			<option value='top' ".($options['header-text-display'] == 'top' ? ' selected' : '') . ">Top</option>
 			<option value='middle' ".($options['header-text-display'] == 'middle' ? ' selected' : '') . ">Middle</option>
@@ -385,10 +382,18 @@ function shadowbox_options() {
 		</select>
 		</span>
 		</td>
-		<td width='60%'>
-		<div style='font-size: 8px; text-align: center;'>	
-		<div style=''>		
-		<span style='font-size: 10px; color: ".$options['bgtextcolor'].";'>Header:</span>
+		<td width='80%' colspan='2'>
+		<div style='font-size: 8px; text-align: left;'>	
+		<div style=''>
+		<span style='font-size: 10px; color: ".$options['bgtextcolor'].";'>Header Height:</span>
+		<select name='header-block-height' style='font-size: 10px;' onchange='this.form.submit();'>";							
+			// header height options
+			foreach ($options_values['header-block-height'] as $label => $value) {
+				print "\n<option value='".$value."'".($options['header-block-height'] == $value ? ' selected' : '') . ">".$label."</option>";
+			}					
+		print "
+		</select>		
+		<span style='font-size: 10px; color: ".$options['bgtextcolor'].";'>Header Color:</span>
 		<select name='headercolor' style='font-size: 10px;' onchange='this.form.submit();'>";							
 			//header color options
 			foreach ($options_values['headercolor'] as $label => $value) {
@@ -396,7 +401,7 @@ function shadowbox_options() {
 			}
 		print "
 		</select>
-		<span style='font-size: 10px; color: ".$options['bgtextcolor'].";'>Background:</span>
+		<span style='font-size: 10px; color: ".$options['bgtextcolor'].";'>Background Color:</span>
 		<select name='background' style='font-size: 10px;' onchange='this.form.submit();'>
 			<option value='white' ".($options['background'] == 'white' ? ' selected' : '') . ">White</option>
 			<option value='black' ".($options['background'] == 'black' ? ' selected' : '') . ">Black</option>
@@ -409,7 +414,7 @@ function shadowbox_options() {
 			<option value='blue' ".($options['background'] == 'blue' ? ' selected' : '') . ">Blue</option>
 			<option value='green' ".($options['background'] == 'green' ? ' selected' : '') . ">Green</option>
 		</select>
-		<span style='font-size: 10px; color: ".$options['bgtextcolor'].";'>Site width:</span>
+		<span style='font-size: 10px; color: ".$options['bgtextcolor'].";'>Site Width:</span>
 		<select name='site-width' style='font-size: 10px;' onchange='this.form.submit();'>";							
 			// site width options
 			foreach ($options_values['site-width'] as $label => $value) {
@@ -417,19 +422,10 @@ function shadowbox_options() {
 			}					
 		print "
 		</select>		
-		<span style='font-size: 10px; color: ".$options['bgtextcolor'].";'>Header height:</span>
-		<select name='header-block-height' style='font-size: 10px;' onchange='this.form.submit();'>";							
-			// header height options
-			foreach ($options_values['header-block-height'] as $label => $value) {
-				print "\n<option value='".$value."'".($options['header-block-height'] == $value ? ' selected' : '') . ">".$label."</option>";
-			}					
-		print "
-		</select>		
 		</div>
 		</div>	
 		</td>
-		<td width='20%'>
-		</td>		
+		
 	</tr>
 	<tr><td colspan='3'>";
 		if ($options['model-instructions'] == "on") {
