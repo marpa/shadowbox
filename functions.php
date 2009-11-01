@@ -81,11 +81,11 @@ if ( function_exists('add_custom_image_header') ) {
 
 $header_image = "%s/images/".$shadowbox_config['headerimage'];
 $header_image_width = $options['site-width'] - 105;
-
+$header_image_height = 70;
 
 define('HEADER_IMAGE', $header_image); // %s is theme dir uri
 define('HEADER_IMAGE_WIDTH', $header_image_width);
-define('HEADER_IMAGE_HEIGHT', 70);
+define('HEADER_IMAGE_HEIGHT', $header_image_height);
 define('HEADER_TEXTCOLOR', $options['headertext']);
 define('HEADER_BGCOLOR', $options['headercolor']);
 define( 'NO_HEADER_TEXT', true );
@@ -372,8 +372,18 @@ function shadowbox_options() {
 
 	<tr>
 		<td width='20%'>
+<!-- 
 		<input type='checkbox' name='header-text-display' id='header-text-display'" .($options['header-text-display'] == "on" ? ' checked' : '')." onchange='this.form.submit();'/>
-		<span style='color:".$options['textcolor']."; font-size: 9px;'>Display blog title and description</span>	
+ -->
+		
+		<span style='color:".$options['bgtextcolor']."; font-size: 10px;'>Title position
+		<select name='header-text-display' style='font-size: 10px;' onchange='this.form.submit();'>
+			<option value='top' ".($options['header-text-display'] == 'top' ? ' selected' : '') . ">Top</option>
+			<option value='middle' ".($options['header-text-display'] == 'middle' ? ' selected' : '') . ">Middle</option>
+			<option value='bottom' ".($options['header-text-display'] == 'bottom' ? ' selected' : '') . ">Bottom</option>
+			<option value='hide' ".($options['header-text-display'] == 'hide' ? ' selected' : '') . ">Hide</option>
+		</select>
+		</span>
 		</td>
 		<td width='60%'>
 		<div style='font-size: 8px; text-align: center;'>	
@@ -404,6 +414,14 @@ function shadowbox_options() {
 			// site width options
 			foreach ($options_values['site-width'] as $label => $value) {
 				print "\n<option value='".$value."'".($options['site-width'] == $value ? ' selected' : '') . ">".$label."</option>";
+			}					
+		print "
+		</select>		
+		<span style='font-size: 10px; color: ".$options['bgtextcolor'].";'>Header height:</span>
+		<select name='header-block-height' style='font-size: 10px;' onchange='this.form.submit();'>";							
+			// header height options
+			foreach ($options_values['header-block-height'] as $label => $value) {
+				print "\n<option value='".$value."'".($options['header-block-height'] == $value ? ' selected' : '') . ">".$label."</option>";
 			}					
 		print "
 		</select>		
@@ -442,7 +460,7 @@ function shadowbox_options() {
 					<a href='".get_bloginfo('url')."/wp-admin/themes.php?page=custom-header' class ='customheaderlink'>Edit Custom Header Image</a></div>
 					<div style='font-size: 10px; margin: 4px; text-align: left; color: ".$options['headertext'].";'>";	
 					// blog title and description model
-					if ($options['header-text-display'] == "on") {
+					if ($options['header-text-display'] != "hide") {
 						print "<span style='font-size: 20px;'>".get_bloginfo('name')."</span><br/>";
 						print "<div style='font-size: 10px; margin-left: 10px; color: ".$options['textcolor'].";'>".get_bloginfo('description')."</div>";
 					} else {
@@ -939,11 +957,7 @@ function save_options() {
 			text-align: left;
 			color: ".$options['page-title'].";
 		}
-		
-		#sidebar h2 {
-			color: ".$options['sidebar-title'].";
-		}
-		
+				
 		#sidebar ul ul li, #sidebar ul ol li {
 			margin: 3px 0 -4px;
 			padding: 3px;
@@ -958,6 +972,14 @@ function save_options() {
 			width: ".$options['sidebar-left-width']."px;
 			visibility: ".$options['sidebar-left-visibility'].";
 		}
+		
+		.sidebarleft h2 {
+			color: ".$options['sidebar-left-header-color'].";
+		}
+		
+		.sidebarright h2 {
+			color: ".$options['sidebar-right-header-color'].";
+		}
 
 		.sidebarleftcolor {
 			background: ".$options['sidebar-left-color'].";
@@ -965,6 +987,7 @@ function save_options() {
 			border-left: 1px solid ".$options['sidebar-left-border-left'].";
 			border-right: 1px solid ".$options['sidebar-left-border-right'].";
 		}
+		
 
 		.sidebarright {
 			width: ".$options['sidebar-right-width']."px;
@@ -1149,7 +1172,7 @@ function save_options() {
 			border-right: 1px solid ".$options['headerborder'].";
 			border-left: 1px solid ".$options['headerborder'].";					
 			padding-top: 1px;
-			height: 70px;
+			height: ".$options['header-block-height']."px;
 		}
 
 		.topbar {
@@ -1169,6 +1192,7 @@ function save_options() {
 		
 		.headertext a {
 			display: ".$options['show-header-text'].";
+			padding-top: ".$options['header-text-padding-top']."px;
 			padding-left: 10px;
 			color: ".$options['headertext'].";
 			font-size: 20px;
@@ -1210,7 +1234,9 @@ function set_default_options() {
 	if( ! isset($options['headerleftcustom'		]) ) $options['headerleftcustom'			] = "";
 	if( ! isset($options['appgroups'			]) ) $options['appgroups'			] = "custom";
 	if( ! isset($options['headermeta'			]) ) $options['headermeta'			] = "on";
-	if( ! isset($options['header-text-display'	]) ) $options['header-text-display'	] = "on";
+	if( ! isset($options['header-text-display'	]) ) $options['header-text-display'	] = "middle";
+	
+	if( ! isset($options['header-block-height'	]) ) $options['header-block-height'	] = "70";
 	
 	if( ! isset($options['background'     		]) ) $options['background'      	] = "gray";
 	if( ! isset($options['headercolor'			]) ) $options['headercolor'			] = "#F9F9F9";
@@ -1246,11 +1272,13 @@ function set_primary_options() {
 	
 	//printpre($_POST);
 	
+	$options['header-block-height'] = ( isset($_POST['header-block-height']) ) ? stripslashes($_POST['header-block-height']) : "70";
+	
     $options['appgroups'] = ( isset($_POST['appgroups']) ) ? stripslashes($_POST['appgroups']) : "custom";
     $options['headermeta'] = ( isset($_POST['headermeta']) ) ? stripslashes($_POST['headermeta']) : "off";
     $options['headerleftcustom'] = ( isset($_POST['headerleftcustom']) ) ? addslashes($_POST['headerleftcustom']) : "";
     $options['model-instructions']		= ( isset($_POST['model-instructions']) ) ? stripslashes($_POST['model-instructions']) : "off";
-    
+        
     $options['background'] = ( isset($_POST['background']) ) ? stripslashes($_POST['background']) : "gray";
 	$options['headercolor']	= ( isset($_POST['headercolor']) ) ? stripslashes($_POST['headercolor']) : "#F9F9F9";
 	$options['sidebar-left-width']	= ( isset($_POST['sidebar-left-width']) ) ? stripslashes($_POST['sidebar-left-width']) : "138";
@@ -1275,7 +1303,7 @@ function set_primary_options() {
 	$options['footerleft'] = ( isset($_POST['footerleft']) ) ? stripslashes($_POST['footerleft']) : "";
 	$options['site-width'] = ( isset($_POST['site-width']) ) ? stripslashes($_POST['site-width']) : "900";
 	
-	$options['header-text-display'] = ( isset($_POST['header-text-display']) ) ? stripslashes($_POST['header-text-display']) : "off";	
+	$options['header-text-display'] = ( isset($_POST['header-text-display']) ) ? stripslashes($_POST['header-text-display']) : "middle";	
 			
 
 }
@@ -1297,6 +1325,9 @@ function set_variation_options() {
 	$options['background_repeat'] = "repeat-x";
 	$options['bgbordercolor'] = "#999999";
 	$options['page-image-width'] = $options['site-width']-50;
+	
+	$options['sidebar-left-header-color'] = "#CCCCCC";
+	$options['sidebar-right-header-color'] = "#CCCCCC";
 	
 	$options['page_image_directory'] = "default";	
 	$options['page_image_path'] = "url('".get_bloginfo("stylesheet_directory")."/images/".$options['page_image_directory'];
@@ -1330,6 +1361,17 @@ function set_variation_options() {
 		'800px' => '850',
 		'750px' => '800'
 		);
+
+	$options_values['header-block-height'] = array(
+		'50px' => '50',
+		'70px' => '70',
+		'100px' => '100',
+		'150px' => '150',
+		'200px' => '200',
+		'250px' => '250',
+		'300px' => '300',
+		);
+
 	
 	$options_values['linkcolor'] = array(
 		'Dark Blue' => '#003366',
@@ -1668,11 +1710,39 @@ function set_derivative_options() {
 	/******************************************************************************
 	 * Blog title and description display option
 	 ******************************************************************************/
-	if ($options['header-text-display'] == "on") {
+	if ($options['header-text-display'] != "hide") {
 		$options['show-header-text'] = "block";
 	} else {
 		$options['show-header-text'] = "none";
 	}
+	
+	if ($options['header-text-display'] == "top") {
+		$options['header-text-padding-top'] = 3;
+		
+	} else if ($options['header-text-display'] == "middle") {
+		if ($options['header-block-height'] == 50) {
+			$options['header-text-padding-top'] = 5;
+		} else if ($options['header-block-height'] == 70) {
+			$options['header-text-padding-top'] = 15;
+		} else if ($options['header-block-height'] == 100) {
+			$options['header-text-padding-top'] = 30;		
+		} else if ($options['header-block-height'] == 150) {
+			$options['header-text-padding-top'] = 55;		
+		} else if ($options['header-block-height'] == 200) {
+			$options['header-text-padding-top'] = 80;
+		} else if ($options['header-block-height'] == 250) {
+			$options['header-text-padding-top'] = 110;
+		} else if ($options['header-block-height'] == 300) {
+			$options['header-text-padding-top'] = 145;
+		}
+		
+	} else if ($options['header-text-display'] == "bottom") {
+		$options['header-text-padding-top'] = $options['header-block-height'] - 50;
+		
+	} else {
+		$options['header-text-padding-top'] = 15;
+	}
+	
 
 	/******************************************************************************
 	 * link color options
@@ -1857,10 +1927,16 @@ function set_derivative_options() {
 		$options['sidebar-left-border-right'] = "#CCCCCC";
 	
 	// if black	then set left sidebar left and bottom borders to black
+	// set sidebar header color to white
 	} else if ($options['sidebar-left-color'] == '#000000') {	
 		$options['sidebar-left-border-left'] = "#000000";
 		$options['sidebar-left-border-bottom'] = "#000000";
 		$options['sidebar-left-border-right'] = "#CCCCCC";
+		$options['sidebar-left-header-color'] = "#FFFFFF";
+	
+	// if gray, set sidebar header to dark gray
+	} else if ($options['sidebar-left-color'] == '#F3F3F3') {
+		$options['sidebar-left-header-color'] = "#999999";
 		
 	// if greeen then set left sidebar left and bottom borders to black
 	} else if ($options['sidebar-left-color'] == '#92BB84') {	
@@ -1881,11 +1957,14 @@ function set_derivative_options() {
 		$options['sidebar-right-border-left'] = "#CCCCCC";
 	
 	// if black	then set right sidebar right and bottom borders to black
+	// set sidebar header color to white
 	} else if ($options['sidebar-right-color'] == '#000000') {	
 		$options['sidebar-right-border-left'] = "#000000";
 		$options['sidebar-right-border-bottom'] = "#000000";
 		$options['sidebar-right-border-right'] = "#CCCCCC";
+		$options['sidebar-right-header-color'] = "#FFFFFF";
 	
+	// if greeen then set left sidebar left and bottom borders to black
 	} else if ($options['sidebar-right-color'] == '#92BB84') {	
 		$options['sidebar-right-border-left'] = "#000000";
 		$options['sidebar-right-border-bottom'] = "#000000";
