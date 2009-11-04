@@ -224,20 +224,20 @@ function shadowbox_options() {
  				
  		.editwidgetlink {
 			display: block;
- 			color: ".$options['headertext'].";
+ 			color: ".$options['linkcolor'].";
  			padding: 5px;
 		 		
  		}
  		
  		.editwidgetlink a {
 			display: block;
- 			color: ".$options['headertext'].";
+ 			color: ".$options['linkcolor'].";
  			padding: 5px;
- 			border: 1px dotted ".$options['headertext'].";
+ 			border: 1px dotted ".$options['linkcolor'].";
 		} 		
  		
  		.editwidgetlink a:hover {
-			 border: 1px solid ".$options['headertext'].";
+			 border: 1px solid ".$options['linkcolor'].";
 			 text-decoration: none;
 		}
 		
