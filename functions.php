@@ -38,7 +38,6 @@ if (function_exists('register_sidebar')) {
 
 }
 
-
 /******************************************************************************
  *  Get options
  ******************************************************************************/
@@ -154,6 +153,7 @@ function shadowbox_options() {
 		
     if ($_POST['action'] == 'save' )
         save_options();
+    
 
 	/*********************************************************
 	 * Define theme layout model values
@@ -164,6 +164,8 @@ function shadowbox_options() {
     $model_left_sidebar_width = $options['sidebar-left-width'] + 12;
     $model_main_column_width = $model_site_width - ($model_right_sidebar_width + $model_left_sidebar_width) - 100;
     $model_content_width = $options['site-width'] - ($options['sidebar-left-width'] + $options['sidebar-right-width']);
+    $model_customheaderlink_padding_top = ($options['header-block-height']/2) - 15;
+    $model_header_text_width = $model_site_width - 200;
 
 	
 	/*********************************************************
@@ -176,11 +178,20 @@ function shadowbox_options() {
  	$model_css = preg_replace("/body/", ".body_na", $shadowbox_css); 
  	print "
  	<style type='text/css'>".$model_css."
+		.modelheader {
+			background-color: ".$options['headercolor'].";
+			border: 1px solid #CCCCCC;
+			height='".$options['header-block-height'].";
+		}
  		.customheaderlink {
  			color: ".$options['headertext'].";
  			border: 1px dotted ".$options['headertext'].";
  			padding: 5px; 
  			text-decoration: none;
+ 			float: right;
+ 			font-size: 10px;
+ 			margin-top: ".$model_customheaderlink_padding_top."px;
+ 			margin-right: 5px;
  		}
  		
 		.customheaderlink a {
@@ -191,6 +202,13 @@ function shadowbox_options() {
  		.customheaderlink a:hover {
 			 border: 1px solid ".$options['headertext'].";
 			 text-decoration: none;
+		}
+		
+		.modelheadertextposition {
+			font-size: 20px; 
+			margin-left: 5px;
+			padding-top: ".$options['header-text-padding-top']."px;
+			color: ".$options['headertext'].";
 		}
 
  		.rss  {
@@ -241,7 +259,7 @@ function shadowbox_options() {
 			padding: 1px 10px 10px 10px;
 			border: 1px solid #CCCCCC;
 		}
-		
+				
 		.instructions {
 			margin-top: 5px;
 			margin-bottom: 5px;
@@ -451,16 +469,16 @@ function shadowbox_options() {
 	<td>		
 		<table width = '100%' cellpadding='10' style='background-color: ".$options['content-background']."'>
 			<tr>
-				<td colspan='3' height='70' style='background-color: ".$options['headercolor']."; border: 1px solid #CCCCCC;'>				
-					<div style='font-size: 10px; margin: 6px; float: right; clear: left; color: ".$options['headertext'].";'>
-					<a href='".get_bloginfo('url')."/wp-admin/themes.php?page=custom-header' class ='customheaderlink'>Edit Custom Header Image</a></div>
-					<div style='font-size: 10px; margin: 4px; text-align: left; color: ".$options['headertext'].";'>";	
+				<td colspan='3' valign='top' height='".$options['header-block-height']."' class='modelheader'>				
+					<a href='".get_bloginfo('url')."/wp-admin/themes.php?page=custom-header' class ='customheaderlink'>Edit Custom Header Image</a>
+
+					<div class='modelheadertextposition'>";	
 					// blog title and description model
 					if ($options['header-text-display'] != "hide") {
-						print "<span style='font-size: 20px;'>".get_bloginfo('name')."</span><br/>";
+						print get_bloginfo('name')."<br/>";
 						print "<div style='font-size: 10px; margin-left: 10px; color: ".$options['textcolor'].";'>".get_bloginfo('description')."</div>";
 					} else {
-						print "<i>blog title and description hidden</i>";
+						print "<div style='font-size: 10px;'><i>blog title and description hidden</i></div>";
 					}
 					print "
 					</div>
