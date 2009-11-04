@@ -525,9 +525,9 @@ function shadowbox_options() {
 			if ($options['sidebar-left-width'] != 0) {
 				print"
 				<td valign='top' width='".$model_left_sidebar_width."' style='background-color: ".$options['sidebar-left-color']."; border: 1px solid #CCCCCC;'>
-					<div style='font-size: 10px; text-align: center; color: ".$options['textcolor'].";'>&larr; ".$model_left_sidebar_width." px &rarr; </div>
+					<div style='font-size: 10px; text-align: center; color: ".$options['sidebar-left-header-color'].";'>&larr; ".$model_left_sidebar_width." px &rarr; </div>
 					<div id='sidebar' style='font-size: 8px;'>					
-					<h2 style='margin-bottom: 2px; margin-top: 2px;'>Left Sidebar</h2>
+					<h2 style='margin-bottom: 2px; margin-top: 2px; color: ".$options['sidebar-left-header-color'].";'>Left Sidebar</h2>
 					<div class='editwidgetlink' style='font-size: 10px;'>
 					<a href='".get_bloginfo('url')."/wp-admin/widgets.php'>Edit Widgets</a>";
 					
@@ -763,10 +763,10 @@ function shadowbox_options() {
 			if ($options['sidebar-right-width'] != 0) {
 				print"
 				<td valign='top' width='".$model_right_sidebar_width."' style='background-color: ".$options['sidebar-right-color']."; border: 1px solid #CCCCCC;'>
-					<div style='font-size: 10px; text-align: center; color: ".$options['textcolor'].";'>&larr; ".$model_right_sidebar_width." px &rarr;</div>
+					<div style='font-size: 10px; text-align: center; color: ".$options['sidebar-right-header-color'].";'>&larr; ".$model_right_sidebar_width." px &rarr;</div>
 					<div style='font-size: 8px; margin: 4px;'>
 					<div id='sidebar' style='font-size: 8px;'>
-					<h2 style='margin-bottom: 2px; margin-top: 2px;'>Right Sidebar</h2></div>
+					<h2 style='margin-bottom: 2px; margin-top: 2px; color: ".$options['sidebar-right-header-color'].";'>Right Sidebar</h2></div>
 					<div class='editwidgetlink' style='font-size: 10px;'>
 					<a href='".get_bloginfo('url')."/wp-admin/widgets.php'>Edit Widgets</a>";
 					if ($options['model-instructions'] == "on") {
@@ -1337,8 +1337,8 @@ function set_variation_options() {
 	$options['bgbordercolor'] = "#999999";
 	$options['page-image-width'] = $options['site-width']-50;
 	
-	$options['sidebar-left-header-color'] = "#CCCCCC";
-	$options['sidebar-right-header-color'] = "#CCCCCC";
+	$options['sidebar-left-header-color'] = "#999999";
+	$options['sidebar-right-header-color'] = "#999999";
 	
 	$options['page_image_directory'] = "default";	
 	$options['page_image_path'] = "url('".get_bloginfo("stylesheet_directory")."/images/".$options['page_image_directory'];
@@ -1941,6 +1941,7 @@ function set_derivative_options() {
 		$options['sidebar-left-border-left'] = "#000000";
 		$options['sidebar-left-border-bottom'] = "#000000";
 		$options['sidebar-left-border-right'] = "#000000";
+		$options['sidebar-left-header-color'] = "#FFFFFF";
 		
 	} else {
 		$options['sidebar-left-border-left'] = "#CCCCCC";
@@ -1967,6 +1968,7 @@ function set_derivative_options() {
 		$options['sidebar-right-border-left'] = "#000000";
 		$options['sidebar-right-border-bottom'] = "#000000";
 		$options['sidebar-right-border-right'] = "#000000";
+		$options['sidebar-right-header-color'] = "#FFFFFF";
 				
 	} else {
 		$options['sidebar-right-border-left'] = "#CCCCCC";
