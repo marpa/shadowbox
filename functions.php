@@ -154,7 +154,6 @@ function shadowbox_options() {
     if ($_POST['action'] == 'save' )
         save_options();
     
-
 	/*********************************************************
 	 * Define theme layout model values
 	 *********************************************************/
@@ -221,7 +220,17 @@ function shadowbox_options() {
 			width: 300px;
 		}
 
- 				
+ 		.metatext {
+ 			font-size: 9px; 
+ 			color: ".$options['bgtextcolor'].";
+
+ 		}
+ 		
+ 		.metatext a {
+ 			color: ".$options['bglinkcolor'].";
+ 		}
+ 		
+ 		
  		.editwidgetlink {
 			display: block;
  			color: ".$options['linkcolor'].";
@@ -345,7 +354,7 @@ function shadowbox_options() {
 			<table width='100%' cellspacing='0' cellpadding='5'>
 			<tr>
 			<td width='90%'>
-			<div style='font-size: 9px; color: ".$options['bgtextcolor'].";'>";
+			<div class='metatext'>";
 			
 			if ($options['headerleft'] == "") {
 				print "no links defined...";
@@ -1477,7 +1486,7 @@ function set_variation_options() {
 		
 		$options_values['linkcolor'] = array(
 			'Pale Yellow' => '#FFFFCC', 
-			'Yellow' => '#FFCC33',
+			'Yellow' => '#EEDD82',
 			'Light Gray' => '#CCCCCC',
 			'White' => '#FFFFFF'	
 		);
@@ -1546,7 +1555,7 @@ function set_variation_options() {
 	 ******************************************************************************/
 
 	} else if ($_REQUEST['background'] == "blue") {
-	
+
 		// option values
 		$options['background_image_file'] = "bg.png";
 		$options['background_image_directory'] = "blue";
@@ -1565,7 +1574,7 @@ function set_variation_options() {
 	 ******************************************************************************/
 
 	}  else if ($options['background'] == 'green') {
-	
+
 		// option values
 		$options['background_image_file'] = "bg_edgedark.png";
 		$options['background_image_directory'] = "green";
@@ -1746,24 +1755,60 @@ function set_derivative_options() {
 	 * link color options
 	 ******************************************************************************/
 
-	// blue
+	// dark blue
 	if ($options['linkcolor'] == '#003366') {	
-		$options['linkcolor_visited'] = "#555555";
-	// blue
+		// dark gray
+		if ($options['textcolor'] == '#666666') {
+			$options['linkcolor_visited'] = "#999999";
+		// gray
+		} else if ($options['textcolor'] == '#999999') {
+			$options['linkcolor_visited'] = "#424242";
+		// light gray
+		} else if ($options['textcolor'] == '#999999') {
+			$options['linkcolor_visited'] = "#333333";
+		// black
+		} else if ($options['textcolor'] == '#424242') {
+			$options['linkcolor_visited'] = "#CCCCCC";
+		}
+		
+	//  light blue
 	} else if ($options['linkcolor'] == '#0066cc') {	
-		$options['linkcolor_visited'] = "#996666";
+		$options['linkcolor_visited'] = "#003366";
 	// red
 	} else if ($options['linkcolor'] == '#990000') {	
 		$options['linkcolor_visited'] = "#996666";
 	// green
 	}  else if ($options['linkcolor'] == '#265e15') {	
-		$options['linkcolor_visited'] = "#6D9C54";	
+		$options['linkcolor_visited'] = "#6D9C54";
+		
 	// pale yellow
-	}  else if ($options['linkcolor'] == '#FFFFCC') {	
-		$options['linkcolor_visited'] = "#FFFBEE";	
+	}  else if ($options['linkcolor'] == '#FFFFCC') {
+	
+		// light gray
+		if ($options['textcolor'] == '#CCCCCC') {
+			$options['linkcolor_visited'] = "#FFFFFF";
+		// gray
+		} else if ($options['textcolor'] == '#888888') {
+			$options['linkcolor_visited'] = "#FFFBEE";
+		// silver
+		} else if ($options['textcolor'] == '#F9F9F9') {
+			$options['linkcolor_visited'] = "#888888";
+		}
+	
 	// yellow
-	}  else if ($options['linkcolor'] == '#FFFFCC') {	
-		$options['linkcolor_visited'] = "#FFFBEE";	
+	}  else if ($options['linkcolor'] == '#FFCC33') {
+	
+		// light gray
+		if ($options['textcolor'] == '#CCCCCC') {
+			$options['linkcolor_visited'] = "#FFFBEE";
+		// gray
+		} else if ($options['textcolor'] == '#666666') {
+			$options['linkcolor_visited'] = "#FFFBEE";
+		// silver
+		} else if ($options['textcolor'] == '#F9F9F9') {
+			$options['linkcolor_visited'] = "#FFFBEE";
+		}
+	
 	// black
 	}  else if ($options['linkcolor'] == '#151515') {	
 		$options['linkcolor_visited'] = "#6E6E6E";	
