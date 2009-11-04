@@ -25,16 +25,24 @@ if ($options['sidebar-left-width'] != 0) {
 				$curauth = get_userdata(intval($author));
 				endif;
 			?>			
-			
-			<?php echo get_avatar($curauth->ID, '64' ); ?>
-			<h2>Author: <?php echo $curauth->nickname; ?></h2>
+			<div id="syndication" style="float: right;">
+			<?php echo "<a href='rss' title='Author RSS' class='feed'>&#8216;".$curauth->display_name."&#8217; Author RSS</a>"; ?>
+			</div>
+			<div style="float: right; padding-right: 5px;">
+			<?php echo get_avatar($curauth->ID, '64' ); ?>			
+			</div>			
+			<div>
+			<h2>Author: <?php echo $curauth->display_name; ?></h2>
 			Member Since: <?php echo $curauth->user_registered; ?><br/>
 			<?php if($curauth->user_url != "" && $curauth->user_url != "http://") : ?>
 				Website: <a href="<?php echo $curauth->user_url; ?>"><?php echo $curauth->user_url; ?></a><br/>
 			<?php endif; ?>
+
+			</div>
+
 			<br/>
 									
-			<h2>Posts by <?php echo $curauth->nickname; ?>:</h2>
+			<h3>Posts by <?php echo $curauth->display_name; ?>:</h3>
 			<?php query_posts('author=' . $curauth->ID . '&showposts=50'); ?>
 			<?php if (have_posts()) : while (have_posts()) : the_post(); ?>
 			
@@ -45,7 +53,7 @@ if ($options['sidebar-left-width'] != 0) {
 				<div class="postmetadata">
 				Posted in <span class='category'><?php the_category('</span> <span class=\'category\'>') ?></span></div>
 
-				<small><?php the_time('F jS, Y') ?>  by <?php the_author_posts_link(); ?></p></small>
+				<small><?php the_time('F jS, Y') ?>  by <?php the_author_posts_link(); ?></small>
 				
 				<div class="entry">
 					<?php the_content() ?>
