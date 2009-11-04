@@ -864,6 +864,7 @@ div .hr {
 
 .headertext a {
 	display: block;
+	padding-top: 15px;
 	padding-left: 10px;
 	color: #003366;
 	font-size: 20px;
