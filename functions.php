@@ -80,7 +80,7 @@ if ( function_exists('add_custom_image_header') ) {
 
 $header_image = "%s/images/".$shadowbox_config['headerimage'];
 $header_image_width = $options['site-width'] - 105;
-$header_image_height = 70;
+$header_image_height = $options['header-block-height'];
 
 define('HEADER_IMAGE', $header_image); // %s is theme dir uri
 define('HEADER_IMAGE_WIDTH', $header_image_width);
