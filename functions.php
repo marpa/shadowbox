@@ -1554,7 +1554,7 @@ function set_variation_options() {
 	 * for background color, borders, text and links
 	 ******************************************************************************/
 
-	} else if ($_REQUEST['background'] == "blue") {
+	} else if ($options['background'] == "blue") {
 
 		// option values
 		$options['background_image_file'] = "bg.png";
