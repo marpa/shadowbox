@@ -27,6 +27,7 @@ file for saving custom header image files and header left meta options
 	* New feature: 
 		Options:added an primary option for setting the height of the header block.
 		(2009-11-1 - Alex Chapin)
+		(reported by Shel Sax)
 		
 	* New feature: 
 		Configuration: added a config-sample file that can be saved as config.php

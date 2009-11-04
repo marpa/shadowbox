@@ -27,7 +27,7 @@
 			Options: changed header text option to include position of the blog title and
 			description within the header block or hide (top, middlebury, bottom, hide).
 		</change>
-		<new author='alex' date='2009-11-1'>
+		<new author='alex' date='2009-11-1' reporter='shel'>
 			Options: added an primary option for setting the height of the header block.
 		</new>
 		<new author='alex' date='2009-10-17'>
@@ -93,6 +93,9 @@
 		<reporter short="mike">
 			<name>Mike Roy</name>
 		</reporter>
+		<reporter short="shel">
+			<name>Shel Sax</name>
+		</reporter>	
 	</reporters>
 	<reftypes>
 		<reftype name="bug" group="82171" tracker='565234'/>
