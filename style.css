@@ -1013,6 +1013,12 @@ a:hover {
 	white-space:nowrap;
 }
 
+#syndication span {
+	padding: 5px 10px 0 23px;
+	background: url(images/feed.png) no-repeat 0 1px;
+}
+
+
 #syndication a.feed{
 	padding: 5px 10px 0 23px;
 	background: url(images/feed.png) no-repeat 0 1px;

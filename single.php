@@ -19,10 +19,10 @@ if ($options['post-sidebar-left-display'] == "show" && $options['sidebar-left-wi
 </td>
 <td valign='top' class="centercontent">
 
-	<div id="content" class="widecolumn" role="main">
+	<div id="content" class="widecolumn">
 
 	<?php if (have_posts()) : while (have_posts()) : the_post(); ?>
-
+		
 		<div class="navigation">
 			<div class="alignleft"><?php previous_post_link('&laquo; %link') ?></div>
 			<div class="alignright"><?php next_post_link('%link &raquo;') ?></div>
@@ -34,7 +34,7 @@ if ($options['post-sidebar-left-display'] == "show" && $options['sidebar-left-wi
 			<div class="postmetadata">
 			Posted in <span class='category'><?php the_category('</span> <span class=\'category\'') ?></span></div>
 
-			<small><?php the_time('F jS, Y') ?>  by <?php the_author() ?></small>
+			<small><?php the_time('F jS, Y') ?>  by <?php the_author_posts_link(); ?></small>
 			<div class="entry">
 				<?php the_content('<p class="serif">Read the rest of this entry &raquo;</p>'); ?>
 
@@ -76,6 +76,9 @@ if ($options['post-sidebar-left-display'] == "show" && $options['sidebar-left-wi
 
 					</small>
 				</p>
+				 	<div id="syndication">
+					<span><?php post_comments_feed_link('Comments RSS'); ?></span>
+					</div>
 
 			</div>
 		</div>
