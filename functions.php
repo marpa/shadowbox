@@ -402,7 +402,19 @@ function shadowbox_options() {
 		</td>
 		<td width='80%' colspan='2'>
 		<div style='font-size: 8px; text-align: left;'>	
-		<div style=''>
+		<span style='font-size: 10px; color: ".$options['bgtextcolor'].";'>Background Color:</span>
+		<select name='background' style='font-size: 10px;' onchange='this.form.submit();'>
+			<option value='white' ".($options['background'] == 'white' ? ' selected' : '') . ">White</option>
+			<option value='black' ".($options['background'] == 'black' ? ' selected' : '') . ">Black</option>
+			<option value='gray' ".($options['background'] == 'gray' ? ' selected' : '') . ">Gray</option>
+			<option value='gray-white' ".($options['background'] == 'gray-white' ? ' selected' : '') . ">Gray-White</option>
+			<option value='white-gray' ".($options['background'] == 'white-gray' ? ' selected' : '') . ">White-Gray</option>
+			<option value='yellow' ".($options['background'] == 'yellow' ? ' selected' : '') . ">Yellow</option>
+			<option value='yellow-white' ".($options['background'] == 'yellow-white' ? ' selected' : '') . ">Yellow-White</option>
+			<option value='white-yellow' ".($options['background'] == 'white-yellow' ? ' selected' : '') . ">White-Yellow</option>
+			<option value='blue' ".($options['background'] == 'blue' ? ' selected' : '') . ">Blue</option>
+			<option value='green' ".($options['background'] == 'green' ? ' selected' : '') . ">Green</option>
+		</select>
 		<span style='font-size: 10px; color: ".$options['bgtextcolor'].";'>Header Height:</span>
 		<select name='header-block-height' style='font-size: 10px;' onchange='this.form.submit();'>";							
 			// header height options
@@ -418,19 +430,6 @@ function shadowbox_options() {
 				print "\n<option value='".$value."'".($options['headercolor'] == $value ? ' selected' : '') . ">".$label."</option>";
 			}
 		print "
-		</select>
-		<span style='font-size: 10px; color: ".$options['bgtextcolor'].";'>Background Color:</span>
-		<select name='background' style='font-size: 10px;' onchange='this.form.submit();'>
-			<option value='white' ".($options['background'] == 'white' ? ' selected' : '') . ">White</option>
-			<option value='black' ".($options['background'] == 'black' ? ' selected' : '') . ">Black</option>
-			<option value='gray' ".($options['background'] == 'gray' ? ' selected' : '') . ">Gray</option>
-			<option value='gray-white' ".($options['background'] == 'gray-white' ? ' selected' : '') . ">Gray-White</option>
-			<option value='white-gray' ".($options['background'] == 'white-gray' ? ' selected' : '') . ">White-Gray</option>
-			<option value='yellow' ".($options['background'] == 'yellow' ? ' selected' : '') . ">Yellow</option>
-			<option value='yellow-white' ".($options['background'] == 'yellow-white' ? ' selected' : '') . ">Yellow-White</option>
-			<option value='white-yellow' ".($options['background'] == 'white-yellow' ? ' selected' : '') . ">White-Yellow</option>
-			<option value='blue' ".($options['background'] == 'blue' ? ' selected' : '') . ">Blue</option>
-			<option value='green' ".($options['background'] == 'green' ? ' selected' : '') . ">Green</option>
 		</select>
 		<span style='font-size: 10px; color: ".$options['bgtextcolor'].";'>Site Width:</span>
 		<select name='site-width' style='font-size: 10px;' onchange='this.form.submit();'>";							
@@ -450,7 +449,7 @@ function shadowbox_options() {
 			print "
 			<div class='instructions' style='font-size: 8px;'>	
 				<i>If you use your own custom header image, consider an image with transparent background for graphics or logo type images. 
-				If your custom header image spans the entire width of the header, hide the blog title and description </i>
+				If your custom header image spans the entire width of the header, move the blog title and description to top or bottom or hide it </i>
 			</div>		
 			";		
 		}		
