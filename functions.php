@@ -1267,7 +1267,6 @@ function set_default_options() {
 	if( ! isset($options['sidebar-left-color'	]) ) $options['sidebar-left-color'	] = "#F9F9F9";
 	if( ! isset($options['sidebar-right-color'	]) ) $options['sidebar-right-color'	] = "#F9F9F9";
 	if( ! isset($options['page-title'			]) ) $options['page-title'			] = "#CCCCCC";
-	if( ! isset($options['sidebar-title'		]) ) $options['sidebar-title'		] = "#CCCCCC";
 	if( ! isset($options['post-single-sidebar'	]) ) $options['post-single-sidebar'	] = "right";
 	
 	if( ! isset($options['model-instructions'	]) ) $options['model-instructions'	] = "on";
@@ -1300,7 +1299,6 @@ function set_primary_options() {
 	$options['sidebar-right-color']	= ( isset($_POST['sidebar-right-color']) ) ? stripslashes($_POST['sidebar-right-color']) : "#F9F9F9";	
 
 	$options['page-title'] = ( isset($_POST['page-title']) ) ? stripslashes($_POST['page-title']) : "#CCCCCC";
-	$options['sidebar-title'] = ( isset($_POST['sidebar-title']) ) ? stripslashes($_POST['sidebar-title']) : "#CCCCCC";
 	
 	$options['post-single-sidebar']	= ( isset($_POST['post-single-sidebar']) ) ? stripslashes($_POST['post-single-sidebar']) : "right";
 
@@ -1413,13 +1411,6 @@ function set_variation_options() {
 		'Light Gray' => '#CCCCCC',
 		'Black' => '#424242'
 	);
-
-	$options_values['sidebar-title'] = array(
-		'Dark Gray' => '#666666',
-		'Gray' => '#999999',
-		'Light Gray' => '#CCCCCC',
-		'Black' => '#424242'
-	);
 	
 	
 	$options_values['headercolor'] = array(
@@ -1503,11 +1494,6 @@ function set_variation_options() {
 			'White' => '#FFFFFF'
 		);
 
-		$options_values['sidebar-title'] = array(
-			'Light Gray' => '#CCCCCC',
-			'Gray' => '#666666',
-			'White' => '#FFFFFF'
-		);
 
 
 		// if current value is one of this variation's option values, then use it 
@@ -1515,7 +1501,6 @@ function set_variation_options() {
 		if (!in_array($options['linkcolor'], array_values($options_values['linkcolor']))) $options['linkcolor'] = "#FFFFCC";
 		if (!in_array($options['textcolor'], array_values($options_values['textcolor']))) $options['textcolor'] = "#CCCCCC";
 		if (!in_array($options['page-title'], array_values($options_values['page-title']))) $options['page-title'] = "#CCCCCC";
-		if (!in_array($options['sidebar-title'], array_values($options_values['sidebar-title']))) $options['sidebar-title'] = "#CCCCCC";
 		if (!in_array($options['headercolor'], array_values($options_values['headercolor']))) $options['headercolor'] = "#262626";
 		if (!in_array($options['sidebar-left-color'], array_values($options_values['sidebar-left-color']))) $options['sidebar-left-color'] = "#262626";
 		if (!in_array($options['sidebar-right-color'], array_values($options_values['sidebar-right-color']))) $options['sidebar-right-color'] = "#262626";
