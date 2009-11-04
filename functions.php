@@ -393,8 +393,8 @@ function shadowbox_options() {
 		
 		<span style='color:".$options['bgtextcolor']."; font-size: 10px;'>Blog Title Position:
 		<select name='header-text-display' style='font-size: 10px;' onchange='this.form.submit();'>
-			<option value='top' ".($options['header-text-display'] == 'top' ? ' selected' : '') . ">Top</option>
 			<option value='middle' ".($options['header-text-display'] == 'middle' ? ' selected' : '') . ">Middle</option>
+			<option value='top' ".($options['header-text-display'] == 'top' ? ' selected' : '') . ">Top</option>
 			<option value='bottom' ".($options['header-text-display'] == 'bottom' ? ' selected' : '') . ">Bottom</option>
 			<option value='hide' ".($options['header-text-display'] == 'hide' ? ' selected' : '') . ">Hide</option>
 		</select>
