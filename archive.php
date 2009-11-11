@@ -27,15 +27,20 @@ if (is_category() && $options['sidebar-left-width'] != 0) {
 
  	  <?php $post = $posts[0]; // Hack. Set $post so that the_date() works. ?>
  	  <?php /* If this is a category archive */ if (is_category()) { ?>
+ 	  	<div style = "width: 50%; float: right; clear: left;">
 		<div id="syndication">
-		<a href="<?php get_category_feed_link( $cat_id, $feed ); ?>feed" class="feed">&#8216;<?php single_cat_title(); ?>&#8217; Category RSS</a>
+		<a href="<?php get_category_feed_link( $cat_id, $feed ); ?>feed" class="feed">
+		&#8216;<?php single_cat_title(); ?>&#8217; Category RSS</a>
 		</div>
-		<h2 class="pagetitle">Archive for the &#8216;<?php single_cat_title(); ?>&#8217; Category</h2>
+		</div>
+		<div style="float: left;"><h2 class="pagetitle">Categories &raquo; &#8216;<?php single_cat_title(); ?>&#8217;</h2></div>
  	  <?php /* If this is a tag archive */ } elseif( is_tag() ) { ?>
+ 	  	<div style = "width: 50%; float: right; clear: left;">
  	  	<div id="syndication">
 		<a href="<?php get_tag_feed_link( $cat_id, $feed ); ?>feed" class="feed">&#8216;<?php single_cat_title(); ?>&#8217; Tag RSS</a>
 		</div>
-		<h2 single_tag_title="pagetitle">Posts Tagged &#8216;<?php single_tag_title(); ?>&#8217;</h2>
+		</div>
+		<div style="float: left;"><h2 single_tag_title="pagetitle">Tags &raquo; &#8216;<?php single_tag_title(); ?>&#8217;</h2></div>
  	  <?php /* If this is a daily archive */ } elseif (is_day()) { ?>
 		<h2 class="pagetitle">Archive for <?php the_time('F jS, Y'); ?></h2>
  	  <?php /* If this is a monthly archive */ } elseif (is_month()) { ?>
