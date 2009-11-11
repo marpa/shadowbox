@@ -1,5 +1,5 @@
 
-ShadowBox v. 1.1.0 (the future)
+ShadowBox v. 1.1.0 (2009-11-11)
 =================================
 
 What is ShadowBox?
@@ -51,7 +51,7 @@ Bug Tracker
 ===================================================================
 
 
-v. 1.1.0 (the future)
+v. 1.1.0 (2009-11-11)
 ----------------------------------------------------
 This release adds more RSS links to various pages of theme, custom author pages, new
 options for header height and blog title text position. Also added configuration

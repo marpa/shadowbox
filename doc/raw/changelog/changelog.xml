@@ -10,7 +10,7 @@
 <!DOCTYPE changelog SYSTEM "../dtds/changelog.dtd">
 
 <changelog name="ShadowBox">
-	<version number="1.1.0" date="the future">
+	<version number="1.1.0" date="2009-11-11">
 		<releaseNotes>
 			This release adds more RSS links to various pages of theme, custom author pages, new
 			options for header height and blog title text position.  Also added
