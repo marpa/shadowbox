@@ -14,8 +14,11 @@
 		<releaseNotes>
 			This release adds more RSS links to various pages of theme, custom author pages, new
 			options for header height and blog title text position.  Also added
-			configuration file for saving custom header image files and header left meta options
+			configuration file for saving custom header image files and header left meta options.
 		</releaseNotes>
+		<change author='alex' date='2009-11-11'>
+			Display: changed how archive titles are displayed.
+		</change>
 		<change author='alex' date='2009-11-1'>
 			Options: changed sidebar title color derivative option to be determined by sidebar
 			color.
