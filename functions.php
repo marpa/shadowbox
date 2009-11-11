@@ -177,11 +177,12 @@ function shadowbox_options() {
  	$model_css = preg_replace("/body/", ".body_na", $shadowbox_css); 
  	print "
  	<style type='text/css'>".$model_css."
+		
 		.modelheader {
 			background-color: ".$options['headercolor'].";
 			border: 1px solid #CCCCCC;
-			height='".$options['header-block-height'].";
 		}
+		
  		.customheaderlink {
  			color: ".$options['headertext'].";
  			border: 1px dotted ".$options['headertext'].";
@@ -281,6 +282,7 @@ function shadowbox_options() {
 			padding: 5px;
 			border: 1px solid #CCCCCC;
 		}
+		
 		.postlink {
 			color: ".$options['linkcolor'].";	
 			text-decoration: ".$options['entry-link-decoration'].";
@@ -296,6 +298,8 @@ function shadowbox_options() {
 			margin: 2px;
 			padding: 1px;
 		}
+
+
  	
  	</style>";	 
     
@@ -340,6 +344,7 @@ function shadowbox_options() {
 			</td>
 		</tr>
 	</table>
+	
 	<div class='modelwrapper'>";
 	
 
@@ -377,7 +382,8 @@ function shadowbox_options() {
 					print "</textarea>		
 					&nbsp;&nbsp;&nbsp;
 					<a href='javascript: document.getElementById(\"appgroupedit\").style.display = \"none\"; document.getElementById(\"appgroupdo\").value = \"0\"; exit;'>Cancel</a> - 
-					<span class='submit'><input type='submit' value='Update' name='save'/></span>									
+					<span class='submit'><input type='submit' value='Update' name='save'/></span>
+					</div>
 				";
 			}
 			print "
@@ -449,7 +455,6 @@ function shadowbox_options() {
 		print "
 		</select>		
 		</div>
-		</div>	
 		</td>
 		
 	</tr>
@@ -861,7 +866,8 @@ function shadowbox_options() {
 			print "</textarea>		
 			&nbsp;&nbsp;&nbsp;
 			<a href='javascript: document.getElementById(\"footerleftedit\").style.display = \"none\"; document.getElementById(\"footerlefteditdo\").value = \"0\"; exit;'>Cancel</a> - 
-			<span class='submit'><input type='submit' value='Update' name='save'/></span>					
+			<span class='submit'><input type='submit' value='Update' name='save'/></span>	
+			</div>
 		";
 
 		print "
@@ -975,7 +981,8 @@ function save_options() {
 		}
 
 		h2.pagetitle {		
-			margin-top: 10px;		
+			margin-top: 10px;
+			margin-bottom: 10px;		
 			text-align: left;
 			color: ".$options['page-title'].";
 		}
