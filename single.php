@@ -8,18 +8,18 @@ get_header();
 ?>
 <table width='100%' cellpadding='0'>
 <tr>
-<td valign='top' class="sidebarleftcolor">
+<td valign='top' class="left01block">
 
 <?php 
-if ($options['post-sidebar-left-display'] == "show" && $options['sidebar-left-width'] != '0') {
+if ($options['post-sidebar-left-display'] == "show" && $options['left01-width'] != '0') {
 	include (TEMPLATEPATH . '/sidebar-left.php'); 
 }		
 ?>
 
 </td>
-<td valign='top' class="centercontent">
+<td valign='top' class="contentblock">
 
-	<div id="content" class="widecolumn">
+	<div id="content">
 
 	<?php if (have_posts()) : while (have_posts()) : the_post(); ?>
 		
@@ -29,56 +29,51 @@ if ($options['post-sidebar-left-display'] == "show" && $options['sidebar-left-wi
 		</div>
 
 		<div <?php post_class() ?> id="post-<?php the_ID(); ?>">
-			<h2><?php the_title(); ?></h2>
+			<div style = "float: left; clear: left;"><h2><?php the_title(); ?></h2></div>
 			
-			<div class="postmetadata">
-			Posted in <span class='category'><?php the_category('</span> <span class=\'category\'') ?></span></div>
+		<div class="postmetadata">
+			Categories: <span class='category'><?php the_category('</span> <span class=\'category\'>') ?></span>
+		</div>
 
-			<small><?php the_time('F jS, Y') ?>  by <?php the_author_posts_link(); ?></small>
+			<small><?php the_time('l, F jS, Y') ?>  by <?php the_author_posts_link(); ?></small>
 			<div class="entry">
-				<?php the_content('<p class="serif">Read the rest of this entry &raquo;</p>'); ?>
+			
+				<?php the_content('<div class=\'morelink\'>&laquo; More &raquo;</div>'); ?> 
 
 				<?php wp_link_pages(array('before' => '<p><strong>Pages:</strong> ', 'after' => '</p>', 'next_or_number' => 'number')); ?>
 
 				<?php edit_post_link('Edit', '<div class="editlink">', '</div>'); ?>
 
 				<div class="postmetadata">
-				<?php the_tags('Tags: <span class=\'tag\'>','</span> <span class=\'tag\'>', '</span><br/>',' '); ?></div>
+					<?php the_tags('Tags: <span class=\'tag\'>','</span> <span class=\'tag\'>', '</span><br/>',' '); ?>
+				</div>
 
-				<p class="postmetadata alt">
-					<small>
-						This entry was posted
-						<?php /* This is commented, because it requires a little adjusting sometimes.
-							You'll need to download this plugin, and follow the instructions:
-							http://binarybonsai.com/archives/2004/08/17/time-since-plugin/ */
-							/* $entry_datetime = abs(strtotime($post->post_date) - (60*120)); echo time_since($entry_datetime); echo ' ago'; */ ?>
-						on <?php the_time('l, F jS, Y') ?> at <?php the_time() ?>
-						and is filed under <span class='category'><?php the_category('</span><span class=\'category\'>') ?></span>.
-						You can follow any responses to this entry through the <?php post_comments_feed_link('RSS 2.0'); ?> feed.
-
+				<div class="postmetadata alt">
+						
 						<?php if (('open' == $post-> comment_status) && ('open' == $post->ping_status)) {
 							// Both Comments and Pings are open ?>
-							You can <a href="#respond">leave a response</a>, or <a href="<?php trackback_url(); ?>" rel="trackback">trackback</a> from your own site.
+							<a href="#respond">Respond</a> <a href="<?php trackback_url(); ?>" rel="trackback">Trackback</a>
 
 						<?php } elseif (!('open' == $post-> comment_status) && ('open' == $post->ping_status)) {
 							// Only Pings are Open ?>
-							Responses are currently closed, but you can <a href="<?php trackback_url(); ?> " rel="trackback">trackback</a> from your own site.
+							<a href="<?php trackback_url(); ?> " rel="trackback">Trackback</a><br/>
+							Responses are currently closed.
 
 						<?php } elseif (('open' == $post-> comment_status) && !('open' == $post->ping_status)) {
 							// Comments are open, Pings are not ?>
-							You can skip to the end and leave a response. Pinging is currently not allowed.
+							<a href="#respond">Respond</a><br/>
+							Pinging is currently not allowed.
 
 						<?php } elseif (!('open' == $post-> comment_status) && !('open' == $post->ping_status)) {
 							// Neither Comments, nor Pings are open ?>
 							Both comments and pings are currently closed.
 
-						<?php } edit_post_link('Edit this entry','','.'); ?>
+						<?php } ?>
 
-					</small>
-				</p>
-				 	<div id="syndication">
+				</div>
+				<div id="syndication">
 					<span><?php post_comments_feed_link('Comments RSS'); ?></span>
-					</div>
+				</div>
 
 			</div>
 		</div>
