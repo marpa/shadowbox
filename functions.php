@@ -400,7 +400,6 @@ function shadowbox_options() {
 		".$options['right01-color-ie']."; 
 		".$options['right02-color-ie'].";
 
- 	
  	</style>";	 
     
 	/*********************************************************
@@ -411,12 +410,15 @@ function shadowbox_options() {
 	<form id='settings' action='' method='post' class='themeform' style='margin: 20px;'>
 	<input type='hidden' id='action' name='action' value='save'/>";
 
-
 	/*********************************************************
 	 *  Header meta options
 	 *  Header meta left set in config
 	 *********************************************************/
-	
+	if ($options['revert'] == 1) {
+		print"<span class='submit'><input type='submit' value='Update' name='save'/></span>";
+		print "<input type='hidden' id='revert' name='revert' value='0'/>";
+		exit;
+	}	
 	print 
 	"
 	<table width = '".$model_site_width."' cellpadding='0'>
