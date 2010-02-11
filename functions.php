@@ -11,27 +11,46 @@ if (file_exists(dirname(__FILE__).'/config.php')) {
  *********************************************************/
 
 if (function_exists('register_sidebar')) {
-	register_sidebar(array('name'=>'left_sidebar',
+	register_sidebar(array('name'=>'Top Bar',
+	'id' => 'sidebar-4',
+	'before_widget' => '<td valign=\'top\' class=\'page-widgets\'>',
+	'after_widget' => '</td>',
+	'before_title' => '<h2>',
+	'after_title' => '</h2>',
+	));
+	register_sidebar(array('name'=>'Left Sidebar',
+	'id' => 'sidebar-1',
 	'before_widget' => '<li>',
 	'after_widget' => '</li>',
 	'before_title' => '<h2>',
 	'after_title' => '</h2>',
 	));
-	register_sidebar(array('name'=>'right_sidebar',
+	register_sidebar(array('name'=>'Right Sidebar',
+	'id' => 'sidebar-2',
 	'before_widget' => '<li>',
 	'after_widget' => '</li>',
 	'before_title' => '<h2>',
 	'after_title' => '</h2>',
 	));
-	register_sidebar(array('name'=>'bottombar',
-	'before_widget' => '<td valign=\'top\'>',
+	register_sidebar(array('name'=>'2nd Right Sidebar',
+	'id' => 'sidebar-3',
+	'before_widget' => '<li>',
+	'after_widget' => '</li>',
+	'before_title' => '<h2>',
+	'after_title' => '</h2>',
+	));
+	register_sidebar(array('name'=>'Bottom Bar',
+	'id' => 'sidebar-5',
+	'before_widget' => '<td valign=\'top\' class=\'page-widgets\'>',
 	'after_widget' => '</td>',
 	'before_title' => '<h2>',
 	'after_title' => '</h2>',
 	));
-	register_sidebar(array('name'=>'topbar',
-	'before_widget' => '<td valign=\'top\'>',
-	'after_widget' => '</td>',
+
+	register_sidebar(array('name'=>'Widget Page',
+	'id' => 'sidebar-6',
+	'before_widget' => '<div class=\'page-widgets\'>',
+	'after_widget' => '</div>',
 	'before_title' => '<h2>',
 	'after_title' => '</h2>',
 	));
