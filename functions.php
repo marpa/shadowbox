@@ -267,6 +267,24 @@ function shadowbox_options() {
  	$model_css = preg_replace("/body/", ".body_na", $shadowbox_css); 
  	print "
  	<style type='text/css'>".$model_css."
+
+		.modelwrapper {
+			background-image: ".$options['background_image'].";
+			background-position: ".$options['background_position'].";
+			background-color: ".$options['background_color'].";
+			background-repeat: ".$options['background_repeat'].";
+ 			width: ".$model_site_width_css.";
+			margin-top: 1px;
+			margin-right: 10px;
+			background-color: ".$options['background_color'].";
+			color: #000000;
+			padding: 1px 10px 10px 10px;
+			border: 1px solid #CCCCCC;
+		}
+		
+		.headerwrapper {
+			width: ".$options['header-width'].";
+		}
 		
 		.modelheader {
 			background-color: ".$options['headercolor'].";
