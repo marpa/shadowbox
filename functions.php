@@ -2202,26 +2202,60 @@ function set_derivative_options() {
 		$options['header-text-padding-top'] = 15;
 	}
 
-
 	/******************************************************************************
-	 * link color options
+	 * visited link color options (derived from link and text colors
 	 ******************************************************************************/
 
-	// dark blue
-	if ($options['linkcolor'] == '#003366') {	
+	// ww linkcolor
+	if ($options['linkcolor'] == '#272c6f') {	
 		// dark gray
 		if ($options['textcolor'] == '#666666') {
-			$options['linkcolor_visited'] = "#999999";
+			$options['linkcolor_visited'] = "#210";
 		// gray
 		} else if ($options['textcolor'] == '#999999') {
-			$options['linkcolor_visited'] = "#424242";
+			$options['linkcolor_visited'] = "#210";
 		// light gray
 		} else if ($options['textcolor'] == '#999999') {
-			$options['linkcolor_visited'] = "#333333";
+			$options['linkcolor_visited'] = "#210";
 		// black
 		} else if ($options['textcolor'] == '#424242') {
+			$options['linkcolor_visited'] = "#210";
+		// ww textcolor
+		} else if ($options['textcolor'] == '#210') {
+			$options['linkcolor_visited'] = "#210";
+		}
+
+	// dark blue
+	} else if ($options['linkcolor'] == '#003366' || $options['linkcolor'] == '#625b1d') {	
+		// black
+		if ($options['textcolor'] == '#424242') {
+			$options['linkcolor_visited'] = "#888888";
+		// 80% gray
+		} else if ($options['textcolor'] == '#333333') {
+			$options['linkcolor_visited'] = "#666666";
+		// 70% gray
+		} else if ($options['textcolor'] == '#444444') {
+			$options['linkcolor_visited'] = "#777777";
+		// 60% gray
+		} else if ($options['textcolor'] == '#555555') {
+			$options['linkcolor_visited'] = "#888888";
+		// 50% gray
+		} else if ($options['textcolor'] == '#666666') {
+			$options['linkcolor_visited'] = "#000000";
+		// 40% gray
+		} else if ($options['textcolor'] == '#777777') {
+			$options['linkcolor_visited'] = "#000000";
+		// 30% gray
+		} else if ($options['textcolor'] == '#888888') {
+			$options['linkcolor_visited'] = "#333333";
+		// 20% gray
+		} else if ($options['textcolor'] == '#CCCCCC') {
+			$options['linkcolor_visited'] = "#333333";
+		// 10% gray	
+		} else if ($options['textcolor'] == '#EEEEEE') {
 			$options['linkcolor_visited'] = "#CCCCCC";
 		}
+		
 		
 	//  light blue
 	} else if ($options['linkcolor'] == '#0066cc') {	
@@ -2234,8 +2268,7 @@ function set_derivative_options() {
 		$options['linkcolor_visited'] = "#6D9C54";
 		
 	// pale yellow
-	}  else if ($options['linkcolor'] == '#FFFFCC') {
-	
+	}  else if ($options['linkcolor'] == '#FFFFCC') {	
 		// light gray
 		if ($options['textcolor'] == '#CCCCCC') {
 			$options['linkcolor_visited'] = "#FFFFFF";
@@ -2245,8 +2278,7 @@ function set_derivative_options() {
 		// silver
 		} else if ($options['textcolor'] == '#F9F9F9') {
 			$options['linkcolor_visited'] = "#888888";
-		}
-	
+		}	
 	// yellow
 	}  else if ($options['linkcolor'] == '#FFCC33') {
 	
@@ -2264,7 +2296,9 @@ function set_derivative_options() {
 	// black
 	}  else if ($options['linkcolor'] == '#151515') {	
 		$options['linkcolor_visited'] = "#6E6E6E";	
+	
 	}
+
 
 	/******************************************************************************
 	 * Entry link style options
