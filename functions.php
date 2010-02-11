@@ -2031,6 +2031,29 @@ function set_variation_options() {
 		include('variations/default/variation.php');		
 	}
 
+	/*********************************************************
+	 * Custom backgrounds
+	 * Following options are set in the model UI
+	 * background_image_url, background_color
+	 * background_repeat, background_position
+	 * bgtextcolor, bglinkcolor
+	 *********************************************************/
+	if ($options['background'] == "custom") {			
+		$options['background_image'] = "url('".$options['background_image_url']."')";	
+		$options['background_color'] = $options['custom_background_color'];
+		$options['background_repeat'] = $options['custom_background_repeat'];
+		$options['background_position'] = $options['custom_background_position'];
+		$options['bgtextcolor'] = $options['custom_bgtextcolor'];
+		$options['bglinkcolor'] = $options['custom_bglinkcolor'];
+		$options['transparent-blogtitle-color'] = $options['custom_header_color'];
+		$options['transparent-blogdescription-color'] = $options['custom_bgtextcolor'];
+		$options['transparent-heading-color'] = $options['custom_header_color'];
+		$options['transparent-link-color']  = $options['custom_bglinkcolor'];
+		$options['transparent-text-color']  = $options['custom_bgtextcolor'];
+		$options['background-source-url'] = $options['custom_background-source-url'];
+		$options['background-source-credit'] = $options['custom_background-source-credit'];
+	} 
+
 
 	/******************************************************************************
 	 * Defaults for variations
