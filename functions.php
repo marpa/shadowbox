@@ -5,6 +5,7 @@ if (file_exists(dirname(__FILE__).'/config.php')) {
 	require_once('config-sample.php');
 }
 
+
 /******************************************************************************
  * Preset Widgets
  * It is possible to preset widgets for a given theme but not many theme
@@ -32,7 +33,6 @@ $preset_widgets = array (
 //	update_option('sidebars_widgets', $preset_widgets);
 //	printpre( get_option( 'sidebars_widgets' ) );
 //}
-
 
 /*********************************************************
  *  Register sidebars
@@ -85,27 +85,32 @@ if (function_exists('register_sidebar')) {
 
 }
 
+
 /******************************************************************************
  *  Get options
  ******************************************************************************/
 
-if (!is_array(get_option('shadowbox_settings')) )
-    add_option('shadowbox_settings', array('init' => 1));
-    
-if (!get_option('shadowbox_css'))
-    add_option('shadowbox_css', "");
-
-$options = get_option('shadowbox_settings');
-$shadowbox_css = get_option('shadowbox_css');
+if (!is_array(get_option('shadowbox_settings'))) {
+    add_option('shadowbox_settings', array('init' => 1));    
+} else {	
+	$options = get_option('shadowbox_settings');
+}
+   
+if (!get_option('shadowbox_css')) {
+	add_option('shadowbox_css', "");	
+} else {
+	$shadowbox_css = get_option('shadowbox_css');	
+}
 
 // option defaults and value lists for the current variation
 set_variation_options();
 
-// default options for theme if no options have been selected yet
-set_default_options();
-
 // update option values display in UI based on values defined for selected variation
 update_option('shadowbox_settings', $options);
+//update_option('variations_css', $options);
+
+$options['theme-url'] = $shadowbox_config['theme-url'];
+$options['theme-name'] = $shadowbox_config['theme-name'];
 
 /*********************************************************
  * Setup admin menu
