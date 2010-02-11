@@ -2160,7 +2160,8 @@ function set_derivative_options() {
 	}
 
 	/******************************************************************************
-	 * Blog title and description display option
+	 * Blog title and description display option 
+	 * (derived from header-text-display and header-block-height options)
 	 ******************************************************************************/
 	if ($options['header-text-display'] != "hide") {
 		$options['show-header-text'] = "block";
@@ -2178,10 +2179,16 @@ function set_derivative_options() {
 			$options['header-text-padding-top'] = 15;
 		} else if ($options['header-block-height'] == 100) {
 			$options['header-text-padding-top'] = 30;		
+		} else if ($options['header-block-height'] == 125) {
+			$options['header-text-padding-top'] = 45;		
 		} else if ($options['header-block-height'] == 150) {
 			$options['header-text-padding-top'] = 55;		
+		} else if ($options['header-block-height'] == 175) {
+			$options['header-text-padding-top'] = 65;		
 		} else if ($options['header-block-height'] == 200) {
 			$options['header-text-padding-top'] = 80;
+		} else if ($options['header-block-height'] == 225) {
+			$options['header-text-padding-top'] = 90;
 		} else if ($options['header-block-height'] == 250) {
 			$options['header-text-padding-top'] = 110;
 		} else if ($options['header-block-height'] == 300) {
@@ -2194,7 +2201,7 @@ function set_derivative_options() {
 	} else {
 		$options['header-text-padding-top'] = 15;
 	}
-	
+
 
 	/******************************************************************************
 	 * link color options
