@@ -1983,45 +1983,6 @@ function save_options() {
 }
 
 /*********************************************************
- * Set defaults
- *********************************************************/
-function set_default_options() {
-	global $options;
-
-	if( ! isset($options['headerleft'			]) ) $options['headerleft'			] = "";
-	if( ! isset($options['footerleft'			]) ) $options['footerleft'			] = "";
-	if( ! isset($options['headerleftcustom'		]) ) $options['headerleftcustom'			] = "";
-	if( ! isset($options['appgroups'			]) ) $options['appgroups'			] = "custom";
-	if( ! isset($options['headermeta'			]) ) $options['headermeta'			] = "on";
-	if( ! isset($options['header-text-display'	]) ) $options['header-text-display'	] = "middle";
-	
-	if( ! isset($options['header-block-height'	]) ) $options['header-block-height'	] = "70";
-	
-	if( ! isset($options['background'     		]) ) $options['background'      	] = "gray";
-	if( ! isset($options['headercolor'			]) ) $options['headercolor'			] = "#F9F9F9";
-	if( ! isset($options['linkcolor'			]) ) $options['linkcolor'			] = "#003366";
-	if( ! isset($options['entry-link-style'		]) ) $options['entry-link-style'	] = "none";
-	if( ! isset($options['tag-link-style'		]) ) $options['tag-link-style'		] = "box";
-	if( ! isset($options['category-link-style'	]) ) $options['category-link-style'	] = "none";
-	if( ! isset($options['textcolor'			]) ) $options['textcolor'			] = "#999999";
-	if( ! isset($options['bgtextcolor'			]) ) $options['bgtextcolor'			] = "#CCCCCC";
-	if( ! isset($options['bglinkcolor'			]) ) $options['bglinkcolor'			] = "#CCCCCC";
-	
-	if( ! isset($options['site-width'			]) ) $options['site-width'			] = "950";
-	if( ! isset($options['sidebar-left-width'	]) ) $options['sidebar-left-width'	] = "0";
-	if( ! isset($options['sidebar-right-width'	]) ) $options['sidebar-right-width'	] = "138";
-	if( ! isset($options['sidebar-left-color'	]) ) $options['sidebar-left-color'	] = "#F9F9F9";
-	if( ! isset($options['sidebar-right-color'	]) ) $options['sidebar-right-color'	] = "#F9F9F9";
-	if( ! isset($options['page-title'			]) ) $options['page-title'			] = "#CCCCCC";
-	if( ! isset($options['post-single-sidebar'	]) ) $options['post-single-sidebar'	] = "right";
-	
-	if( ! isset($options['model-instructions'	]) ) $options['model-instructions'	] = "on";
-	
-	//printpre($_POST);
-
-}
-
-/*********************************************************
  * set primary options
  *********************************************************/
  
