@@ -12,13 +12,20 @@
 <link rel="pingback" href="<?php bloginfo('pingback_url'); ?>" />
 
 
-
 <style type="text/css" >
 
 <?php 
-global $shadowbox_css; 
+global $shadowbox_css, $options; 
 print $shadowbox_css;
 
+// IE hack opacity options
+print $options['header-color-ie']."\n"; 
+print $options['top-color-ie']."\n"; 
+print $options['content-color-ie']."\n"; 
+print $options['bottom-color-ie']."\n"; 
+print $options['left01-color-ie']."\n"; 
+print $options['right01-color-ie']."\n"; 
+print $options['right02-color-ie']."\n"; 
 
 ?>
 </style>
@@ -29,49 +36,53 @@ print $shadowbox_css;
 </head>
 <body>
 
-<?php global $options; ?>
-
-
 <div class="sitewrapper">
-
 	
-<div class="headermeta_right">
-<span class="bgtextcolor">
-<?php 
-if ($options['headermeta'] == "on") {
-	if (wp_get_current_user()->user_level > 0) {
-		print "<a href='".get_bloginfo('siteurl')."/wp-admin/profile.php'>";
-		print wp_get_current_user()->display_name."</a>";
-	}
-	if (is_user_logged_in() == 'true') print " | ";
-	print wp_loginout('','')."<br/>";
-	if (wp_get_current_user()->user_level > 1) print "<a href='".get_bloginfo('siteurl')."/wp-admin/post-new.php'>post</a>";
-	if (wp_get_current_user()->user_level > 4) print " | <a href='".get_bloginfo('siteurl')."/wp-admin/edit.php'>edit</a>";
-	if (wp_get_current_user()->user_level > 7) print " | <a href='".get_bloginfo('siteurl')."/wp-admin/users.php'>users</a>";
-	if (wp_get_current_user()->user_level > 7)print " | <a href='".get_bloginfo('siteurl')."/wp-admin/widgets.php'>widgets</a>";
-	if (wp_get_current_user()->user_level > 7)print " | <a href='".get_bloginfo('siteurl')."/wp-admin/themes.php?page=Shadowbox'>theme</a>";
-		//print wp_register('','');
-}
-?>	
-</span><br/>
-</div>
-<div class="headermeta_left">
-<span class="bgtextcolor">
-<?php print stripslashes($options['headerleft']); ?>
-</span><br/><br/>
+	<div class="headermeta_right">
+		<span class="bgtextcolor">
+		<?php print stripslashes($options['headerright']);
+		 
+		if ($options['headermeta'] == "on") {
+			if (wp_get_current_user()->user_level > 4) print "<a href='".get_bloginfo('siteurl')."/wp-admin/'>Dashboard</a>";
+			if (wp_get_current_user()->user_level > 7) print " | <a href='".get_bloginfo('siteurl')."/wp-admin/themes.php?page=Shadowbox'>Design</a>";
+			
+			if (wp_get_current_user()->user_level > 0) {
+				print " | <a href='".get_bloginfo('siteurl')."/wp-admin/profile.php'>";
+				print wp_get_current_user()->display_name."</a>";
+			}
+			if (is_user_logged_in() == 'true') print " - ";	
+
+			print wp_loginout('','')."";
+
+		}
+		?>	
+		</span><br/>
+	</div>
+	<div class="headermeta_left">
+		<span class="bgtextcolor">
+		<?php print stripslashes($options['headerleft']); ?>
+		</span><br/><br/>
+	</div>
+	
 </div>
 
-<div class="page_top"></div>	
-<div class="page_main">	
-<div class="block_foreground">
-		
-			
-<div id="header">
-	<div class="block_header">
-		<div class="headertext"><a href="<?php echo get_option('home'); ?>/"><?php bloginfo('name'); ?></a></div>
-		<div class="description"><?php bloginfo('description'); ?></div>
+<div class="headerwrapper">	
+	<div class="page_top"></div>
+	<div class="page_main">	
+		<div id="header">
+			<div class="headerblock" onclick="location.href='<?php echo get_option('home'); ?>';" style="cursor: pointer;">
+				<div class="headertext"><a href="<?php echo get_option('home'); ?>/"><?php bloginfo('name'); ?></a></div>
+				<div class="description"><?php bloginfo('description'); ?></div>
+			</div>
+		</div>
 	</div>
 </div>
+
+<div class="sitewrapper">		
+		
+	<div class="page_main">	
+	<div class="block_foreground">
+			
 
 
 <hr />
