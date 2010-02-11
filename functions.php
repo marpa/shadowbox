@@ -2470,6 +2470,7 @@ function set_derivative_options() {
 		$options['tag-link-hover-border'] = "none";
 		$options['tag-link-hover-decoration'] = "underline";
 		$options['tag-link-background'] = "none";
+		$options['tag-link-color'] = $options['linkcolor'];
 		
 	} else if ($options['tag-link-style'] == "underline") {
 		$options['tag-link-border'] = "none";
@@ -2477,22 +2478,36 @@ function set_derivative_options() {
 		$options['tag-link-hover-border'] = "none"; 
 		$options['tag-link-hover-decoration'] = "underline";
 		$options['tag-link-background'] = "none";
+		$options['tag-link-color'] = $options['linkcolor'];
 		
 	} else if ($options['tag-link-style'] == "right-sidebar-box") {
 		$options['tag-link-border'] = "solid";
 		$options['tag-link-decoration'] = "none";
 		$options['tag-link-hover-border'] = "solid";
 		$options['tag-link-hover-decoration'] = "none";
-		$options['tag-link-background'] = $options['sidebar-right-color'];
+		$options['tag-link-background'] = $options['right01-color'];
 		$options['tag-link-hover-decoration'] = "none";
+		$options['tag-link-color'] = $options['linkcolor'];
+
 		
 	} else if ($options['tag-link-style'] == "left-sidebar-box") {
 		$options['tag-link-border'] = "solid";
 		$options['tag-link-decoration'] = "none";
 		$options['tag-link-hover-border'] = "solid";
 		$options['tag-link-hover-decoration'] = "none";
-		$options['tag-link-background'] = $options['sidebar-left-color'];
+		$options['tag-link-background'] = $options['left01-color'];
+		$options['tag-link-hover-decoration'] = "none"; 
+		$options['tag-link-color'] = $options['linkcolor'];
+	
+	//ww style links
+	} else if ($options['tag-link-style'] == "yellow-box") {
+		$options['tag-link-border'] = "solid";
+		$options['tag-link-decoration'] = "none";
+		$options['tag-link-hover-border'] = "solid";
 		$options['tag-link-hover-decoration'] = "none";
+		$options['tag-link-background'] = "#FFF8C6";
+		$options['tag-link-hover-decoration'] = "none";
+		$options['tag-link-color'] = $options['linkcolor'];
 	} 
 	
 	/******************************************************************************
