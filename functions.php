@@ -107,7 +107,7 @@ set_variation_options();
 
 // update option values display in UI based on values defined for selected variation
 update_option('shadowbox_settings', $options);
-//update_option('variations_css', $options);
+//update_option('shadowbox_css', $options);
 
 $options['theme-url'] = $shadowbox_config['theme-url'];
 $options['theme-name'] = $shadowbox_config['theme-name'];
@@ -202,23 +202,23 @@ function header_style() {
  * renders UI and theme model for chosing and previewing options
  *********************************************************/
 
-function shadowbox_options() {
-    global $shadowbox_config, $options, $options_values, $shadowbox_css, $model_main_column_width;
-	
+function shadowbox_options() {	
+	global $shadowbox_config, $options, $options_values, $shadowbox_css, $model_content_width, $variations, $header_image;
+    	
 	set_variation_options();	
 		
-	update_option('variations_settings', $options);
-	update_option('variations_css', $shadowbox_css);
+	update_option('shadowbox_settings', $options);
+	update_option('shadowbox_css', $shadowbox_css);
 
-	$options = get_option('variations_settings');
-	$shadowbox_css = get_option('variations_css');
+	$options = get_option('shadowbox_settings');
+	$shadowbox_css = get_option('shadowbox_css');
 		
     if ($_POST['action'] == 'save' )
         save_options();
         
 	if (isset($_POST['reset'])) {
-		delete_options('variations_settings');
-		delete_options('variations_css');
+		delete_options('shadowbox_settings');
+		delete_options('shadowbox_css');
 	}
     
 	/*********************************************************
@@ -2020,7 +2020,7 @@ function set_primary_options() {
  ******************************************************************************/
 
 function set_variation_options() {
-	global $_POST, $options, $options_values;
+	global $_POST, $options, $options_values, $variations;
 
 
 	/******************************************************************************
@@ -2596,24 +2596,24 @@ function delete_options() {
     global $shadowbox_config, $options, $shadowbox_css;
 	
 
-	delete_option('variations_settings'); 	
-	delete_option('variations_css');
+	delete_option('shadowbox_settings'); 	
+	delete_option('shadowbox_css');
 	
-	add_option('variations_settings', null);  	
- 	add_option('variations_css', "");
+	add_option('shadowbox_settings', null);  	
+ 	add_option('shadowbox_css', "");
 	
-	$options = get_option('variations_settings');
-	$shadowbox_css = get_option('variations_css');	
+	$options = get_option('shadowbox_settings');
+	$shadowbox_css = get_option('shadowbox_css');	
 	
 //	set_primary_options();
 	set_variation_options();
 	
 	$options['revert'] = 1;
 
-	update_option('variations_settings', $options);
-	update_option('variations_css', $options);
-// 	$options = get_option('variations_settings');
-// 	$shadowbox_css = get_option('variations_css');
+	update_option('shadowbox_settings', $options);
+	update_option('shadowbox_css', $options);
+// 	$options = get_option('shadowbox_settings');
+// 	$shadowbox_css = get_option('shadowbox_css');
 }
 
 /******************************************************************************
