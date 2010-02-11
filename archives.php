@@ -11,13 +11,13 @@ Template Name: Archives
 <?php get_header(); ?>
 <table width='100%' cellpadding='0'>
 <tr>
-<td valign='top' class="sidebarleftcolor">
+<td valign='top' class="left01block">
 
 <?php //include (TEMPLATEPATH . '/sidebar-left.php'); ?>
 </td>
-<td valign='top' class="centercontent">
+<td valign='top' class="contentblock">
 
-<div id="content" class="widecolumn">
+<div id="content">
 
 <?php get_search_form(); ?>
 
@@ -33,7 +33,7 @@ Template Name: Archives
 
 </div>
 </td>
-<td valign='top' class="sidebarrightcolor">
+<td valign='top' class="right01block">
 
 <?php //include (TEMPLATEPATH . '/sidebar-right.php'); ?>
 
@@ -43,7 +43,7 @@ Template Name: Archives
 </table>
 <table>
 <tr>
-<?php //include (TEMPLATEPATH . '/bottombar.php'); ?>
+<?php //include (TEMPLATEPATH . '/sidebar-bottom.php'); ?>
 </tr>
 </table>
 
