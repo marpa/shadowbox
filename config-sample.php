@@ -9,7 +9,7 @@
 $shadowbox_config = array();
 
 $shadowbox_config['theme-url'] = "http://segueproject.org/wordpress/themes/";
-$shadowbox_config['theme-name'] = "Translucence";
+$shadowbox_config['theme-name'] = "ShadowBox";
 
 /******************************************************************************
  * Header meta left options
@@ -111,17 +111,17 @@ $shadowbox_config['model'][26]  = 'right02-width';
 $shadowbox_config['model'][27]  = 'top-color';
 $shadowbox_config['model'][28]  = 'bottom-color';
 $shadowbox_config['model'][29]  = 'content-color';
-$shadowbox_config['model'][30]  = 'content-opacity';
+//$shadowbox_config['model'][30]  = 'content-opacity';
 $shadowbox_config['model'][31]  = 'header-color';
-$shadowbox_config['model'][32]  = 'header-opacity';
+//$shadowbox_config['model'][32]  = 'header-opacity';
 $shadowbox_config['model'][33]  = 'left01-color';
 $shadowbox_config['model'][34]  = 'right01-color';
 $shadowbox_config['model'][35]  = 'right02-color';
-$shadowbox_config['model'][36]  = 'top-opacity';
-$shadowbox_config['model'][37]  = 'bottom-opacity';
-$shadowbox_config['model'][38]  = 'left01-opacity';
-$shadowbox_config['model'][39]  = 'right01-opacity';
-$shadowbox_config['model'][40]  = 'right02-opacity';
+// $shadowbox_config['model'][36]  = 'top-opacity';
+// $shadowbox_config['model'][37]  = 'bottom-opacity';
+// $shadowbox_config['model'][38]  = 'left01-opacity';
+// $shadowbox_config['model'][39]  = 'right01-opacity';
+// $shadowbox_config['model'][40]  = 'right02-opacity';
 $shadowbox_config['model'][41]  = 'post-single-sidebar';
 $shadowbox_config['model'][42]  = 'footer-meta-left';
 $shadowbox_config['model'][43]  = 'footerleftcustom';
