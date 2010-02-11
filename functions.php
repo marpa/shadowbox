@@ -2128,18 +2128,36 @@ function set_derivative_options() {
 	global $shadowbox_config, $_POST, $options, $options_values;
 
 	/******************************************************************************
-	 * Header left links
+	 * Header left links (derived from  header_meta_left_options
 	 ******************************************************************************/
-	
-	
-		if ($options['appgroups'] == 'blogs' && $config['meta_left_options']['blog'] == "") {
-			$options['headerleft'] = "<a href='http:".$current_site->domain . $current_site->path."wp-signup.php' title='View your Blogs'>WordPress</a>";
-		} else if ($options['appgroups'] == 'custom') {
-			$options['headerleft'] = stripslashes($options['headerleftcustom']);
-		} else {
-			$options['headerleft'] = $shadowbox_config['meta_left_options'][$options['appgroups']]['option_value'];					
-		}
 
+	if ($options['header-meta-left'] == 'blogs' && $shadowbox_config['header_meta_left_options']['blog'] == "") {
+		$options['headerleft'] = "<a href='http:".$current_site->domain . $current_site->path."wp-signup.php' title='View your Blogs'>WordPress</a>";
+	} else if ($options['header-meta-left'] == 'custom') {
+		$options['headerleft'] = stripslashes($options['headerleftcustom']);
+	} else {
+		$options['headerleft'] = $shadowbox_config['header_meta_left_options'][$options['header-meta-left']]['option_value'];					
+	}
+
+	/******************************************************************************
+	 * Header right links (derived from header_meta_right_options)
+	 ******************************************************************************/
+
+	if (isset($shadowbox_config['header_meta_right_options'])) {
+		$options['headerright'] = $shadowbox_config['header_meta_right_options']['option_value'];
+	} else {
+		$options['headerright'] = "";
+	}
+
+	/******************************************************************************
+	 * Footer left links (derived from meta_right_options
+	 ******************************************************************************/
+
+	if ($options['footer-meta-left'] == 'custom') {
+		$options['footerleft'] = stripslashes($options['footerleftcustom']);
+	} else {
+		$options['footerleft'] = $shadowbox_config['footer_meta_left_options'][$options['footer-meta-left']]['option_value'];					
+	}
 
 	/******************************************************************************
 	 * Blog title and description display option
