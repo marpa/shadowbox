@@ -4,27 +4,22 @@
  * @subpackage ShadowBox
  */
 ?>
-	<div id="sidebar" class="sidebarright">
-	
-	<?php
-    // display link to new post if user is at least an author
-    if (wp_get_current_user()->user_level > 7) {
-		print "<div class='editlink'>";
-		print "<a href='". get_bloginfo('url')."/wp-admin/widgets.php?show=&amp;sidebar=sidebar-2'>Edit Widgets</a>";
-		print "</div>"; 
-	}?>
-		<ul>
-			<?php 	/* Widgetized sidebar, if you have the plugin installed. */
-					if ( !function_exists('dynamic_sidebar') || !dynamic_sidebar('right_sidebar') ) : ?>
+<div class="sidebarright01">
+
+<?php
+// display link to new post if user is at least an author
+if (wp_get_current_user()->user_level > 7) {
+	print "<div class='editlink'>";
+	print "<a href='". get_bloginfo('url')."/wp-admin/widgets.php?show=&amp;sidebar=sidebar-2'>Edit Widgets</a>";
+	print "</div>"; 
+}?>
+	<ul>
+		<?php 	/* Widgetized sidebar, if you have the plugin installed. */
+		if ( !function_exists('dynamic_sidebar') || !dynamic_sidebar('sidebar-2') ) : ?>
+
 			<li>
-
+				<?php get_search_form(); ?>
 			</li>
-
-			<!-- Author information is disabled per default. Uncomment and fill in your details if you want to use it.
-			<li><h2>Author</h2>
-			<p>A little something about you, the author. Nothing lengthy, just an overview.</p>
-			</li>
-			-->
 
 			<?php if ( is_404() || is_category() || is_day() || is_month() ||
 						is_year() || is_search() || is_paged() ) {
@@ -55,25 +50,19 @@
 
 			<?php } ?>
 
-			</li> <?php }?>
-
-			<?php //wp_list_pages('title_li=<h2>Pages</h2>' ); ?>
-
-<!-- 
-			<li><h2>Archives</h2>
-				<ul>
-				<?php wp_get_archives('type=monthly'); ?>
-				</ul>
 			</li>
- -->
-
-			<?php // wp_list_categories('show_count=1&title_li=<h2>Categories</h2>'); ?>
-
-			<?php /* If this is the frontpage */ if ( is_home() || is_page() ) { ?>
-			<?php } ?>
-
-			<?php endif; ?>
+		<?php }?>
 		</ul>
-	</div>
-	
+		<ul>
+			<?php wp_list_pages('title_li=<h2>Pages</h2>' ); ?>
+
+
+			<?php wp_list_categories('show_count=1&title_li=<h2>Categories</h2>'); ?>
+
+
+
+		<?php endif; ?>
+	</ul>
+</div>
+
 
