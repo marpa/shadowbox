@@ -2520,6 +2520,7 @@ function set_derivative_options() {
 		$options['category-link-hover-border'] = "none";
 		$options['category-link-hover-decoration'] = "underline";
 		$options['category-link-background'] = "none";
+		$options['category-link-color'] = $options['linkcolor'];
 		
 	} else if ($options['category-link-style'] == "underline") {
 		$options['category-link-border'] = "none";
@@ -2527,23 +2528,37 @@ function set_derivative_options() {
 		$options['category-link-hover-border'] = "none"; 
 		$options['category-link-hover-decoration'] = "underline";
 		$options['category-link-background'] = "none";
+		$options['category-link-color'] = $options['linkcolor'];
 		
 	} else if ($options['category-link-style'] == "left-sidebar-box") {
 		$options['category-link-border'] = "solid";
 		$options['category-link-decoration'] = "none";
 		$options['category-link-hover-border'] = "solid";
 		$options['category-link-hover-decoration'] = "none";
-		$options['category-link-background'] = $options['sidebar-left-color'];
+		$options['category-link-background'] = $options['left01-color'];
 		$options['category-link-hover-decoration'] = "none";
+		$options['category-link-color'] = $options['linkcolor'];
+
 		
 	}	else if ($options['category-link-style'] == "right-sidebar-box") {
 		$options['category-link-border'] = "solid";
 		$options['category-link-decoration'] = "none";
 		$options['category-link-hover-border'] = "solid";
 		$options['category-link-hover-decoration'] = "none";
-		$options['category-link-background'] = $options['sidebar-right-color'];
+		$options['category-link-background'] = $options['right01-color'];
 		$options['category-link-hover-decoration'] = "none";
-	} 
+		$options['category-link-color'] = $options['linkcolor'];
+	
+	// WW style links
+	}	else if ($options['category-link-style'] == "yellow-box") {
+		$options['category-link-border'] = "solid";
+		$options['category-link-decoration'] = "none";
+		$options['category-link-hover-border'] = "solid";
+		$options['category-link-hover-decoration'] = "none";
+		$options['category-link-background'] = "#e9e9c9";
+		$options['category-link-hover-decoration'] = "none";
+		$options['category-link-color'] = $options['linkcolor'];
+	}
 
 	/******************************************************************************
 	 * header color options
