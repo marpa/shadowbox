@@ -207,8 +207,15 @@ function shadowbox_options() {
 	
 	set_variation_options();	
 		
+	update_option('variations_settings', $options);
+	update_option('variations_css', $shadowbox_css);
+
+	$options = get_option('variations_settings');
+	$shadowbox_css = get_option('variations_css');
+		
     if ($_POST['action'] == 'save' )
         save_options();
+        
     
 	/*********************************************************
 	 * Define theme layout model values
