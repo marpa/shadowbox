@@ -12,11 +12,11 @@ get_header(); ?>
 
 <table width='100%' cellpadding='0'>
 <tr>
-<td valign='top' class="sidebarleftcolor">
+<td valign='top' class="left01block">
 
-<?php include (TEMPLATEPATH . '/sidebar-left.php'); ?>
+<?php if ($options['left01-width'] != 0) include (TEMPLATEPATH . '/sidebar-left.php'); ?>
 </td>
-<td valign='top' class="centercontent">
+<td valign='top' class="contentblock">
 
 	<div id="content" class="content">
 
@@ -26,26 +26,30 @@ get_header(); ?>
 			<div class="entry">
 				<?php the_content('<p class="serif">Read the rest of this page &raquo;</p>'); ?>
 
+				<?php wp_link_pages(); ?>
+				<?php $sub_pages = wp_list_pages( 'sort_column=menu_order&depth=1&title_li=&echo=0&child_of=' . $id );?>
+				<?php if ($sub_pages <> "" ){?>
+					<p class="post-info"><?php _e('This page has the following sub pages.','ml');?></p>
+					<ul><?php echo $sub_pages; ?></ul>
+				<?php }?>
+				
 				<?php wp_link_pages(array('before' => '<p><strong>Pages:</strong> ', 'after' => '</p>', 'next_or_number' => 'number')); ?>
 
 			</div>
 		</div>
 		<?php endwhile; endif; ?>
-	<?php edit_post_link('Edit this entry.', '<p>', '</p>'); ?>
+	<?php edit_post_link('Edit Page', '<div class=\'editlink\'>', '</div>'); ?>
 	</div>
 
 <?php comments_template(); ?>
 
 </td>
-<td valign='top' class="sidebarrightcolor">
 
-
-</td>
 </tr> 
 </table>
-<table>
+<table width='100%' class='bottomblock'>
 <tr>
-<?php include (TEMPLATEPATH . '/bottombar.php'); ?>
+<?php include (TEMPLATEPATH . '/sidebar-bottom.php'); ?>
 </tr>
 </table>
 
