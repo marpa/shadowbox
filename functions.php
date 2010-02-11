@@ -286,32 +286,7 @@ function shadowbox_options() {
 			width: ".$options['header-width'].";
 		}
 		
-		.modelheader {
-			background-color: ".$options['headercolor'].";
-			border: 1px solid #CCCCCC;
-		}
-		
- 		.customheaderlink {
- 			color: ".$options['headertext'].";
- 			border: 1px dotted ".$options['headertext'].";
- 			padding: 5px; 
- 			text-decoration: none;
- 			float: right;
- 			font-size: 10px;
- 			margin-top: ".$model_customheaderlink_padding_top."px;
- 			margin-right: 5px;
- 		}
- 		
-		.customheaderlink a {
-			display: block;
-			text-decoration: none; 
-		}
-
- 		.customheaderlink a:hover {
-			 border: 1px solid ".$options['headertext'].";
-			 text-decoration: none;
-		}
-		
+				
 		.modelheadertextposition {
 			font-size: 20px; 
 			margin-left: 5px;
