@@ -379,7 +379,7 @@ function shadowbox_options() {
 		.postlink {
 			color: ".$options['linkcolor'].";	
 			text-decoration: ".$options['entry-link-decoration'].";
-			border: 1px ".$options['entry-link-border']." ".$options['sidebar-left-border-right'].";
+			border: 1px ".$options['entry-link-border']." ".$options['left01-border-right'].";
 			margin: 2px;
 			padding: 1px;
 		}
