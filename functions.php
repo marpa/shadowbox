@@ -187,9 +187,11 @@ function admin_header_style() {
 function header_style() {
 	?>	
 	<style type="text/css">
-	.block_header {
-		background: <?php echo HEADER_BGCOLOR; ?> url(<?php header_image(); ?>) 0 0 no-repeat;
+	.headerblock {
+		background-color: <?php echo HEADER_BGCOLOR; ?>;
+		background-image: url(<?php header_image(); ?>);
 		background-position: right;
+		background-repeat: no-repeat;
 	}
 	</style>	
 	<?php
