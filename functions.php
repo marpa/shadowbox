@@ -2616,13 +2616,14 @@ function delete_options() {
 // 	$shadowbox_css = get_option('variations_css');
 }
 
+/******************************************************************************
+ * Provides feedback to user about theme option choses
+ ******************************************************************************/
+
 function print_option_feedback() {
 	global $_POST, $options;
-	
-	/******************************************************************************
-	 * Give feedback about chosen options
-	 ******************************************************************************/
-	$main_column_width = $options['site-width'] - ($options['sidebar-left-width'] + $options['sidebar-right-width'] + 174);
+	//printpre($options);
+	$main_column_width = $options['site-width'] - ($options['left01-width'] + $options['right01-width'] + 174);
 	$message = "";
 	$error = "false";
 	
@@ -2636,33 +2637,35 @@ function print_option_feedback() {
 		}	
 	} 
 	
-	if ($options['linkcolor_visited'] == "#b85b5a" && ($options['textcolor'] == "#666666" || $options['textcolor'] == "#424242")) {
-		$message .= " <br/><br/>Opps, the color of your visited links is very close to the color of your text.  This means
-		that after visiting a link, it won't be easily visible in your text...  
-		Chose gray or light gray for your link color if you want your links to be more visible.";
+	if ($options['revert'] == 1) {
+		$message .= " <br/><br/>Theme options have been reverted to their default settings.";
 		$error = "true";
-	} 
-	
-	if ($main_column_width < '400') {
-		$message .= " <br/><br/>The area for your blog posts is less than 400px.  Consider increasing the width of your site.";	
-		$error = "true";
-	} 
-	
-	if ($options['post-sidebar-right-display'] == "show" && $options['sidebar-right-visibility'] == "hidden") {
-		$message .= " <br/><br/>You wanted to show your right sidebar on single post pages but you have hidden it...";
-		$error = "true";
-	} 
-
-	if ($options['post-sidebar-left-display'] == "show" && $options['sidebar-left-visibility'] == "hidden") {
-		$message .= " <br/><br/>You wanted to show your left sidebar on single post pages but you have hidden it...";
-		$error = "true";
-	} 
-
-	
-	if ($error == "false") {
-		$message .= " Visit the site";
 	} else {
-		$message .= " <br/><br/>Take a look at the site and see if it is the looks the way you had hoped";
+	
+	
+		if ($options['linkcolor_visited'] == "#b85b5a" && ($options['textcolor'] == "#666666" || $options['textcolor'] == "#424242")) {
+			$message .= " <br/><br/>Opps, the color of your visited links is very close to the color of your text.  This means
+			that after visiting a link, it won't be easily visible in your text...  
+			Chose gray or light gray for your link color if you want your links to be more visible.";
+			$error = "true";
+		} 
+		
+		
+		if ($options['post-sidebar-right-display'] == "show" && $options['right01-visibility'] == "hidden") {
+			$message .= " <br/><br/>You wanted to show your right sidebar on single post pages but you have hidden it...";
+			$error = "true";
+		} 
+	
+		if ($options['post-sidebar-left-display'] == "show" && $options['left01-visibility'] == "hidden") {
+			$message .= " <br/><br/>You wanted to show your left sidebar on single post pages but you have hidden it...";
+			$error = "true";
+		} 
+		
+		if ($error == "false") {
+			$message .= " Visit the site";
+		} else {
+			$message .= " <br/><br/>Take a look at the site and see if it is the looks the way you had hoped";
+		}
 	}
 	
     print
