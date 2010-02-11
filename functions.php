@@ -130,15 +130,15 @@ if ( function_exists('add_custom_image_header') ) {
   add_custom_image_header('header_style', 'admin_header_style');
 }
 
-$header_image = "%s/images/".$shadowbox_config['headerimage'];
-$header_image_width = $options['site-width'] - 105;
+$header_image = "%s/variations/".$shadowbox_config['header_image_options'][$options['header-image-options']]['option_value'];
+$header_image_width = $options['header-width'];
 $header_image_height = $options['header-block-height'];
 
 define('HEADER_IMAGE', $header_image); // %s is theme dir uri
 define('HEADER_IMAGE_WIDTH', $header_image_width);
 define('HEADER_IMAGE_HEIGHT', $header_image_height);
-define('HEADER_TEXTCOLOR', $options['headertext']);
-define('HEADER_BGCOLOR', $options['headercolor']);
+define('HEADER_TEXTCOLOR', $options['header-text-color']);
+define('HEADER_BGCOLOR', $options['header-color-rgb']);
 define( 'NO_HEADER_TEXT', true );
 define( 'NO_HEADER_DESCRIPTION', true );
 
