@@ -2706,6 +2706,32 @@ function print_option_feedback() {
 	return $rgb_color;
 }
 
+/******************************************************************************
+ * Generates IE proprietary CSS for opacity 
+ ******************************************************************************/
+
+function ie_opacity_css ($color, $opacity) {
+	if (!$color) return false;
+	$color = trim($color);
+	$out = false;
+	
+	if (eregi("^[0-9]+(,| |.)+[0-9]+(,| |.)+[0-9]+$", $color)) {
+		$color = hex2rgb($color);
+	}
+	
+	$color = ereg_replace("#", "", $color);
+	$hex_opacity = strtoupper(dechex($opacity*255));
+	if ($opacity == "0") $hex_opacity = "00";
+	$hex_rgba = "#".$hex_opacity.$color;
+	
+	$out = "*background:transparent;filter:progid:DXImageTransform.Microsoft.gradient(startColorstr=";
+	$out .= $hex_rgba;
+	$out .= ",endColorstr=";
+	$out .= $hex_rgba;
+	$out .= ");zoom: 1;";
+	return $out;
+}
+
 
 /*********************************************************
  * debugging
