@@ -285,8 +285,35 @@ function shadowbox_options() {
 		.headerwrapper {
 			width: ".$options['header-width'].";
 		}
+						
+		.headerblock {
+			background-image: url(".$model_header_image.");
+			background-position: right center;
+			background-repeat: no-repeat;
+		}
+		 		
+ 		.contentblock {
+ 			width: ".$model_content_width."px;
+ 		}
+
+ 		.editheaderlink {
+ 			color: ".$options['bglinkcolor'].";
+ 			font-size: 9px;
+ 			white-space:nowrap; 			
+ 		}
+ 		
+		.editheaderlink a {
+ 			color: ".$options['bglinkcolor'].";
+ 			padding: 3px;
+ 			border: 1px dotted ".$options['bglinkcolor'].";
+		}
+
+ 		.editheaderlink a:hover {
+			 border: 1px solid ".$options['bglinkcolor'].";
+			 text-decoration: none;
+			 color: ".$options['bglinkcolor'].";
+		}
 		
-				
 		.modelheadertextposition {
 			font-size: 20px; 
 			margin-left: 5px;
