@@ -1,7 +1,7 @@
 <?php
 if (file_exists(dirname(__FILE__).'/config.php')) {
 	require_once('config.php');
-} else {
+} else if (file_exists(dirname(__FILE__).'/config-sample.php')) {
 	require_once('config-sample.php');
 }
 
