@@ -421,29 +421,174 @@ function shadowbox_options() {
 	}	
 	print 
 	"
-	<table width = '".$model_site_width."' cellpadding='0'>
+	<table width = '".$model_site_width."' cellpadding='0' style='background-color: transparent;'>
 		<tr>
 			<td width='20%'>
-				<span style='font-size: 9px;'>Header Links:</span>
-				<select name='appgroups' style='font-size: 10px;'  onchange='this.form.submit();'>";
-					foreach (array_keys($shadowbox_config['meta_left_options']) as $meta_left_option) {						
-						print "<option value='".$shadowbox_config['meta_left_options'][$meta_left_option]['option_name']."' ";
-						print ($options['appgroups'] == $shadowbox_config['meta_left_options'][$meta_left_option]['option_name'] ? ' selected' : '') . ">";
-						print $shadowbox_config['meta_left_options'][$meta_left_option]['option_label']."</option>";						
-					}
-					print "</select>";
-			print "
+			<span class='submit'><input type='submit' value='Update' name='save'/></span>
 			</td>
 			<td width='60%' align='left'>
 			<div class='instructions' style='font-size: 9px;'>	
 			<i>Below is just a model of your blog's layout and colors. It does not show 
 			background gradient colors such as gray-white, nor all the details of your blog's header, borders or sidebar widgets</i>&nbsp;&nbsp;
-			 <strong>Show recommendations: </strong><input type='checkbox' name='model-instructions' id='model-instructions' ".($options['model-instructions'] == "on" ? ' checked' : '') . " onchange='this.form.submit();'/>
+			 <strong>Show recommendations: </strong><input type='checkbox' name='model-instructions' id='model-instructions' ".(isset($options['model-instructions']) && $options['model-instructions'] == "on" ? ' checked' : '') . " onchange='this.form.submit();'/>
 			</div>			
 			</td>
-			<td width='20%' align='right'><span style='font-size: 9px;'>Show Meta links:</span>
-			<input type='checkbox' name='headermeta' id='headermeta' ".($options['headermeta'] == "on" ? ' checked' : '') . " onchange='this.form.submit();'/>
+			<td width='20%'>
+			<div class='submit' style='float: right;'><input type='submit' value='Revert to Default' name='reset'/></div>
 			</td>
+		</tr>
+		<tr>
+		<td width='20%'>";
+			// header meta right appgroups options	
+			if (in_array("header-meta-left", $shadowbox_config['model'])) {
+				print "<span style='font-size: 9px;'>Header Links:</span>\n";
+				print "<select name='header-meta-left' style='font-size: 10px;'  onchange='this.form.submit();'>";
+				foreach (array_keys($shadowbox_config['header_meta_left_options']) as $meta_left_option) {						
+					print "<option value='".$shadowbox_config['header_meta_left_options'][$meta_left_option]['option_name']."' ";
+					print ($options['header-meta-left'] == $shadowbox_config['header_meta_left_options'][$meta_left_option]['option_name'] ? ' selected' : '') . ">";
+					print $shadowbox_config['header_meta_left_options'][$meta_left_option]['option_label']."</option>";						
+				}
+				print "</select>";
+			}
+			print "
+			</td>
+			<td style='text-align: center;'>";			
+			// background options		
+			if (in_array("background", $shadowbox_config['model'])) {
+				
+				print "
+				<span style='font-size: 10px;'>Variation:</span>
+				<select name='background' style='font-size: 10px;' onchange='this.form.submit();'>";
+					// custom background image
+					if (!in_array("custom", $shadowbox_config['variations_disabled']))
+						print "\n<option value='custom'".($options['background'] == $value ? ' selected' : '') . ">Custom</option>";
+					
+					// variations defined in variations folder
+					foreach ($variations as $label => $value) {
+						if (!in_array($value, $shadowbox_config['variations_disabled']))
+							print "\n<option value='".$value."'".($options['background'] == $value ? ' selected' : '') . ">".$label."</option>";
+					}									
+				print "</select>";
+			}
+	
+			//site width
+			if (in_array("site-width", $shadowbox_config['model'])) {
+				print " <span style='font-size: 10px;'>Site Width:</span>\n";
+				print "<select name='site-width' style='font-size: 10px;' onchange='this.form.submit();'>\n";							
+					// site width options
+					foreach ($options_values['site-width'] as $label => $value) {
+						print "\n<option value='".$value."'".($options['site-width'] == $value ? ' selected' : '') . ">".$label."</option>";
+					}					
+				print "</select>";
+			}
+
+			//header width
+			if (in_array("header-width", $shadowbox_config['model']) && count($options_values['header-width']) > 0) {
+				print " <span style='font-size: 10px;'>Header Width:</span>\n";
+				print "<select name='header-width' style='font-size: 10px;' onchange='this.form.submit();'>\n";							
+					// site width options
+					foreach ($options_values['header-width'] as $label => $value) {
+						print "\n<option value='".$value."'".($options['header-width'] == $value ? ' selected' : '') . ">".$label."</option>";
+					}					
+				print "</select>";
+			}
+				
+			print "
+			</td>
+			<td width='20%' align='right'><span style='font-size: 9px;'>
+			</td>
+		</tr>
+		<tr>
+			<td colspan='3' style='text-align: center;'>";
+			if ($options['background'] == 'custom') {
+		
+				// background image url
+				if (in_array("background_image_url", $shadowbox_config['model'])) {			
+					print "	
+					<span style='font-size: 10px;'>Background Image URL:</span>
+					<input name='background_image_url' type='text' size='70' style='font-size: 10px;' 
+					value='".(isset($options['background_image_url']) ? $options['background_image_url'] : '')."'/><br/>";
+				}
+								
+				// background repeat
+				if (in_array("background_repeat", $shadowbox_config['model'])) {			
+					print "
+					<span style='font-size: 10px;'>Background Repeat:</span>
+					<select name='custom_background_repeat' style='font-size: 10px;' onchange='this.form.submit();'>\n";							
+						// site width options
+						foreach ($options_values['background_repeat'] as $label => $value) {
+							print "\n<option value='".$value."'".($options['custom_background_repeat'] == $value ? ' selected' : '').">".$label."</option>";
+						}					
+					print "</select>";
+				}
+
+				// background position
+				if (in_array("background_position", $shadowbox_config['model'])) {			
+					print "
+					<span style='font-size: 10px;'>Background Position:</span>
+					<select name='custom_background_position' style='font-size: 10px;' onchange='this.form.submit();'>\n";							
+						// site width options
+						foreach ($options_values['background_position'] as $label => $value) {
+							print "\n<option value='".$value."'".($options['custom_background_position'] == $value ? ' selected' : '') . ">".$label."</option>";
+						}					
+					print "</select>";
+				}
+
+				// background color
+				if (in_array("custom_background_color", $shadowbox_config['model'])) {			
+					print "
+					<span style='font-size: 10px;'>Background Color:</span>
+					<input name='custom_background_color' type='text' size='8' style='font-size: 10px;' 
+					value='".(isset($options['custom_background_color']) ? $options['custom_background_color'] : '')."'/><br/>";
+				}
+
+				// background text color
+				if (in_array("bgtextcolor", $shadowbox_config['model'])) {			
+					print " <span style='font-size: 10px;'>Background Text Color:</span>\n";
+					print "<select name='custom_bgtextcolor' style='font-size: 10px;' onchange='this.form.submit();'>\n";							
+						// site width options
+						foreach ($options_values['textcolor'] as $label => $value) {
+							print "\n<option value='".$value."'".($options['custom_bgtextcolor'] == $value ? ' selected' : '') . ">".$label."</option>";
+						}					
+					print "</select>";
+				}
+
+				// background link color
+				if (in_array("bglinkcolor", $shadowbox_config['model'])) {			
+					print " <span style='font-size: 10px;'>Background Link Color:</span>\n";
+					print "<select name='custom_bglinkcolor' style='font-size: 10px;' onchange='this.form.submit();'>\n";							
+						// site width options
+						foreach ($options_values['textcolor'] as $label => $value) {
+							print "\n<option value='".$value."'".($options['custom_bglinkcolor'] == $value ? ' selected' : '') . ">".$label."</option>";
+						}					
+					print "</select>";
+				}				
+				// Blog title and background heading colors	
+				if (in_array("custom_header_color", $shadowbox_config['model'])) {
+					print "
+					<span style='font-size: 10px;'>Blog Title Color:</span>
+					<input name='custom_header_color' type='text' size='8' style='font-size: 10px;' 
+					value='".(isset($options['custom_header_color']) ? $options['custom_header_color'] : '')."'/><br/>";
+				}
+				
+				// Background source url
+				if (in_array("custom_background-source-url", $shadowbox_config['model'])) {
+					print "
+					<span style='font-size: 10px;'>Variation source URL:</span>
+					<input name='custom_background-source-url' type='text' size='50' style='font-size: 10px;' 
+					value='".(isset($options['custom_background-source-url']) ? $options['custom_background-source-url'] : '')."'/>";
+				}
+
+				// Background source credit	
+				if (in_array("custom_background-source-credit", $shadowbox_config['model'])) {
+					print "
+					<span style='font-size: 10px;'>Variation Name/Credit:</span>
+					<input name='custom_background-source-credit' type='text' size='20' style='font-size: 10px;' 
+					value='".(isset($options['custom_background-source-credit']) ? $options['custom_background-source-credit'] : '')."'/>";
+				}
+				
+			}				
+			print "</td>
 		</tr>
 	</table>
 	
