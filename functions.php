@@ -224,14 +224,37 @@ function shadowbox_options() {
 	/*********************************************************
 	 * Define theme layout model values
 	 *********************************************************/
+
+    $model_right_sidebar_width = $options['right01-width']+50;
+    $model_right_sidebar_width02 = $options['right02-width']+50;
+    $model_left_sidebar_width = $options['left01-width']+50;
     
-    $model_site_width = $options['site-width']-50;
-    $model_right_sidebar_width = $options['sidebar-right-width'] + 12;
-    $model_left_sidebar_width = $options['sidebar-left-width'] + 12;
-    $model_main_column_width = $model_site_width - ($model_right_sidebar_width + $model_left_sidebar_width) - 100;
-    $model_content_width = $options['site-width'] - ($options['sidebar-left-width'] + $options['sidebar-right-width']);
-    $model_customheaderlink_padding_top = ($options['header-block-height']/2) - 15;
-    $model_header_text_width = $model_site_width - 200;
+    $model_header_image = get_header_image();
+	if ($options['header-image-options'] == "custom") {
+   		$match = preg_match('/variations/', $model_header_image);
+   		if ($match == 0) {
+   			$custom_header_set = 1;
+   		} else {
+   			$custom_header_set = 0;
+   		}
+   	} else {
+   		$model_header_image = get_bloginfo('stylesheet_directory')."/variations/".$shadowbox_config['header_image_options'][$options['header-image-options']]['option_value'];
+   	}
+
+
+	if ($options['site-width'] == 100) {
+		$model_site_width = $options['site-width']-5;
+		$model_header_text_width = $model_site_width - 200;
+  	//	$model_content_width = $options['site-width'] - ($options['left-width'] + $options['right-width'] + $options['right02-width'] + 150);
+		$model_site_width = $model_site_width."%";
+				
+	} else {
+		$model_site_width = $options['site-width']-22;
+		$model_header_text_width = $model_site_width - 200;
+		$model_content_width = $options['site-width'] - ($options['left01-width'] + $options['right01-width'] + $options['right02-width'] + 150);
+		$model_site_width = $model_site_width."";
+		$model_site_width_css = $model_site_width."px";
+	}
 
 	
 	/*********************************************************
