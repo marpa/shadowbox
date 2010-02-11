@@ -324,7 +324,7 @@ function shadowbox_options() {
  		.rss  {
 			font-size: 10px;
 			text-align: center;
- 			color: ".$options['headertext'].";
+ 			color: ".$options['linkcolor'].";
 		} 	
 		
 		#appgroupedit textarea {
@@ -333,14 +333,18 @@ function shadowbox_options() {
 
  		.metatext {
  			font-size: 9px; 
- 			color: ".$options['bgtextcolor'].";
+ 			color: ".$options['bglinkcolor'].";
 
  		}
  		
  		.metatext a {
  			color: ".$options['bglinkcolor'].";
  		}
- 		
+
+		.horizontalbar {
+			padding-top: 4px;	
+			text-align: right;
+		}
  		
  		.editwidgetlink {
 			display: block;
