@@ -216,6 +216,10 @@ function shadowbox_options() {
     if ($_POST['action'] == 'save' )
         save_options();
         
+	if (isset($_POST['reset'])) {
+		delete_options('variations_settings');
+		delete_options('variations_css');
+	}
     
 	/*********************************************************
 	 * Define theme layout model values
