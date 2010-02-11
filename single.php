@@ -88,10 +88,10 @@ if ($options['post-sidebar-left-display'] == "show" && $options['left01-width'] 
 
 	</div>
 </td>
-<td valign='top' class="sidebarrightcolor">
+<td valign='top' class="right01block">
 
 <?php 
-if ($options['post-sidebar-right-display'] == "show" && $options['sidebar-right-width'] != '0') {
+if ($options['post-sidebar-right-display'] == "show" && $options['right01-width'] != '0') {
 	include (TEMPLATEPATH . '/sidebar-right.php'); 
 }
 ?>
