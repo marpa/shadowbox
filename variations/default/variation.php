@@ -80,6 +80,7 @@ $options['right02-border-style'] = "solid";
 $options['top-border-style'] = "solid";
 $options['bottom-border-style'] = "solid";
 $options['header-border-style'] = "solid";
+$options['header-hover-border-style'] = "solid";
 $options['header-border02-height'] = 1;
 
 $options['header-width'] = $options['site-width'];
