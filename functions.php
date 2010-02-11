@@ -2306,22 +2306,33 @@ function set_derivative_options() {
 
 	if ($options['entry-link-style'] == "none") {
 		$options['entry-link-border'] = "none";
-		$options['entry-link-hover-border'] = "none";
+		$options['entry-link-hover-border'] = "solid";
+		$options['entry-link-hover-background_color'] = $options['foreground_color'];
 		$options['entry-link-decoration'] = "none";
 		$options['entry-link-hover-decoration'] = "underline";
 		
 	} else if ($options['entry-link-style'] == "underline") {
-		$options['entry-link-border'] = "none";
-		$options['entry-link-hover-border'] = "none"; 
-		$options['entry-link-decoration'] = "underline";
+		$options['entry-link-border'] = "dotted";
+		$options['entry-link-hover-border'] = "solid"; 
+		$options['entry-link-hover-background_color'] = $options['foreground_color'];
+		$options['entry-link-decoration'] = "none";
 		$options['entry-link-hover-decoration'] = "underline";
 		
 	} else if ($options['entry-link-style'] == "box") {
 		$options['entry-link-border'] = "dotted";
 		$options['entry-link-hover-border'] = "solid";
+		$options['entry-link-hover-background_color'] = $options['foreground_color'];
 		$options['entry-link-decoration'] = "none";
 		$options['entry-link-hover-decoration'] = "none";
-	} 
+		
+	//ww style links
+	} else if ($options['entry-link-style'] == "ww") {
+		$options['entry-link-border'] = "dotted ";
+		$options['entry-link-hover-border'] = "solid";
+		$options['entry-link-hover-background_color'] = "#efc";
+		$options['entry-link-decoration'] = "none";
+		$options['entry-link-hover-decoration'] = "none";
+	}
 	
 	/******************************************************************************
 	 * Tag link style options
