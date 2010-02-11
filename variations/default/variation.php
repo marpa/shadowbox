@@ -19,7 +19,14 @@ if ($options['background'] != "custom") {
 	$options['background_repeat'] = "repeat-x";
 	$options['bgbordercolor'] = "#999999";
 	$options['bgtextcolor']	= "#CCCCCC";
-	$options['bglinkcolor']	= "#CCCCCC";	
+	$options['bglinkcolor']	= "#CCCCCC";
+	$options['transparent-blogtitle-color'] = "#999999"; 
+	$options['transparent-blogdescription-color'] = "#555555"; 
+	$options['transparent-heading-color'] = "#999999";
+	$options['transparent-link-color']  = "#999999";
+	$options['transparent-text-color']  = "#999999";
+	$options['background-source-url'] = "";
+	$options['background-source-credit'] = "";
 }
 
 if ($shadowbox_config['headermeta'] = "on") $options['headermeta'] = "on";
@@ -87,7 +94,7 @@ $options['header-width'] = $options['site-width'];
 
 
 $options['page_image_directory'] = "shadowbox-default";	
-$options['page_image_path'] = "url('".get_bloginfo("stylesheet_directory")."/images/".$options['page_image_directory'];
+$options['page_image_path'] = "url('".get_bloginfo("stylesheet_directory")."/variations/".$options['page_image_directory'];
 
 if ($options['page_image_directory'] != "none") {
 	$options['page_top_background_image'] = $options['page_image_path']."/".$options['page-image-width']."-top.png')";
@@ -208,7 +215,7 @@ $options_values['background_repeat'] = array(
 	'No Repeat' => 'no-repeat',
 	'Repeat Horizontally' => 'repeat-y',
 	'Repeat Vertically' => 'repeat-x',
-	'Repeat Both' => 'repeat-y repeat-x'
+	'Repeat Both' => 'repeat'
 	);
 
 $options_values['background_position'] = array(
