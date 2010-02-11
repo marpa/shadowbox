@@ -345,12 +345,10 @@ function shadowbox_options() {
 			padding-top: 4px;	
 			text-align: right;
 		}
- 		
  		.editwidgetlink {
 			display: block;
  			color: ".$options['linkcolor'].";
- 			padding: 5px;
-		 		
+ 			padding: 5px;		 		
  		}
  		
  		.editwidgetlink a {
@@ -364,26 +362,7 @@ function shadowbox_options() {
 			 border: 1px solid ".$options['linkcolor'].";
 			 text-decoration: none;
 		}
-		
- 		.entry p a:visited {
-			color: ".$options['linkcolor'].";	
-			text-decoration: ".$options['entry-link-decoration'].";
-			border: 1px ".$options['entry-link-border']." ".$options['sidebar-left-border-right'].";
-			margin: 2px;
-			padding-right: 2px;
-			padding-left: 2px; 		
- 		}
-		
- 		.modelwrapper {
- 			width: ".$model_site_width."px;
-			margin-top: 1px;
-			margin-right: 10px;
-			background-color: ".$options['background_color'].";
-			color: #000000;
-			padding: 1px 10px 10px 10px;
-			border: 1px solid #CCCCCC;
-		}
-				
+								
 		.instructions {
 			margin-top: 5px;
 			margin-bottom: 5px;
