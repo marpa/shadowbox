@@ -1983,47 +1983,35 @@ function save_options() {
 }
 
 /*********************************************************
- * set primary options
+ * set primary options (options exposed to user in model)
  *********************************************************/
  
 function set_primary_options() {
-	global $_POST, $options;
+	global $_POST, $options, $allowedposttags, $shadowbox_config;
 	
-	//printpre($_POST);
-	
-	$options['header-block-height'] = ( isset($_POST['header-block-height']) ) ? stripslashes($_POST['header-block-height']) : "70";
-	
-    $options['appgroups'] = ( isset($_POST['appgroups']) ) ? stripslashes($_POST['appgroups']) : "custom";
-    $options['headermeta'] = ( isset($_POST['headermeta']) ) ? stripslashes($_POST['headermeta']) : "off";
-    $options['headerleftcustom'] = ( isset($_POST['headerleftcustom']) ) ? addslashes($_POST['headerleftcustom']) : "";
-    $options['model-instructions']		= ( isset($_POST['model-instructions']) ) ? stripslashes($_POST['model-instructions']) : "off";
-        
-    $options['background'] = ( isset($_POST['background']) ) ? stripslashes($_POST['background']) : "gray";
-	$options['headercolor']	= ( isset($_POST['headercolor']) ) ? stripslashes($_POST['headercolor']) : "#F9F9F9";
-	$options['sidebar-left-width']	= ( isset($_POST['sidebar-left-width']) ) ? stripslashes($_POST['sidebar-left-width']) : "138";
-	$options['sidebar-right-width']	= ( isset($_POST['sidebar-right-width']) ) ? stripslashes($_POST['sidebar-right-width']) : "138";
-	$options['sidebar-left-color']	= ( isset($_POST['sidebar-left-color']) ) ? stripslashes($_POST['sidebar-left-color']) : "#F9F9F9";
-	$options['sidebar-right-color']	= ( isset($_POST['sidebar-right-color']) ) ? stripslashes($_POST['sidebar-right-color']) : "#F9F9F9";	
+	foreach ($shadowbox_config['model'] as $option => $value) {
 
-	$options['page-title'] = ( isset($_POST['page-title']) ) ? stripslashes($_POST['page-title']) : "#CCCCCC";
+		//sanitize options that contain HTML
+		if ($option == "headerleftcustom") {
+			$options['headerleftcustom'] = wp_kses($_POST['headerleftcustom'], $allowedposttags);
+		} else if ($option == "footerleftcustom") {
+			$options['footerleftcustom'] = wp_kses($_POST['footerleftcustom'], $$allowedposttags);
+		
+		// replaces any characters that are not allowed with null
+		} else if (isset($_POST[$value]))  {
+			$options[$value] = preg_replace('/[^0-9a-z%#,\.\s-+_\/:~]/i','', stripslashes($_POST[$value]));
+		}	
+	}
 	
-	$options['post-single-sidebar']	= ( isset($_POST['post-single-sidebar']) ) ? stripslashes($_POST['post-single-sidebar']) : "right";
 
-	$options['textcolor'] = ( isset($_POST['textcolor']) ) ? stripslashes($_POST['textcolor']) : "#999999";
-	$options['linkcolor'] = ( isset($_POST['linkcolor']) ) ? stripslashes($_POST['linkcolor']) : "#003366";
-	$options['entry-link-style'] = ( isset($_POST['entry-link-style']) ) ? stripslashes($_POST['entry-link-style']) : "none";
-	$options['tag-link-style'] = ( isset($_POST['tag-link-style']) ) ? stripslashes($_POST['tag-link-style']) : "box";
-	$options['category-link-style'] = ( isset($_POST['category-link-style']) ) ? stripslashes($_POST['category-link-style']) : "none";
-
-	$options['bgtextcolor']	= ( isset($_POST['bgtextcolor']) ) ? stripslashes($_POST['bgtextcolor']) : "#CCCCCC";
-	$options['bglinkcolor']	= ( isset($_POST['bglinkcolor']) ) ? stripslashes($_POST['bglinkcolor']) : "#CCCCCC";	
+	if (isset($_POST['model-instructions'])) {
+		$options['model-instructions'] = "on";
+	} else if (!isset($_POST['model-instructions']) || $options['model-instructions'] == "off") {
+		$options['model-instructions'] = "off";
+	} else {
+		$options['model-instructions'] = "on";
+	}
 	
-	$options['footerleft'] = ( isset($_POST['footerleft']) ) ? stripslashes($_POST['footerleft']) : "";
-	$options['site-width'] = ( isset($_POST['site-width']) ) ? stripslashes($_POST['site-width']) : "900";
-	
-	$options['header-text-display'] = ( isset($_POST['header-text-display']) ) ? stripslashes($_POST['header-text-display']) : "middle";	
-			
-
 }
 
 
