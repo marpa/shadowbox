@@ -16,6 +16,9 @@
 			height and width.  The theme options has been improved to be more accurate.  Finally
 			made variations extensible so new variations can be added without changing function.inc.php
 		</releaseNotes>
+		<new author='alex' date='2010-1-17'>
+			Widgets: added area for 2nd right sidebar
+		</new>
 		
 		<change author='alex' date='2010-01-11'>
 			Config: added config options for specifying what theme options to include in theme
