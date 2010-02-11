@@ -2585,6 +2585,37 @@ function set_derivative_options() {
 
 }
 
+/******************************************************************************
+ * Delete options deletes the theme options and resets to defaults for the
+ * currently selected variation
+ * (This is needed only when updating Variations themes and cleaning out
+ * old options...)
+ ******************************************************************************/
+
+function delete_options() {
+    global $shadowbox_config, $options, $shadowbox_css;
+	
+
+	delete_option('variations_settings'); 	
+	delete_option('variations_css');
+	
+	add_option('variations_settings', null);  	
+ 	add_option('variations_css', "");
+	
+	$options = get_option('variations_settings');
+	$shadowbox_css = get_option('variations_css');	
+	
+//	set_primary_options();
+	set_variation_options();
+	
+	$options['revert'] = 1;
+
+	update_option('variations_settings', $options);
+	update_option('variations_css', $options);
+// 	$options = get_option('variations_settings');
+// 	$shadowbox_css = get_option('variations_css');
+}
+
 function print_option_feedback() {
 	global $_POST, $options;
 	
