@@ -10,6 +10,23 @@
 <!DOCTYPE changelog SYSTEM "../dtds/changelog.dtd">
 
 <changelog name="ShadowBox">
+	<version number="1.5.1" date="2010-02-15">
+		<releaseNotes>
+			This release adds many more theme options including a 2nd right sidebar, header
+			height and width.  The theme options has been improved to be more accurate.  Finally
+			made variations extensible so new variations can be added without changing function.inc.php
+		</releaseNotes>
+		
+		<change author='alex' date='2010-01-11'>
+			Config: added config options for specifying what theme options to include in theme
+			option UI and what variations to enable.
+		</change>
+		<change author='alex' date='2010-02-11'>
+			Options: renamed many options to that naming convention is more consistent and extensible.
+		</change>
+	</version>	
+
+<changelog name="ShadowBox">
 	<version number="1.1.0" date="2009-11-11">
 		<releaseNotes>
 			This release adds more RSS links to various pages of theme, custom author pages, new
