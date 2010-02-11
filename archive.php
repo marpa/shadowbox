@@ -8,34 +8,38 @@ get_header();
 ?>
 <table width='100%' cellpadding='0'>
 <tr>
-<td valign='top' class="sidebarleftcolor">
+<td valign='top' class="left01block">
 
 <?php 
-if (is_category() && $options['sidebar-left-width'] != 0) {
+if (is_category() && $options['left01-width'] != 0) {
 	include (TEMPLATEPATH . '/sidebar-left.php'); 
-} else if (is_tag() && $options['sidebar-right-width'] == 0) {
+} else if (is_tag() && $options['right01-width'] == 0) {
 	include (TEMPLATEPATH . '/sidebar-left.php'); 
 }
 ?>
 
 </td>
-<td valign='top' class="centercontent">
+<td valign='top' class="contentblock">
 
-	<div id="content" class="widecolumn">
+	<div id="content">
 
 		<?php if (have_posts()) : ?>
 
  	  <?php $post = $posts[0]; // Hack. Set $post so that the_date() works. ?>
  	  <?php /* If this is a category archive */ if (is_category()) { ?>
+
  	  	<div style = "width: 50%; float: right;">
-		<div id="syndication">
-		<a href="<?php get_category_feed_link( $cat_id, $feed ); ?>feed" class="feed">
-		&#8216;<?php single_cat_title(); ?>&#8217; Category RSS</a>
+			<div id="syndication">
+			<a href="<?php get_category_feed_link( $cat_id, $feed ); ?>feed" class="feed">
+			&#8216;<?php single_cat_title(); ?>&#8217; Category RSS</a>
+			</div>
 		</div>
-		</div>
-		<div><h2 class="pagetitle">Categories &raquo; &#8216;<?php single_cat_title(); ?>&#8217;</h2></div>
+
+		<div><h2 single_tag_title="pagetitle">Categories &raquo; &#8216;<?php single_cat_title(); ?>&#8217;</h2></div>
+		
+		
  	  <?php /* If this is a tag archive */ } elseif( is_tag() ) { ?>
- 	  	<div style = "width: 50%; float: right; clear: left;">
+ 	  	<div style = "width: 45%; float: right; clear: left;">
  	  	<div id="syndication">
 		<a href="<?php get_tag_feed_link( $cat_id, $feed ); ?>feed" class="feed">&#8216;<?php single_cat_title(); ?>&#8217; Tag RSS</a>
 		</div>
@@ -54,10 +58,6 @@ if (is_category() && $options['sidebar-left-width'] != 0) {
  	  <?php } ?>
 
 
-		<div class="navigation">
-			<div class="alignleft"><?php next_posts_link('&laquo; Older Entries') ?></div>
-			<div class="alignright"><?php previous_posts_link('Newer Entries &raquo;') ?></div>
-		</div>
 
 		<?php while (have_posts()) : the_post(); ?>
 		<div <?php post_class() ?>>
@@ -66,7 +66,7 @@ if (is_category() && $options['sidebar-left-width'] != 0) {
 				<a href="<?php the_permalink() ?>" rel="bookmark" title="Permanent Link to <?php the_title_attribute(); ?>"><?php the_title(); ?></a></h2>
 				
 				<div class="postmetadata">
-				Posted in <span class='category'><?php the_category('</span> <span class=\'category\'>') ?></span></div>
+				Categories: <span class='category'><?php the_category('</span> <span class=\'category\'>') ?></span></div>
 
 				<small><?php the_time('F jS, Y') ?>  by <?php the_author_posts_link(); ?></small>
 				
@@ -108,12 +108,12 @@ if (is_category() && $options['sidebar-left-width'] != 0) {
 </div>
 
 </td>
-<td valign='top' class="sidebarrightcolor">
+<td valign='top' class="right01block">
 
 <?php 
-if (is_tag() && $options['sidebar-right-width'] != 0) {
+if (is_tag() && $options['right01-width'] != 0) {
 	include (TEMPLATEPATH . '/sidebar-right.php'); 
-} else if (is_category() && $options['sidebar-right-width'] != 0 && $options['sidebar-left-width'] == 0) {
+} else if (is_category() && $options['right01-width'] != 0 && $options['left01-width'] == 0) {
 	include (TEMPLATEPATH . '/sidebar-right.php'); 
 }
 ?>
