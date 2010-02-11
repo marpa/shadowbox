@@ -733,37 +733,35 @@ function shadowbox_options() {
 	 *********************************************************/
 	
 	print "
-	<table width = '".$model_site_width."' align='center' cellpadding='0' cellspacing='0' style='border: 1px solid #CCCCCC;'>
+	<table width = '".$model_site_width."' align='center' cellpadding='0' cellspacing='0' style='border: 1px solid #CCCCCC; background-color: transparent;'>
 	<tr>
 	<td>		
-		<table width = '100%' cellpadding='10' style='background-color: ".$options['content-background']."'>
+		<table width = '100%' cellpadding='10' style='background-color: transparent;'>
 			<tr>
-				<td colspan='3' valign='top' height='".$options['header-block-height']."' class='modelheader'>				
-					<a href='".get_bloginfo('url')."/wp-admin/themes.php?page=custom-header' class ='customheaderlink'>Edit Custom Header Image</a>
-
-					<div class='modelheadertextposition'>";	
+				<td colspan='4' valign='top' height='".$options['header-block-height']."' class='headerblock'>";
+					
 					// blog title and description model
 					if ($options['header-text-display'] != "hide") {
-						print get_bloginfo('name')."<br/>";
-						print "<div style='font-size: 10px; margin-left: 10px; color: ".$options['textcolor'].";'>".get_bloginfo('description')."</div>";
+						print "<div class='headertext'><a href = '#'>".get_bloginfo('name')."</a></div>";
+						print "<div class='description'>".get_bloginfo('description')."</div>";
 					} else {
-						print "<div style='font-size: 10px;'><i>blog title and description hidden</i></div>";
+						print "<div style='font-size: 10px; color: ".$options['header-text-color'].";'><i>blog title and description hidden</i></div>";
 					}
 					print "
-					</div>
+
 				</td>
 			</tr>
 			<tr>
-				<td colspan='3' style='background-color: ".$options['content-background'].";'>
+				<td colspan='4' style='background-color: transparent;'>
 				<table width='100%' cellspacing='1' cellpadding='0'>
 				<tr>
-				<td width='80%' style='background-color: ".$options['content-background']."; border: 1px solid #CCCCCC;'>";
+				<td width='80%' class='topblock'>";
 								
 				/*********************************************************
 				 * top bar
 				 *********************************************************/
 				
-				if ($options['model-instructions'] == "on") {
+				if ($options['model-instructions'] == "init" || $options['model-instructions'] == "on") {
 					print "
 					<div class='instructions' style='margin: 2px;'>	
 						<span style='font-size: 8px;'><i>Use this area for announcements, or links to other related sites.  Recommended widget: Text/HTML 
@@ -772,40 +770,59 @@ function shadowbox_options() {
 					";		
 				}		
 				print "
-				<div class='editwidgetlink' style='text-align: center; width: 85%; float: right; clear: left;'> 
-				<a style='font-size: 10px; margin: 1px; padding: 1px;' href='".get_bloginfo('url')."/wp-admin/widgets.php'>Edit Widgets</a>
+				<h2 style='padding-top: 0px; font-size: 10px; float: left;'>Top Bar</h2>
+				<div class='editwidgetlink' style='text-align: center; width: 50%; float: left;'> 
+				<a style='color:".$options['top-link-color']."; font-size: 10px; margin: 1px; padding: 1px;' href='".get_bloginfo('url')."/wp-admin/widgets.php'>Edit Widgets</a>
 				</div>	
-				<div id='sidebar' style='font-size: 8px;'><h2 style='margin: 2px; float: left;'>Top Bar</h2></div>	
+				<div class='horizontalbar' style='font-size: 8px; float: right;'>";
+
+				// color
+				if (in_array("top-color", $shadowbox_config['model'])) {
+					print "\n\t\t\t\t\t\t\t<select name='top-color' style='font-size: 10px;' onchange='this.form.submit();'>";							
+					foreach ($options_values['sidebar-color'] as $label => $value) {
+						print "\n\t\t\t\t\t\t\t\t<option value='".$value."'".($options['top-color'] == $value ? ' selected' : '') . ">".$label."</option>";
+					}
+					print "\n\t\t\t\t\t\t\t</select>";
+				}
+				// opacity
+				if (in_array("top-opacity", $shadowbox_config['model'])) {
+					print "\n\t\t\t\t\t\t\t<select name='top-opacity' style='font-size: 10px;' onchange='this.form.submit();'>";							
+					foreach ($options_values['sidebar-opacity'] as $label => $value) {
+						print "\n\t\t\t\t\t\t\t\t<option value='".$value."'".($options['top-opacity'] == $value ? ' selected' : '') . ">".$label."</option>";
+					}
+					print "\n\t\t\t\t\t\t\t</select>";
+				}
 			
+				print"
+				</div>
 				</td>
 				
-				<td width='20%' style='background-color: ".$options['content-background']."; border: 1px solid #CCCCCC;'>
-				<div class='rss'>Posts RSS | Comments RSS</div>
+				<td width='20%' class='topblock'>
+				<div class='rss' style='color:".$options['top-link-color'].";'>Posts RSS | Comments RSS</div>
 				</td>
 				</tr>
 				</table>
 			</tr>
-
 			<tr>";
 						
 			/******************************************************************************
 			 * left sidebar model
 			 ******************************************************************************/
 
-			if ($options['sidebar-left-width'] != 0) {
+			if ($options['left01-width'] != 0) {
 				print"
-				<td valign='top' width='".$model_left_sidebar_width."' style='background-color: ".$options['sidebar-left-color']."; border: 1px solid #CCCCCC;'>
-					<div style='font-size: 10px; text-align: center; color: ".$options['sidebar-left-header-color'].";'>&larr; ".$model_left_sidebar_width." px &rarr; </div>
-					<div id='sidebar' style='font-size: 8px;'>					
-					<h2 style='margin-bottom: 2px; margin-top: 2px; color: ".$options['sidebar-left-header-color'].";'>Left Sidebar</h2>
+				<td valign='top' width='".$model_left_sidebar_width."' class='left01block'>
+					<div style='font-size: 10px; text-align: center; color: ".$options['left01-heading-color'].";'>&larr; ".$model_left_sidebar_width." px &rarr; </div>
+					<div style='font-size: 8px;'>					
+					<h2 style='margin-bottom: 2px; margin-top: 2px; color: ".$options['left01-heading-color'].";'>Left Sidebar</h2>
 					<div class='editwidgetlink' style='font-size: 10px;'>
-					<a href='".get_bloginfo('url')."/wp-admin/widgets.php'>Edit Widgets</a>";
+					<a style='color:".$options['left01-link-color'].";' href='".get_bloginfo('url')."/wp-admin/widgets.php'>Edit Widgets</a>";
 					
-					if ($options['model-instructions'] == "on") {
+					if ($options['model-instructions'] == "init" || $options['model-instructions'] == "on") {
 						print "
 						<div class='instructions' style='font-size: 8px;'>	
 							<i>Recommended widgets:<br/>";					
-							if ($options['sidebar-right-width'] == 0) {
+							if ($options['right01-width'] == 0 && $options['right02-width'] == 0) {
 								print "								
 								1. Search<br/>
 								2. Pages<br/>
@@ -836,84 +853,153 @@ function shadowbox_options() {
 			 *********************************************************/
 			
 			print "
-			<td width='".$model_content_width."' style='background-color: ".$options['content-background']."; color: ".$options['textcolor'].";'>	
-				<div style='font-size: 10px; text-align: center;'> &larr; ".$model_main_column_width." px &rarr;</div>
+			<td width='".$model_content_width."' class='contentblock' style=' color: ".$options['textcolor'].";'>	
+				<div style='font-size: 10px; text-align: center;'> &larr; ".$model_content_width." px &rarr;</div>
+				<div style='font-size: 10px; text-align: center;'>";
+				
+				/*********************************************************
+				 * Content Sidebar Options
+				 *********************************************************/			
+				print "<span style='font-size: 10px;'>Content</span>\n";
+				// color
+				if (in_array("content-color", $shadowbox_config['model'])) {
+					print "\n\t\t\t\t\t\t\t<select name='content-color' style='font-size: 10px;' onchange='this.form.submit();'>";							
+					foreach ($options_values['sidebar-color'] as $label => $value) {
+						print "\n\t\t\t\t\t\t\t\t<option value='".$value."'".($options['content-color'] == $value ? ' selected' : '') . ">".$label."</option>";
+					}
+					print "\n\t\t\t\t\t\t\t</select>";
+				}
+				// opacity
+				if (in_array("content-opacity", $shadowbox_config['model'])) {
+					print "\n\t\t\t\t\t\t\t<select name='content-opacity' style='font-size: 10px;' onchange='this.form.submit();'>";							
+					foreach ($options_values['sidebar-opacity'] as $label => $value) {
+						print "\n\t\t\t\t\t\t\t\t<option value='".$value."'".($options['content-opacity'] == $value ? ' selected' : '') . ">".$label."</option>";
+					}
+					print "\n\t\t\t\t\t\t\t</select>";
+				}				 
+				
+				print "
+				</div>
 				<table width = '100%' cellpadding='0'>
 					<tr><td valign='top'>
 						<table width = '100%' cellpadding='0'>";
 						
 							/*********************************************************
-							 * Left Sidebar Color
+							 * Left Sidebar Options
 							 *********************************************************/							
-							print"
-							<tr><td style='border-bottom: 1px dotted; text-align: left;'>";
 							
-							print "\n\t\t\t\t\t\t\t<select name='sidebar-left-color' style='font-size: 10px;' onchange='this.form.submit();'>";							
-							foreach ($options_values['sidebar-left-color'] as $label => $value) {
-								print "\n\t\t\t\t\t\t\t\t<option value='".$value."'".($options['sidebar-left-color'] == $value ? ' selected' : '') . ">".$label."</option>";
+							print "<tr><td style='border-bottom: 1px dotted; text-align: left;'>";
+							print "<div style='font-size: 10px;'>Left Sidebar</div>\n";
+							// color
+							if (in_array("left01-color", $shadowbox_config['model'])) {
+								print "\n\t\t\t\t\t\t\t<select name='left01-color' style='font-size: 10px;' onchange='this.form.submit();'>";							
+								foreach ($options_values['sidebar-color'] as $label => $value) {
+									print "\n\t\t\t\t\t\t\t\t<option value='".$value."'".($options['left01-color'] == $value ? ' selected' : '') . ">".$label."</option>";
+								}
+								print "\n\t\t\t\t\t\t\t</select>";
 							}
-							print "\n\t\t\t\t\t\t\t</select>
-							<td style='border-bottom: 1px dotted; text-align: left;'>
-							<span style='font-size: 10px;'>Left Sidebar color</span>
-							</td>							
-							";	
+							// opacity
+							if (in_array("left01-opacity", $shadowbox_config['model'])) {
+								print "\n\t\t\t\t\t\t\t<select name='left01-opacity' style='font-size: 10px;' onchange='this.form.submit();'>";							
+								foreach ($options_values['sidebar-opacity'] as $label => $value) {
+									print "\n\t\t\t\t\t\t\t\t<option value='".$value."'".($options['left01-opacity'] == $value ? ' selected' : '') . ">".$label."</option>";
+								}
+								print "\n\t\t\t\t\t\t\t</select>";
+							}
+							//width
+							if (in_array("left01-width", $shadowbox_config['model'])) {
+								print "\n\t\t\t\t\t\t\t<select name='left01-width' style='font-size: 10px;' onchange='this.form.submit();'>";
+								foreach ($options_values['sidebar-width'] as $label => $value) {
+									print "\n\t\t\t\t\t\t\t<option value='".$value."'".($options['left01-width'] == $value ? ' selected' : '') . ">".$label."</option>";
+								}
+								print "\n\t\t\t\t\t\t\t</select><br/>";
+							}	
 							
-							/*********************************************************
-							 * Left Sidebar Width
-							 *********************************************************/
+							if (is_active_sidebar("sidebar-1") && $options['left01-width'] == 0) {
+								print "<span style='font-size: 10px;'>hidden widgets!</span>";
+							}
 							
 							print "
-							</tr>
-							<tr><td style='border-bottom: 1px dotted; text-align: left;'>
-							<select name='sidebar-left-width' style='font-size: 10px;' onchange='this.form.submit();'>								
-								<option value='163' ".($options['sidebar-left-width'] == '163' ? ' selected' : '') . ">175px</option>
-								<option value='188' ".($options['sidebar-left-width'] == '188' ? ' selected' : '') . ">200px</option>
-								<option value='238' ".($options['sidebar-left-width'] == '238' ? ' selected' : '') . ">250px</option>
-								<option value='338' ".($options['sidebar-left-width'] == '338' ? ' selected' : '') . ">350px</option>
-								<option value='388' ".($options['sidebar-left-width'] == '388' ? ' selected' : '') . ">400px</option>
-								<option value='0' ".($options['sidebar-left-width'] == '0' ? ' selected' : '') . ">hide</option>
-							</select>
-							<td style='border-bottom: 1px dotted; text-align: left;'>
-							<span style='font-size: 10px;'>Left Sidebar Width</span> 
-							</td>
-							</tr>
-							
+							</td></tr>
 						</table>
-					</td><td>
+						
+					</td><td>					
+						<table width = '100%' cellpadding='0'>";
 					
-					<table width = '100%' cellpadding='0'>
+							/*********************************************************
+							 * Right Sidebar Options
+							 *********************************************************/
+							print "<tr><td style='border-bottom: 1px dotted; text-align: right;'>\n";
+							print "<div style='font-size: 10px;'>Right Sidebar</div>\n";
+							//print "<td style='border-bottom: 1px dotted; text-align: right;'>\n";
+							// color
+							if (in_array("right01-color", $shadowbox_config['model'])) {
+								print "\n\t\t\t\t\t\t\t<select name='right01-color' style='font-size: 10px;' onchange='this.form.submit();'>";							
+								foreach ($options_values['sidebar-color'] as $label => $value) {
+									print "\n\t\t\t\t\t\t\t<option value='".$value."'".($options['right01-color'] == $value ? ' selected' : '') . ">".$label."</option>";
+								}
+								print "\n\t\t\t\t\t\t\t</select>";
+							}						
+							// opacity
+							if (in_array("right01-opacity", $shadowbox_config['model'])) {
+								print "\n\t\t\t\t\t\t\t<select name='right01-opacity' style='font-size: 10px;' onchange='this.form.submit();'>";							
+								foreach ($options_values['sidebar-opacity'] as $label => $value) {
+									print "\n\t\t\t\t\t\t\t\t<option value='".$value."'".($options['right01-opacity'] == $value ? ' selected' : '') . ">".$label."</option>";
+								}
+								print "\n\t\t\t\t\t\t\t</select>";
+							}
+							// width
+							if (in_array("right01-width", $shadowbox_config['model'])) {
+								print "\n\t\t\t\t\t\t\t<select name='right01-width' style='font-size: 10px;' onchange='this.form.submit();'>";
+									foreach ($options_values['sidebar-width'] as $label => $value) {
+										print "\n\t\t\t\t\t\t\t<option value='".$value."'".($options['right01-width'] == $value ? ' selected' : '') . ">".$label."</option>";
+									}
+									print "\n\t\t\t\t\t\t\t</select><br/>";
+							}
+							
+							if (is_active_sidebar("sidebar-2") && $options['right01-width'] == 0) {
+								print "<span style='font-size: 10px;'>hidden widgets!</span>";
+							}
 
-						<tr><td style='border-bottom: 1px dotted; text-align: right;'>
-						<span style='font-size: 10px;'>Right Sidebar color</span>
-						</td><td style='border-bottom: 1px dotted; text-align: right;'>";
-
+							print "</td></tr>";
+					
 						/*********************************************************
-						 * Right Sidebar Color
+						 * Right Sidebar 02 Color
 						 *********************************************************/
-						
-						print "\n\t\t\t\t\t\t\t<select name='sidebar-right-color' style='font-size: 10px;' onchange='this.form.submit();'>";							
-						foreach ($options_values['sidebar-right-color'] as $label => $value) {
-							print "\n\t\t\t\t\t\t\t<option value='".$value."'".($options['sidebar-right-color'] == $value ? ' selected' : '') . ">".$label."</option>";
+						print "<tr><td style='border-bottom: 1px dotted; text-align: right;'>\n";
+						print "<div style='font-size: 10px;'>2nd Right Sidebar</div>\n";
+						//print "<td style='border-bottom: 1px dotted; text-align: right;'>\n";
+
+
+						if (in_array("right02-color", $shadowbox_config['model'])) {
+							print "\n\t\t\t\t\t\t\t<select name='right02-color' style='font-size: 10px;' onchange='this.form.submit();'>";							
+							foreach ($options_values['sidebar-color'] as $label => $value) {
+								print "\n\t\t\t\t\t\t\t<option value='".$value."'".($options['right02-color'] == $value ? ' selected' : '') . ">".$label."</option>";
+							}
+							print "\n\t\t\t\t\t\t\t</select>";
 						}
-						print "\n\t\t\t\t\t\t\t</select>";	
-						
-						/*********************************************************
-						 * Right Sidebar Width
-						 *********************************************************/
-						
+						// opacity
+						if (in_array("right02-opacity", $shadowbox_config['model'])) {
+							print "\n\t\t\t\t\t\t\t<select name='right02-opacity' style='font-size: 10px;' onchange='this.form.submit();'>";							
+							foreach ($options_values['sidebar-opacity'] as $label => $value) {
+								print "\n\t\t\t\t\t\t\t\t<option value='".$value."'".($options['right02-opacity'] == $value ? ' selected' : '') . ">".$label."</option>";
+							}
+							print "\n\t\t\t\t\t\t\t</select>";
+						}
+						// width
+						if (in_array("right02-width", $shadowbox_config['model'])) {
+							print "\n\t\t\t\t\t\t\t<select name='right02-width' style='font-size: 10px;' onchange='this.form.submit();'>";
+							foreach ($options_values['sidebar-width'] as $label => $value) {
+								print "\n\t\t\t\t\t\t\t<option value='".$value."'".($options['right02-width'] == $value ? ' selected' : '') . ">".$label."</option>";
+							}
+							print "\n\t\t\t\t\t\t\t</select><br/>";
+							
+						if (is_active_sidebar("sidebar-3") && $options['right02-width'] == 0) {
+							print "<span style='font-size: 10px;'>hidden widgets!</span>";
+						}
+
+						}
 						print "
-						</td></tr>
-						<tr><td style='border-bottom: 1px dotted; text-align: right;'>
-						<span style='font-size: 10px;'>Right Sidebar Width </span>
-						</td><td style='border-bottom: 1px dotted; text-align: right;'>
-						<select name='sidebar-right-width' style='font-size: 10px;' onchange='this.form.submit();'>
-							<option value='163' ".($options['sidebar-right-width'] == '163' ? ' selected' : '') . ">175px</option>
-							<option value='188' ".($options['sidebar-right-width'] == '188' ? ' selected' : '') . ">200px</option>
-							<option value='238' ".($options['sidebar-right-width'] == '238' ? ' selected' : '') . ">250px</option>
-							<option value='338' ".($options['sidebar-right-width'] == '338' ? ' selected' : '') . ">350px</option>
-							<option value='388' ".($options['sidebar-right-width'] == '388' ? ' selected' : '') . ">400px</option>
-							<option value='0' 	".($options['sidebar-right-width'] == '0' ? ' selected' : '') . ">hide</option>
-						</select>	
 						</td></tr>								
 					</table>						
 					</td></tr>
@@ -924,27 +1010,29 @@ function shadowbox_options() {
 				 * Post model
 				 *********************************************************/
 				
-				print "
-						<div style='float: right; clear: left; font-size: 10px;'>";
-						// post single sidebar options
-						print "\n\t\t\t\t\t\t\tSingle Post Display: <select name='post-single-sidebar' style='font-size: 10px;' onchange='this.form.submit();'>";							
-						foreach ($options_values['post-single-sidebar'] as $label => $value) {
-							print "\n\t\t\t\t\t\t\t\t<option value='".$value."'".($options['post-single-sidebar'] == $value ? ' selected' : '') . ">".$label."</option>";
-						}
-						print "\n\t\t\t\t\t\t\t</select>
+				print "<div style='float: right; clear: left; font-size: 10px;'>\n";
+				
+					// post single sidebar options
+					if (in_array("post-single-sidebar", $shadowbox_config['model'])) {
+							print "\n\t\t\t\t\t\t\tSingle Post Display: <select name='post-single-sidebar' style='font-size: 10px;' onchange='this.form.submit();'>";							
+							foreach ($options_values['post-single-sidebar'] as $label => $value) {
+								print "\n\t\t\t\t\t\t\t\t<option value='".$value."'".($options['post-single-sidebar'] == $value ? ' selected' : '') . ">".$label."</option>";
+							}
+							print "\n\t\t\t\t\t\t\t</select>";
+					}
+					print "
 						</div>
 						<div style='color: ".$options['linkcolor']."; font-size: 16px; font-weight: bold;'>Post Title</div>
 						<span style='font-size: 9px;'>April 16th, 2009 by </span>
-						<div class='entry'>Posted in <span class='category'>Category</span></div>					
+						<span class='entry'>Posted in</span><span class='category'><a href='#'>Category</a></span>					
 						<div class='entry' style='text-align: justify;'>
 						<p>Lorem ipsum dolor sit amet, <span style='color: ".$options['linkcolor_visited'].";'>visited link</span> 
 						adipiscing elit. Donec ac felis non mauris tristique vehicula. 
 						Nunc commodo, justo vel imperdiet cursus, leo dui <a href='#'  style='color: ".$options['linkcolor'].";'>link</a>, vel bibendum neque justo nec ipsum. 
 						Aliquam erat volutpat. <a href='#' style='color: ".$options['linkcolor'].";'>another link</a> leo tellus, sagittis id mollis non, pretium a tellus.</p>
 						</div>
-						<div class='entry'>Tags: <span class='tag'>tag</span>					
-						<div class='entry' style='text-align: right;'>No Comments &#187;</div><br/>
-						</div>";
+						<span class='entry'>Tags: </span><span class='tag'><a href='#'>tag</a></span>					
+						<div class='entry' style='text-align: right;'>No Comments &#187;</div><br/>";
 
 					/*********************************************************
 					 * Text, Link, Category and Tag options
@@ -960,11 +1048,13 @@ function shadowbox_options() {
 							<td style='border-bottom: 1px dotted; text-align: right;'>";
 							
 							// text color options
-							print "\n\t\t\t\t\t\t\t<select name='textcolor' style='font-size: 10px;' onchange='this.form.submit();'>";							
-							foreach ($options_values['textcolor'] as $label => $value) {
-								print "\n\t\t\t\t\t\t\t\t<option value='".$value."'".($options['textcolor'] == $value ? ' selected' : '') . ">".$label."</option>";
+							if (in_array("textcolor", $shadowbox_config['model'])) {
+								print "\n\t\t\t\t\t\t\t<select name='textcolor' style='font-size: 10px;' onchange='this.form.submit();'>";							
+								foreach ($options_values['textcolor'] as $label => $value) {
+									print "\n\t\t\t\t\t\t\t\t<option value='".$value."'".($options['textcolor'] == $value ? ' selected' : '') . ">".$label."</option>";
+								}
+								print "\n\t\t\t\t\t\t\t</select>";
 							}
-							print "\n\t\t\t\t\t\t\t</select>";	
 							
 							print "		 							
 							</td>								
@@ -973,11 +1063,14 @@ function shadowbox_options() {
 							<td style='border-bottom: 1px dotted; text-align: right;'>";
 							
 							// link color options
-							print "\n\t\t\t\t\t\t\t<select name='linkcolor' style='font-size: 10px;' onchange='this.form.submit();'>";							
-							foreach ($options_values['linkcolor'] as $label => $value) {
-								print "\n\t\t\t\t\t\t\t\t<option value='".$value."'".($options['linkcolor'] == $value ? ' selected' : '') . ">".$label."</option>";
+							if (in_array("linkcolor", $shadowbox_config['model'])) {
+								print "\n\t\t\t\t\t\t\t<select name='linkcolor' style='font-size: 10px;' onchange='this.form.submit();'>";							
+								foreach ($options_values['linkcolor'] as $label => $value) {
+									print "\n\t\t\t\t\t\t\t\t<option value='".$value."'".($options['linkcolor'] == $value ? ' selected' : '') . ">".$label."</option>";
+								}
+								print "\n\t\t\t\t\t\t\t</select>\n";
 							}
-							print "\n\t\t\t\t\t\t\t</select>								
+							print "
 							</td>								
 							</tr><tr>";
 							
@@ -985,12 +1078,18 @@ function shadowbox_options() {
 							print "
 							<td style='border-bottom: 1px dotted;'><span class='postlink' style='font-size: 10px; color:".$options['linkcolor'].";'>Link Style</span> 
 							 (<span style='font-size: 10px; color:".$options['linkcolor_visited'].";'>visited link</span>)</td>								
-							<td style='border-bottom: 1px dotted; text-align: right;'>								
-							<select name='entry-link-style' style='font-size: 10px;' onchange='this.form.submit();'>								
-								<option value='none' ".($options['entry-link-style'] == 'none' ? ' selected' : '') . ">None</option>
-								<option value='underline' ".($options['entry-link-style'] == 'underline' ? ' selected' : '') . ">Underline</option>
-								<option value='box' ".($options['entry-link-style'] == 'box' ? ' selected' : '') . ">Box</option>
-							</select>								
+							<td style='border-bottom: 1px dotted; text-align: right;'>";
+							
+							if (in_array("entry-link-style", $shadowbox_config['model'])) {
+								print "
+								<select name='entry-link-style' style='font-size: 10px;' onchange='this.form.submit();'>								
+									<option value='none' ".($options['entry-link-style'] == 'none' ? ' selected' : '') . ">None</option>
+									<option value='underline' ".($options['entry-link-style'] == 'underline' ? ' selected' : '') . ">Underline</option>
+									<option value='box' ".($options['entry-link-style'] == 'box' ? ' selected' : '') . ">Box</option>
+									<option value='ww' ".($options['entry-link-style'] == 'ww' ? ' selected' : '') . ">WW</option>
+								</select>";
+							}
+							print "
 							</td></tr>							
 						</table>
 					</td><td valign='top' width='50%'>
@@ -1000,26 +1099,32 @@ function shadowbox_options() {
 							// category link style
 							print "
 							<td style='border-bottom: 1px dotted;'><span class='category' style='font-size: 10px;'>Category Link Style</span></td>
-							<td style='border-bottom: 1px dotted; text-align: right;'>	
-							<select name='category-link-style' style='font-size: 10px;' onchange='this.form.submit();'>								
-								<option value='none' ".($options['category-link-style'] == 'none' ? ' selected' : '') . ">None</option>
-								<option value='underline' ".($options['category-link-style'] == 'underline' ? ' selected' : '') . ">Underline</option>
-								<option value='left-sidebar-box' ".($options['category-link-style'] == 'left-sidebar-box' ? ' selected' : '') . ">Left Sidebar Box</option>
-								<option value='right-sidebar-box' ".($options['category-link-style'] == 'right-sidebar-box' ? ' selected' : '') . ">Right Sidebar Box</option>
-							</select>								
+							<td style='border-bottom: 1px dotted; text-align: right;'>";
+							
+							if (in_array("category-link-style", $shadowbox_config['model'])) {
+								print "\n\t\t\t\t\t\t\t<select name='category-link-style' style='font-size: 10px;' onchange='this.form.submit();'>";							
+								foreach ($options_values['category-link-style'] as $label => $value) {
+									print "\n\t\t\t\t\t\t\t\t<option value='".$value."'".($options['category-link-style'] == $value ? ' selected' : '') . ">".$label."</option>";
+								}
+								print "\n\t\t\t\t\t\t\t</select>";
+							}
+							print "
 							</td>								
 							</tr><tr>";
 							
 							// Tag link style
 							print "
 							<td style='border-bottom: 1px dotted;'><span class='tag' style='font-size: 10px;'>Tag Link Style</span></td>
-							<td style='border-bottom: 1px dotted; text-align: right;'>
-							<select name='tag-link-style' style='font-size: 10px;' onchange='this.form.submit();'>								
-								<option value='none' ".($options['tag-link-style'] == 'none' ? ' selected' : '') . ">None</option>
-								<option value='underline' ".($options['tag-link-style'] == 'underline' ? ' selected' : '') . ">Underline</option>
-								<option value='right-sidebar-box' ".($options['tag-link-style'] == 'right-sidebar-box' ? ' selected' : '') . ">Right Sidebar Box</option>
-								<option value='left-sidebar-box' ".($options['tag-link-style'] == 'left-sidebar-box' ? ' selected' : '') . ">Left Sidebar Box</option>								
-							</select>								
+							<td style='border-bottom: 1px dotted; text-align: right;'>\n";
+							
+							if (in_array("tag-link-style", $shadowbox_config['model'])) {
+								print "\n\t\t\t\t\t\t\t<select name='tag-link-style' style='font-size: 10px;' onchange='this.form.submit();'>";							
+								foreach ($options_values['tag-link-style'] as $label => $value) {
+									print "\n\t\t\t\t\t\t\t\t<option value='".$value."'".($options['tag-link-style'] == $value ? ' selected' : '') . ">".$label."</option>";
+								}
+								print "\n\t\t\t\t\t\t\t</select>";
+							}
+							print "
 							</td></tr>
 						</table>						
 					</table>
@@ -1030,20 +1135,20 @@ function shadowbox_options() {
 			 * right sidebar model
 			 *********************************************************/
 
-			if ($options['sidebar-right-width'] != 0) {
+			if ($options['right01-width'] != 0) {
 				print"
-				<td valign='top' width='".$model_right_sidebar_width."' style='background-color: ".$options['sidebar-right-color']."; border: 1px solid #CCCCCC;'>
-					<div style='font-size: 10px; text-align: center; color: ".$options['sidebar-right-header-color'].";'>&larr; ".$model_right_sidebar_width." px &rarr;</div>
+				<td valign='top' width='".$model_right_sidebar_width."' class='right01block'>
+					<div style='font-size: 10px; text-align: center; color: ".$options['right01-heading-color'].";'>&larr; ".$model_right_sidebar_width." px &rarr;</div>
 					<div style='font-size: 8px; margin: 4px;'>
-					<div id='sidebar' style='font-size: 8px;'>
-					<h2 style='margin-bottom: 2px; margin-top: 2px; color: ".$options['sidebar-right-header-color'].";'>Right Sidebar</h2></div>
+					<div style='font-size: 8px;'>
+					<h2 style='margin-bottom: 2px; margin-top: 2px; color: ".$options['right01-heading-color'].";'>Right Sidebar</h2></div>
 					<div class='editwidgetlink' style='font-size: 10px;'>
-					<a href='".get_bloginfo('url')."/wp-admin/widgets.php'>Edit Widgets</a>";
-					if ($options['model-instructions'] == "on") {
+					<a style='color:".$options['right01-link-color'].";' href='".get_bloginfo('url')."/wp-admin/widgets.php'>Edit Widgets</a>";
+					if ($options['model-instructions'] == "init" || $options['model-instructions'] == "on") {
 						print "
 						<div class='instructions' style='font-size: 8px;'>	
 							<i>Recommended widgets:<br/>";
-							if ($options['sidebar-left-width'] == 0) {
+							if ($options['left01-width'] == 0 && $options['right02-width'] == 0) {
 								print "								
 								1. Search<br/>
 								2. Pages<br/>
@@ -1051,12 +1156,64 @@ function shadowbox_options() {
 								4. Recent Comments<br/>
 								5. Categories<br/>
 								6. Tag Cloud<br/>";
-							} else {
+							} else if ($options['left01-width'] == 0 && $options['right02-width'] == 1) {
+								print "
+								1. Search<br/>
+								2. Recent Posts<br/>
+								3. Recent Comments<br/>";								
+								
+							} else {	
 								print "
 								1. Search<br/>
 								2. Recent Posts<br/>
 								3. Recent Comments<br/>
 								4. Tag Cloud<br/>";							
+							}
+							print "
+							</i>
+						</div>		
+						";		
+					}
+					print "
+					</div>
+					</div>	
+				</td>";
+			}
+			/*********************************************************
+			 * 2nd right sidebar model
+			 *********************************************************/
+
+			if ($options['right02-width'] != 0) {
+				print"
+				<td valign='top' width='".$model_right_sidebar_width02."'  class='right02block'>
+					<div style='font-size: 10px; text-align: center; color: ".$options['right02-heading-color'].";'>&larr; ".$model_right_sidebar_width02." px &rarr;</div>
+					<div style='font-size: 8px; margin: 4px;'>
+					<div style='font-size: 8px;'>
+					<h2 style='margin-bottom: 2px; margin-top: 2px; color: ".$options['right02-heading-color'].";'>2nd Right Sidebar</h2></div>
+					<div class='editwidgetlink' style='font-size: 10px;'>
+					<a style='color:".$options['right02-link-color'].";' href='".get_bloginfo('url')."/wp-admin/widgets.php'>Edit Widgets</a>";
+					if ($options['model-instructions'] == "init" || $options['model-instructions'] == "on") {
+						print "
+						<div class='instructions' style='font-size: 8px;'>	
+							<i>Recommended widgets:<br/>";
+							if ($options['left01-width'] == 0 && $options['right01-width'] == 0 ) {
+								print "								
+								1. Search<br/>
+								2. Pages<br/>
+								3. Recent Posts<br/>
+								4. Recent Comments<br/>
+								5. Categories<br/>
+								6. Tag Cloud<br/>";
+							} else if ($options['left01-width'] == 0 && $options['right01-width'] == 1) {
+								print "
+								1. Pages<br/>
+								2. Categories<br/>
+								3. Tag Cloud<br/>";
+							} else {
+								print "
+								1. Pages<br/>
+								2. Categories<br/>
+								3. Tag Cloud<br/>";							
 							}
 							print "
 							</i>
@@ -1074,27 +1231,48 @@ function shadowbox_options() {
 	
 	</td></tr>
 	<tr>
-		<td colspan='3' style='background-color: ".$options['content-background'].";'>
+		<td colspan='3' style='background-color: transparent;'>
 		<table width='100%' cellspacing='2' cellpadding='0'>
 		<tr>
-		<td style='background-color: ".$options['content-background']."; border: 1px solid #CCCCCC;'>";	
+		<td class='bottomblock'>";	
 		
 		/*********************************************************
 		 *  bottom bar model
 		 *********************************************************/
 		
-		if ($options['model-instructions'] == "on") {
+		if ($options['model-instructions'] == "init" || $options['model-instructions'] == "on") {
 			print "
 			<div class='instructions' style='margin: 2px;'>	
 				<span style='font-size: 8px;'><i>Use this area for additional RSS feeds, links to other related sites.  Recommended widgets: Text/HTML, RSS</i></span>
 			</div>		
 			";		
 		}		
-		print "		 
-		<div class='editwidgetlink' style='text-align: center; width: 85%; float: right; clear: left;'>
-		<a style='font-size: 10px; margin: 1px; padding: 1px;' href='".get_bloginfo('url')."/wp-admin/widgets.php'>Edit Widgets</a>
+		print "	
+		<h2 style='padding-top: 0px; font-size: 10px; float: left;'>Bottom Bar</h2>
+		<div class='editwidgetlink' style='text-align: left; width: 65%; float: left;'>
+		<a style='color:".$options['bottom-link-color']."; font-size: 10px; margin: 1px; padding: 1px;' href='".get_bloginfo('url')."/wp-admin/widgets.php'>Edit Widgets</a>
 		</div>
-		<div id='sidebar' style='font-size: 8px;'><h2 style='margin: 2px; float: left;'>Bottom Bar</h2></div>
+		<div class='horizontalbar' style='font-size: 8px; float: right;'>";
+		
+		// color
+		if (in_array("bottom-color", $shadowbox_config['model'])) {
+			print "\n\t\t\t\t\t\t\t<select name='bottom-color' style='font-size: 10px;' onchange='this.form.submit();'>";							
+			foreach ($options_values['sidebar-color'] as $label => $value) {
+				print "\n\t\t\t\t\t\t\t\t<option value='".$value."'".($options['bottom-color'] == $value ? ' selected' : '') . ">".$label."</option>";
+			}
+			print "\n\t\t\t\t\t\t\t</select>";
+		}
+		// opacity
+		if (in_array("bottom-opacity", $shadowbox_config['model'])) {
+			print "\n\t\t\t\t\t\t\t<select name='bottom-opacity' style='font-size: 10px;' onchange='this.form.submit();'>";							
+			foreach ($options_values['sidebar-opacity'] as $label => $value) {
+				print "\n\t\t\t\t\t\t\t\t<option value='".$value."'".($options['bottom-opacity'] == $value ? ' selected' : '') . ">".$label."</option>";
+			}
+			print "\n\t\t\t\t\t\t\t</select>";
+		}
+
+		print "
+		</div>
 		</td>
 		</tr>
 		</table>
@@ -1102,39 +1280,79 @@ function shadowbox_options() {
 	</table>
 	<table width='100%' cellpadding='5'>
 	<tr><td width='80%'>
-	<div style='font-size: 9px; color: ".$options['bgtextcolor'].";'>";
+	<div class='metatext'>";
 
 		if ($options['footerleft'] == "") {
 			print "no links defined...";
 		} else {
 			print $options['footerleft'];
 		}
-
-		print "
-			<input id='footerleftdo' type='hidden' name='footerleftdo' value='0'/> - 
+		if ($options['footer-meta-left'] == 'custom') {
+			print "
+				<input id='footerleftdo' type='hidden' name='footerleftdo' value='0'/> - 
+		
+				<a href='javascript: document.getElementById(\"footerleftedit\").style.display = \"block\"; document.getElementById(\"footerleftdo\").value = \"1\"; exit;'>edit</a>
+				
+				<div id='footerleftedit' style='display: none;'>
+				
+				<textarea name='footerleftcustom' style='width: 100%; height: 50px; font-size: 10px;' class='code'>";
+				print stripslashes(stripslashes(trim($options['footerleftcustom'])));
+				print "</textarea>		
+				&nbsp;&nbsp;&nbsp;
+				<a href='javascript: document.getElementById(\"footerleftedit\").style.display = \"none\"; document.getElementById(\"footerlefteditdo\").value = \"0\"; exit;'>Cancel</a> - 
+				<span class='submit'><input type='submit' value='Update' name='save'/></span>	
+				</div>
+			";
 	
-			<a href='javascript: document.getElementById(\"footerleftedit\").style.display = \"block\"; document.getElementById(\"footerleftdo\").value = \"1\"; exit;'>edit</a>
-			
-			<div id='footerleftedit' style='display: none;'>
-			
-			<textarea name='footerleft' style='width: 100%; height: 50px; font-size: 10px;' class='code'>";
-			print stripslashes(stripslashes(trim($options['footerleft'])));
-			print "</textarea>		
-			&nbsp;&nbsp;&nbsp;
-			<a href='javascript: document.getElementById(\"footerleftedit\").style.display = \"none\"; document.getElementById(\"footerlefteditdo\").value = \"0\"; exit;'>Cancel</a> - 
-			<span class='submit'><input type='submit' value='Update' name='save'/></span>	
-			</div>
-		";
-
-		print "
-		</div>		
+			print "</div>\n";
+		}
+		
+	print "
 
 	</td><td valign='bottom' width='20%'>
-	<div style='font-size: 9px; text-align: right; color: ".$options['bgtextcolor'].";'>ShadowBox | WordPress</div>
+	<div style='font-size: 9px; text-align: right; color: ".$options['bgtextcolor'].";'>";
+		print $options['theme-name'];
+	print "
+	| WordPress
+	</div>
+	</td></tr>
+	</table>";
+
+	print "</div>";
+		// footer meta left appgroups options	
+	if (in_array("footer-meta-left", $shadowbox_config['model'])) {
+		print "<span style='font-size: 9px;'>Footer Links:</span>\n";
+		print "<select name='footer-meta-left' style='font-size: 10px;'  onchange='this.form.submit();'>";
+		foreach (array_keys($shadowbox_config['footer_meta_left_options']) as $meta_left_option) {						
+			print "<option value='".$shadowbox_config['footer_meta_left_options'][$meta_left_option]['option_name']."' ";
+			print ($options['footer-meta-left'] == $shadowbox_config['footer_meta_left_options'][$meta_left_option]['option_name'] ? ' selected' : '') . ">";
+			print $shadowbox_config['footer_meta_left_options'][$meta_left_option]['option_label']."</option>";						
+		}
+		print "</select>";
+	}
+	// end options		
+
+	/*********************************************************
+	 * ShadowBox Theme instructions and Save Changes button
+	 *********************************************************/
+    print
+    "<table width = '".$model_site_width."' align='center' cellpadding='5' cellspacing='5' border='0'>
+    <tr><td valign='top'>
+    <span class='submit'><input type='submit' value='Update' name='save'/></span>
+    </td><td>
+    <div class='instructions'>	
+	When chosing options think about colors and contrasts that complement your content.  For example, if your site focuses on links, be sure your link color contrasts with your 
+	text color so links will stand out.  Chose the black theme for blogs that highlight images.  <br/>
+	</div>
 	</td></tr>
 	</table>
-	</div>";
-	// end options		
+	<div style='float: right;'>
+	<span class='submit'><input type='submit' value='Revert to Default' name='reset'/></span><br/>
+	<span style='font-size: 10px;'>(Recreates Variations options)</span>
+	</div>
+	</form>";
+
+}	
 
 	/*********************************************************
 	 * ShadowBox Theme instructions and Save Changes button
