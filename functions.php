@@ -1384,23 +1384,31 @@ function save_options() {
 	/******************************************************************************
 	 * add theme options to theme CSS
 	 ******************************************************************************/
-
+	
 	$shadowbox_css =
-	"
+	"	
 		body {
+			font-size: 62.5%;
+			font-family:'Helvetica Neue',Arial,Helvetica,sans-serif;
+			color: ".$options['textcolor'].";
 			background-color: ".$options['background_color'].";
 			background-image: ".$options['background_image'].";
 			background-repeat: ".$options['background_repeat'].";
-			background-position: ".$options['background_position'].";			
-			color: ".$options['textcolor'].";
+			background-position: ".$options['background_position'].";	 
 			margin-top: 10px;
 		}
 	
 		.sitewrapper {
-			width: ".$options['site-width']."px;
+			width: ".$sitewidth.";
 			margin-left: auto;
 			margin-right: auto;
 			margin-top: ".$options['site-margin-top']."px;
+		}
+
+		.headerwrapper {
+			width: ".$headerwidth.";
+			margin-left: auto;
+			margin-right: auto;
 		}
 
 		.block_background .block_background_content {
@@ -1411,7 +1419,6 @@ function save_options() {
 		}
 				
 		.block_foreground {
-			background-color: ".$options['foreground_color'].";
 		
 		}
 
@@ -1419,81 +1426,94 @@ function save_options() {
 			background-image: ".$options['page_top_background_image'].";
 			background-repeat: no-repeat;
 			background-position: center;
+			border-top: 1px none #000000;
+			border-left: 1px none #000000;
+			border-right: 1px none #000000;
 			padding-top: ".$options['page_top_padding']."px;
+			margin-top: ".$options['page_top_margin']."px;
 		}
 		
 		.page_main {
+			background-color: transparent;
 			background-image:  ".$options['page_main_background_image']."; 
 			background-repeat: repeat-y; 
 			background-position: center;
-			padding-top: 10px;
+			border-left: 1px none #000000;
+			border-right: 1px none #000000;
+			padding-top: ".$options['page_main_top_padding']."px;
 			padding-right: ".$options['page_main_padding']."px;
 			padding-left: ".$options['page_main_padding']."px;
 		}
-		
+				
 		.page_bottom {
+			background-color: transparent;
 			background-image:  ".$options['page_bottom_background_image'].";
 			background-repeat: no-repeat; 
 			background-position: center;
+			border-bottom: 1px none #000000;
+			border-left: 1px none #000000;
+			border-right: 1px none #000000;
 			padding-top: ".$options['page_bottom_padding']."px;
+			margin-bottom: ".$options['page_bottom_margin']."px;
 		}
 
 		#header {
-			border: 1px 0 0 0;
-			border-bottom: 1px solid ".$options['headerbottom'].";
-			border-top: 1px solid ".$options['headertop'].";
+			border-bottom: 1px ".$options['header-border-style']." ".$options['header-border02-top'].";
+			border-top: 1px ".$options['header-border-style']." ".$options['header-border02-bottom'].";
 			margin: 0 0 0 1px;
 			padding: 0 2px 0 2px;
 		}
 
-		h2.pagetitle {		
-			margin-top: 10px;
-			margin-bottom: 10px;		
+		.headermeta_left {
+			font-size: 12px;
+			width: 50%;	
 			text-align: left;
-			color: ".$options['page-title'].";
-		}
-				
-		#sidebar ul ul li, #sidebar ul ol li {
-			margin: 3px 0 -4px;
-			padding: 3px;
+			margin-left: ".$options['header-meta-left-margin'].";
 		}
 		
-		#sidebar a:hover {
-			color: ".$options['linkcolor'].";
-			text-decoration: underline;		
-		}
-
-		.sidebarleft {
-			width: ".$options['sidebar-left-width']."px;
-			visibility: ".$options['sidebar-left-visibility'].";
-		}
-		
-		.sidebarleft h2 {
-			color: ".$options['sidebar-left-header-color'].";
+		.headermeta_right {
+			font-size: 12px;
+			width: 45%;
+			text-align: right;
+			float: right;
+			clear: left;
+			margin-right: ".$options['header-meta-right-margin'].";
 		}
 		
-		.sidebarright h2 {
-			color: ".$options['sidebar-right-header-color'].";
-		}
-
-		.sidebarleftcolor {
-			background: ".$options['sidebar-left-color'].";
-			border-bottom: 1px solid ".$options['sidebar-left-border-bottom'].";
-			border-left: 1px solid ".$options['sidebar-left-border-left'].";
-			border-right: 1px solid ".$options['sidebar-left-border-right'].";
+		.footermeta_left {
+			font-size: 12px;
+			width: 50%;	
+			text-align: left;
+			margin-left: ".$options['footer-meta-left-margin'].";
+			padding-top: 5px;
+			padding-bottom: 10px;
 		}
 		
-
-		.sidebarright {
-			width: ".$options['sidebar-right-width']."px;
-			visibility: ".$options['sidebar-right-visibility'].";
+		.footermeta_right {
+			font-size: 12px;
+			width: 40%;
+			text-align: right;
+			float: right;
+			margin-right: ".$options['footer-meta-right-margin'].";
+			padding-top: 5px;
+			padding-bottom: 10px;
 		}
 
-		.sidebarrightcolor {
-			background: ".$options['sidebar-right-color'].";
-			border-bottom: 1px solid ".$options['sidebar-right-border-bottom'].";
-			border-left: 1px solid ".$options['sidebar-right-border-left'].";
-			border-right: 1px solid ".$options['sidebar-right-border-right'].";
+
+		.contentblock {
+			color: ".$options['content-text-color'].";
+			background-color: ".$options['content-color-rgb'].";
+			border-top: 1px none ".$options['content-border-top'].";
+			border-bottom: 1px none ".$options['content-border-bottom'].";
+			border-left: 1px none ".$options['content-border-left'].";
+			border-right: 1px none ".$options['content-border-right'].";
+			padding-right: 30px;
+			padding-left: 20px;
+		}
+
+		h1, h2, h3 {
+			color: #999999;
+			border-bottom: 1px solid #CCCCCC;
 		}
 		
 		a, h2 a:hover, h3 a:hover {
@@ -1503,139 +1523,426 @@ function save_options() {
 		
 		a:hover {
 			color: ".$options['linkcolor'].";
-			text-decoration: underline;
+			border-bottom:1px solid ".$options['linkcolor'].";
+			text-decoration: none;
+		}
+
+		.headerblock {
+			color: ".$options['header-text-color'].";
+			background-color: ".$options['header-color-rgb'].";
+			border-top: 1px ".$options['header-border-style']." ".$options['header-border-top'].";
+			border-bottom: 1px ".$options['header-border-style']." ".$options['header-border-bottom'].";
+			border-left: 1px ".$options['header-border-style']." ".$options['header-border-left'].";
+			border-right: 1px ".$options['header-border-style']." ".$options['header-border-right'].";				
+			padding-top: 0px;
+			height: ".$options['header-block-height']."px;
 		}
 		
-		.entry p a {
-			color: ".$options['linkcolor'].";	
-			text-decoration: ".$options['entry-link-decoration'].";
-			border: 1px ".$options['entry-link-border']." ".$options['headerborder'].";
-			margin: 2px;
-			padding-right: 2px;
-			padding-left: 2px;
+		.headerblock:hover {
+			background-color: ".$options['header-color-hover-rgb'].";
+			border-top: 1px ".$options['header-hover-border-style']." ".$options['header-border-top'].";
+			border-bottom: 1px ".$options['header-hover-border-style']." ".$options['header-border-bottom'].";
+			border-left: 1px ".$options['header-hover-border-style']." ".$options['header-border-left'].";
+			border-right: 1px ".$options['header-hover-border-style']." ".$options['header-border-right'].";	 
 		}
 
-		.entry p a:hover {
-			color: ".$options['linkcolor'].";	
-			text-decoration: ".$options['entry-link-hover-decoration'].";
-			border: 1px ".$options['entry-link-hover-border']." ".$options['linkcolor'].";
-			margin: 2px;
-			padding-right: 2px;
-			padding-left: 2px;
-		}
-
-
-		.entry p a:visited {
-			color: ".$options['linkcolor_visited'].";		
-			border: none;
+		.topblock {
+			color:  ".$options['top-text-color'].";
+			background-color: ".$options['top-color-rgb'].";
+			border-bottom: 1px ".$options['header-border-style']." ".$options['header-border-bottom'].";					
+			padding-top: 3px;
+			padding-bottom: 1px;
+			padding-left: 10px;
 		}
 		
-		.tag {
+		.topblock a {
+			color: ".$options['top-link-color'].";		
+		}
+
+		.topblock a:hover {
+			color: ".$options['top-link-color'].";	
+			border-bottom: 1px solid ".$options['topbar-link-color'].";	
+		}
+
+		.bottomblock {
+			color:  ".$options['bottom-text-color'].";
+			background-color: ".$options['bottom-color-rgb'].";
+			border-bottom: 1px none ".$options['headerborder'].";					
+			padding-top: 2px;
+			padding-bottom: 2px;
+			padding-left: 10px;
+			margin-right: 5px;
+		}
+		
+		.bottomblock:hover {
+			background-color: ".$options['bottom-color-hover-rgb'].";
+		}		
+
+		.bottomblock a {
+			color: ".$options['bottom-link-color'].";		
+		}
+
+		.bottomblock a:hover {
+			color: ".$options['bottom-link-color'].";	
+			border-bottom: 1px solid ".$options['bottom-link-color'].";	
+		}
+		
+		div .hr {
+			color: ".$options['header-border-top'].";
+			background-color: ".$options['header-border02-top'].";
+			height: ".$options['header-border02-height']."px;
+			margin-right: -1px;
+			margin-left: -1px;
+			margin-bottom: 0px;
+		}
+		
+		.headertext a {
+			display: ".$options['show-header-text'].";
+			padding-top: ".$options['header-text-padding-top']."px;
+			padding-left: ".$options['header-text-padding-left']."px;
+			color: ".$options['header-blogtitle-color'].";
+			font-size: ".$options['header-blogtitle-size']."px;
+			font-weight: normal;	
+			border-bottom: none;
+		}
+		
+		.headerblock .description {
+			display: ".$options['show-header-text'].";
+			padding-left: 15px;
+			color: ".$options['header-blogdescription-color'].";
+			font-size: 12px;
+		}
+		
+		/* Begin sidebar list */
+		.sidebarleft01 ul ul li, .sidebarleft01 ul ol li {
+			font-size: 12px;
+			color: ".$options['left01-text-color'].";
+			list-style-type:none;
+			margin: 3px 0 -4px;
+			padding: 3px;
+			padding-right: 10px;
+		}
+		
+		.sidebarright01 ul ul li, .sidebarright01 ul ol li {
+			font-size: 12px;
+			color: ".$options['right01-text-color'].";
+			list-style-type:none;
+			margin: 3px 0 -4px;
+			padding: 3px;
+			padding-right: 10px;
+		}
+
+		.sidebarright02 ul ul li, .sidebarright02 ul ol li {
+			font-size: 12px;
+			color: ".$options['right02-text-color'].";
+			list-style-type:none;
+			margin: 3px 0 -4px;
+			padding: 3px;
+			padding-right: 10px;
+		}
+		
+		/* Begin sidebar search form */
+		.sidebarleft01  #searchform #s {
+			background-color: ".$options['searchbox-color'].";
 			color: ".$options['linkcolor'].";
-			background: ".$options['tag-link-background'].";
-			border: 1px ".$options['tag-link-border']." ".$options['headerborder'].";
-			text-decoration: ".$options['tag-link-decoration'].";
-			margin: 2px;
-			padding-right: 2px;
-			padding-left: 2px;
+			border: 1px solid #999999;
+			width: 108px;
+			padding: 2px;			
+		}
+
+		.sidebarright01  #searchform #s {
+			background-color: ".$options['searchbox-color'].";
+			color: ".$options['linkcolor'].";
+			border: 1px solid #999999;
+			width: 108px;
+			padding: 2px;				
+		}
+
+		.sidebarright02  #searchform #s {
+			background-color: ".$options['searchbox-color'].";
+			color: ".$options['linkcolor'].";
+			border: 1px solid #999999;
+			width: 108px;
+			padding: 2px;			
+		}
+
+		/* Begin block color borders and opacity */
+		.left01block {
+			color: ".$options['left01-text-color'].";
+			background-color: ".$options['left01-color-rgb'].";
+			border-top: 1px ".$options['left01-border-style']." ".$options['left01-border-top'].";
+			border-bottom: 1px ".$options['left01-border-style']." ".$options['left01-border-bottom'].";
+			border-left: 1px ".$options['left01-border-style']." ".$options['left01-border-left'].";
+			border-right: 1px ".$options['left01-border-style']." ".$options['left01-border-right'].";
+		}
+
+		.left01block:hover {
+			background-color: ".$options['left01-color-hover-rgb'].";
+		}
+				
+		.right01block {
+			color: ".$options['right01-text-color'].";
+			background-color: ".$options['right01-color-rgb'].";
+			border-top: 1px ".$options['right01-border-style']." ".$options['right01-border-top'].";
+			border-bottom: 1px ".$options['right01-border-style']." ".$options['right01-border-bottom'].";
+			border-left: 1px ".$options['right01-border-style']." ".$options['right01-border-left'].";
+			border-right: 1px ".$options['right01-border-style']." ".$options['right01-border-right'].";
+		}
+		
+		.right01block:hover {
+			background-color: ".$options['right01-color-hover-rgb'].";
+		}
+
+		.right02block {
+			color: ".$options['right02-text-color'].";
+			background-color: ".$options['right02-color-rgb'].";
+			border-top: 1px ".$options['right02-border-style']." ".$options['right02-border-top'].";
+			border-bottom: 1px ".$options['right02-border-style']." ".$options['right02-border-bottom'].";
+			border-left: 1px ".$options['right02-border-style']." ".$options['right02-border-left'].";
+			border-right: 1px ".$options['right02-border-style']." ".$options['right02-border-right'].";
+		}
+
+		.right02block:hover {
+			background-color: ".$options['right02-color-hover-rgb'].";
+		}
+		
+		/* Begin sidebar text, width and visibility  */
+		.sidebarleft01 {
+			color: ".$options['left01-text-color'].";
+			width: ".$options['left01-width']."px;
+			visibility: ".$options['left01-visibility'].";
+			padding-left: 25px;
+			padding-right: 25px;
+		}
+
+		.sidebarright01 {
+			width: ".$options['right01-width']."px;
+			visibility: ".$options['right01-visibility'].";
+			padding-left: 25px;
+			padding-right: 25px;
+		}
+
+		.sidebarright02 {
+			width: ".$options['right02-width']."px;
+			visibility: ".$options['right02-visibility'].";
+			padding-left: 25px;
+			padding-right: 25px;
+		}
+		
+		/* Begin sidebar links */
+		.sidebarleft01 a {
+			color: ".$options['left01-link-color'].";
+			border-bottom:1px dotted ".$options['left01-link-color'].";
+		}
+				
+		.sidebarleft01 a:hover {
+			color: ".$options['left01-link-color'].";
+			border-bottom:1px solid ".$options['left01-link-color'].";
+		}
+		
+		.sidebarright01 a {
+			color: ".$options['right01-link-color'].";
+			border-bottom:1px dotted ".$options['right01-link-color'].";
+		}
+				
+		.sidebarright01 a:hover {
+			color: ".$options['right01-link-color'].";
+			border-bottom:1px solid ".$options['right01-link-color'].";
+		}
+
+		.sidebarright02 a {
+			color: ".$options['right02-link-color'].";
+			border-bottom:1px dotted ".$options['right02-link-color'].";
+		}
+
+		.sidebarright02 a:hover {
+			color: ".$options['right02-link-color'].";
+			border-bottom:1px solid ".$options['right02-link-color'].";
+		}		
+		
+		/* Begin sidebar headings */
+		.topblock h2 {
+			color: ".$options['top-link-color'].";
+			padding-left: 0px;
+			border-bottom: 1px none #CCCCCC;
+		}
+
+		.bottomblock h2 {
+			color: ".$options['bottom-link-color'].";
+			padding-left: 0px;
+			border-bottom: 1px none #CCCCCC;
+		}
+
+		.sidebarleft01 h2 {
+			color: ".$options['left01-heading-color'].";
+			padding-left: 0px;
+			border-bottom: 1px none #CCCCCC;
+		}
+				
+		.sidebarright01 h2 {
+			color: ".$options['right01-heading-color'].";
+			padding-left: 0px;
+			border-bottom: 1px none #CCCCCC;
+		}
+
+		.sidebarright02 h2 {
+			color: ".$options['right02-heading-color'].";
+			padding-left: 0px;
+			border-bottom: 1px none #CCCCCC;
+		}
+		
+		/* Begin entry/post links */
+		
+		.post h2  {
+			color: ".$options['content-heading-color'].";
+			border-bottom: none;
+		}
+		.post h2 a {
+			display: block;
+			text-align: left;
+			border-bottom: 1px solid #CCCCCC;
+		}
+		
+		.post h2 a:hover {
+			border-bottom: 1px solid ".$options['content-link-color'].";
+		}
+		
+		.entry a {
+			color: ".$options['linkcolor'].";	
+			text-decoration:none;
+			border-bottom: 1px ".$options['entry-link-border'].";
+			padding:0.07em;
+		}
+
+		.entry a:hover {
+			border-bottom: 1px ".$options['entry-link-hover-border']."; 
+			background-color: ".$options['entry-link-hover-background_color'].";
+		}
+
+		.entry a:visited {
+			color: ".$options['linkcolor_visited'].";		
+			border-bottom: 1px ".$options['entry-link-border'].";
+		}
+
+		.entry .morelink a {
+			display: block;			
+			text-align: center;
+			border-top: 1px solid #CCCCCC;
+			border-bottom: 1px dotted #CCCCCC;
+			text-decoration: none;
+		}
+		
+		.morelink a:hover {
+			background-color: transparent;
+			color: ".$options['linkcolor'].";
+			border-top: 1px solid ".$options['content-link-color'].";
+			border-bottom: 1px dotted ".$options['content-link-color'].";
+		}
+
+		.postmetadata.alt {
+			clear: both;
+			text-align: center;
+			margin-top: 10px;
+			border-top: 1px solid #CCCCCC;
+			border-left: 1px none #CCCCCC;
+		}
+		
+		
+		.postmetadata.alt:hover {
+			border-top: 1px solid ".$options['content-link-color'].";
+		}
+		
+		.postmetadata.alt a {
+			display: block;
+			color: ".$options['content-link-color'].";
+			padding-bottom: 2px;
+			border-bottom: 1px dotted #CCCCCC;
+			text-decoration: none;
+		}
+		
+		.postmetadata.alt a:hover {
+			background-color: transparent;
+			color: ".$options['content-link-color'].";
+			border-bottom: 1px dotted ".$options['content-link-color'].";
+		}
+		
+		/* Begin tag links */
+		.tag a {
+			-moz-border-radius-bottomleft:3px; 
+			-moz-border-radius-bottomright:3px; 
+			-moz-border-radius-topleft:3px; 
+			-moz-border-radius-topright:3px; 
+			color:".$options['tag-link-color'].";
+			background-color:".$options['tag-link-background'].";
+			border:1px solid #ccc; 
+			cursor:default; 
+			display:inline-block; 
+			margin:2px 0.2em; padding:0.1em 0.2em;			
 		}
 		
 		.tag a:hover {
 			text-decoration: ".$options['tag-link-hover-decoration'].";
+			background-color: ".$options['category-link-background'].";
 		}
 		
-		.tag:hover {
-			text-decoration: ".$options['tag-link-hover-decoration'].";
-			border: 1px ".$options['tag-link-border']." ".$options['linkcolor'].";		
-			margin: 2px;
-			padding-right: 2px;
-			padding-left: 2px;
-		}
-
-		.category {
-			color: ".$options['linkcolor'].";
-			background: ".$options['category-link-background'].";
-			border: 1px ".$options['category-link-border']." ".$options['headerborder'].";
-			text-decoration: ".$options['category-link-decoration'].";
-			margin: 2px;
-			padding-right: 2px;
-			padding-left: 2px;
+		/* Begin category links */
+		.category a {
+			-moz-border-radius-bottomleft:3px; 
+			-moz-border-radius-bottomright:3px; 
+			-moz-border-radius-topleft:3px; 
+			-moz-border-radius-topright:3px; 
+			color:".$options['category-link-color'].";
+			background-color:".$options['category-link-background'].";
+			border:1px solid #ccc; 
+			cursor:default; 
+			display:inline-block; 
+			margin:2px 0.2em; padding:0.1em 0.2em;	
 		}
 
 		.category a:hover {
 			text-decoration: ".$options['category-link-hover-decoration'].";
-		}
+			background-color: ".$options['tag-link-background'].";
+		}		
 		
-		.category:hover {
-			text-decoration: ".$options['category-link-hover-decoration'].";
-			border: 1px ".$options['category-link-border']." ".$options['linkcolor'].";		
-			margin: 2px;
-			padding-right: 2px;
-			padding-left: 2px;
-		}
-		
-		.postlink {
-			background: ".$options['content-background'].";
-			color: ".$options['linkcolor'].";
-			border: 1px dotted ".$options['bgbordercolor'].";
+		/* Begin editing UI links */
+		.postlink a {
+			display: block;
+			border: 1px dotted ".$options['linkcolor'].";
 			text-align: center;
 			padding: 5px;
 			margin-top: 10px;
 		}
 
-		
-		.postlink a {
+		.postlink a:hover {
 			display: block;
-			color: ".$options['linkcolor'].";
+			border: 1px solid ".$options['linkcolor'].";
+			text-align: center;
+			padding: 5px;
+			margin-top: 10px;
+		}
+
+		.editlink a {
+			display: block;
+			border: 1px dotted ".$options['linkcolor'].";
+			text-align: center;
 			text-decoration: none;
+			padding: 1px;
+			margin-top: 10px;
+			margin-bottom: 10px;
+		}
+
+		.editlink a:hover {
+			background-color: transparent;
+			text-decoration: none;
+			border: 1px solid ".$options['linkcolor'].";
 		}
 
 		h2 {
 			color: ".$options['textcolor'].";
 			text-decoration: none;
 		}
-		
-		.post h2 {
-			color: ".$options['linkcolor'].";
-			text-decoration: none;
-		}
-
-		.postlink a:hover {
-			text-decoration: none;
-			color: ".$options['link_color'].";
-		}
-
-		.postlink:hover {
-			color: ".$options['content-background'].";
-			border: 1px solid ".$options['bgbordercolor'].";
-			margin-bottom: 2px;
-		}
-		
-		
-		.editlink {
-			color: ".$options['linkcolor'].";
-			border: 1px dotted ".$options['bgbordercolor'].";
-			text-align: center;
-			padding: 1px;
-			margin-top: 1px;
-			margin-bottom: 10px;
-		}
-
-		.editlink a {
-			display: block;
-			text-decoration: none;
-			color: ".$options['linkcolor'].";
-		}
-
-		.editlink a:hover {
-			text-decoration: none;
-			color: ".$options['link_color'].";
-		}
-
-		.editlink:hover {
-			border: 1px solid ".$options['bgbordercolor'].";
-		}
-
+				
+		/* Begin comments */
 		#commentform textarea {
 			background-color: ".$options['thread-even-bgcolor'].";
 			color: ".$options['commentfield'].";
@@ -1647,7 +1954,8 @@ function save_options() {
 		.thread-even {
 			background-color: ".$options['thread-even-bgcolor'].";
 		}
-
+		
+		/* Begin background text and link color */
 		.bgtextcolor {
 			color: ".$options['bgtextcolor'].";
 		}
@@ -1658,65 +1966,21 @@ function save_options() {
 
 		.bgtextcolor a:hover {
 			color: ".$options['bglinkcolor'].";
-		}
-
-		.block_header {
-			background-color: ".$options['headercolor'].";
-			border-bottom: 1px solid ".$options['headerborder'].";
-			border-top: 1px solid ".$options['headerborder'].";
-			border-right: 1px solid ".$options['headerborder'].";
-			border-left: 1px solid ".$options['headerborder'].";					
-			padding-top: 1px;
-			height: ".$options['header-block-height']."px;
-		}
-
-		.topbar {
-			border-bottom: 1px solid ".$options['headerborder'].";					
-			padding-top: 2px;
-			padding-bottom: 2px;
-			padding-left: 10px;
+			border-bottom: 1px solid ".$options['bglinkcolor'].";
 		}
 		
-		div .hr {
-			color: ".$options['headerbottom'].";
-			background-color: ".$options['headerbottom'].";
-			height: 1px;
-			margin-right: -1px;
-			margin-left: -1px;
-		}
-		
-		.headertext a {
-			display: ".$options['show-header-text'].";
-			padding-top: ".$options['header-text-padding-top']."px;
-			padding-left: 10px;
-			color: ".$options['headertext'].";
-			font-size: 20px;
-			font-weight: bold;			
-		}
-		
-		.block_header .description {
-			display: ".$options['show-header-text'].";
-			padding-left: 15px;
-			color: ".$options['headerdescription'].";
-			font-size: 10px;
-		}
-		
-		#sidebar #searchform #s {
-			background-color: ".$options['content-background'].";
-			color: ".$options['linkcolor'].";
-			
-		}
+		small, .nocomments, .postmetadata, blockquote, strike {		
+			color: ".$options['textcolor'].";
+		}	
 					
 	";
-	
-	
+		
 	update_option('shadowbox_settings', $options);
 	update_option('shadowbox_css', $shadowbox_css);
 	
 	print_option_feedback();
 	
 }
-
 
 /*********************************************************
  * Set defaults
