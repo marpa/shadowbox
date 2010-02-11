@@ -2054,232 +2054,52 @@ function set_variation_options() {
 		$options['background-source-credit'] = $options['custom_background-source-credit'];
 	} 
 
-
 	/******************************************************************************
 	 * Defaults for variations
 	 * variations use defaults unless otherwise specified
 	 * variations can have default option values and default option value lists
 	 * option value lists are the option values users can select in the theme model UI
+	 * (variation info in extracted from variation.php file using same functions
+	 * used to extract theme info rom theme style.php
 	 ******************************************************************************/
-	 
-	/******************************************************************************
-	 * Black variation
-	 * The black variation has it set of images (other variations use default images
-	 * This variation also has limited option value lists 
-	 ******************************************************************************/
-	if ($options['background'] == "black") {
 	
-		// option values
-		$options_values['headercolor'] = array(
-			'Dark Gray' => '#262626',
-			'Black' => '#000000'
-		);
-
-		$options_values['sidebar-right-color'] = array(
-			'Dark Gray' => '#262626',
-			'Black' => '#000000'
-		);
-		
-		$options_values['sidebar-left-color'] = array(
-			'Dark Gray' => '#262626',
-			'Black' => '#000000'
-		);
-		
-		$options_values['linkcolor'] = array(
-			'Pale Yellow' => '#FFFFCC', 
-			'Yellow' => '#EEDD82',
-			'Light Gray' => '#CCCCCC',
-			'White' => '#FFFFFF'	
-		);
-		
-		$options_values['textcolor'] = array(
-			'Light Gray' => '#CCCCCC',
-			'Gray' => '#666666',
-			'Silver' => '#F9F9F9'
-		);
-
-		$options_values['page-title'] = array(
-			'Light Gray' => '#CCCCCC',
-			'Gray' => '#666666',
-			'White' => '#FFFFFF'
-		);
-
-
-
-		// if current value is one of this variation's option values, then use it 
-		// otherwise use default for this variation
-		if (!in_array($options['linkcolor'], array_values($options_values['linkcolor']))) $options['linkcolor'] = "#FFFFCC";
-		if (!in_array($options['textcolor'], array_values($options_values['textcolor']))) $options['textcolor'] = "#CCCCCC";
-		if (!in_array($options['page-title'], array_values($options_values['page-title']))) $options['page-title'] = "#CCCCCC";
-		if (!in_array($options['headercolor'], array_values($options_values['headercolor']))) $options['headercolor'] = "#262626";
-		if (!in_array($options['sidebar-left-color'], array_values($options_values['sidebar-left-color']))) $options['sidebar-left-color'] = "#262626";
-		if (!in_array($options['sidebar-right-color'], array_values($options_values['sidebar-right-color']))) $options['sidebar-right-color'] = "#262626";
-		
-		$options['content-background'] = "#000000";		
-		$options['page_image_directory'] = "black";	
-		$options['page_image_path'] = "url('".get_bloginfo("stylesheet_directory")."/images/".$options['page_image_directory'];	
-		
-		$options['page_top_background_image'] = $options['page_image_path']."/".$options['page-image-width']."-top.png')";
-		// page_top_padding should = height of your page top image png
-		$options['page_top_padding'] = "30";	
-		
-		$options['page_main_background_image'] = $options['page_image_path']."/".$options['page-image-width']."-main.png')";
-		$options['page_main_padding'] = "50";	
-		
-		$options['page_bottom_background_image'] = $options['page_image_path']."/".$options['page-image-width']."-bottom.png')";
-		// page_bottom_padding should = height of your page bottom image png
-		$options['page_bottom_padding'] = "30";
-
-		$options['thread-even-bgcolor'] = "#333333";
-		$options['thread-alt-bgcolor'] = "#000000";
-		$options['commentfield'] = "#FFFFFF";
-		$options['background_color'] = "#0F0F0F";
-		$options['foreground_color'] = "#000000";
-		$options['bgtextcolor'] = "#CCCCCC";
-		$options['bglinkcolor'] = "#FFFFFF";
-		$options['bgbordercolor'] = "#FFFFFF";
-
-		$options['sidebar-left-border-left'] = "#FFFFCC";
-		$options['sidebar-left-border-bottom'] = "#FFFFCC";
-		$options['sidebar-left-border-right'] = "#FFFFCC";
-
-		$options['sidebar-right-border-left'] = "#FFFFCC";
-		$options['sidebar-right-border-bottom'] = "#FFFFCC";
-		$options['sidebar-right-border-right'] = "#FFFFCC";
-		
-		$options['searchbox-color'] = "#262626";
-
-	/******************************************************************************
-	 * Blue
-	 * The blue variation has a background image and different colors for
-	 * for background color, borders, text and links
-	 ******************************************************************************/
-
-	} else if ($options['background'] == "blue") {
-
-		// option values
-		$options['background_image_file'] = "bg.png";
-		$options['background_image_directory'] = "blue";
-		$options['background_image'] = "url('".get_bloginfo("stylesheet_directory");
-		$options['background_image'] .= "/images/".$options['background_image_directory'];
-		$options['background_image'] .= "/".$options['background_image_file']."')";
-		$options['background_repeat'] = "repeat-y";
-		$options['background_position'] = "center";		
-		$options['background_color'] = "#071329";
-		$options['bgtextcolor'] = "#666666";
-		$options['bglinkcolor'] = "#FFFFFF";
-		$options['bgbordercolor'] = "#000000";
-
-	/******************************************************************************
-	 * Green
-	 ******************************************************************************/
-
-	}  else if ($options['background'] == 'green') {
-
-		// option values
-		$options['background_image_file'] = "bg_edgedark.png";
-		$options['background_image_directory'] = "green";
-		$options['background_image'] = "url('".get_bloginfo("stylesheet_directory");
-		$options['background_image'] .= "/images/".$options['background_image_directory'];
-		$options['background_image'] .= "/".$options['background_image_file']."')";
-		$options['background_repeat'] = "repeat-y";
-		$options['background_position'] = "center";		
-		$options['background_color'] = "#83A776";
-		$options['bgtextcolor'] = "#666666";
-		$options['bglinkcolor'] = "#333333";
-		$options['bgbordercolor'] = "#666666";			
-
-	/******************************************************************************
-	 * white-yellow
-	 ******************************************************************************/
-
-	} else if ($options['background'] == 'white-yellow') {
+	$variations = array();
 	
-		// option values
-		$options['background_image_file'] = "bg_toplight.jpg";
-		$options['background_image_directory'] = "white-yellow";
-		$options['background_image'] = "url('".get_bloginfo("stylesheet_directory");
-		$options['background_image'] .= "/images/".$options['background_image_directory'];
-		$options['background_image'] .= "/".$options['background_image_file']."')";		
-		$options['background_color'] = "#FFF8C6";		
-		$options['bgtextcolor'] = "#CCCCCC";
-		$options['bglinkcolor'] = "#999999";
-		$options['bgbordercolor'] = "#999999";
-
-	/******************************************************************************
-	 * white-gray
-	 ******************************************************************************/
-
-	} else if ($options['background'] == 'white-gray') {
+	if (file_exists(dirname(__FILE__).'/variations')) {
+		$variation_path = dirname(__FILE__).'/variations';
 		
-		// option values
-		$options['background_image_file'] = "bg_toplight.jpg";
-		$options['background_image_directory'] = "white-gray";	
-		$options['background_image'] = "url('".get_bloginfo("stylesheet_directory");
-		$options['background_image'] .= "/images/".$options['background_image_directory'];
-		$options['background_image'] .= "/".$options['background_image_file']."')";		
-		$options['background_color'] = "#F5F5F5";		
-		$options['bgtextcolor'] = "#999999";
-		$options['bglinkcolor'] = "#666666";
-		$options['bgbordercolor'] = "#999999";
-		
-	/******************************************************************************
-	 * yellow
-	 ******************************************************************************/
+		if ($handle = opendir($variation_path)) {
+			while (false !== ($file = readdir($handle))) {
+				
+				if (is_dir($variation_path.'/'.$file) && $file !="default") {
+					
+					if (file_exists($variation_path.'/'.$file.'/variation.php')) {
+						include($variation_path.'/'.$file.'/variation.php');
+						
+						$variation_data = implode( '', file( $variation_path.'/'.$file.'/variation.php' ) );
+						$variation_data = str_replace ( '\r', '\n', $variation_data );
+						
+						// get variation name
+						if ( preg_match( '|Variation Name:(.*)$|mi', $variation_data, $variation_name ) )
+							$name = $variation = wp_kses( _cleanup_header_comment($variation_name[1]), $themes_allowed_tags );
+						else
+							$name = $variation = '';
+						
+						// get variation id
+						if ( preg_match( '|Variation ID:(.*)$|mi', $variation_data, $variation_id ) )
+							$id = $variation = wp_kses( _cleanup_header_comment($variation_id[1]), $themes_allowed_tags );
+						else
+							$id = $variation = '';						
+						$variations[$name] = $id;
+					}
+				}
+			}			
+		}
+		closedir($handle);
+		ksort($variations);
 
-	} else if ($options['background'] == 'yellow') {
-		$options['background_image'] = "none";
-		$options['background_color'] = "#FFF8C6";
-		$options['bgtextcolor'] = "#CCCCCC";
-		$options['bglinkcolor'] = "#999999";
-		$options['bgbordercolor'] = "#999999";
+	}
 
-	/******************************************************************************
-	 * yellow-white
-	 ******************************************************************************/
-
-	} else if ($options['background'] == 'yellow-white') {
-		$options['background_image_file'] = "bg_topdark.jpg";
-		$options['background_image_directory'] = "yellow-white";	
-		$options['background_image'] = "url('".get_bloginfo("stylesheet_directory");
-		$options['background_image'] .= "/images/".$options['background_image_directory'];
-		$options['background_image'] .= "/".$options['background_image_file']."')";
-
-		$options['background_color'] = "#FFFFFF";
-		$options['bgtextcolor'] = "#CCCCCC";
-		$options['bglinkcolor'] = "#999999";
-		$options['bgbordercolor'] = "#999999";
-
-	
-	/******************************************************************************
-	 * gray
-	 ******************************************************************************/
-
-	}  else if ($options['background'] == 'gray') {	
-		$options['background_image'] = "none";
-		$options['background_color'] = "#F5F5F5";
-		$options['bgtextcolor'] = "#999999";
-		$options['bglinkcolor'] = "#666666";
-		$options['bgbordercolor'] = "#999999";
-		
-	/******************************************************************************
-	 * gray-white
-	 ******************************************************************************/
-
-	} else if ($options['background'] == 'gray-white') {
-		$options['background_image_file'] = "bg_topdark.jpg";
-		$options['background_image_directory'] = "gray-white";	
-		$options['background_image'] = "url('".get_bloginfo("stylesheet_directory");
-		$options['background_image'] .= "/images/".$options['background_image_directory'];
-		$options['background_image'] .= "/".$options['background_image_file']."')";
-
-		$options['background_color'] = "#FFFFFF";
-		$options['bgtextcolor'] = "#999999";
-		$options['bglinkcolor'] = "#666666";
-		$options['bgbordercolor'] = "#999999";
-	
-	// if no variation has been selected then use theme defaults
-	} 
 	
 	if (isset($_POST)) {
 		if (!in_array($options['headercolor'], array_values($options_values['headercolor']))) $options['headercolor'] = "#F9F9F9";
