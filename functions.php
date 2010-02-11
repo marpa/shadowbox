@@ -2580,8 +2580,7 @@ function set_derivative_options() {
 		$options['post-sidebar-right-display'] = "hide";
 		$options['post-sidebar-left-display'] = "hide";	
 	}
-	
-	
+		
 	$options['page-image-width'] = $options['site-width']-50;
 
 }
