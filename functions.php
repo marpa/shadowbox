@@ -609,21 +609,17 @@ function shadowbox_options() {
 			<div class='metatext'>";
 			
 			if ($options['headerleft'] == "") {
-				print "no links defined...";
-				
+				print "no links defined...";				
 			} else {
 				print $options['headerleft'];
 			}
 					
 			// if header left links selection is custom
-			if ($options['appgroups'] == 'custom') {
+			if ($options['header-meta-left'] == 'custom') {
 				print "
-					<input id='appgroupdo' type='hidden' name='appgroupdo' value='0'/> - 
-			
-					<a href='javascript: document.getElementById(\"appgroupedit\").style.display = \"block\"; document.getElementById(\"appgroupdo\").value = \"1\"; exit; '>edit</a>
-					
-					<div id='appgroupedit' style='display: none;'>
-					
+					<input id='appgroupdo' type='hidden' name='appgroupdo' value='0'/> - 			
+					<a href='javascript: document.getElementById(\"appgroupedit\").style.display = \"block\"; document.getElementById(\"appgroupdo\").value = \"1\"; exit; '>edit</a>					
+					<div id='appgroupedit' style='display: none;'>					
 					<textarea name='headerleftcustom' style='width: 100%; height: 50px; font-size: 10px;' class='code'>";
 					print stripslashes(stripslashes(trim($options['headerleftcustom'])));
 					print "</textarea>		
@@ -638,10 +634,11 @@ function shadowbox_options() {
 			</td>
 			<td width='20%' valign='top'>";
 			// header right meta options
-			if ($options['headermeta'] == "on") {
-				print "<div style='font-size: 9px; float: right; clear: both; color: ".$options['textcolor'].";'>Log in</div>";
+			if ($shadowbox_config['headermeta'] = "on") {
+				$options['headermeta'] = "on";
+				print "<div style='font-size: 9px; float: right; clear: both; color: ".$options['bgtextcolor'].";'>Log in</div>";
 			} else {
-				print "<div style='font-size: 9px; float: right; clear: both; color: ".$options['linkcolor'].";'></div>";
+				print "<div style='font-size: 9px; float: right; clear: both; color: ".$options['bglinkcolor'].";'></div>";
 			}
 			print "
 			</td>
@@ -649,64 +646,76 @@ function shadowbox_options() {
 			</table>
 		</td>
 	</tr>
-
 	<tr>
-		<td width='20%'>
+		<td width='20%'>";
 		
-		<span style='color:".$options['bgtextcolor']."; font-size: 10px;'>Blog Title Position:
-		<select name='header-text-display' style='font-size: 10px;' onchange='this.form.submit();'>
-			<option value='middle' ".($options['header-text-display'] == 'middle' ? ' selected' : '') . ">Middle</option>
-			<option value='top' ".($options['header-text-display'] == 'top' ? ' selected' : '') . ">Top</option>
-			<option value='bottom' ".($options['header-text-display'] == 'bottom' ? ' selected' : '') . ">Bottom</option>
-			<option value='hide' ".($options['header-text-display'] == 'hide' ? ' selected' : '') . ">Hide</option>
-		</select>
-		</span>
-		</td>
-		<td width='80%' colspan='2'>
-		<div style='font-size: 8px; text-align: left;'>	
-		<span style='font-size: 10px; color: ".$options['bgtextcolor'].";'>Background Color:</span>
-		<select name='background' style='font-size: 10px;' onchange='this.form.submit();'>
-			<option value='white' ".($options['background'] == 'white' ? ' selected' : '') . ">White</option>
-			<option value='black' ".($options['background'] == 'black' ? ' selected' : '') . ">Black</option>
-			<option value='gray' ".($options['background'] == 'gray' ? ' selected' : '') . ">Gray</option>
-			<option value='gray-white' ".($options['background'] == 'gray-white' ? ' selected' : '') . ">Gray-White</option>
-			<option value='white-gray' ".($options['background'] == 'white-gray' ? ' selected' : '') . ">White-Gray</option>
-			<option value='yellow' ".($options['background'] == 'yellow' ? ' selected' : '') . ">Yellow</option>
-			<option value='yellow-white' ".($options['background'] == 'yellow-white' ? ' selected' : '') . ">Yellow-White</option>
-			<option value='white-yellow' ".($options['background'] == 'white-yellow' ? ' selected' : '') . ">White-Yellow</option>
-			<option value='blue' ".($options['background'] == 'blue' ? ' selected' : '') . ">Blue</option>
-			<option value='green' ".($options['background'] == 'green' ? ' selected' : '') . ">Green</option>
-		</select>
-		<span style='font-size: 10px; color: ".$options['bgtextcolor'].";'>Header Height:</span>
-		<select name='header-block-height' style='font-size: 10px;' onchange='this.form.submit();'>";							
-			// header height options
+		// header-text-display options
+		if (in_array("header-text-display", $shadowbox_config['model'])) {	
+			print "
+			<span style='color:".$options['bgtextcolor']."; font-size: 10px;'>Blog Title Position:
+			<select name='header-text-display' style='font-size: 10px;' onchange='this.form.submit();'>
+				<option value='middle' ".($options['header-text-display'] == 'middle' ? ' selected' : '') . ">Middle</option>
+				<option value='top' ".($options['header-text-display'] == 'top' ? ' selected' : '') . ">Top</option>
+				<option value='bottom' ".($options['header-text-display'] == 'bottom' ? ' selected' : '') . ">Bottom</option>
+				<option value='hide' ".($options['header-text-display'] == 'hide' ? ' selected' : '') . ">Hide</option>
+			</select>
+			</span>";
+		}		
+		print "</td>
+		<td width='80%' colspan='2'>";
+				
+		// header height options
+		if (in_array("header-block-height", $shadowbox_config['model'])) {
+			print " <span style='font-size: 10px; color: ".$options['bgtextcolor'].";'>Header Height:</span>\n";
+			print "<select name='header-block-height' style='font-size: 10px;' onchange='this.form.submit();'>\n";							
 			foreach ($options_values['header-block-height'] as $label => $value) {
 				print "\n<option value='".$value."'".($options['header-block-height'] == $value ? ' selected' : '') . ">".$label."</option>";
 			}					
-		print "
-		</select>		
-		<span style='font-size: 10px; color: ".$options['bgtextcolor'].";'>Header Color:</span>
-		<select name='headercolor' style='font-size: 10px;' onchange='this.form.submit();'>";							
-			//header color options
-			foreach ($options_values['headercolor'] as $label => $value) {
-				print "\n<option value='".$value."'".($options['headercolor'] == $value ? ' selected' : '') . ">".$label."</option>";
+			print "</select>";
+		}
+				
+		// header color
+		if (in_array("header-color", $shadowbox_config['model'])) {
+			print " <span style='font-size: 10px; color: ".$options['bgtextcolor'].";'>Header Color:</span>\n";
+			print "\n\t\t\t\t\t\t\t<select name='header-color' style='font-size: 10px;' onchange='this.form.submit();'>";							
+			foreach ($options_values['sidebar-color'] as $label => $value) {
+				print "\n\t\t\t\t\t\t\t\t<option value='".$value."'".($options['header-color'] == $value ? ' selected' : '') . ">".$label."</option>";
 			}
+			print "\n\t\t\t\t\t\t\t</select>";
+		}
+		// header opacity
+		if (in_array("header-opacity", $shadowbox_config['model'])) {
+			print " <span style='font-size: 10px; color: ".$options['bgtextcolor'].";'>Header Opacity:</span>\n";
+			print "\n\t\t\t\t\t\t\t<select name='header-opacity' style='font-size: 10px;' onchange='this.form.submit();'>";							
+			foreach ($options_values['header-opacity'] as $label => $value) {
+				print "\n\t\t\t\t\t\t\t\t<option value='".$value."'".($options['header-opacity'] == $value ? ' selected' : '') . ">".$label."</option>";
+			}
+			print "\n\t\t\t\t\t\t\t</select>";
+		}				 
+				
+		// header image options
+		if (in_array("header-image-options", $shadowbox_config['model'])) {
+			print " <span style='font-size: 10px; color: ".$options['bgtextcolor'].";'>Header Image:</span>\n";
+
+			if ($options['header-image-options'] == "custom" && $custom_header_set == 1) {
+				print "<span class ='editheaderlink'><a href='".get_bloginfo('url')."/wp-admin/themes.php?page=custom-header'>Edit Custom Header Image</a></span>";
+			} else {
+				print "<select name='header-image-options' style='font-size: 10px;'  onchange='this.form.submit();'>\n";
+				foreach (array_keys($shadowbox_config['header_image_options']) as $header_image_option) {						
+					print "<option value='".$shadowbox_config['header_image_options'][$header_image_option]['option_name']."' ";
+					print ($options['header-image-options'] == $shadowbox_config['header_image_options'][$header_image_option]['option_name'] ? ' selected' : '') . ">";
+					print $shadowbox_config['header_image_options'][$header_image_option]['option_label']."</option>\n";						
+				}
+				print "</select>";
+				if ($options['header-image-options'] == "custom" && $custom_header_set == 0) 
+					print "<span class ='editheaderlink'><a href='".get_bloginfo('url')."/wp-admin/themes.php?page=custom-header'>Edit Custom Header Image</a></span>";
+			}
+		}		
 		print "
-		</select>
-		<span style='font-size: 10px; color: ".$options['bgtextcolor'].";'>Site Width:</span>
-		<select name='site-width' style='font-size: 10px;' onchange='this.form.submit();'>";							
-			// site width options
-			foreach ($options_values['site-width'] as $label => $value) {
-				print "\n<option value='".$value."'".($options['site-width'] == $value ? ' selected' : '') . ">".$label."</option>";
-			}					
-		print "
-		</select>		
-		</div>
-		</td>
-		
+		</td>		
 	</tr>
 	<tr><td colspan='3'>";
-		if ($options['model-instructions'] == "on") {
+		if ($options['model-instructions'] == "init" || $options['model-instructions'] == "on") {
 			print "
 			<div class='instructions' style='font-size: 8px;'>	
 				<i>If you use your own custom header image, consider an image with transparent background for graphics or logo type images. 
