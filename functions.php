@@ -392,6 +392,13 @@ function shadowbox_options() {
 			padding: 1px;
 		}
 
+		".$options['header-color-ie']."; 
+		".$options['top-color-ie']."; 
+		".$options['content-color-ie']."; 
+		".$options['bottom-color-ie']."; 
+		".$options['left01-color-ie']."; 
+		".$options['right01-color-ie']."; 
+		".$options['right02-color-ie'].";
 
  	
  	</style>";	 
