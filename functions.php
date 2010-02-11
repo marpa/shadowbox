@@ -2014,131 +2014,23 @@ function set_primary_options() {
 	
 }
 
+/******************************************************************************
+ * set options for variations (set with options['background'])
+ * 
+ ******************************************************************************/
 
 function set_variation_options() {
 	global $_POST, $options, $options_values;
 
 
-	/*********************************************************
-	 * derived options defaults
-	 *********************************************************/
-	$options['site-margin-top'] = "0";
-	 
-	$options['background_color'] = "#FFFFFF";
-	$options['background_image_file'] = "none";
-	$options['background_image'] = "none";
-	$options['background_position'] = "top";
-	$options['background_repeat'] = "repeat-x";
-	$options['bgbordercolor'] = "#999999";
-	$options['page-image-width'] = $options['site-width']-50;
-	
-	$options['sidebar-left-header-color'] = "#999999";
-	$options['sidebar-right-header-color'] = "#999999";
-	
-	$options['page_image_directory'] = "default";	
-	$options['page_image_path'] = "url('".get_bloginfo("stylesheet_directory")."/images/".$options['page_image_directory'];
-	
-	$options['page_top_background_image'] = $options['page_image_path']."/".$options['page-image-width']."-top.png')";
-	$options['page_top_padding'] = "30";	
-	
-	$options['page_main_background_image'] = $options['page_image_path']."/".$options['page-image-width']."-main.png')";
-	$options['page_main_padding'] = "50";	
+	/******************************************************************************
+	 * Default options and option value lists
+	 ******************************************************************************/
 
-	$options['page_bottom_background_image'] = $options['page_image_path']."/".$options['page-image-width']."-bottom.png')";
-	$options['page_bottom_padding'] = "30";
-	
-	$options['foreground_color'] = "#FFFFFF";
-	$options['content-background'] = "#FFFFFF";
-	
-	$options['thread-even-bgcolor'] = "#FFFFFF";
-	$options['thread-alt-bgcolor'] = "#f8f8f8";
-	$options['commentfield'] = "#000000";
+	if (file_exists(dirname(__FILE__).'/variations/default/variation.php')) {
+		include('variations/default/variation.php');		
+	}
 
-	
-	/*********************************************************
-	 * options value defaults
-	 *********************************************************/	
-	
-	$options_values['site-width'] = array(
-		'1000px' => '1050',
-		'950px' => '1000',
-		'900px' => '950',
-		'850px' => '900',
-		'800px' => '850',
-		'750px' => '800'
-		);
-
-	$options_values['header-block-height'] = array(
-		'50px' => '50',
-		'70px' => '70',
-		'100px' => '100',
-		'150px' => '150',
-		'200px' => '200',
-		'250px' => '250',
-		'300px' => '300',
-		);
-
-	
-	$options_values['linkcolor'] = array(
-		'Dark Blue' => '#003366',
-		'Light Blue' => '#0066cc',
-		'Red' => '#990000',
-		'Green' => '#265e15',
-		'Black' => '#151515'
-		);
-		
-	$options_values['entry-link-style'] = array(
-		'None' => 'none',
-		'Underline' => 'underline',
-		'Box' => 'box'
-	);
-	
-	$options_values['textcolor'] = array(
-		'Dark Gray' => '#666666',
-		'Gray' => '#999999',
-		'Light Gray' => '#CCCCCC',
-		'Black' => '#424242'
-	);
-
-	$options_values['page-title'] = array(
-		'Dark Gray' => '#666666',
-		'Gray' => '#999999',
-		'Light Gray' => '#CCCCCC',
-		'Black' => '#424242'
-	);
-	
-	
-	$options_values['headercolor'] = array(
-		'White' => '#FFFFFF',
-		'Silver' => '#F9F9F9',
-		'Blue' => '#003366',
-		'Yellow' => '#FFF8C6',
-		'Green'	=>	'#92BB84'
-		);
-	
-	
-	$options_values['sidebar-left-color'] = array(
-		'White' => '#FFFFFF',
-		'Silver' => '#F9F9F9',
-		'Gray' => '#F3F3F3',
-		'Yellow' => '#FFF8C6',
-		'Green' => '#92BB84'
-		);
-	
-	$options_values['sidebar-right-color'] = array(
-		'White' => '#FFFFFF',
-		'Silver' => '#F9F9F9',
-		'Gray' => '#F3F3F3',
-		'Yellow' => '#FFF8C6',
-		'Green' => '#92BB84'
-		);
-
-	$options_values['post-single-sidebar'] = array(
-		'Left Sidebar' => 'left',
-		'Right Sidebar' => 'right',
-		'Both Sidebars' => 'both',
-		'No Sidebars' => 'none'
-	);
 
 	/******************************************************************************
 	 * Defaults for variations
