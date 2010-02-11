@@ -3,18 +3,14 @@ get_header(); ?>
 	
 <table width='100%' cellpadding='0'>
 <tr>
-<td valign='top' class="sidebarleftcolor">
+<td valign='top' class="left01block">
 
-<?php 
-if ($options['sidebar-left-width'] != 0) {
-	include (TEMPLATEPATH . '/sidebar-left.php'); 
-} 
-?>
+<?php if ($options['left01-width'] != 0) include (TEMPLATEPATH . '/sidebar-left.php'); ?>
 
 </td>
-<td valign='top' class="centercontent">
+<td valign='top' class="contentblock">
 
-	<div id="content" class="widecolumn">
+	<div id="content">
 
 		
 			<?php 
@@ -74,12 +70,6 @@ if ($options['sidebar-left-width'] != 0) {
 				<p><?php echo $curauth->nickname ?> has not created any posts.</p>
 			<?php endif; ?>			
 </div>
-
-</td>
-<td valign='top' class="sidebarrightcolor">
-
-<?php ?>
-
 
 </td>
 </tr>
