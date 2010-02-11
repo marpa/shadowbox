@@ -5,6 +5,34 @@ if (file_exists(dirname(__FILE__).'/config.php')) {
 	require_once('config-sample.php');
 }
 
+/******************************************************************************
+ * Preset Widgets
+ * It is possible to preset widgets for a given theme but not many theme
+ * developers have done this yet....
+ ******************************************************************************/
+
+//update_option( 'sidebars_widgets', NULL );
+$default_widgets = get_option('sidebars_widgets');
+
+//printpre(get_option('sidebars_widgets'));
+
+// Pre-set Widgets
+$preset_widgets = array (
+	'sidebar-1'  => array( 'search', 'pages', 'categories', 'archives' ),
+	'sidebar-2'  => array( 'links', 'meta' ),
+	'sidebar-3'  => array( 'links' ),
+	'sidebar-4'  => array( 'search'),
+	'sidebar-5'  => array( 'links')
+);
+
+//$new_widgets = array_merge($default_widgets, $preset_widgets);
+
+//if ( isset( $_GET['activated']) ) {
+//	printpre($preset_widgets);
+//	update_option('sidebars_widgets', $preset_widgets);
+//	printpre( get_option( 'sidebars_widgets' ) );
+//}
+
 
 /*********************************************************
  *  Register sidebars
