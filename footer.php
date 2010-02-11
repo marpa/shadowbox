@@ -18,14 +18,19 @@
 
 <div class="footermeta_right">
 	<span class="bgtextcolor">
-	<a href="http://segueproject.org/wordpress/">ShadowBox</a> | <a href="http://mu.wordpress.org/">WordPress</a>	
+	<a href="<?php print stripslashes($options['theme-url']); ?>">
+	<?php print stripslashes($options['theme-name']); ?></a>
+	<a href="<?php print stripslashes($options['background-source-url']); ?>">
+	<?php print stripslashes($options['background-source-credit']); ?></a>
+	| <a href="http://www.wordpress.org/">WordPress</a>	
 	</span><br/>
-	</div>
-	<div class="footermeta_left">
+</div>
+
+<div class="footermeta_left">
 	<span class="bgtextcolor">
 	<?php print stripslashes($options['footerleft']); ?>
 	</span><br/>
-	</div>
+</div>
 
 <!-- <?php echo get_num_queries(); ?> queries. <?php timer_stop(1); ?> seconds. -->
 </div>
