@@ -2682,6 +2682,32 @@ function print_option_feedback() {
 }
 
 /*********************************************************
+ * Hext to RGB converter for setting transparency using RGBa
+ * $c can be either hex or rgb
+ *********************************************************/
+ 
+ function hex2rgb($color) {
+	if (!$color) return false;
+	$color = trim($color);
+	$rgb_color = false;
+   
+	if (eregi("^[0-9ABCDEFabcdef\#]+$", $color)) {
+		$color = str_replace('#','', $color);
+		$l = strlen($color) == 3 ? 1 : (strlen($color) == 6 ? 2 : false);
+	}
+
+	if ($l) {
+		unset($rgb_color);
+		//$out = "rgba(";
+		$rgb_color .= hexdec(substr($color, 0,1*$l)).", ";
+		$rgb_color .= hexdec(substr($color, 1*$l,1*$l)).", ";
+		$rgb_color .= hexdec(substr($color, 2*$l,1*$l));
+	} else $rgb_color = false;
+	return $rgb_color;
+}
+
+
+/*********************************************************
  * debugging
  *********************************************************/
 
