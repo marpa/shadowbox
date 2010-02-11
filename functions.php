@@ -1354,24 +1354,6 @@ function shadowbox_options() {
 
 }	
 
-	/*********************************************************
-	 * ShadowBox Theme instructions and Save Changes button
-	 *********************************************************/
-    print
-    "<table width = '".$model_site_width."' align='center' cellpadding='5' cellspacing='5' border='0'>
-    <tr><td valign='top'>
-    <span class='submit'><input type='submit' value='Save Changes' name='save'/></span>
-    </td><td>
-    <div class='instructions'>	
-	<strong>ShadowBox</strong>: When chosing options think about colors and contrasts that complement your content.  For example, if your site focuses on links, be sure your link color contrasts with your 
-	text color so links will stand out.  Chose the black theme for blogs that highlight images.  <br/>
-	</div>
-	</td></tr>
-	</table>
-	</form>";
-
-}
-
 /*********************************************************
  * ShadowBox save options
  *********************************************************/
@@ -1385,9 +1367,19 @@ function save_options() {
 	// options specific to a particular variation
 	set_variation_options();
 	
-	// options derived from primary options
-	set_derivative_options();
+	if ($options['site-width'] == 100) {
+		$sitewidth = $options['site-width']-10;
+		$sitewidth = $sitewidth."%";
+	} else {
+		$sitewidth = $options['site-width']."px";
+	}
 
+	if ($options['header-width'] == 100) {
+		$headerwidth = $options['header-width']-10;
+		$headerwidth = $headerwidth."%";
+	} else {
+		$headerwidth = $options['header-width']."px";
+	}
 
 	/******************************************************************************
 	 * add theme options to theme CSS
