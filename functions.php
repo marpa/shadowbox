@@ -568,13 +568,13 @@ function shadowbox_options() {
 					print "
 					<span style='font-size: 10px;'>Blog Title Color:</span>
 					<input name='custom_header_color' type='text' size='8' style='font-size: 10px;' 
-					value='".(isset($options['custom_header_color']) ? $options['custom_header_color'] : '')."'/><br/>";
+					value='".(isset($options['custom_header_color']) ? $options['custom_header_color'] : '')."'/>";
 				}
 				
 				// Background source url
 				if (in_array("custom_background-source-url", $shadowbox_config['model'])) {
 					print "
-					<span style='font-size: 10px;'>Variation source URL:</span>
+					<br/><span style='font-size: 10px;'>Variation source URL:</span>
 					<input name='custom_background-source-url' type='text' size='50' style='font-size: 10px;' 
 					value='".(isset($options['custom_background-source-url']) ? $options['custom_background-source-url'] : '')."'/>";
 				}
@@ -2112,7 +2112,7 @@ function set_variation_options() {
 		if (!in_array($options['linkcolor'], array_values($options_values['linkcolor']))) $options['linkcolor'] = "#003366";
 		if (!in_array($options['textcolor'], array_values($options_values['textcolor']))) $options['textcolor'] = "#444444";
 		if (!in_array($options['entry-link-style'], array_values($options_values['entry-link-style']))) $options['entry-link-style'] = "underline";
-		if (!in_array($options['header-blogtitle-color'], array_values($options_values['linkcolor']))) $options['header-blogtitle-color'] = $options['linkcolor'];	
+		//if (!in_array($options['header-blogtitle-color'], array_values($options_values['linkcolor']))) $options['header-blogtitle-color'] = $options['linkcolor'];	
 	}
 	
 	set_derivative_options();	
@@ -2176,9 +2176,9 @@ function set_derivative_options() {
 		if ($options['header-block-height'] == 50) {
 			$options['header-text-padding-top'] = 5;
 		} else if ($options['header-block-height'] == 70) {
-			$options['header-text-padding-top'] = 15;
+			$options['header-text-padding-top'] = 10;
 		} else if ($options['header-block-height'] == 100) {
-			$options['header-text-padding-top'] = 30;		
+			$options['header-text-padding-top'] = 25;		
 		} else if ($options['header-block-height'] == 125) {
 			$options['header-text-padding-top'] = 45;		
 		} else if ($options['header-block-height'] == 150) {
