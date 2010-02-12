@@ -71,7 +71,7 @@ if (is_category() && $options['left01-width'] != 0) {
 				<small><?php the_time('F jS, Y') ?>  by <?php the_author_posts_link(); ?></small>
 				
 				<div class="entry">
-					<?php the_content() ?>
+					<?php the_content('<div class=\'morelink\'>&laquo; More &raquo;</div>'); ?> 
 				</div>
 				
 				<div class="postmetadata">
