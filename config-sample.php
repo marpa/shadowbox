@@ -48,7 +48,13 @@ $shadowbox_config['header_meta_right_options'] = array (
 $shadowbox_config['header_image_options']['custom'] = array (
 		option_name =>	'custom',
 		option_label =>	'Custom',
-		option_value => 'header-transparent.png'
+		option_value => 'header-trans-white-1200x100.png'
+	);
+
+$shadowbox_config['header_image_options']['whitegradient'] = array (
+		option_name =>	'whitegradient',
+		option_label =>	'None',
+		option_value => 'header-trans-white-1200x100.png'
 	);
 
 $shadowbox_config['header_image_options']['transparent'] = array (
@@ -111,17 +117,17 @@ $shadowbox_config['model'][26]  = 'right02-width';
 $shadowbox_config['model'][27]  = 'top-color';
 $shadowbox_config['model'][28]  = 'bottom-color';
 $shadowbox_config['model'][29]  = 'content-color';
-//$shadowbox_config['model'][30]  = 'content-opacity';
+$shadowbox_config['model'][30]  = 'content-opacity';
 $shadowbox_config['model'][31]  = 'header-color';
-//$shadowbox_config['model'][32]  = 'header-opacity';
+$shadowbox_config['model'][32]  = 'header-opacity';
 $shadowbox_config['model'][33]  = 'left01-color';
 $shadowbox_config['model'][34]  = 'right01-color';
 $shadowbox_config['model'][35]  = 'right02-color';
-// $shadowbox_config['model'][36]  = 'top-opacity';
-// $shadowbox_config['model'][37]  = 'bottom-opacity';
-// $shadowbox_config['model'][38]  = 'left01-opacity';
-// $shadowbox_config['model'][39]  = 'right01-opacity';
-// $shadowbox_config['model'][40]  = 'right02-opacity';
+$shadowbox_config['model'][36]  = 'top-opacity';
+$shadowbox_config['model'][37]  = 'bottom-opacity';
+$shadowbox_config['model'][38]  = 'left01-opacity';
+$shadowbox_config['model'][39]  = 'right01-opacity';
+$shadowbox_config['model'][40]  = 'right02-opacity';
 $shadowbox_config['model'][41]  = 'post-single-sidebar';
 $shadowbox_config['model'][42]  = 'footer-meta-left';
 $shadowbox_config['model'][43]  = 'footerleftcustom';
@@ -131,10 +137,11 @@ $shadowbox_config['model'][46]  = 'custom_background_repeat';
 $shadowbox_config['model'][47]  = 'custom_background_position';
 $shadowbox_config['model'][48]  = 'custom_bgtextcolor';
 $shadowbox_config['model'][49]  = 'custom_bglinkcolor';
-$shadowbox_config['model'][50]  = 'custom_header_color';
+//$shadowbox_config['model'][50]  = 'custom_header_color';
 $shadowbox_config['model'][51]  = 'custom_background-source-url';
 $shadowbox_config['model'][52]  = 'custom_background-source-credit';
 $shadowbox_config['model'][53]  = 'revert';
+$shadowbox_config['model'][54]  = 'header-blogtitle-size';
 
 
 
