@@ -39,7 +39,7 @@ get_header(); ?>
 			<br/>
 									
 			<h3>Posts by <?php echo $curauth->display_name; ?>:</h3>
-			<?php query_posts('author=' . $curauth->ID . '&showposts=50'); ?>
+			<?php query_posts('author=' . $curauth->ID . '&showposts=10'); ?>
 			<?php if (have_posts()) : while (have_posts()) : the_post(); ?>
 			
 				<div <?php post_class() ?> id="post-<?php the_ID(); ?>">
@@ -52,7 +52,7 @@ get_header(); ?>
 				<small><?php the_time('F jS, Y') ?>  by <?php the_author_posts_link(); ?></small>
 				
 				<div class="entry">
-					<?php the_content() ?>
+					<?php the_content('<div class=\'morelink\'>&laquo; More &raquo;</div>'); ?> 
 				</div>
 				
 				<div class="postmetadata">
@@ -64,6 +64,11 @@ get_header(); ?>
 				</div>
 
 			<?php endwhile; ?>
+			
+			<div class="navigation">
+				<div class="alignleft"><?php next_posts_link('&laquo; Older Entries') ?></div>
+				<div class="alignright"><?php previous_posts_link('Newer Entries &raquo;') ?></div>
+			</div>
 
 			<?php else : ?>
 				<h2>None</h2>
