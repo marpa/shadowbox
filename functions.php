@@ -89,37 +89,44 @@ if (function_exists('register_sidebar')) {
 /******************************************************************************
  *  Get options
  ******************************************************************************/
+ 
+$theme_settings = $variation_config['theme-name']."_settings";
+$theme_css = $variation_config['theme-name']."_css";
+$theme_options = $variation_config['theme-name']." Options";
+//printpre($theme_settings);
 
-if (!is_array(get_option('shadowbox_settings'))) {
-    add_option('shadowbox_settings', array('init' => 1));    
+if (!is_array(get_option($theme_settings))) {
+    add_option($theme_settings, array('init' => 1));    
 } else {	
-	$options = get_option('shadowbox_settings');
+	$options = get_option($theme_settings);
 }
    
-if (!get_option('shadowbox_css')) {
-	add_option('shadowbox_css', "");	
+if (!get_option($theme_css)) {
+	add_option($theme_css, "");	
 } else {
-	$shadowbox_css = get_option('shadowbox_css');	
+	$variation_css = get_option($theme_css);	
 }
 
 // option defaults and value lists for the current variation
 set_variation_options();
 
 // update option values display in UI based on values defined for selected variation
-update_option('shadowbox_settings', $options);
-//update_option('shadowbox_css', $options);
+update_option($theme_settings, $options);
+//update_option($theme_css, $options);
 
-$options['theme-url'] = $shadowbox_config['theme-url'];
-$options['theme-name'] = $shadowbox_config['theme-name'];
+$options['theme-url'] = $variation_config['theme-url'];
+$options['theme-name'] = $variation_config['theme-name'];
 
 /*********************************************************
  * Setup admin menu
  *********************************************************/ 
 
-add_action('admin_menu', 'shadowbox_admin_menu');
+add_action('admin_menu', 'variation_admin_menu');
 
-function shadowbox_admin_menu() {
-    add_theme_page('Shadowbox Options', 'Shadowbox Options', 'edit_themes', "Shadowbox", 'shadowbox_options');
+function variation_admin_menu() {
+	global $theme_options, $variation_config;
+	
+    add_theme_page($theme_options, $theme_options, 'edit_themes', 'Variations', 'variation_options');
 }
 
 /*********************************************************
@@ -130,7 +137,7 @@ if ( function_exists('add_custom_image_header') ) {
   add_custom_image_header('header_style', 'admin_header_style');
 }
 
-$header_image = "%s/variations/".$shadowbox_config['header_image_options'][$options['header-image-options']]['option_value'];
+$header_image = "%s/variations/".$variation_config['header_image_options'][$options['header-image-options']]['option_value'];
 $header_image_width = $options['header-width'];
 $header_image_height = $options['header-block-height'];
 
@@ -202,23 +209,26 @@ function header_style() {
  * renders UI and theme model for chosing and previewing options
  *********************************************************/
 
-function shadowbox_options() {	
-	global $shadowbox_config, $options, $options_values, $shadowbox_css, $model_content_width, $variations, $header_image;
-    	
+function variation_options() {	
+	global $variation_config, $options, $options_values, $variation_css, $model_content_width, $variations, $header_image;
+    global $theme_settings, $theme_css;
+    
+    //printpre("ok");
+    
 	set_variation_options();	
 		
-	update_option('shadowbox_settings', $options);
-	update_option('shadowbox_css', $shadowbox_css);
+	update_option($theme_settings, $options);
+	update_option($theme_css, $variation_css);
 
-	$options = get_option('shadowbox_settings');
-	$shadowbox_css = get_option('shadowbox_css');
+	$options = get_option($theme_settings);
+	$variation_css = get_option($theme_css);
 		
     if ($_POST['action'] == 'save' )
         save_options();
         
 	if (isset($_POST['reset'])) {
-		delete_options('shadowbox_settings');
-		delete_options('shadowbox_css');
+		delete_options($theme_settings);
+		delete_options($theme_css);
 	}
     
 	/*********************************************************
@@ -238,7 +248,7 @@ function shadowbox_options() {
    			$custom_header_set = 0;
    		}
    	} else {
-   		$model_header_image = get_bloginfo('stylesheet_directory')."/variations/".$shadowbox_config['header_image_options'][$options['header-image-options']]['option_value'];
+   		$model_header_image = get_bloginfo('stylesheet_directory')."/variations/".$variation_config['header_image_options'][$options['header-image-options']]['option_value'];
    	}
 
 
@@ -264,7 +274,7 @@ function shadowbox_options() {
 	 * model css adds css for theme edit UI components
 	 *********************************************************/
  	
- 	$model_css = preg_replace("/body/", ".body_na", $shadowbox_css); 
+ 	$model_css = preg_replace("/body/", ".body_na", $variation_css); 
  	print "
  	<style type='text/css'>".$model_css."
 
@@ -440,13 +450,13 @@ function shadowbox_options() {
 		<tr>
 		<td width='20%'>";
 			// header meta right appgroups options	
-			if (in_array("header-meta-left", $shadowbox_config['model'])) {
+			if (in_array("header-meta-left", $variation_config['model'])) {
 				print "<span style='font-size: 9px;'>Header Links:</span>\n";
 				print "<select name='header-meta-left' style='font-size: 10px;'  onchange='this.form.submit();'>";
-				foreach (array_keys($shadowbox_config['header_meta_left_options']) as $meta_left_option) {						
-					print "<option value='".$shadowbox_config['header_meta_left_options'][$meta_left_option]['option_name']."' ";
-					print ($options['header-meta-left'] == $shadowbox_config['header_meta_left_options'][$meta_left_option]['option_name'] ? ' selected' : '') . ">";
-					print $shadowbox_config['header_meta_left_options'][$meta_left_option]['option_label']."</option>";						
+				foreach (array_keys($variation_config['header_meta_left_options']) as $meta_left_option) {						
+					print "<option value='".$variation_config['header_meta_left_options'][$meta_left_option]['option_name']."' ";
+					print ($options['header-meta-left'] == $variation_config['header_meta_left_options'][$meta_left_option]['option_name'] ? ' selected' : '') . ">";
+					print $variation_config['header_meta_left_options'][$meta_left_option]['option_label']."</option>";						
 				}
 				print "</select>";
 			}
@@ -454,25 +464,25 @@ function shadowbox_options() {
 			</td>
 			<td style='text-align: center;'>";			
 			// background options		
-			if (in_array("background", $shadowbox_config['model'])) {
+			if (in_array("background", $variation_config['model'])) {
 				
 				print "
 				<span style='font-size: 10px;'>Variation:</span>
 				<select name='background' style='font-size: 10px;' onchange='this.form.submit();'>";
 					// custom background image
-					if (!in_array("custom", $shadowbox_config['variations_disabled']))
+					if (!in_array("custom", $variation_config['variations_disabled']))
 						print "\n<option value='custom'".($options['background'] == $value ? ' selected' : '') . ">Custom</option>";
 					
 					// variations defined in variations folder
 					foreach ($variations as $label => $value) {
-						if (!in_array($value, $shadowbox_config['variations_disabled']))
+						if (!in_array($value, $variation_config['variations_disabled']))
 							print "\n<option value='".$value."'".($options['background'] == $value ? ' selected' : '') . ">".$label."</option>";
 					}									
 				print "</select>";
 			}
 	
 			//site width
-			if (in_array("site-width", $shadowbox_config['model'])) {
+			if (in_array("site-width", $variation_config['model'])) {
 				print " <span style='font-size: 10px;'>Site Width:</span>\n";
 				print "<select name='site-width' style='font-size: 10px;' onchange='this.form.submit();'>\n";							
 					// site width options
@@ -483,7 +493,7 @@ function shadowbox_options() {
 			}
 
 			//header width
-			if (in_array("header-width", $shadowbox_config['model']) && count($options_values['header-width']) > 0) {
+			if (in_array("header-width", $variation_config['model']) && count($options_values['header-width']) > 0) {
 				print " <span style='font-size: 10px;'>Header Width:</span>\n";
 				print "<select name='header-width' style='font-size: 10px;' onchange='this.form.submit();'>\n";							
 					// site width options
@@ -503,7 +513,7 @@ function shadowbox_options() {
 			if ($options['background'] == 'custom') {
 		
 				// background image url
-				if (in_array("background_image_url", $shadowbox_config['model'])) {			
+				if (in_array("background_image_url", $variation_config['model'])) {			
 					print "	
 					<span style='font-size: 10px;'>Background Image URL:</span>
 					<input name='background_image_url' type='text' size='70' style='font-size: 10px;' 
@@ -511,7 +521,7 @@ function shadowbox_options() {
 				}
 								
 				// background repeat
-				if (in_array("background_repeat", $shadowbox_config['model'])) {			
+				if (in_array("background_repeat", $variation_config['model'])) {			
 					print "
 					<span style='font-size: 10px;'>Background Repeat:</span>
 					<select name='custom_background_repeat' style='font-size: 10px;' onchange='this.form.submit();'>\n";							
@@ -523,7 +533,7 @@ function shadowbox_options() {
 				}
 
 				// background position
-				if (in_array("background_position", $shadowbox_config['model'])) {			
+				if (in_array("background_position", $variation_config['model'])) {			
 					print "
 					<span style='font-size: 10px;'>Background Position:</span>
 					<select name='custom_background_position' style='font-size: 10px;' onchange='this.form.submit();'>\n";							
@@ -535,7 +545,7 @@ function shadowbox_options() {
 				}
 
 				// background color
-				if (in_array("custom_background_color", $shadowbox_config['model'])) {			
+				if (in_array("custom_background_color", $variation_config['model'])) {			
 					print "
 					<span style='font-size: 10px;'>Background Color:</span>
 					<input name='custom_background_color' type='text' size='8' style='font-size: 10px;' 
@@ -543,7 +553,7 @@ function shadowbox_options() {
 				}
 
 				// background text color
-				if (in_array("bgtextcolor", $shadowbox_config['model'])) {			
+				if (in_array("bgtextcolor", $variation_config['model'])) {			
 					print " <span style='font-size: 10px;'>Background Text Color:</span>\n";
 					print "<select name='custom_bgtextcolor' style='font-size: 10px;' onchange='this.form.submit();'>\n";							
 						// site width options
@@ -554,7 +564,7 @@ function shadowbox_options() {
 				}
 
 				// background link color
-				if (in_array("bglinkcolor", $shadowbox_config['model'])) {			
+				if (in_array("bglinkcolor", $variation_config['model'])) {			
 					print " <span style='font-size: 10px;'>Background Link Color:</span>\n";
 					print "<select name='custom_bglinkcolor' style='font-size: 10px;' onchange='this.form.submit();'>\n";							
 						// site width options
@@ -564,7 +574,7 @@ function shadowbox_options() {
 					print "</select>";
 				}				
 				// Blog title and background heading colors	
-				if (in_array("custom_header_color", $shadowbox_config['model'])) {
+				if (in_array("custom_header_color", $variation_config['model'])) {
 					print "
 					<span style='font-size: 10px;'>Blog Title Color:</span>
 					<input name='custom_header_color' type='text' size='8' style='font-size: 10px;' 
@@ -572,7 +582,7 @@ function shadowbox_options() {
 				}
 				
 				// Background source url
-				if (in_array("custom_background-source-url", $shadowbox_config['model'])) {
+				if (in_array("custom_background-source-url", $variation_config['model'])) {
 					print "
 					<br/><span style='font-size: 10px;'>Variation source URL:</span>
 					<input name='custom_background-source-url' type='text' size='50' style='font-size: 10px;' 
@@ -580,7 +590,7 @@ function shadowbox_options() {
 				}
 
 				// Background source credit	
-				if (in_array("custom_background-source-credit", $shadowbox_config['model'])) {
+				if (in_array("custom_background-source-credit", $variation_config['model'])) {
 					print "
 					<span style='font-size: 10px;'>Variation Name/Credit:</span>
 					<input name='custom_background-source-credit' type='text' size='20' style='font-size: 10px;' 
@@ -634,7 +644,7 @@ function shadowbox_options() {
 			</td>
 			<td width='20%' valign='top'>";
 			// header right meta options
-			if ($shadowbox_config['headermeta'] = "on") {
+			if ($variation_config['headermeta'] = "on") {
 				$options['headermeta'] = "on";
 				print "<div style='font-size: 9px; float: right; clear: both; color: ".$options['bgtextcolor'].";'>Log in</div>";
 			} else {
@@ -650,7 +660,7 @@ function shadowbox_options() {
 		<td width='20%'>";
 		
 		// header-text-display options
-		if (in_array("header-text-display", $shadowbox_config['model'])) {	
+		if (in_array("header-text-display", $variation_config['model'])) {	
 			print "
 			<span style='color:".$options['bgtextcolor']."; font-size: 10px;'>Blog Title Position:
 			<select name='header-text-display' style='font-size: 10px;' onchange='this.form.submit();'>
@@ -665,7 +675,7 @@ function shadowbox_options() {
 		<td width='80%' colspan='2'>";
 				
 		// header height options
-		if (in_array("header-block-height", $shadowbox_config['model'])) {
+		if (in_array("header-block-height", $variation_config['model'])) {
 			print " <span style='font-size: 10px; color: ".$options['bgtextcolor'].";'>Header Height:</span>\n";
 			print "<select name='header-block-height' style='font-size: 10px;' onchange='this.form.submit();'>\n";							
 			foreach ($options_values['header-block-height'] as $label => $value) {
@@ -675,7 +685,7 @@ function shadowbox_options() {
 		}
 				
 		// header color
-		if (in_array("header-color", $shadowbox_config['model'])) {
+		if (in_array("header-color", $variation_config['model'])) {
 			print " <span style='font-size: 10px; color: ".$options['bgtextcolor'].";'>Header Color:</span>\n";
 			print "\n\t\t\t\t\t\t\t<select name='header-color' style='font-size: 10px;' onchange='this.form.submit();'>";							
 			foreach ($options_values['sidebar-color'] as $label => $value) {
@@ -684,7 +694,7 @@ function shadowbox_options() {
 			print "\n\t\t\t\t\t\t\t</select>";
 		}
 		// header opacity
-		if (in_array("header-opacity", $shadowbox_config['model'])) {
+		if (in_array("header-opacity", $variation_config['model'])) {
 			print " <span style='font-size: 10px; color: ".$options['bgtextcolor'].";'>Header Opacity:</span>\n";
 			print "\n\t\t\t\t\t\t\t<select name='header-opacity' style='font-size: 10px;' onchange='this.form.submit();'>";							
 			foreach ($options_values['header-opacity'] as $label => $value) {
@@ -694,17 +704,17 @@ function shadowbox_options() {
 		}				 
 				
 		// header image options
-		if (in_array("header-image-options", $shadowbox_config['model'])) {
+		if (in_array("header-image-options", $variation_config['model'])) {
 			print " <span style='font-size: 10px; color: ".$options['bgtextcolor'].";'>Header Image:</span>\n";
 
 			if ($options['header-image-options'] == "custom" && $custom_header_set == 1) {
 				print "<span class ='editheaderlink'><a href='".get_bloginfo('url')."/wp-admin/themes.php?page=custom-header'>Edit Custom Header Image</a></span>";
 			} else {
 				print "<select name='header-image-options' style='font-size: 10px;'  onchange='this.form.submit();'>\n";
-				foreach (array_keys($shadowbox_config['header_image_options']) as $header_image_option) {						
-					print "<option value='".$shadowbox_config['header_image_options'][$header_image_option]['option_name']."' ";
-					print ($options['header-image-options'] == $shadowbox_config['header_image_options'][$header_image_option]['option_name'] ? ' selected' : '') . ">";
-					print $shadowbox_config['header_image_options'][$header_image_option]['option_label']."</option>\n";						
+				foreach (array_keys($variation_config['header_image_options']) as $header_image_option) {						
+					print "<option value='".$variation_config['header_image_options'][$header_image_option]['option_name']."' ";
+					print ($options['header-image-options'] == $variation_config['header_image_options'][$header_image_option]['option_name'] ? ' selected' : '') . ">";
+					print $variation_config['header_image_options'][$header_image_option]['option_label']."</option>\n";						
 				}
 				print "</select>";
 				if ($options['header-image-options'] == "custom" && $custom_header_set == 0) 
@@ -777,7 +787,7 @@ function shadowbox_options() {
 				<div class='horizontalbar' style='font-size: 8px; float: right;'>";
 
 				// color
-				if (in_array("top-color", $shadowbox_config['model'])) {
+				if (in_array("top-color", $variation_config['model'])) {
 					print "\n\t\t\t\t\t\t\t<select name='top-color' style='font-size: 10px;' onchange='this.form.submit();'>";							
 					foreach ($options_values['sidebar-color'] as $label => $value) {
 						print "\n\t\t\t\t\t\t\t\t<option value='".$value."'".($options['top-color'] == $value ? ' selected' : '') . ">".$label."</option>";
@@ -785,7 +795,7 @@ function shadowbox_options() {
 					print "\n\t\t\t\t\t\t\t</select>";
 				}
 				// opacity
-				if (in_array("top-opacity", $shadowbox_config['model'])) {
+				if (in_array("top-opacity", $variation_config['model'])) {
 					print "\n\t\t\t\t\t\t\t<select name='top-opacity' style='font-size: 10px;' onchange='this.form.submit();'>";							
 					foreach ($options_values['sidebar-opacity'] as $label => $value) {
 						print "\n\t\t\t\t\t\t\t\t<option value='".$value."'".($options['top-opacity'] == $value ? ' selected' : '') . ">".$label."</option>";
@@ -862,7 +872,7 @@ function shadowbox_options() {
 				 *********************************************************/			
 				print "<span style='font-size: 10px;'>Content</span>\n";
 				// color
-				if (in_array("content-color", $shadowbox_config['model'])) {
+				if (in_array("content-color", $variation_config['model'])) {
 					print "\n\t\t\t\t\t\t\t<select name='content-color' style='font-size: 10px;' onchange='this.form.submit();'>";							
 					foreach ($options_values['sidebar-color'] as $label => $value) {
 						print "\n\t\t\t\t\t\t\t\t<option value='".$value."'".($options['content-color'] == $value ? ' selected' : '') . ">".$label."</option>";
@@ -870,7 +880,7 @@ function shadowbox_options() {
 					print "\n\t\t\t\t\t\t\t</select>";
 				}
 				// opacity
-				if (in_array("content-opacity", $shadowbox_config['model'])) {
+				if (in_array("content-opacity", $variation_config['model'])) {
 					print "\n\t\t\t\t\t\t\t<select name='content-opacity' style='font-size: 10px;' onchange='this.form.submit();'>";							
 					foreach ($options_values['sidebar-opacity'] as $label => $value) {
 						print "\n\t\t\t\t\t\t\t\t<option value='".$value."'".($options['content-opacity'] == $value ? ' selected' : '') . ">".$label."</option>";
@@ -891,7 +901,7 @@ function shadowbox_options() {
 							print "<tr><td style='border-bottom: 1px dotted; text-align: left;'>";
 							print "<div style='font-size: 10px;'>Left Sidebar</div>\n";
 							// color
-							if (in_array("left01-color", $shadowbox_config['model'])) {
+							if (in_array("left01-color", $variation_config['model'])) {
 								print "\n\t\t\t\t\t\t\t<select name='left01-color' style='font-size: 10px;' onchange='this.form.submit();'>";							
 								foreach ($options_values['sidebar-color'] as $label => $value) {
 									print "\n\t\t\t\t\t\t\t\t<option value='".$value."'".($options['left01-color'] == $value ? ' selected' : '') . ">".$label."</option>";
@@ -899,7 +909,7 @@ function shadowbox_options() {
 								print "\n\t\t\t\t\t\t\t</select>";
 							}
 							// opacity
-							if (in_array("left01-opacity", $shadowbox_config['model'])) {
+							if (in_array("left01-opacity", $variation_config['model'])) {
 								print "\n\t\t\t\t\t\t\t<select name='left01-opacity' style='font-size: 10px;' onchange='this.form.submit();'>";							
 								foreach ($options_values['sidebar-opacity'] as $label => $value) {
 									print "\n\t\t\t\t\t\t\t\t<option value='".$value."'".($options['left01-opacity'] == $value ? ' selected' : '') . ">".$label."</option>";
@@ -907,7 +917,7 @@ function shadowbox_options() {
 								print "\n\t\t\t\t\t\t\t</select>";
 							}
 							//width
-							if (in_array("left01-width", $shadowbox_config['model'])) {
+							if (in_array("left01-width", $variation_config['model'])) {
 								print "\n\t\t\t\t\t\t\t<select name='left01-width' style='font-size: 10px;' onchange='this.form.submit();'>";
 								foreach ($options_values['sidebar-width'] as $label => $value) {
 									print "\n\t\t\t\t\t\t\t<option value='".$value."'".($options['left01-width'] == $value ? ' selected' : '') . ">".$label."</option>";
@@ -933,7 +943,7 @@ function shadowbox_options() {
 							print "<div style='font-size: 10px;'>Right Sidebar</div>\n";
 							//print "<td style='border-bottom: 1px dotted; text-align: right;'>\n";
 							// color
-							if (in_array("right01-color", $shadowbox_config['model'])) {
+							if (in_array("right01-color", $variation_config['model'])) {
 								print "\n\t\t\t\t\t\t\t<select name='right01-color' style='font-size: 10px;' onchange='this.form.submit();'>";							
 								foreach ($options_values['sidebar-color'] as $label => $value) {
 									print "\n\t\t\t\t\t\t\t<option value='".$value."'".($options['right01-color'] == $value ? ' selected' : '') . ">".$label."</option>";
@@ -941,7 +951,7 @@ function shadowbox_options() {
 								print "\n\t\t\t\t\t\t\t</select>";
 							}						
 							// opacity
-							if (in_array("right01-opacity", $shadowbox_config['model'])) {
+							if (in_array("right01-opacity", $variation_config['model'])) {
 								print "\n\t\t\t\t\t\t\t<select name='right01-opacity' style='font-size: 10px;' onchange='this.form.submit();'>";							
 								foreach ($options_values['sidebar-opacity'] as $label => $value) {
 									print "\n\t\t\t\t\t\t\t\t<option value='".$value."'".($options['right01-opacity'] == $value ? ' selected' : '') . ">".$label."</option>";
@@ -949,7 +959,7 @@ function shadowbox_options() {
 								print "\n\t\t\t\t\t\t\t</select>";
 							}
 							// width
-							if (in_array("right01-width", $shadowbox_config['model'])) {
+							if (in_array("right01-width", $variation_config['model'])) {
 								print "\n\t\t\t\t\t\t\t<select name='right01-width' style='font-size: 10px;' onchange='this.form.submit();'>";
 									foreach ($options_values['sidebar-width'] as $label => $value) {
 										print "\n\t\t\t\t\t\t\t<option value='".$value."'".($options['right01-width'] == $value ? ' selected' : '') . ">".$label."</option>";
@@ -971,7 +981,7 @@ function shadowbox_options() {
 						//print "<td style='border-bottom: 1px dotted; text-align: right;'>\n";
 
 
-						if (in_array("right02-color", $shadowbox_config['model'])) {
+						if (in_array("right02-color", $variation_config['model'])) {
 							print "\n\t\t\t\t\t\t\t<select name='right02-color' style='font-size: 10px;' onchange='this.form.submit();'>";							
 							foreach ($options_values['sidebar-color'] as $label => $value) {
 								print "\n\t\t\t\t\t\t\t<option value='".$value."'".($options['right02-color'] == $value ? ' selected' : '') . ">".$label."</option>";
@@ -979,7 +989,7 @@ function shadowbox_options() {
 							print "\n\t\t\t\t\t\t\t</select>";
 						}
 						// opacity
-						if (in_array("right02-opacity", $shadowbox_config['model'])) {
+						if (in_array("right02-opacity", $variation_config['model'])) {
 							print "\n\t\t\t\t\t\t\t<select name='right02-opacity' style='font-size: 10px;' onchange='this.form.submit();'>";							
 							foreach ($options_values['sidebar-opacity'] as $label => $value) {
 								print "\n\t\t\t\t\t\t\t\t<option value='".$value."'".($options['right02-opacity'] == $value ? ' selected' : '') . ">".$label."</option>";
@@ -987,7 +997,7 @@ function shadowbox_options() {
 							print "\n\t\t\t\t\t\t\t</select>";
 						}
 						// width
-						if (in_array("right02-width", $shadowbox_config['model'])) {
+						if (in_array("right02-width", $variation_config['model'])) {
 							print "\n\t\t\t\t\t\t\t<select name='right02-width' style='font-size: 10px;' onchange='this.form.submit();'>";
 							foreach ($options_values['sidebar-width'] as $label => $value) {
 								print "\n\t\t\t\t\t\t\t<option value='".$value."'".($options['right02-width'] == $value ? ' selected' : '') . ">".$label."</option>";
@@ -1013,7 +1023,7 @@ function shadowbox_options() {
 				print "<div style='float: right; clear: left; font-size: 10px;'>\n";
 				
 					// post single sidebar options
-					if (in_array("post-single-sidebar", $shadowbox_config['model'])) {
+					if (in_array("post-single-sidebar", $variation_config['model'])) {
 							print "\n\t\t\t\t\t\t\tSingle Post Display: <select name='post-single-sidebar' style='font-size: 10px;' onchange='this.form.submit();'>";							
 							foreach ($options_values['post-single-sidebar'] as $label => $value) {
 								print "\n\t\t\t\t\t\t\t\t<option value='".$value."'".($options['post-single-sidebar'] == $value ? ' selected' : '') . ">".$label."</option>";
@@ -1048,7 +1058,7 @@ function shadowbox_options() {
 							<td style='border-bottom: 1px dotted; text-align: right;'>";
 							
 							// text color options
-							if (in_array("textcolor", $shadowbox_config['model'])) {
+							if (in_array("textcolor", $variation_config['model'])) {
 								print "\n\t\t\t\t\t\t\t<select name='textcolor' style='font-size: 10px;' onchange='this.form.submit();'>";							
 								foreach ($options_values['textcolor'] as $label => $value) {
 									print "\n\t\t\t\t\t\t\t\t<option value='".$value."'".($options['textcolor'] == $value ? ' selected' : '') . ">".$label."</option>";
@@ -1063,7 +1073,7 @@ function shadowbox_options() {
 							<td style='border-bottom: 1px dotted; text-align: right;'>";
 							
 							// link color options
-							if (in_array("linkcolor", $shadowbox_config['model'])) {
+							if (in_array("linkcolor", $variation_config['model'])) {
 								print "\n\t\t\t\t\t\t\t<select name='linkcolor' style='font-size: 10px;' onchange='this.form.submit();'>";							
 								foreach ($options_values['linkcolor'] as $label => $value) {
 									print "\n\t\t\t\t\t\t\t\t<option value='".$value."'".($options['linkcolor'] == $value ? ' selected' : '') . ">".$label."</option>";
@@ -1080,7 +1090,7 @@ function shadowbox_options() {
 							 (<span style='font-size: 10px; color:".$options['linkcolor_visited'].";'>visited link</span>)</td>								
 							<td style='border-bottom: 1px dotted; text-align: right;'>";
 							
-							if (in_array("entry-link-style", $shadowbox_config['model'])) {
+							if (in_array("entry-link-style", $variation_config['model'])) {
 								print "
 								<select name='entry-link-style' style='font-size: 10px;' onchange='this.form.submit();'>								
 									<option value='none' ".($options['entry-link-style'] == 'none' ? ' selected' : '') . ">None</option>
@@ -1101,7 +1111,7 @@ function shadowbox_options() {
 							<td style='border-bottom: 1px dotted;'><span class='category' style='font-size: 10px;'>Category Link Style</span></td>
 							<td style='border-bottom: 1px dotted; text-align: right;'>";
 							
-							if (in_array("category-link-style", $shadowbox_config['model'])) {
+							if (in_array("category-link-style", $variation_config['model'])) {
 								print "\n\t\t\t\t\t\t\t<select name='category-link-style' style='font-size: 10px;' onchange='this.form.submit();'>";							
 								foreach ($options_values['category-link-style'] as $label => $value) {
 									print "\n\t\t\t\t\t\t\t\t<option value='".$value."'".($options['category-link-style'] == $value ? ' selected' : '') . ">".$label."</option>";
@@ -1117,7 +1127,7 @@ function shadowbox_options() {
 							<td style='border-bottom: 1px dotted;'><span class='tag' style='font-size: 10px;'>Tag Link Style</span></td>
 							<td style='border-bottom: 1px dotted; text-align: right;'>\n";
 							
-							if (in_array("tag-link-style", $shadowbox_config['model'])) {
+							if (in_array("tag-link-style", $variation_config['model'])) {
 								print "\n\t\t\t\t\t\t\t<select name='tag-link-style' style='font-size: 10px;' onchange='this.form.submit();'>";							
 								foreach ($options_values['tag-link-style'] as $label => $value) {
 									print "\n\t\t\t\t\t\t\t\t<option value='".$value."'".($options['tag-link-style'] == $value ? ' selected' : '') . ">".$label."</option>";
@@ -1255,7 +1265,7 @@ function shadowbox_options() {
 		<div class='horizontalbar' style='font-size: 8px; float: right;'>";
 		
 		// color
-		if (in_array("bottom-color", $shadowbox_config['model'])) {
+		if (in_array("bottom-color", $variation_config['model'])) {
 			print "\n\t\t\t\t\t\t\t<select name='bottom-color' style='font-size: 10px;' onchange='this.form.submit();'>";							
 			foreach ($options_values['sidebar-color'] as $label => $value) {
 				print "\n\t\t\t\t\t\t\t\t<option value='".$value."'".($options['bottom-color'] == $value ? ' selected' : '') . ">".$label."</option>";
@@ -1263,7 +1273,7 @@ function shadowbox_options() {
 			print "\n\t\t\t\t\t\t\t</select>";
 		}
 		// opacity
-		if (in_array("bottom-opacity", $shadowbox_config['model'])) {
+		if (in_array("bottom-opacity", $variation_config['model'])) {
 			print "\n\t\t\t\t\t\t\t<select name='bottom-opacity' style='font-size: 10px;' onchange='this.form.submit();'>";							
 			foreach ($options_values['sidebar-opacity'] as $label => $value) {
 				print "\n\t\t\t\t\t\t\t\t<option value='".$value."'".($options['bottom-opacity'] == $value ? ' selected' : '') . ">".$label."</option>";
@@ -1320,13 +1330,13 @@ function shadowbox_options() {
 
 	print "</div>";
 		// footer meta left appgroups options	
-	if (in_array("footer-meta-left", $shadowbox_config['model'])) {
+	if (in_array("footer-meta-left", $variation_config['model'])) {
 		print "<span style='font-size: 9px;'>Footer Links:</span>\n";
 		print "<select name='footer-meta-left' style='font-size: 10px;'  onchange='this.form.submit();'>";
-		foreach (array_keys($shadowbox_config['footer_meta_left_options']) as $meta_left_option) {						
-			print "<option value='".$shadowbox_config['footer_meta_left_options'][$meta_left_option]['option_name']."' ";
-			print ($options['footer-meta-left'] == $shadowbox_config['footer_meta_left_options'][$meta_left_option]['option_name'] ? ' selected' : '') . ">";
-			print $shadowbox_config['footer_meta_left_options'][$meta_left_option]['option_label']."</option>";						
+		foreach (array_keys($variation_config['footer_meta_left_options']) as $meta_left_option) {						
+			print "<option value='".$variation_config['footer_meta_left_options'][$meta_left_option]['option_name']."' ";
+			print ($options['footer-meta-left'] == $variation_config['footer_meta_left_options'][$meta_left_option]['option_name'] ? ' selected' : '') . ">";
+			print $variation_config['footer_meta_left_options'][$meta_left_option]['option_label']."</option>";						
 		}
 		print "</select>";
 	}
@@ -1359,7 +1369,8 @@ function shadowbox_options() {
  *********************************************************/
 
 function save_options() {
-    global $_POST, $options, $shadowbox_css;
+    global $_POST, $options, $variation_css;
+    global $theme_settings, $theme_css;
 
 	// options are those exposed in the UI
 	set_primary_options();
@@ -1385,7 +1396,7 @@ function save_options() {
 	 * add theme options to theme CSS
 	 ******************************************************************************/
 	
-	$shadowbox_css =
+	$variation_css =
 	"	
 		body {
 			font-size: 62.5%;
@@ -1605,6 +1616,15 @@ function save_options() {
 			font-weight: normal;	
 			border-bottom: none;
 		}
+
+		.headertext a:hover {
+			display: ".$options['show-header-text'].";
+			padding-top: ".$options['header-text-padding-top']."px;
+			padding-left: ".$options['header-text-padding-left']."px;
+			color: ".$options['header-blogtitle-color'].";	
+			border-bottom: none;
+		}
+
 		
 		.headerblock .description {
 			display: ".$options['show-header-text'].";
@@ -1975,8 +1995,8 @@ function save_options() {
 					
 	";
 		
-	update_option('shadowbox_settings', $options);
-	update_option('shadowbox_css', $shadowbox_css);
+	update_option($theme_settings, $options);
+	update_option($theme_css, $variation_css);
 	
 	print_option_feedback();
 	
@@ -1987,9 +2007,9 @@ function save_options() {
  *********************************************************/
  
 function set_primary_options() {
-	global $_POST, $options, $allowedposttags, $shadowbox_config;
+	global $_POST, $options, $allowedposttags, $variation_config;
 	
-	foreach ($shadowbox_config['model'] as $option => $value) {
+	foreach ($variation_config['model'] as $option => $value) {
 
 		//sanitize options that contain HTML
 		if ($option == "headerleftcustom") {
@@ -2112,7 +2132,7 @@ function set_variation_options() {
 		if (!in_array($options['linkcolor'], array_values($options_values['linkcolor']))) $options['linkcolor'] = "#003366";
 		if (!in_array($options['textcolor'], array_values($options_values['textcolor']))) $options['textcolor'] = "#444444";
 		if (!in_array($options['entry-link-style'], array_values($options_values['entry-link-style']))) $options['entry-link-style'] = "underline";
-		//if (!in_array($options['header-blogtitle-color'], array_values($options_values['linkcolor']))) $options['header-blogtitle-color'] = $options['linkcolor'];	
+		if (!in_array($options['header-blogtitle-color'], array_values($options_values['linkcolor']))) $options['header-blogtitle-color'] = $options['linkcolor'];	
 	}
 	
 	set_derivative_options();	
@@ -2125,26 +2145,26 @@ function set_variation_options() {
  *********************************************************/
 
 function set_derivative_options() {
-	global $shadowbox_config, $_POST, $options, $options_values;
+	global $variation_config, $_POST, $options, $options_values;
 
 	/******************************************************************************
 	 * Header left links (derived from  header_meta_left_options
 	 ******************************************************************************/
 
-	if ($options['header-meta-left'] == 'blogs' && $shadowbox_config['header_meta_left_options']['blog'] == "") {
+	if ($options['header-meta-left'] == 'blogs' && $variation_config['header_meta_left_options']['blog'] == "") {
 		$options['headerleft'] = "<a href='http:".$current_site->domain . $current_site->path."wp-signup.php' title='View your Blogs'>WordPress</a>";
 	} else if ($options['header-meta-left'] == 'custom') {
 		$options['headerleft'] = stripslashes($options['headerleftcustom']);
 	} else {
-		$options['headerleft'] = $shadowbox_config['header_meta_left_options'][$options['header-meta-left']]['option_value'];					
+		$options['headerleft'] = $variation_config['header_meta_left_options'][$options['header-meta-left']]['option_value'];					
 	}
 
 	/******************************************************************************
 	 * Header right links (derived from header_meta_right_options)
 	 ******************************************************************************/
 
-	if (isset($shadowbox_config['header_meta_right_options'])) {
-		$options['headerright'] = $shadowbox_config['header_meta_right_options']['option_value'];
+	if (isset($variation_config['header_meta_right_options'])) {
+		$options['headerright'] = $variation_config['header_meta_right_options']['option_value'];
 	} else {
 		$options['headerright'] = "";
 	}
@@ -2156,7 +2176,7 @@ function set_derivative_options() {
 	if ($options['footer-meta-left'] == 'custom') {
 		$options['footerleft'] = stripslashes($options['footerleftcustom']);
 	} else {
-		$options['footerleft'] = $shadowbox_config['footer_meta_left_options'][$options['footer-meta-left']]['option_value'];					
+		$options['footerleft'] = $variation_config['footer_meta_left_options'][$options['footer-meta-left']]['option_value'];					
 	}
 
 	/******************************************************************************
@@ -2593,27 +2613,27 @@ function set_derivative_options() {
  ******************************************************************************/
 
 function delete_options() {
-    global $shadowbox_config, $options, $shadowbox_css;
+    global $variation_config, $options, $variation_css, $theme_settings, $theme_css;
 	
 
-	delete_option('shadowbox_settings'); 	
-	delete_option('shadowbox_css');
+	delete_option($theme_settings); 	
+	delete_option($theme_css);
 	
-	add_option('shadowbox_settings', null);  	
- 	add_option('shadowbox_css', "");
+	add_option($theme_settings, null);  	
+ 	add_option($theme_css, "");
 	
-	$options = get_option('shadowbox_settings');
-	$shadowbox_css = get_option('shadowbox_css');	
+	$options = get_option($theme_settings);
+	$variation_css = get_option($theme_css);	
 	
 //	set_primary_options();
 	set_variation_options();
 	
 	$options['revert'] = 1;
 
-	update_option('shadowbox_settings', $options);
-	update_option('shadowbox_css', $options);
-// 	$options = get_option('shadowbox_settings');
-// 	$shadowbox_css = get_option('shadowbox_css');
+	update_option($theme_settings, $options);
+	update_option($theme_css, $options);
+// 	$options = get_option($theme_settings);
+// 	$variations_css = get_option($theme_css);
 }
 
 /******************************************************************************
