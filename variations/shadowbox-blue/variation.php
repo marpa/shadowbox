@@ -18,7 +18,7 @@ if ($options['background'] == "shadowbox-blue") {
 	$options['background_image'] .= "/variations/".$options['background_image_directory'];
 	$options['background_image'] .= "/".$options['background_image_file']."')";
 
-	$options['background_color'] = "#83A776";
+	$options['background_color'] = "#051E3C";
 	$options['bgtextcolor'] = "#CCCCCC";
 	$options['bglinkcolor'] = "#FFFFFF";
 	$options['bgbordercolor'] = "#999999";
@@ -34,7 +34,7 @@ if ($options['background'] == "shadowbox-blue") {
 	$options['transparent-link-color']  = $options['linkcolor'];
 	$options['transparent-text-color']  = $options['textcolor'];
 
-	$options['header-blogtitle-size'] = "20";
+	//$options['header-blogtitle-size'] = "20";
 	
 	$options['page_image_directory'] = "shadowbox-default";
 	$options['page_image_path'] = "url('".get_bloginfo("stylesheet_directory")."/variations/".$options['page_image_directory'];
