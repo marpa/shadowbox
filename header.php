@@ -15,8 +15,8 @@
 <style type="text/css" >
 
 <?php 
-global $shadowbox_css, $options; 
-print $shadowbox_css;
+global $variation_css, $options; 
+print $variation_css;
 
 // IE hack opacity options
 print $options['header-color-ie']."\n"; 
@@ -44,7 +44,7 @@ print $options['right02-color-ie']."\n";
 		 
 		if ($options['headermeta'] == "on") {
 			if (wp_get_current_user()->user_level > 4) print "<a href='".get_bloginfo('siteurl')."/wp-admin/'>Dashboard</a>";
-			if (wp_get_current_user()->user_level > 7) print " | <a href='".get_bloginfo('siteurl')."/wp-admin/themes.php?page=Shadowbox'>Design</a>";
+			if (wp_get_current_user()->user_level > 7) print " | <a href='".get_bloginfo('siteurl')."/wp-admin/themes.php?page=Variations'>Design</a>";
 			
 			if (wp_get_current_user()->user_level > 0) {
 				print " | <a href='".get_bloginfo('siteurl')."/wp-admin/profile.php'>";
