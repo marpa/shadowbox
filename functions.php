@@ -292,6 +292,11 @@ function variation_options() {
 			border: 1px solid #CCCCCC;
 		}
 		
+		.contentwrapper {
+			background-color: ".$options['background_color'].";
+		
+		}
+		
 		.headerwrapper {
 			width: ".$options['header-width'].";
 		}
@@ -743,7 +748,7 @@ function variation_options() {
 	 *********************************************************/
 	
 	print "
-	<table width = '".$model_site_width."' align='center' cellpadding='0' cellspacing='0' style='border: 1px solid #CCCCCC; background-color: transparent;'>
+	<table width = '".$model_site_width."' align='center' cellpadding='0' cellspacing='0' style='border: 1px solid #CCCCCC; background-color: ".$options['content-background'].";'>
 	<tr>
 	<td>		
 		<table width = '100%' cellpadding='10' style='background-color: transparent;'>
