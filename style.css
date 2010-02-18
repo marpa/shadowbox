@@ -1223,6 +1223,7 @@ h2 {
 
 .post h2  {
 	border-bottom: none;
+	font-weight: normal;
 }
 .post h2 a {
 	display: block;
