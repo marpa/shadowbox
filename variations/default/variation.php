@@ -3,11 +3,10 @@
 Theme Name: ShadowBox
 Variation Name: Default
 Variation ID: default
-Description: Easy to use highly flexible theme with options for defining background images and  setting colors, opacity and visibility of various foreground areas including widget bars
+Description: Default variation for ShadowBox
 Version: 1.0.1
 Author: Alex Chapin
-Author URI: 
-Tags: one-column, two-columns, three-columns, left-sidebar, right-sidebar, theme-options, fixed-width, flexible-width, custom-colors, custom-header, sticky-post, light, dark, white, black, yellow, blue, green, red, silver
+Author URI: http://www.alexchapin.com
 */
 
 // defaults for all but custom background images 
@@ -37,7 +36,7 @@ $options['page-image-width'] = $options['site-width']-50;
 $options['foreground_color'] = "#FFFFFF";
 $options['content-background'] = "#FFFFFF";
 $options['header-text-padding-left'] = "10";
-$options['header-blogtitle-size'] = "30";
+$options['header-blogtitle-size'] = "27";
 
 
 if (isset($options['linkcolor'])) {
