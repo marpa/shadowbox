@@ -1038,8 +1038,8 @@ function variation_options() {
 					print "
 						</div>
 						<div style='color: ".$options['linkcolor']."; font-size: 16px; font-weight: bold;'>Post Title</div>
-						<span style='font-size: 9px;'>April 16th, 2009 by </span>
-						<span class='entry'>Posted in</span><span class='category'><a href='#'>Category</a></span>					
+						<span style='font-size: 9px;'>April 16th, 2009 by Author</span><br/>
+						<span class='entry'>Categories: </span><span class='category'><a href='#'>Category</a></span>					
 						<div class='entry' style='text-align: justify;'>
 						<p>Lorem ipsum dolor sit amet, <span style='color: ".$options['linkcolor_visited'].";'>visited link</span> 
 						adipiscing elit. Donec ac felis non mauris tristique vehicula. 
@@ -1903,7 +1903,7 @@ function save_options() {
 			color:".$options['tag-link-color'].";
 			background-color:".$options['tag-link-background'].";
 			border:1px solid #ccc; 
-			cursor:default; 
+			cursor:pointer; 
 			display:inline-block; 
 			margin:2px 0.2em; padding:0.1em 0.2em;			
 		}
@@ -1922,7 +1922,7 @@ function save_options() {
 			color:".$options['category-link-color'].";
 			background-color:".$options['category-link-background'].";
 			border:1px solid #ccc; 
-			cursor:default; 
+			cursor:pointer; 
 			display:inline-block; 
 			margin:2px 0.2em; padding:0.1em 0.2em;	
 		}
