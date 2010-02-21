@@ -8,13 +8,12 @@ get_header(); ?>
 
 <table width='100%' cellpadding='0'>
 <tr>
-<td valign='top' class="sidebarleftcolor">
+	<td valign='top' class="left01block">
+	
+	<?php if ($options['left01-width'] != 0) include (TEMPLATEPATH . '/sidebar-left.php'); ?>
+	
+	</td>
 
-<?php 
-if ($options['sidebar-left-width'] != 0) include (TEMPLATEPATH . '/sidebar-left.php'); 
-?>
-
-</td>
 <td valign='top' class="contentblock">
 
 	<div id="content" class="widecolumn">
@@ -62,12 +61,9 @@ if ($options['sidebar-left-width'] != 0) include (TEMPLATEPATH . '/sidebar-left.
 	</div>
 
 </td>
-<td valign='top' class="sidebarrightcolor">
+<td valign='top' class="right01block">
 
-<?php 
-if ($options['sidebar-right-width'] != 0) include (TEMPLATEPATH . '/sidebar-right.php'); 
-?>
-
+<?php if (!isset($options['right01-width']) || $options['right01-width'] != 0) include (TEMPLATEPATH . '/sidebar-right.php'); ?>
 
 </td>
 </tr>
