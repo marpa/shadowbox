@@ -7,7 +7,7 @@
 get_header();
 ?>
 
-	<div id="content" class="narrowcolumn">
+	<div id="content" class="centercontent">
 
 		<h2 class="center">Error 404 - Not Found</h2>
 

@@ -15,7 +15,7 @@ if ($options['sidebar-left-width'] != 0) include (TEMPLATEPATH . '/sidebar-left.
 ?>
 
 </td>
-<td valign='top' class="centercontent">
+<td valign='top' class="contentblock">
 
 	<div id="content" class="widecolumn">
 
