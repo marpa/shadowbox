@@ -15,12 +15,13 @@ body {
 	font-size: 62.5%;
 	font-family:'Helvetica Neue',Arial,Helvetica,sans-serif;
 	color: #444444;
-	background-color: #051E3C;
-	background-image: url('variations/translucence-blue/bg-blue01.png');
-	background-repeat: no-repeat;
-	background-position: center top;	 
+	background-color: #FFFFFF;
+	background-image: url('variations/shadowbox-gray-white/bg_topdark.jpg');
+	background-repeat: repeat-x;
+	background-position: top;	 
 	margin-top: 10px;
 }
+
 
 #headerimg 	{
 	margin: 7px 9px 0;
@@ -735,47 +736,47 @@ div.aligncenter {
 }
 		
 .block_foreground {
-	background-color: #FFFFFF;
+
 }
 
 .page_top {
-	background-image: none;
+	background-image: url('variations/shadowbox-default/850-top.png');
 	background-repeat: no-repeat;
 	background-position: center;
 	border-top: 1px none #000000;
 	border-left: 1px none #000000;
 	border-right: 1px none #000000;
-	padding-top: 0px;
-	margin-top: 10px;
+	padding-top: 30px;
+	margin-top: px;
 }
 
 .page_main {
 	background-color: transparent;
-	background-image:  none; 
+	background-image:  url('variations/shadowbox-default/850-main.png'); 
 	background-repeat: repeat-y; 
 	background-position: center;
 	border-left: 1px none #000000;
 	border-right: 1px none #000000;
-	padding-top: 0px;
-	padding-right: 0px;
-	padding-left: 0px;
+	padding-top: px;
+	padding-right: 50px;
+	padding-left: 50px;
 }
 		
 .page_bottom {
 	background-color: transparent;
-	background-image:  none;
+	background-image:  url('variations/shadowbox-default/850-bottom.png');
 	background-repeat: no-repeat; 
 	background-position: center;
 	border-bottom: 1px none #000000;
 	border-left: 1px none #000000;
 	border-right: 1px none #000000;
-	padding-top: 10px;
-	margin-bottom: 10px;
+	padding-top: 30px;
+	margin-bottom: px;
 }
 
 #header {
-	border-bottom: 1px none #999999;
-	border-top: 1px none #999999;
+	border-bottom: 1px solid #999999;
+	border-top: 1px solid #999999;
 	margin: 0 0 0 1px;
 	padding: 0 2px 0 2px;
 }
@@ -784,7 +785,7 @@ div.aligncenter {
 	font-size: 12px;
 	width: 50%;	
 	text-align: left;
-	margin-left: 0px;
+	margin-left: 30px;
 }
 
 .headermeta_right {
@@ -793,14 +794,14 @@ div.aligncenter {
 	text-align: right;
 	float: right;
 	clear: left;
-	margin-right: 0px;
+	margin-right: 30px;
 }
 
 .footermeta_left {
 	font-size: 12px;
 	width: 50%;	
 	text-align: left;
-	margin-left: 10px;
+	margin-left: 30px;
 	padding-top: 5px;
 	padding-bottom: 10px;
 }
@@ -810,7 +811,7 @@ div.aligncenter {
 	width: 40%;
 	text-align: right;
 	float: right;
-	margin-right: 10px;
+	margin-right: 20px;
 	padding-top: 5px;
 	padding-bottom: 10px;
 }
@@ -819,10 +820,10 @@ div.aligncenter {
 .contentblock {
 	color: #444444;
 	background-color: rgba(255, 255, 255, 1);
-	border-top: 1px none #000000;
-	border-bottom: 1px none #000000;
-	border-left: 1px none #000000;
-	border-right: 1px none #000000;
+	border-top: 1px none ;
+	border-bottom: 1px none ;
+	border-left: 1px none ;
+	border-right: 1px none ;
 	padding-right: 30px;
 	padding-left: 20px;
 }
@@ -839,42 +840,50 @@ a, h2 a:hover, h3 a:hover {
 
 a:hover {
 	color: #003366;
-	border-bottom:1px solid #036;
+	border-bottom:1px solid #003366;
 	text-decoration: none;
 }
 
 .headerblock {
-	color: #FFFFFF;
-	background-color: rgba(54, 69, 89, .2);
-	border-top: 1px none #666666;
-	border-bottom: 1px none #666666;
-	border-left: 1px none #666666;
-	border-right: 1px none #666666;				
+	color: #444444;
+	background-color: rgba(249, 249, 249, 1);
+	border-top: 1px solid #CCCCCC;
+	border-bottom: 1px solid #CCCCCC;
+	border-left: 1px solid #CCCCCC;
+	border-right: 1px solid #CCCCCC;				
 	padding-top: 0px;
-	height: 70px;
+	height: 100px;
+}
+
+.headerblock:hover {
+	background-color: rgba(249, 249, 249, 1.1);
+	border-top: 1px solid #CCCCCC;
+	border-bottom: 1px solid #CCCCCC;
+	border-left: 1px solid #CCCCCC;
+	border-right: 1px solid #CCCCCC;	 
 }
 
 .topblock {
-	color:  #FFFFFF;
-	background-color: rgba(54, 69, 89, .3);
-	border-bottom: 1px none #666666;					
+	color:  #444444;
+	background-color: rgba(255, 255, 255, 1);
+	border-bottom: 1px solid #CCCCCC;					
 	padding-top: 3px;
 	padding-bottom: 1px;
 	padding-left: 10px;
 }
 
 .topblock a {
-	color: #FFFFFF;		
+	color: #003366;		
 }
 
 .topblock a:hover {
-	color: #FFFFFF;	
+	color: #003366;	
 	border-bottom: 1px solid ;	
 }
 
 .bottomblock {
-	color:  #FFFFFF;
-	background-color: rgba(54, 69, 89, .3);
+	color:  #444444;
+	background-color: rgba(255, 255, 255, 1);
 	border-bottom: 1px none ;					
 	padding-top: 2px;
 	padding-bottom: 2px;
@@ -882,17 +891,21 @@ a:hover {
 	margin-right: 5px;
 }
 
+.bottomblock:hover {
+	background-color: rgba(255, 255, 255, 1.1);
+}		
+
 .bottomblock a {
-	color: #FFFFFF;		
+	color: #003366;		
 }
 
 .bottomblock a:hover {
-	color: #FFFFFF;	
-	border-bottom: 1px solid #FFFFFF;	
+	color: #003366;	
+	border-bottom: 1px solid #003366;	
 }
 
 div .hr {
-	color: #666666;
+	color: #CCCCCC;
 	background-color: #999999;
 	height: 1px;
 	margin-right: -1px;
@@ -902,25 +915,34 @@ div .hr {
 
 .headertext a {
 	display: block;
-	padding-top: 15px;
+	padding-top: 25px;
 	padding-left: 10px;
-	color: #CCCC99;
-	font-size: 30px;
+	color: #003366;
+	font-size: 27px;
 	font-weight: normal;	
 	border-bottom: none;
 }
 
+.headertext a:hover {
+	display: block;
+	padding-top: 25px;
+	padding-left: 10px;
+	color: #003366;	
+	border-bottom: none;
+}
+
+
 .headerblock .description {
 	display: block;
 	padding-left: 15px;
-	color: #FFFFFF;
+	color: #666666;
 	font-size: 12px;
 }
 
 /* Begin sidebar list */
 .sidebarleft01 ul ul li, .sidebarleft01 ul ol li {
 	font-size: 12px;
-	color: #FFFFFF;
+	color: #444444;
 	list-style-type:none;
 	margin: 3px 0 -4px;
 	padding: 3px;
@@ -929,7 +951,7 @@ div .hr {
 
 .sidebarright01 ul ul li, .sidebarright01 ul ol li {
 	font-size: 12px;
-	color: #FFFFFF;
+	color: #444444;
 	list-style-type:none;
 	margin: 3px 0 -4px;
 	padding: 3px;
@@ -947,7 +969,7 @@ div .hr {
 
 /* Begin sidebar search form */
 .sidebarleft01  #searchform #s {
-	background-color: ;
+	background-color: #FFFFFF;
 	color: #003366;
 	border: 1px solid #999999;
 	width: 108px;
@@ -955,7 +977,7 @@ div .hr {
 }
 
 .sidebarright01  #searchform #s {
-	background-color: ;
+	background-color: #FFFFFF;
 	color: #003366;
 	border: 1px solid #999999;
 	width: 108px;
@@ -963,7 +985,7 @@ div .hr {
 }
 
 .sidebarright02  #searchform #s {
-	background-color: ;
+	background-color: #FFFFFF;
 	color: #003366;
 	border: 1px solid #999999;
 	width: 108px;
@@ -972,8 +994,8 @@ div .hr {
 
 /* Begin block color borders and opacity */
 .left01block {
-	color: #FFFFFF;
-	background-color: rgba(243, 243, 243, .6);
+	color: #444444;
+	background-color: rgba(249, 249, 249, 1);
 	border-top: 1px none #CCCCCC;
 	border-bottom: 1px none #CCCCCC;
 	border-left: 1px none #CCCCCC;
@@ -981,25 +1003,25 @@ div .hr {
 }
 
 .left01block:hover {
-	background-color: rgba(243, 243, 243, 0.7);
+	background-color: rgba(249, 249, 249, 1.1);
 }
 		
 .right01block {
-	color: #FFFFFF;
-	background-color: rgba(54, 69, 89, .5);
-	border-top: 1px solid #666666;
-	border-bottom: 1px solid #666666;
-	border-left: 1px solid #666666;
-	border-right: 1px solid #666666;
+	color: #444444;
+	background-color: rgba(249, 249, 249, 1);
+	border-top: 1px solid #CCCCCC;
+	border-bottom: 1px solid #CCCCCC;
+	border-left: 1px solid #CCCCCC;
+	border-right: 1px solid #CCCCCC;
 }
 
 .right01block:hover {
-	background-color: rgba(54, 69, 89, 0.6);
+	background-color: rgba(249, 249, 249, 1.1);
 }
 
 .right02block {
 	color: #444444;
-	background-color: rgba(243, 243, 243, .8);
+	background-color: rgba(249, 249, 249, 1);
 	border-top: 1px none #CCCCCC;
 	border-bottom: 1px none #CCCCCC;
 	border-left: 1px none #CCCCCC;
@@ -1007,12 +1029,12 @@ div .hr {
 }
 
 .right02block:hover {
-	background-color: rgba(243, 243, 243, 0.9);
+	background-color: rgba(249, 249, 249, 1.1);
 }
 
 /* Begin sidebar text, width and visibility  */
 .sidebarleft01 {
-	color: #FFFFFF;
+	color: #444444;
 	width: 0px;
 	visibility: hidden;
 	padding-left: 25px;
@@ -1035,23 +1057,23 @@ div .hr {
 
 /* Begin sidebar links */
 .sidebarleft01 a {
-	color: #FFFFFF;
-	border-bottom:1px dotted #FFFFFF;
+	color: #003366;
+	border-bottom:1px dotted #003366;
 }
 		
 .sidebarleft01 a:hover {
-	color: #FFFFFF;
-	border-bottom:1px solid #FFFFFF;
+	color: #003366;
+	border-bottom:1px solid #003366;
 }
 
 .sidebarright01 a {
-	color: #FFFFFF;
-	border-bottom:1px dotted #FFFFFF;
+	color: #003366;
+	border-bottom:1px dotted #003366;
 }
 		
 .sidebarright01 a:hover {
-	color: #FFFFFF;
-	border-bottom:1px solid #FFFFFF;
+	color: #003366;
+	border-bottom:1px solid #003366;
 }
 
 .sidebarright02 a {
@@ -1065,14 +1087,26 @@ div .hr {
 }		
 
 /* Begin sidebar headings */
+.topblock h2 {
+	color: #003366;
+	padding-left: 0px;
+	border-bottom: 1px none #CCCCCC;
+}
+
+.bottomblock h2 {
+	color: #003366;
+	padding-left: 0px;
+	border-bottom: 1px none #CCCCCC;
+}
+
 .sidebarleft01 h2 {
-	color: #CCCC99;
+	color: #333333;
 	padding-left: 0px;
 	border-bottom: 1px none #CCCCCC;
 }
 		
 .sidebarright01 h2 {
-	color: #CCCC99;
+	color: #333333;
 	padding-left: 0px;
 	border-bottom: 1px none #CCCCCC;
 }
@@ -1084,6 +1118,21 @@ div .hr {
 }
 
 /* Begin entry/post links */
+
+.post h2  {
+	color: #666666;
+	border-bottom: none;
+}
+.post h2 a {
+	display: block;
+	text-align: left;
+	border-bottom: 1px solid #CCCCCC;
+}
+
+.post h2 a:hover {
+	border-bottom: 1px solid #003366;
+}
+
 .entry a {
 	color: #003366;	
 	text-decoration:none;
@@ -1120,7 +1169,6 @@ div .hr {
 	clear: both;
 	text-align: center;
 	margin-top: 10px;
-	padding-bottom: 0px;
 	border-top: 1px solid #CCCCCC;
 	border-left: 1px none #CCCCCC;
 }
@@ -1143,8 +1191,6 @@ div .hr {
 	color: #003366;
 	border-bottom: 1px dotted #003366;
 }
-
-
 
 /* Begin tag links */
 .tag a {
@@ -1212,6 +1258,7 @@ div .hr {
 }
 
 .editlink a:hover {
+	background-color: transparent;
 	text-decoration: none;
 	border: 1px solid #003366;
 }
@@ -1220,22 +1267,7 @@ h2 {
 	color: #444444;
 	text-decoration: none;
 }
-
-.post h2  {
-	border-bottom: none;
-	font-weight: normal;
-}
-.post h2 a {
-	display: block;
-	text-align: left;
-	border-bottom: 1px solid #CCCCCC;
-}
-
-.post h2 a:hover {
-	border-bottom: 1px solid #003366;
-}
-
-
+		
 /* Begin comments */
 #commentform textarea {
 	background-color: #FFFFFF;
@@ -1251,28 +1283,30 @@ h2 {
 
 /* Begin background text and link color */
 .bgtextcolor {
-	color: #CCCCCC;
+	color: #999999;
 }
 
 .bgtextcolor a {
-	color: #FFFFFF;
+	color: #666666;
 }
 
 .bgtextcolor a:hover {
-	color: #FFFFFF;
+	color: #666666;
+	border-bottom: 1px solid #666666;
 }
 
 small, .nocomments, .postmetadata, blockquote, strike {		
 	color: #444444;
 }	
 			
-.headerblock {*background:transparent;filter:progid:DXImageTransform.Microsoft.gradient(startColorstr=#33364559,endColorstr=#33364559);zoom: 1;}
-.topblock {*background:transparent;filter:progid:DXImageTransform.Microsoft.gradient(startColorstr=#4C364559,endColorstr=#4C364559);zoom: 1;}
+.headerblock {*background:transparent;filter:progid:DXImageTransform.Microsoft.gradient(startColorstr=#FFF9F9F9,endColorstr=#FFF9F9F9);zoom: 1;}
+.topblock {*background:transparent;filter:progid:DXImageTransform.Microsoft.gradient(startColorstr=#FFFFFFFF,endColorstr=#FFFFFFFF);zoom: 1;}
 .contentblock {*background:transparent;filter:progid:DXImageTransform.Microsoft.gradient(startColorstr=#FFFFFFFF,endColorstr=#FFFFFFFF);zoom: 1;}
-.bottomblock {*background:transparent;filter:progid:DXImageTransform.Microsoft.gradient(startColorstr=#4C364559,endColorstr=#4C364559);zoom: 1;}
-.left01block {*background:transparent;filter:progid:DXImageTransform.Microsoft.gradient(startColorstr=#99F3F3F3,endColorstr=#99F3F3F3);zoom: 1;}
-.right01block {*background:transparent;filter:progid:DXImageTransform.Microsoft.gradient(startColorstr=#7F364559,endColorstr=#7F364559);zoom: 1;}
-.right02block {*background:transparent;filter:progid:DXImageTransform.Microsoft.gradient(startColorstr=#CCF3F3F3,endColorstr=#CCF3F3F3);zoom: 1;}
+.bottomblock {*background:transparent;filter:progid:DXImageTransform.Microsoft.gradient(startColorstr=#FFFFFFFF,endColorstr=#FFFFFFFF);zoom: 1;}
+.left01block {*background:transparent;filter:progid:DXImageTransform.Microsoft.gradient(startColorstr=#FFF9F9F9,endColorstr=#FFF9F9F9);zoom: 1;}
+.right01block {*background:transparent;filter:progid:DXImageTransform.Microsoft.gradient(startColorstr=#FFF9F9F9,endColorstr=#FFF9F9F9);zoom: 1;}
+.right02block {*background:transparent;filter:progid:DXImageTransform.Microsoft.gradient(startColorstr=#FFF9F9F9,endColorstr=#FFF9F9F9);zoom: 1;}
+
 
 
 
