@@ -1096,14 +1096,14 @@ function variation_options() {
 							<td style='border-bottom: 1px dotted; text-align: right;'>";
 							
 							if (in_array("entry-link-style", $variation_config['model'])) {
-								print "
-								<select name='entry-link-style' style='font-size: 10px;' onchange='this.form.submit();'>								
-									<option value='none' ".($options['entry-link-style'] == 'none' ? ' selected' : '') . ">None</option>
-									<option value='underline' ".($options['entry-link-style'] == 'underline' ? ' selected' : '') . ">Underline</option>
-									<option value='box' ".($options['entry-link-style'] == 'box' ? ' selected' : '') . ">Box</option>
-									<option value='ww' ".($options['entry-link-style'] == 'ww' ? ' selected' : '') . ">WW</option>
-								</select>";
+								print "\n\t\t\t\t\t\t\t<select name='entry-link-style' style='font-size: 10px;' onchange='this.form.submit();'>";							
+								foreach ($options_values['entry-link-style'] as $label => $value) {
+									print "\n\t\t\t\t\t\t\t\t<option value='".$value."'".($options['entry-link-style'] == $value ? ' selected' : '') . ">".$label."</option>";
+								}
+								print "\n\t\t\t\t\t\t\t</select>";
 							}
+
+
 							print "
 							</td></tr>							
 						</table>
@@ -2357,9 +2357,16 @@ function set_derivative_options() {
 	} else if ($options['entry-link-style'] == "ww") {
 		$options['entry-link-border'] = "dotted ";
 		$options['entry-link-hover-border'] = "solid";
-		$options['entry-link-hover-background_color'] = "#efc";
 		$options['entry-link-decoration'] = "none";
 		$options['entry-link-hover-decoration'] = "none";
+		if ($options['content-color'] == '#000000') {
+			$options['entry-link-hover-background_color'] = "#262626";
+		} else if ($options['content-color'] == '#262626') {
+			$options['entry-link-hover-background_color'] = "#000000";
+		} else {
+			$options['entry-link-hover-background_color'] = "#efc";
+		}
+		
 	}
 
 	/******************************************************************************
