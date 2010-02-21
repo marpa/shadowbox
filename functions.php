@@ -1583,7 +1583,10 @@ function save_options() {
 		.bottomblock {
 			color:  ".$options['bottom-text-color'].";
 			background-color: ".$options['bottom-color-rgb'].";
-			border-bottom: 1px none ".$options['headerborder'].";					
+			border-top: 1px ".$options['bottom-border-style']." ".$options['bottom-border-top'].";
+			border-bottom: 1px ".$options['bottom-border-style']." ".$options['bottom-border-bottom'].";
+			border-left: 1px ".$options['bottom-border-style']." ".$options['bottom-border-left'].";
+			border-right: 1px ".$options['bottom-border-style']." ".$options['bottom-border-right'].";				
 			padding-top: 2px;
 			padding-bottom: 2px;
 			padding-left: 10px;
