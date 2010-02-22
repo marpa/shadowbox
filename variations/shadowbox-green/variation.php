@@ -7,7 +7,7 @@ Description: Easy to use highly flexible theme with options for defining backgro
 Version: 1.0.1
 Author: Alex Chapin
 Author URI: 
-Tags: one-column, two-columns, three-columns, left-sidebar, right-sidebar, theme-options, fixed-width, flexible-width, custom-colors, custom-header, sticky-post, light, dark, white, black, yellow, blue, green, red, silver
+
 */
 
 if ($options['background'] == "shadowbox-green") {
@@ -20,6 +20,9 @@ if ($options['background'] == "shadowbox-green") {
 	$options['background_repeat'] = "repeat";
 	$options['background_position'] = "center top";
 	$options['background_color'] = "#83A776";
+	$options['background-source-url'] = "http://www.squidfingers.com/patterns/";
+	$options['background-source-credit'] = "Green tile";
+	
 	$options['bgtextcolor'] = "#FFFFFF";
 	$options['bglinkcolor'] = "#333333";
 	$options['bgbordercolor'] = "#999999";
