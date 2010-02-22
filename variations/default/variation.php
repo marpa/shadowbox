@@ -283,8 +283,7 @@ $options_values['linkcolor'] = array(
 $options_values['entry-link-style'] = array(
 	'None' => 'none',
 	'Underline' => 'underline',
-	'Box' => 'box',
-	'WW' => 'ww'
+	'Underline & Highlight' => 'ww'
 );
 
 $options_values['textcolor'] = array(
