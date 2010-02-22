@@ -45,15 +45,15 @@ $variation_config['header_meta_right_options'] = array (
  * (put all header images in images directory
  ******************************************************************************/
 
-$variation_config['header_image_options']['custom'] = array (
-		option_name =>	'custom',
-		option_label =>	'Custom',
+$variation_config['header_image_options']['whitegradient'] = array (
+		option_name =>	'whitegradient',
+		option_label =>	'White Gradient',
 		option_value => 'header-trans-white-1200x100.png'
 	);
 
-$variation_config['header_image_options']['whitegradient'] = array (
-		option_name =>	'whitegradient',
-		option_label =>	'None',
+$variation_config['header_image_options']['custom'] = array (
+		option_name =>	'custom',
+		option_label =>	'Custom',
 		option_value => 'header-trans-white-1200x100.png'
 	);
 
@@ -162,17 +162,3 @@ $variation_config['model'][54]  = 'header-blogtitle-size';
 // $variation_config['variations_disabled'][8] = 'shadowbox-gray';
 // $variation_config['variations_disabled'][9] = 'shadowbox-gray-white';
 // $variation_config['variations_disabled'][10] = 'shadowbox-white-gray';
-// $variation_config['variations_disabled'][11] = 'translucence-white';
-// $variation_config['variations_disabled'][12] = 'translucence-black';
-// $variation_config['variations_disabled'][13] = 'translucence-blue';
-// $variation_config['variations_disabled'][14] = 'translucence-green';	
-// $variation_config['variations_disabled'][15] = 'translucence-yellow';
-// $variation_config['variations_disabled'][16] = 'translucence-yellow-white';
-// $variation_config['variations_disabled'][17] = 'translucence-white-yellow';
-// $variation_config['variations_disabled'][18] = 'translucence-gray';
-// $variation_config['variations_disabled'][19] = 'translucence-gray-white';
-// $variation_config['variations_disabled'][20] = 'translucence-white-gray';
-// $variation_config['variations_disabled'][21] = 'translucence-middseal';
-// $variation_config['variations_disabled'][22] = 'translucence-classics';
-// $variation_config['variations_disabled'][23] = 'translucence-middscape';
-// $variation_config['variations_disabled'][24] = 'translucence-middscape-blue';
