@@ -817,7 +817,7 @@ div.aligncenter {
 }
 
 
-.contentblock {
+.contentblock, .widecolumn, .narrowcolumn {
 	color: #444444;
 	background-color: rgba(255, 255, 255, 1);
 	border-top: 1px none ;
