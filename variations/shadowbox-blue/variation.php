@@ -12,13 +12,17 @@ Tags: one-column, two-columns, three-columns, left-sidebar, right-sidebar, theme
 
 if ($options['background'] == "shadowbox-blue") {
 
-	$options['background_image_file'] = "bg-blue01.png";
+	$options['background_image_file'] = "grunge-blue.jpg";
 	$options['background_image_directory'] = "shadowbox-blue";	
 	$options['background_image'] = "url('".get_bloginfo("stylesheet_directory");
 	$options['background_image'] .= "/variations/".$options['background_image_directory'];
 	$options['background_image'] .= "/".$options['background_image_file']."')";
-
+	$options['background_repeat'] = "repeat";
+	$options['background_position'] = "center top";
 	$options['background_color'] = "#051E3C";
+// 	$options['background-source-url'] = "";
+ 	$options['background-source-credit'] = "Blue Grunge";
+
 	$options['bgtextcolor'] = "#CCCCCC";
 	$options['bglinkcolor'] = "#FFFFFF";
 	$options['bgbordercolor'] = "#999999";
