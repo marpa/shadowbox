@@ -581,9 +581,10 @@ function variation_options() {
 				// Blog title and background heading colors	
 				if (in_array("custom_header_color", $variation_config['model'])) {
 					print "
-					<span style='font-size: 10px;'>Blog Title Color:</span>
+					<span style='font-size: 10px;'>Translucent Blog Title Color:</span>
 					<input name='custom_header_color' type='text' size='8' style='font-size: 10px;' 
-					value='".(isset($options['custom_header_color']) ? $options['custom_header_color'] : '')."'/>";
+					value='".(isset($options['custom_header_color']) ? $options['custom_header_color'] : '')."'/>
+					<span style='font-size: 9px;'>(when header opacity < 80%)</span>";
 				}
 				
 				// Background source url
@@ -1516,7 +1517,7 @@ function save_options() {
 		}
 
 
-		.contentblock {
+		.contentblock, .widecolumn, .narrowcolumn {
 			color: ".$options['content-text-color'].";
 			background-color: ".$options['content-color-rgb'].";
 			border-top: 1px none ".$options['content-border-top'].";
