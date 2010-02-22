@@ -1,5 +1,5 @@
 
-ShadowBox v. 1.1.0 (2009-11-11)
+ShadowBox v. 1.5.1 (2010-02-22)
 =================================
 
 What is ShadowBox?
@@ -9,9 +9,10 @@ ShadowBox is a customizable, flexible and extensible theme for WordPress
 
 Current Version Notes
 ---------------------
-This release adds more RSS links to various pages of theme, custom author pages, new
-options for header height and blog title text position. Also added configuration
-file for saving custom header image files and header left meta options.
+This release adds many more theme options including a 2nd right sidebar, opacity
+levels and header width. The theme options model has been improved to be more
+accurate. Finally, theme variations are more extensible so new variations can be
+added without changing function.inc.php
 
 
 Downloads
@@ -49,6 +50,15 @@ Bug Tracker
 | Prior ShadowBox Release Notes
 | (See the ShadowBox change log for more details)
 ===================================================================
+
+
+v. 1.5.1 (2010-02-22)
+----------------------------------------------------
+This release adds many more theme options including a 2nd right sidebar, opacity
+levels and header width. The theme options model has been improved to be more
+accurate. Finally, theme variations are more extensible so new variations can be
+added without changing function.inc.php
+
 
 
 v. 1.1.0 (2009-11-11)
