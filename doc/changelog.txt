@@ -11,6 +11,11 @@ added without changing function.inc.php
 		
 		
 	* Change: 
+		Theme Options: Added message to users explaining need to update theme
+		options UI to set up default options.
+		(2010-02-22 - Alex Chapin)
+		
+	* Change: 
 		CSS: defined widecolumn and narrowcolumn styles to ensure readability of
 		pages that do not have custom template files.
 		(2010-02-10 - Alex Chapin)
