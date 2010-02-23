@@ -18,9 +18,12 @@
 			Theme Options: Added message to users explaining need to update theme options UI to set
 			up default options.
 		</change>
-		<change author='alex' date='2010-02-10'>
+		<new author='alex' date='2010-02-22'>
 			CSS: defined widecolumn and narrowcolumn styles to ensure readability of pages that do not have custom template files.
-		</change>
+		</new>
+		<change author='alex' date='2010-02-15'>
+			Config: added theme name and url to config-sample.php.
+		</change>		
 		<change author='alex' date='2010-02-10'>
 			Custom variation: added option to set translucent blog title color on transluence themes. 
 		</change>
@@ -30,10 +33,6 @@
 		<change author='alex' date='2010-02-10'>
 			Author pages: set limit to number of posts displayed in custom author pages and 
 			added navigation links to other pages of posts.
-		</change>
-		<change author='alex' date='2010-02-15'>
-			Config: added config options for specifying what theme options to include in theme
-			option UI and what variations to enable.
 		</change>
 	</version>	
 		<version number="1.2.0" date="2009-02-01">
@@ -56,6 +55,10 @@
 		</change>
 		<change author='alex' date='2010-01-18'>
 			Options: renamed many options to that naming convention is more consistent and extensible.
+		</change>
+		<change author='alex' date='2010-01-18'>
+			Config: added config options for specifying what theme options to include in theme
+			option UI and what variations to enable.
 		</change>
 		<new author='alex' date='2010-01-17'>
 			Theme Options: added options for setting opacity of left, right, top and bottom bars 

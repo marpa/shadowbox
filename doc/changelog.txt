@@ -12,10 +12,14 @@ Thisrelease refines and updates css to ensure all blog templates display correct
 		options UI to set up default options.
 		(2010-02-22 - Alex Chapin)
 		
-	* Change: 
+	* New feature: 
 		CSS: defined widecolumn and narrowcolumn styles to ensure readability of
 		pages that do not have custom template files.
-		(2010-02-10 - Alex Chapin)
+		(2010-02-22 - Alex Chapin)
+		
+	* Change: 
+		Config: added theme name and url to config-sample.php.
+		(2010-02-15 - Alex Chapin)		
 		
 	* Change: 
 		Custom variation: added option to set translucent blog title color on
@@ -30,11 +34,6 @@ Thisrelease refines and updates css to ensure all blog templates display correct
 		Author pages: set limit to number of posts displayed in custom author pages
 		and added navigation links to other pages of posts.
 		(2010-02-10 - Alex Chapin)
-		
-	* Change: 
-		Config: added config options for specifying what theme options to include in
-		theme option UI and what variations to enable.
-		(2010-02-15 - Alex Chapin)
 	
 
 
@@ -70,6 +69,11 @@ added without changing function.php.
 	* Change: 
 		Options: renamed many options to that naming convention is more consistent
 		and extensible.
+		(2010-01-18 - Alex Chapin)
+		
+	* Change: 
+		Config: added config options for specifying what theme options to include in
+		theme option UI and what variations to enable.
 		(2010-01-18 - Alex Chapin)
 		
 	* New feature: 
