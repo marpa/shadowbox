@@ -1,5 +1,5 @@
 
-ShadowBox v. 1.5.1 (2010-02-22)
+ShadowBox v. 1.5.2 (2010-02-23)
 =================================
 
 What is ShadowBox?
@@ -52,7 +52,7 @@ Bug Tracker
 ===================================================================
 
 
-v. 1.5.1 (2010-02-22)
+v. 1.5.2 (2010-02-23)
 ----------------------------------------------------
 This release adds many more theme options including a 2nd right sidebar, opacity
 levels and header width. The theme options model has been improved to be more
