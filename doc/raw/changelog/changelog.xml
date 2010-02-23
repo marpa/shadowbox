@@ -12,7 +12,7 @@
 <changelog name="ShadowBox">
 	<version number="1.5.2" date="2010-02-23">
 		<releaseNotes>
-			This release adds many more theme options including a 2nd right sidebar, opacity levels and header width.  The theme options model has been improved to be more accurate.  Finally, theme variations are more extensible so new variations can be added without changing function.inc.php
+			This release refines and updates css to ensure all blog templates display correctly. 
 		</releaseNotes>
 		<change author='alex' date='2010-02-22'>
 			Theme Options: Added message to users explaining need to update theme options UI to set
@@ -35,13 +35,10 @@
 			Config: added config options for specifying what theme options to include in theme
 			option UI and what variations to enable.
 		</change>
-		<change author='alex' date='2010-02-11'>
-			Options: renamed many options to that naming convention is more consistent and extensible.
-		</change>
 	</version>	
 		<version number="1.2.0" date="2009-02-01">
 		<releaseNotes>
-			This release adds many more theme options including a 2nd right sidebar, opacity levels and header width. The theme options model has been improved to be more accurate. Finally, theme variations are more extensible so new variations can be added without changing function.inc.php.
+			This release adds many more theme options including a 2nd right sidebar, opacity levels and header width. The theme options model has been improved to be more accurate. Finally, theme variations are more extensible so new variations can be added without changing function.php.
 		</releaseNotes>
 		<change author='alex' date='2010-02-01'>
 			Theme Options UI: reorganized display of theme options so UI is more accurate and
@@ -56,6 +53,9 @@
 		</change>
 		<change author='alex' date='2010-01-20'>
 			Theme Options: refactored widget bar options so all widget areas (sidebars, top and bottom bars) and header have same options for color and opacity
+		</change>
+		<change author='alex' date='2010-01-18'>
+			Options: renamed many options to that naming convention is more consistent and extensible.
 		</change>
 		<new author='alex' date='2010-01-17'>
 			Theme Options: added options for setting opacity of left, right, top and bottom bars 

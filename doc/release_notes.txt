@@ -9,10 +9,7 @@ ShadowBox is a customizable, flexible and extensible theme for WordPress
 
 Current Version Notes
 ---------------------
-This release adds many more theme options including a 2nd right sidebar, opacity
-levels and header width. The theme options model has been improved to be more
-accurate. Finally, theme variations are more extensible so new variations can be
-added without changing function.inc.php
+Thisrelease refines and updates css to ensure all blog templates display correctly.
 
 
 Downloads
@@ -54,10 +51,7 @@ Bug Tracker
 
 v. 1.5.2 (2010-02-23)
 ----------------------------------------------------
-This release adds many more theme options including a 2nd right sidebar, opacity
-levels and header width. The theme options model has been improved to be more
-accurate. Finally, theme variations are more extensible so new variations can be
-added without changing function.inc.php
+Thisrelease refines and updates css to ensure all blog templates display correctly.
 
 
 
@@ -66,7 +60,7 @@ v. 1.2.0 (2009-02-01)
 This release adds many more theme options including a 2nd right sidebar, opacity
 levels and header width. The theme options model has been improved to be more
 accurate. Finally, theme variations are more extensible so new variations can be
-added without changing function.inc.php.
+added without changing function.php.
 
 
 
