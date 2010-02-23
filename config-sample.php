@@ -151,6 +151,8 @@ $variation_config['model'][54]  = 'header-blogtitle-size';
  * Comment out all variations that are NOT disabled
  ******************************************************************************/
 
+$variation_config['variations_disabled'] = array();
+
 // $variation_config['variations_disabled'][0] = 'custom';
 // $variation_config['variations_disabled'][1] = 'shadowbox-white';
 // $variation_config['variations_disabled'][2] = 'shadowbox-black';
