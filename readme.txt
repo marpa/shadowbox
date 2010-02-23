@@ -61,6 +61,15 @@ added without changing function.inc.php
 
 
 
+v. 1.2.0 (2009-02-01)
+----------------------------------------------------
+This release adds many more theme options including a 2nd right sidebar, opacity
+levels and header width. The theme options model has been improved to be more
+accurate. Finally, theme variations are more extensible so new variations can be
+added without changing function.inc.php.
+
+
+
 v. 1.1.0 (2009-11-11)
 ----------------------------------------------------
 This release adds more RSS links to various pages of theme, custom author pages, new
