@@ -107,12 +107,6 @@ if (!get_option($theme_css)) {
 	$variation_css = get_option($theme_css);	
 }
 
-// option defaults and value lists for the current variation
-set_variation_options();
-
-// update option values display in UI based on values defined for selected variation
-update_option($theme_settings, $options);
-//update_option($theme_css, $options);
 
 $options['theme-url'] = $variation_config['theme-url'];
 $options['theme-name'] = $variation_config['theme-name'];
@@ -216,7 +210,7 @@ function variation_options() {
 	if (isset($_POST['reset'])) {
 		printpre("reset");
 		delete_options();
-		//save_options();  
+		save_options();  
 		
     } else if ($_POST['action'] == 'save') {
 		printpre("save");
@@ -1387,7 +1381,7 @@ function variation_options() {
  *********************************************************/
 
 function save_options() {
-    global $_POST, $options, $variation_css;
+    global $_POST, $options, $variation_css, $variation_config;
     global $theme_settings, $theme_css;
 	
 	// options are those exposed in the UI
