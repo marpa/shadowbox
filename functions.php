@@ -1389,7 +1389,6 @@ function variation_options() {
 function save_options() {
     global $_POST, $options, $variation_css;
     global $theme_settings, $theme_css;
-
 	
 	// options are those exposed in the UI
 	set_primary_options();
