@@ -107,9 +107,11 @@ if (!get_option($theme_css)) {
 	$variation_css = get_option($theme_css);	
 }
 
+set_variation_options();
 
 $options['theme-url'] = $variation_config['theme-url'];
 $options['theme-name'] = $variation_config['theme-name'];
+
 
 /*********************************************************
  * Setup admin menu
@@ -208,21 +210,15 @@ function variation_options() {
     global $theme_settings, $theme_css, $_POST;
     	
 	if (isset($_POST['reset'])) {
-		printpre("reset");
 		delete_options();
 		save_options();  
 		
-    } else if ($_POST['action'] == 'save') {
-		printpre("save");
-		save_options();        
-        
-    } else if ($options['revert'] == 1) {
-		printpre("revert");		
+    } else if ($options['revert'] == 1) {	
 		delete_options();
-		save_options();
+		save_options();	
 		
-	} else {
-		printpre("not save, revert or reset...");
+    } else if ($_POST['action'] == 'save') {
+		save_options();        
 	}
 	
 	set_variation_options();	
@@ -242,7 +238,7 @@ function variation_options() {
     $model_right_sidebar_width02 = $options['right02-width']+50;
     $model_left_sidebar_width = $options['left01-width']+50;
     
-    $model_header_image = get_header_image();
+   // $model_header_image = get_header_image();
 	if ($options['header-image-options'] == "custom") {
    		$match = preg_match('/variations/', $model_header_image);
    		if ($match == 0) {
@@ -253,7 +249,6 @@ function variation_options() {
    	} else {
    		$model_header_image = get_bloginfo('stylesheet_directory')."/variations/".$variation_config['header_image_options'][$options['header-image-options']]['option_value'];
    	}
-
 
 	if ($options['site-width'] == 100) {
 		$model_site_width = $options['site-width']-5;
