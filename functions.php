@@ -2643,6 +2643,9 @@ function set_derivative_options() {
 function delete_options() {
     global $variation_config, $options, $variation_css, $theme_settings, $theme_css;
 	
+	$options = array();
+	$variation_css = "";
+	
 	delete_option($theme_settings); 	
 	delete_option($theme_css);
 	
@@ -2651,10 +2654,13 @@ function delete_options() {
 	
 //	set_primary_options();
 	set_variation_options();
+	
+	$options['revert'] = 0;
 
 	update_option($theme_settings, $options);
 
-// 	$options = get_option($theme_settings);
+ 	$options = get_option($theme_settings);
+ 	//printpre($options);
 // 	$variations_css = get_option($theme_css);
 }
 
