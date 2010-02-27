@@ -1390,6 +1390,7 @@ function save_options() {
     global $_POST, $options, $variation_css;
     global $theme_settings, $theme_css;
 
+	
 	// options are those exposed in the UI
 	set_primary_options();
 	
@@ -2052,7 +2053,6 @@ function set_primary_options() {
 	} else {
 		$options['model-instructions'] = "on";
 	}
-	
 }
 
 /******************************************************************************
@@ -2062,7 +2062,6 @@ function set_primary_options() {
 
 function set_variation_options() {
 	global $_POST, $options, $options_values, $variations;
-
 
 	/******************************************************************************
 	 * Default options and option value lists
@@ -2138,7 +2137,7 @@ function set_variation_options() {
 		}
 		closedir($handle);
 		ksort($variations);
-
+		
 	}
 		
 	// if no variation has been selected then use theme defaults
@@ -2645,14 +2644,14 @@ function delete_options() {
 	
 	$options = array();
 	$variation_css = "";
+	$_POST = array();
 	
 	delete_option($theme_settings); 	
 	delete_option($theme_css);
 	
-	add_option($theme_settings, null);  	
+	add_option($theme_settings, array('init' => 1));  	
  	add_option($theme_css, "");
 	
-//	set_primary_options();
 	set_variation_options();
 	
 	$options['revert'] = 0;
@@ -2660,8 +2659,7 @@ function delete_options() {
 	update_option($theme_settings, $options);
 
  	$options = get_option($theme_settings);
- 	//printpre($options);
-// 	$variations_css = get_option($theme_css);
+
 }
 
 /******************************************************************************
