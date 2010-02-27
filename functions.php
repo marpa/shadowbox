@@ -4,7 +4,7 @@ if (file_exists(dirname(__FILE__).'/config.php')) {
 } else if (file_exists(dirname(__FILE__).'/config-sample.php')) {
 	require_once('config-sample.php');
 }
-
+//error_reporting(E_ERROR | E_WARNING | E_PARSE);
 
 /******************************************************************************
  * Preset Widgets
@@ -211,10 +211,26 @@ function header_style() {
 
 function variation_options() {	
 	global $variation_config, $options, $options_values, $variation_css, $model_content_width, $variations, $header_image;
-    global $theme_settings, $theme_css;
-    
-    //printpre("ok");
-    
+    global $theme_settings, $theme_css, $_POST;
+    	
+	if (isset($_POST['reset'])) {
+		printpre("reset");
+		delete_options();
+		//save_options();  
+		
+    } else if ($_POST['action'] == 'save') {
+		printpre("save");
+		save_options();        
+        
+    } else if ($options['revert'] == 1) {
+		printpre("revert");		
+		delete_options();
+		save_options();
+		
+	} else {
+		printpre("not save, revert or reset...");
+	}
+	
 	set_variation_options();	
 		
 	update_option($theme_settings, $options);
@@ -222,14 +238,7 @@ function variation_options() {
 
 	$options = get_option($theme_settings);
 	$variation_css = get_option($theme_css);
-		
-    if ($_POST['action'] == 'save' )
-        save_options();
-        
-	if (isset($_POST['reset'])) {
-		delete_options($theme_settings);
-		delete_options($theme_css);
-	}
+	
     
 	/*********************************************************
 	 * Define theme layout model values
@@ -435,7 +444,7 @@ function variation_options() {
 		print "</div>";
 		print"<span class='submit'><input type='submit' value='Update' name='save'/></span>";
 		print "<input type='hidden' id='revert' name='revert' value='0'/>";
-		exit;
+		//exit;
 	}	
 	print 
 	"
@@ -470,14 +479,14 @@ function variation_options() {
 			}
 			print "
 			</td>
-			<td style='text-align: center;'>";			
+			<td style='text-align: center;'>";	
 			// background options		
 			if (in_array("background", $variation_config['model'])) {
 				
 				print "
 				<span style='font-size: 10px;'>Variation:</span>
 				<select name='background' style='font-size: 10px;' onchange='this.form.submit();'>";
-					// custom background image
+					// custom background image					
 					if (!in_array("custom", $variation_config['variations_disabled']))
 						print "\n<option value='custom'".($options['background'] == $value ? ' selected' : '') . ">Custom</option>";
 					
@@ -2633,14 +2642,13 @@ function set_derivative_options() {
 
 function delete_options() {
     global $variation_config, $options, $variation_css, $theme_settings, $theme_css;
-	
 
+	
 	delete_option($theme_settings); 	
 	delete_option($theme_css);
 	
 	add_option($theme_settings, null);  	
  	add_option($theme_css, "");
-	
 	$options = get_option($theme_settings);
 	$variation_css = get_option($theme_css);	
 	
@@ -2661,25 +2669,31 @@ function delete_options() {
 
 function print_option_feedback() {
 	global $_POST, $options;
-	//printpre($options);
+	printpre($_POST['reset']);
 	$main_column_width = $options['site-width'] - ($options['left01-width'] + $options['right01-width'] + 174);
 	$message = "";
 	$error = "false";
-	
-	if ($options['background'] == 'black') {
-		$message .= " Black is a good choice for blogs that focus on images, particularly photos.";
 		
-		if ($options['linkcolor'] == "#FFFFCC" && $options['textcolor'] == "#CCCCCC") {
-			$message .= " <br/><br/>The color of your links (pale yellow) is very close to the color of your text (light gray).  This means
-			that your links will not stand out from your text...  Chose gray or silver for your text color (or yellow for your link color) if you want your links to be more visible.";
-			$error = "true";
-		}	
-	} 
-	
 	if ($options['revert'] == 1) {
-		$message .= " <br/><br/>Theme options have been reverted to their default settings.";
+		$message .= " <br/><br/>These are the default settings for ".$options['theme-name'].".  See the Variation menu for variations of this theme";
 		$error = "true";
+
+	} else if (isset($_POST['reset'])) {
+		$message .= " <br/><br/>The ".$options['theme-name']." theme options have been reverted to their default settings.";
+		$error = "true";
+
+
 	} else {
+
+		if ($options['background'] == 'black') {
+			$message .= " Black is a good choice for blogs that focus on images, particularly photos.";
+			
+			if ($options['linkcolor'] == "#FFFFCC" && $options['textcolor'] == "#CCCCCC") {
+				$message .= " <br/><br/>The color of your links (pale yellow) is very close to the color of your text (light gray).  This means
+				that your links will not stand out from your text...  Chose gray or silver for your text color (or yellow for your link color) if you want your links to be more visible.";
+				$error = "true";
+			}	
+		} 
 	
 	
 		if ($options['linkcolor_visited'] == "#b85b5a" && ($options['textcolor'] == "#666666" || $options['textcolor'] == "#424242")) {
