@@ -140,6 +140,7 @@ if (!isset($options['header-blogtitle-size'])) $options['header-blogtitle-size']
 if (!isset($options['footer-meta-left'])) $options['footer-meta-left'] = "custom";
 if (!isset($options['header-meta-left'])) $options['header-meta-left'] = "network";
 if (!isset($options['revert'])) $options['revert'] = 1;
+if (!isset($options['header-image-options'])) $options['header-image-options'] = "whitegradient";
 
 if (!isset($options['header-text-display'])) $options['header-text-display'] = "middle";
 if (!isset($options['entry-link-style'])) $options['entry-link-style'] = "ww";
