@@ -427,14 +427,6 @@ function variation_options() {
 	 *  Header meta options
 	 *  Header meta left set in config
 	 *********************************************************/
-	if ($options['revert'] == 1) {
-		print "<div class='instructions' style='width: 400px;'>";
-		print "Click on the update button below to set up default theme options.";
-		print "</div>";
-		print"<span class='submit'><input type='submit' value='Update' name='save'/></span>";
-		print "<input type='hidden' id='revert' name='revert' value='0'/>";
-		//exit;
-	}	
 	print 
 	"
 	<table width = '".$model_site_width."' cellpadding='0' style='background-color: transparent;'>
@@ -2641,9 +2633,9 @@ function delete_options() {
  	add_option($theme_css, "");
 	
 	set_variation_options();
-	
-	$options['revert'] = 0;
 
+	$options['revert'] = 0; 
+	
 	update_option($theme_settings, $options);
 
  	$options = get_option($theme_settings);
@@ -2668,7 +2660,6 @@ function print_option_feedback() {
 	} else if (isset($_POST['reset'])) {
 		$message .= " <br/><br/>The ".$options['theme-name']." theme options have been reverted to their default settings.";
 		$error = "true";
-
 
 	} else {
 
