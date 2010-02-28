@@ -297,7 +297,7 @@ $options_values['textcolor'] = array(
 	'60% Gray' => '#555555',
 	'70% Gray' => '#444444',
 	'80% Gray' => '#333333',
-	'Black' => '#424242'
+	'Black' => '#222222'
 );
 
 

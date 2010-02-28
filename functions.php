@@ -2225,40 +2225,21 @@ function set_derivative_options() {
 	/******************************************************************************
 	 * visited link color options (derived from link and text colors
 	 ******************************************************************************/
-
-	// ww linkcolor
-	if ($options['linkcolor'] == '#272c6f') {	
-		// dark gray
-		if ($options['textcolor'] == '#666666') {
-			$options['linkcolor_visited'] = "#210";
-		// gray
-		} else if ($options['textcolor'] == '#999999') {
-			$options['linkcolor_visited'] = "#210";
-		// light gray
-		} else if ($options['textcolor'] == '#999999') {
-			$options['linkcolor_visited'] = "#210";
+	
+	// dark blue or gold
+	if ($options['linkcolor'] == '#003366' || $options['linkcolor'] == '#625b1d') {	
 		// black
-		} else if ($options['textcolor'] == '#424242') {
-			$options['linkcolor_visited'] = "#210";
-		// ww textcolor
-		} else if ($options['textcolor'] == '#210') {
-			$options['linkcolor_visited'] = "#210";
-		}
-
-	// dark blue
-	} else if ($options['linkcolor'] == '#003366' || $options['linkcolor'] == '#625b1d') {	
-		// black
-		if ($options['textcolor'] == '#424242') {
-			$options['linkcolor_visited'] = "#888888";
+		if ($options['textcolor'] == '#222222') {
+			$options['linkcolor_visited'] = "#000000";
 		// 80% gray
 		} else if ($options['textcolor'] == '#333333') {
-			$options['linkcolor_visited'] = "#666666";
+			$options['linkcolor_visited'] = "#000000";
 		// 70% gray
 		} else if ($options['textcolor'] == '#444444') {
-			$options['linkcolor_visited'] = "#777777";
+			$options['linkcolor_visited'] = "#000000";
 		// 60% gray
 		} else if ($options['textcolor'] == '#555555') {
-			$options['linkcolor_visited'] = "#888888";
+			$options['linkcolor_visited'] = "#000000";
 		// 50% gray
 		} else if ($options['textcolor'] == '#666666') {
 			$options['linkcolor_visited'] = "#000000";
