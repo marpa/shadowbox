@@ -2295,8 +2295,8 @@ function set_derivative_options() {
 		}
 	
 	// black
-	}  else if ($options['linkcolor'] == '#151515') {	
-		$options['linkcolor_visited'] = "#6E6E6E";	
+	}  else if ($options['linkcolor'] == '#222222') {	
+		$options['linkcolor_visited'] = "#333333";	
 	
 	}
 

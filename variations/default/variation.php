@@ -277,7 +277,7 @@ $options_values['linkcolor'] = array(
 	'Light Blue' => '#0066cc',
 	'Red' => '#990000',
 	'Green' => '#265e15',
-	'Black' => '#151515',
+	'Black' => '#222222',
 	'Gold'	=>	'#625B1D'
 	);
 	
