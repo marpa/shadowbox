@@ -1818,6 +1818,7 @@ function save_options() {
 		.post h2  {
 			color: ".$options['content-heading-color'].";
 			border-bottom: none;
+			font-weight: normal;
 		}
 		.post h2 a {
 			display: block;
@@ -2283,15 +2284,15 @@ function set_derivative_options() {
 	// yellow
 	}  else if ($options['linkcolor'] == '#FFCC33') {
 	
-		// light gray
+		// 20% gray
 		if ($options['textcolor'] == '#CCCCCC') {
-			$options['linkcolor_visited'] = "#FFFBEE";
-		// gray
-		} else if ($options['textcolor'] == '#666666') {
-			$options['linkcolor_visited'] = "#FFFBEE";
-		// silver
-		} else if ($options['textcolor'] == '#F9F9F9') {
-			$options['linkcolor_visited'] = "#FFFBEE";
+			$options['linkcolor_visited'] = "#FFFFFF";
+		// 30% gray
+		} else if ($options['textcolor'] == '#888888') {
+			$options['linkcolor_visited'] = "#FFFFFF";
+		// 40% gray
+		} else if ($options['textcolor'] == '#777777') {
+			$options['linkcolor_visited'] = "#FFFFFF";
 		}
 	
 	// black
