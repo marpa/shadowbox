@@ -80,18 +80,6 @@ $options['transparent-link-color']  = $options['linkcolor'];
 $options['transparent-text-color']  = $options['textcolor'];
 
 
-// $options['left01-border-style'] = "solid";
-// $options['right01-border-style'] = "solid";
-// $options['right02-border-style'] = "solid";
-// $options['top-border-style'] = "solid";
-// $options['bottom-border-style'] = "solid";
-// $options['header-border-style'] = "solid";
-// $options['header-hover-border-style'] = "solid";
-// $options['header-border02-height'] = 1;
-// 
-// $options['header-width'] = $options['site-width'];
-
-
 $options['header-outer-border-style'] = "solid";
 $options['header-border-style'] = "solid";
 $options['header-hover-border-style'] = "solid";
@@ -106,7 +94,6 @@ $options['top-border-style'] = "solid";
 $options['bottom-border-style'] = "solid";
 
 $options['header-width'] = $options['site-width'];
-
 
 $options['page_image_directory'] = "shadowbox-default";	
 $options['page_image_path'] = "url('".get_bloginfo("stylesheet_directory")."/variations/".$options['page_image_directory'];
@@ -129,13 +116,6 @@ $options['page_main_padding'] = "50";
 
 $options['page_bottom_background_image'] = $options['page_image_path']."/".$options['page-image-width']."-bottom.png')";
 $options['page_bottom_padding'] = "30";
-
-// $options['left01-border-style'] = "solid";
-// $options['right01-border-style'] = "solid";
-// $options['right02-border-style'] = "solid";
-// $options['top-border-style'] = "solid";
-// $options['bottom-border-style'] = "solid";
-// $options['header-border-style'] = "solid";
 
 $options['thread-even-bgcolor'] = "#FFFFFF";
 $options['thread-alt-bgcolor'] = "#f8f8f8";
@@ -226,6 +206,15 @@ $options_values['header-opacity'] = array(
 	'0%'=> '0'
 	);
 
+$options_values['header-border'] = array(
+	'None' => 'none',
+	'Solid' => 'solid',
+	);
+
+$options_values['content-border'] = array(
+	'None' => 'none',
+	'Solid' => 'solid',
+	);
 
 $options_values['background_repeat'] = array(
 	'No Repeat' => 'no-repeat',
