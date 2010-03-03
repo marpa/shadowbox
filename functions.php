@@ -1559,7 +1559,10 @@ function save_options() {
 		.topblock {
 			color:  ".$options['top-text-color'].";
 			background-color: ".$options['top-color-rgb'].";
-			border-bottom: 1px ".$options['header-border-style']." ".$options['header-border-bottom'].";					
+			border-top: 1px none ".$options['top-border-top'].";
+			border-bottom: 1px ".$options['top-border-style']." ".$options['top-border-bottom'].";	
+			border-left: 1px none ".$options['top-border-left'].";
+			border-right: 1px none ".$options['top-border-right'].";
 			padding-top: 3px;
 			padding-bottom: 1px;
 			padding-left: 10px;
@@ -2353,7 +2356,10 @@ function set_derivative_options() {
 		
 		// white
 		if ($options[$bar.'-color'] == '#FFFFFF') {
-			$options[$bar.'-border-style'] = "none";
+			$options[$bar.'-border-top'] = "#CCCCCC";
+			$options[$bar.'-border-left'] = "#CCCCCC";
+			$options[$bar.'-border-bottom'] = "#CCCCCC";
+			$options[$bar.'-border-right'] = "#CCCCCC";
 			$options[$bar.'-heading-color'] = "#666666";
 			$options[$bar.'-link-color'] = $options['linkcolor'];
 			$options[$bar.'-text-color'] = $options['textcolor'];
