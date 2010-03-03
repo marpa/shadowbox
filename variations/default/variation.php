@@ -91,7 +91,7 @@ $options['left01-border-style'] = "solid";
 $options['right01-border-style'] = "solid";
 $options['right02-border-style'] = "solid";
 $options['top-border-style'] = "solid";
-$options['bottom-border-style'] = "solid";
+$options['bottom-border-style'] = "none";
 
 $options['header-width'] = $options['site-width'];
 
