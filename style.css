@@ -708,7 +708,23 @@ div.aligncenter {
 	margin-bottom: 10px;
 	margin-left: -30px;
 	padding: 0;
-	}
+}
+
+.sidebarleft01 li.current_page_item a {
+   font-weight: bold;
+   border-bottom: none;   
+}
+
+.sidebarright01 li.current_page_item a {
+   font-weight: bold;
+   border-bottom: none;   
+}
+
+.sidebarright02 li.current_page_item a {
+   font-weight: bold;
+   border-bottom: none;   
+}
+
 
 
 /* end RSS styles */
