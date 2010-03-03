@@ -209,13 +209,10 @@ function variation_options() {
 	global $variation_config, $options, $options_values, $variation_css, $model_content_width, $variations, $header_image;
     global $theme_settings, $theme_css, $_POST;
     	
-	if (isset($_POST['reset'])) {
+	if (isset($_POST['reset']) || $options['revert'] == 1) {
 		delete_options();
-		save_options();  
-		
-    } else if ($options['revert'] == 1) {	
-		delete_options();
-		save_options();	
+		save_options(); 
+		$options['revert'] = 0;
 		
     } else if ($_POST['action'] == 'save') {
 		save_options();        
@@ -2620,7 +2617,7 @@ function delete_options() {
 	
 	set_variation_options();
 
-	$options['revert'] = 0; 
+	//$options['revert'] = 0; 
 	
 	update_option($theme_settings, $options);
 
@@ -2633,14 +2630,14 @@ function delete_options() {
  ******************************************************************************/
 
 function print_option_feedback() {
-	global $_POST, $options;
+	global $_POST, $options, $variation_config;
 	printpre($_POST['reset']);
 	$main_column_width = $options['site-width'] - ($options['left01-width'] + $options['right01-width'] + 174);
-	$message = "";
+	$message = "<strong>Your changes have been saved.</strong>";
 	$error = "false";
 		
 	if ($options['revert'] == 1) {
-		$message .= " <br/><br/>These are the default settings for ".$options['theme-name'].".  See the Variation menu for variations of this theme";
+		$message = "These are the default settings for the ".$variation_config['theme-name']." theme.<br/><br/>See the Variation menu below for variations of this theme";
 		$error = "true";
 
 	} else if (isset($_POST['reset'])) {
@@ -2692,7 +2689,7 @@ function print_option_feedback() {
                     margin-right: 50px;
                     margin-top: 30px;
                     margin-left: 20px'>
-            <p><strong>Your changes have been saved.</strong><em>".$message.".</em></p>
+            <p><em>".$message.".</em></p>
         </div>
     ";
 
