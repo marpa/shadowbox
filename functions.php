@@ -1522,7 +1522,7 @@ function save_options() {
 		}
 
 		h1, h2, h3 {
-			color: #999999;
+			color: ".$options['content-text-color'].";
 			border-bottom: 1px solid #CCCCCC;
 		}
 		
@@ -1818,20 +1818,6 @@ function save_options() {
 		
 		/* Begin entry/post links */
 		
-		.post h2  {
-			color: ".$options['content-heading-color'].";
-			border-bottom: none;
-			font-weight: normal;
-		}
-		.post h2 a {
-			display: block;
-			text-align: left;
-			border-bottom: 1px solid #CCCCCC;
-		}
-		
-		.post h2 a:hover {
-			border-bottom: 1px solid ".$options['content-link-color'].";
-		}
 		
 		.entry a {
 			color: ".$options['linkcolor'].";	
@@ -1962,11 +1948,23 @@ function save_options() {
 			text-decoration: none;
 			border: 1px solid ".$options['linkcolor'].";
 		}
-
-		h2 {
-			color: ".$options['textcolor'].";
-			text-decoration: none;
+		
+		.post h2 {
+			color: ".$options['linkcolor'].";
+			display: block;
+			text-align: left;
+			border-bottom: 1px solid #CCCCCC;
 		}
+		
+		.post h2:hover {
+			border-bottom: 1px solid ".$options['linkcolor'].";
+		}
+		
+		.post h2 a {
+			display: block;
+			border-bottom: none;
+		}
+
 				
 		/* Begin comments */
 		#commentform textarea {

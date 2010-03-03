@@ -60,7 +60,7 @@ small {
 
 h1, h2, h3 {
 	font-family: Arial, Helvetica, Sans-Serif, Sans-Serif;
-	font-weight: bold;
+	font-weight: normal;
 	border-bottom: 1px solid #CCCCCC;
 	}
 
@@ -1135,18 +1135,20 @@ div .hr {
 
 /* Begin entry/post links */
 
-.post h2  {
-	color: #666666;
-	border-bottom: none;
-}
-.post h2 a {
+.post h2 {
+	color: #003366;
 	display: block;
 	text-align: left;
 	border-bottom: 1px solid #CCCCCC;
 }
 
-.post h2 a:hover {
+.post h2:hover {
 	border-bottom: 1px solid #003366;
+}
+
+.post h2 a {
+	display: block;
+	border-bottom: none;
 }
 
 .entry a {
