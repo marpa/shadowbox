@@ -80,14 +80,30 @@ $options['transparent-link-color']  = $options['linkcolor'];
 $options['transparent-text-color']  = $options['textcolor'];
 
 
+// $options['left01-border-style'] = "solid";
+// $options['right01-border-style'] = "solid";
+// $options['right02-border-style'] = "solid";
+// $options['top-border-style'] = "solid";
+// $options['bottom-border-style'] = "solid";
+// $options['header-border-style'] = "solid";
+// $options['header-hover-border-style'] = "solid";
+// $options['header-border02-height'] = 1;
+// 
+// $options['header-width'] = $options['site-width'];
+
+
+$options['header-outer-border-style'] = "solid";
+$options['header-border-style'] = "solid";
+$options['header-hover-border-style'] = "solid";
+$options['header-border02-height'] = 1;
+
+$options['content-border-style'] = "solid";
+
 $options['left01-border-style'] = "solid";
 $options['right01-border-style'] = "solid";
 $options['right02-border-style'] = "solid";
 $options['top-border-style'] = "solid";
 $options['bottom-border-style'] = "solid";
-$options['header-border-style'] = "solid";
-$options['header-hover-border-style'] = "solid";
-$options['header-border02-height'] = 1;
 
 $options['header-width'] = $options['site-width'];
 
@@ -114,12 +130,12 @@ $options['page_main_padding'] = "50";
 $options['page_bottom_background_image'] = $options['page_image_path']."/".$options['page-image-width']."-bottom.png')";
 $options['page_bottom_padding'] = "30";
 
-$options['left01-border-style'] = "solid";
-$options['right01-border-style'] = "solid";
-$options['right02-border-style'] = "solid";
-$options['top-border-style'] = "solid";
-$options['bottom-border-style'] = "solid";
-$options['header-border-style'] = "solid";
+// $options['left01-border-style'] = "solid";
+// $options['right01-border-style'] = "solid";
+// $options['right02-border-style'] = "solid";
+// $options['top-border-style'] = "solid";
+// $options['bottom-border-style'] = "solid";
+// $options['header-border-style'] = "solid";
 
 $options['thread-even-bgcolor'] = "#FFFFFF";
 $options['thread-alt-bgcolor'] = "#f8f8f8";

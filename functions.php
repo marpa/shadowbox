@@ -1468,8 +1468,8 @@ function save_options() {
 		}
 
 		#header {
-			border-bottom: 1px ".$options['header-border-style']." ".$options['header-border02-top'].";
-			border-top: 1px ".$options['header-border-style']." ".$options['header-border02-bottom'].";
+			border-bottom: 1px ".$options['header-outer-border-style']." ".$options['header-border02-top'].";
+			border-top: 1px ".$options['header-outer-border-style']." ".$options['header-border02-bottom'].";
 			margin: 0 0 0 1px;
 			padding: 0 2px 0 2px;
 		}
