@@ -386,21 +386,36 @@ function variation_options() {
 			border: 1px solid #CCCCCC;
 		}
 		
-		.postlink {
-			color: ".$options['linkcolor'].";	
-			text-decoration: ".$options['entry-link-decoration'].";
-			border: 1px ".$options['entry-link-border']." ".$options['left01-border-right'].";
-			margin: 2px;
-			padding: 1px;
+		.entry a:visited {
+			color: ".$options['linkcolor'].";		
+			border-bottom: 1px ".$options['entry-link-border'].";
 		}
 
-		.postlink:hover {
-			color: ".$options['linkcolor'].";	
-			text-decoration: ".$options['entry-link-decoration'].";
-			border: 1px ".$options['entry-link-hover-border']." ".$options['linkcolor'].";
-			margin: 2px;
-			padding: 1px;
+		.entry-visited {
+			cursor: pointer;
+			color: ".$options['linkcolor_visited'].";		
+			border-bottom: 1px ".$options['entry-link-border'].";
 		}
+
+		.entry-visited:hover {
+			color: ".$options['linkcolor_visited'].";
+			background-color: ".$options['entry-link-hover-background_color'].";
+			border-bottom: 1px ".$options['entry-link-hover-border'].";
+		}
+		
+		a, h2 a:hover, h3 a:hover {
+			text-decoration: none;
+			border-bottom: none;
+		}
+
+		a:hover {
+			text-decoration: none;
+			border-bottom: none;
+		}
+
+		h1, h2, h3 {	
+			border-bottom: none;		
+		}		
 
 		".$options['header-color-ie']."; 
 		".$options['top-color-ie']."; 
@@ -1032,10 +1047,10 @@ function variation_options() {
 						<span style='font-size: 9px;'>April 16th, 2009 by Author</span><br/>
 						<span class='entry'>Categories: </span><span class='category'><a href='#'>Category</a></span>					
 						<div class='entry' style='text-align: justify;'>
-						<p>Lorem ipsum dolor sit amet, <span style='color: ".$options['linkcolor_visited'].";'>visited link</span> 
+						<p>Lorem ipsum dolor sit amet, <span class='entry-visited'>visited link</span> 
 						adipiscing elit. Donec ac felis non mauris tristique vehicula. 
-						Nunc commodo, justo vel imperdiet cursus, leo dui <a href='#'  style='color: ".$options['linkcolor'].";'>link</a>, vel bibendum neque justo nec ipsum. 
-						Aliquam erat volutpat. <a href='#' style='color: ".$options['linkcolor'].";'>another link</a> leo tellus, sagittis id mollis non, pretium a tellus.</p>
+						Nunc commodo, justo vel imperdiet cursus, leo dui <a href='#'>link</a>, vel bibendum neque justo nec ipsum. 
+						Aliquam erat volutpat. <a href='#'>another link</a> leo tellus, sagittis id mollis non, pretium a tellus.</p>
 						</div>
 						<span class='entry'>Tags: </span><span class='tag'><a href='#'>tag</a></span>					
 						<div class='entry' style='text-align: right;'>No Comments &#187;</div><br/>";
@@ -2313,29 +2328,23 @@ function set_derivative_options() {
 	/******************************************************************************
 	 * Entry link style options
 	 ******************************************************************************/	
-
+	// none
 	if ($options['entry-link-style'] == "none") {
 		$options['entry-link-border'] = "none";
 		$options['entry-link-hover-border'] = "solid";
-		$options['entry-link-hover-background_color'] = $options['foreground_color'];
+		$options['entry-link-hover-background_color'] = $options['content-color'];
 		$options['entry-link-decoration'] = "none";
 		$options['entry-link-hover-decoration'] = "underline";
-		
+	
+	// underline
 	} else if ($options['entry-link-style'] == "underline") {
 		$options['entry-link-border'] = "dotted";
 		$options['entry-link-hover-border'] = "solid"; 
-		$options['entry-link-hover-background_color'] = $options['foreground_color'];
+		$options['entry-link-hover-background_color'] = $options['content-color'];
 		$options['entry-link-decoration'] = "none";
 		$options['entry-link-hover-decoration'] = "underline";
-		
-	} else if ($options['entry-link-style'] == "box") {
-		$options['entry-link-border'] = "dotted";
-		$options['entry-link-hover-border'] = "solid";
-		$options['entry-link-hover-background_color'] = $options['foreground_color'];
-		$options['entry-link-decoration'] = "none";
-		$options['entry-link-hover-decoration'] = "none";
-		
-	//ww style links
+				
+	//underline and highlight
 	} else if ($options['entry-link-style'] == "ww") {
 		$options['entry-link-border'] = "dotted ";
 		$options['entry-link-hover-border'] = "solid";
