@@ -1055,6 +1055,7 @@ div .hr {
 	visibility: hidden;
 	padding-left: 25px;
 	padding-right: 25px;
+	padding-bottom: 25px;
 }
 
 .sidebarright01 {
@@ -1062,6 +1063,7 @@ div .hr {
 	visibility: visible;
 	padding-left: 25px;
 	padding-right: 25px;
+	padding-bottom: 25px;
 }
 
 .sidebarright02 {
@@ -1069,6 +1071,7 @@ div .hr {
 	visibility: hidden;
 	padding-left: 25px;
 	padding-right: 25px;
+	padding-bottom: 25px;
 }
 
 /* Begin sidebar links */
