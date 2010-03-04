@@ -2269,15 +2269,20 @@ function set_derivative_options() {
 		
 	// pale yellow
 	}  else if ($options['linkcolor'] == '#FFFFCC') {	
-		// light gray
-		if ($options['textcolor'] == '#CCCCCC') {
+		// 40% gray
+		if ($options['textcolor'] == '#777777') {
 			$options['linkcolor_visited'] = "#FFFFFF";
-		// gray
+		// 30% gray
 		} else if ($options['textcolor'] == '#888888') {
-			$options['linkcolor_visited'] = "#FFFBEE";
-		// silver
-		} else if ($options['textcolor'] == '#F9F9F9') {
-			$options['linkcolor_visited'] = "#888888";
+			$options['linkcolor_visited'] = "#FFFFFF";
+		// 20% gray
+		} else if ($options['textcolor'] == '#CCCCCC') {
+			$options['linkcolor_visited'] = "#FFFFFF";
+		// 10% gray	
+		} else if ($options['textcolor'] == '#EEEEEE') {
+			$options['linkcolor_visited'] = "#FFFFFF";
+		} else {
+			$options['linkcolor_visited'] = "#FFFFFF";
 		}	
 	// yellow
 	}  else if ($options['linkcolor'] == '#FFCC33') {
@@ -2290,6 +2295,8 @@ function set_derivative_options() {
 			$options['linkcolor_visited'] = "#FFFFFF";
 		// 40% gray
 		} else if ($options['textcolor'] == '#777777') {
+			$options['linkcolor_visited'] = "#FFFFFF";
+		} else {
 			$options['linkcolor_visited'] = "#FFFFFF";
 		}
 	
@@ -2631,7 +2638,7 @@ function delete_options() {
 
 function print_option_feedback() {
 	global $_POST, $options, $variation_config;
-	printpre($_POST['reset']);
+	
 	$main_column_width = $options['site-width'] - ($options['left01-width'] + $options['right01-width'] + 174);
 	$message = "<strong>Your changes have been saved.</strong>";
 	$error = "false";
@@ -2646,7 +2653,7 @@ function print_option_feedback() {
 
 	} else {
 
-		if ($options['background'] == 'black') {
+		if ($options['background_color'] == '#0F0F0F') {
 			$message .= " Black is a good choice for blogs that focus on images, particularly photos.";
 			
 			if ($options['linkcolor'] == "#FFFFCC" && $options['textcolor'] == "#CCCCCC") {
@@ -2654,6 +2661,12 @@ function print_option_feedback() {
 				that your links will not stand out from your text...  Chose gray or silver for your text color (or yellow for your link color) if you want your links to be more visible.";
 				$error = "true";
 			}	
+			
+			if ($options['header-image-options'] == "whitegradient") {
+				$message .= " <br/><br/>The white gradient image really doesn't look good here.  Best to upload your own custom image or use none.";
+				$error = "true";
+			} 
+
 		} 
 	
 	

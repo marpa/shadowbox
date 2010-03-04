@@ -91,26 +91,28 @@ if ($options['background'] == "shadowbox-black") {
 	);
 	
 	$options_values['textcolor'] = array(
-		'Light Gray' => '#CCCCCC',
-		'Gray' => '#666666',
-		'Silver' => '#F9F9F9'
+		'White' => '#FFFFFF',
+		'10% Gray' => '#EEEEEE',
+		'20% Gray' => '#CCCCCC',
+		'30% Gray' => '#888888',
+		'40% Gray' => '#777777'
 	);
 
 	$options_values['category-link-style'] = array(
-			'Right Sidebar Box' => 'right-sidebar-box',
-			'Left Sidebar Box' => 'left-sidebar-box'
+		'Right Sidebar Box' => 'right-sidebar-box',
+		'Left Sidebar Box' => 'left-sidebar-box'
 	);
 
 	$options_values['tag-link-style'] = array(
-			'Right Sidebar Box' => 'right-sidebar-box',
-			'Left Sidebar Box' => 'left-sidebar-box'
+		'Right Sidebar Box' => 'right-sidebar-box',
+		'Left Sidebar Box' => 'left-sidebar-box'
 	);
 	
 	
 	// if current value is one of this variation's option values, then use it 
 	// otherwise use default for this variation
 	if (!in_array($options['linkcolor'], array_values($options_values['linkcolor']))) $options['linkcolor'] = "#FFFFCC";
-	if (!in_array($options['textcolor'], array_values($options_values['textcolor']))) $options['textcolor'] = "#210";
+	if (!in_array($options['textcolor'], array_values($options_values['textcolor']))) $options['textcolor'] = "#CCCCCC";
 	if (!in_array($options['header-color'], array_values($options_values['headercolor']))) $options['header-color'] = "#262626";
 	
 	if (!in_array($options['header-heading-color'], array_values($options_values['linkcolor']))) $options['header-heading-color'] = "#262626";		

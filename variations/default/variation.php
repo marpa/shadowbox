@@ -293,9 +293,6 @@ $options_values['entry-link-style'] = array(
 );
 
 $options_values['textcolor'] = array(
-	'White' => '#FFFFFF',
-	'10% Gray' => '#EEEEEE',
-	'20% Gray' => '#CCCCCC',
 	'30% Gray' => '#888888',
 	'40% Gray' => '#777777',
 	'50% Gray' => '#666666',
