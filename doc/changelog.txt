@@ -2,6 +2,33 @@
 ShadowBox Change Log
 
 
+v. 1.5.3 (the future)
+----------------------------------------------------
+This release refines theme options initialization and refines CSS.
+		
+		
+	* Change: 
+		CSS: Added current-page-item styling to distinguish links to other pages.
+		(2010-03-01 - Alex Chapin)	
+		
+	* Bug Fix: 
+		Theme Options: limited model css so that it didn't change styles of admin
+		panel 
+		(2010-03-04 - Alex Chapin)
+		
+	* Change: 
+		CSS: added padding to bottom of sidebars.
+		(2010-03-04 - Alex Chapin)		
+		
+	* Change: 
+		Theme Options: refactored how theme options are intialized and reverted so
+		theme model is more accurate and doesn't need update button after initial
+		selection and after reverting
+		(2010-02-27 - Alex Chapin)		
+	
+
+
+
 v. 1.5.2 (2010-02-23)
 ----------------------------------------------------
 Thisrelease refines and updates css to ensure all blog templates display correctly.
@@ -10,6 +37,11 @@ Thisrelease refines and updates css to ensure all blog templates display correct
 	* Change: 
 		Theme Options: Added message to users explaining need to update theme
 		options UI to set up default options.
+		(2010-02-22 - Alex Chapin)
+		
+	* Change: 
+		Theme Options: Changed the name of the theme options page to include theme
+		name. 
 		(2010-02-22 - Alex Chapin)
 		
 	* New feature: 

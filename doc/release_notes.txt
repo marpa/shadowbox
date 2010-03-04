@@ -1,5 +1,5 @@
 
-ShadowBox v. 1.5.2 (2010-02-23)
+ShadowBox v. 1.5.3 (the future)
 =================================
 
 What is ShadowBox?
@@ -9,7 +9,7 @@ ShadowBox is a customizable, flexible and extensible theme for WordPress
 
 Current Version Notes
 ---------------------
-Thisrelease refines and updates css to ensure all blog templates display correctly.
+This release refines theme options initialization and refines CSS.
 
 
 Downloads
@@ -47,6 +47,12 @@ Bug Tracker
 | Prior ShadowBox Release Notes
 | (See the ShadowBox change log for more details)
 ===================================================================
+
+
+v. 1.5.3 (the future)
+----------------------------------------------------
+This release refines theme options initialization and refines CSS.
+
 
 
 v. 1.5.2 (2010-02-23)

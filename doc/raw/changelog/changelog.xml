@@ -10,6 +10,24 @@
 <!DOCTYPE changelog SYSTEM "../dtds/changelog.dtd">
 
 <changelog name="ShadowBox">
+	<version number="1.5.3" date="the future">
+		<releaseNotes>
+			This release refines theme options initialization and refines CSS. 
+		</releaseNotes>
+		<change author='alex' date='2010-03-01'>
+			CSS: Added current-page-item styling to distinguish links to other pages.
+		</change>	
+		<fix author='alex' date='2010-03-04'>
+			Theme Options: limited model css so that it didn't change styles of admin panel
+		</fix>
+		<change author='alex' date='2010-03-04'>
+			CSS: added padding to bottom of sidebars.
+		</change>		
+		<change author='alex' date='2010-02-27'>
+			Theme Options: refactored how theme options are intialized and reverted so theme model
+			is more accurate and doesn't need update button after initial selection and after reverting
+		</change>		
+	</version>	
 	<version number="1.5.2" date="2010-02-23">
 		<releaseNotes>
 			This release refines and updates css to ensure all blog templates display correctly. 
@@ -17,6 +35,9 @@
 		<change author='alex' date='2010-02-22'>
 			Theme Options: Added message to users explaining need to update theme options UI to set
 			up default options.
+		</change>
+		<change author='alex' date='2010-02-22'>
+			Theme Options: Changed the name of the theme options page to include theme name.
 		</change>
 		<new author='alex' date='2010-02-22'>
 			CSS: defined widecolumn and narrowcolumn styles to ensure readability of pages that do not have custom template files.
