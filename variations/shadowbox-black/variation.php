@@ -53,7 +53,7 @@ if ($options['background'] == "shadowbox-black") {
 	$options['right01-border-style'] = "solid";
 	$options['right02-border-style'] = "solid";
 	$options['top-border-style'] = "solid";
-	$options['bottom-border-style'] = "solid";
+	$options['bottom-border-style'] = "none";
 	$options['header-border-style'] = "solid";
 	
 	$options['searchbox-color'] = "#262626";
