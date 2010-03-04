@@ -2287,18 +2287,21 @@ function set_derivative_options() {
 	// yellow
 	}  else if ($options['linkcolor'] == '#FFCC33') {
 	
-		// 20% gray
-		if ($options['textcolor'] == '#CCCCCC') {
+		// 40% gray
+		if ($options['textcolor'] == '#777777') {
 			$options['linkcolor_visited'] = "#FFFFFF";
 		// 30% gray
 		} else if ($options['textcolor'] == '#888888') {
 			$options['linkcolor_visited'] = "#FFFFFF";
-		// 40% gray
-		} else if ($options['textcolor'] == '#777777') {
+		// 20% gray
+		} else if ($options['textcolor'] == '#CCCCCC') {
+			$options['linkcolor_visited'] = "#FFFFFF";
+		// 10% gray	
+		} else if ($options['textcolor'] == '#EEEEEE') {
 			$options['linkcolor_visited'] = "#FFFFFF";
 		} else {
 			$options['linkcolor_visited'] = "#FFFFFF";
-		}
+		}	
 	
 	// black
 	}  else if ($options['linkcolor'] == '#222222') {	
