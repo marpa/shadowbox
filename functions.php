@@ -134,7 +134,7 @@ if ( function_exists('add_custom_image_header') ) {
 }
 
 $header_image = "%s/variations/".$variation_config['header_image_options'][$options['header-image-options']]['option_value'];
-$header_image_width = $options['header-width'];
+$header_image_width = $options['header-width'] - $options['custom-header-width-offset'];
 $header_image_height = $options['header-block-height'];
 
 define('HEADER_IMAGE', $header_image); // %s is theme dir uri
@@ -235,7 +235,7 @@ function variation_options() {
     $model_right_sidebar_width02 = $options['right02-width']+50;
     $model_left_sidebar_width = $options['left01-width']+50;
     
-   // $model_header_image = get_header_image();
+    $model_header_image = get_header_image();
 	if ($options['header-image-options'] == "custom") {
    		$match = preg_match('/variations/', $model_header_image);
    		if ($match == 0) {

@@ -32,6 +32,8 @@ if ($shadowbox_config['headermeta'] = "on") $options['headermeta'] = "on";
 
 $options['site-margin-top'] = "0";	
 $options['page-image-width'] = $options['site-width']-50;
+$options['header-width'] = $options['site-width'];
+$options['custom-header-width-offset'] = 107;
 
 $options['foreground_color'] = "#FFFFFF";
 $options['content-background'] = "#FFFFFF";
@@ -93,8 +95,6 @@ $options['right02-border-style'] = "solid";
 $options['top-border-style'] = "solid";
 $options['bottom-border-style'] = "none";
 
-$options['header-width'] = $options['site-width'];
-
 $options['page_image_directory'] = "shadowbox-default";	
 $options['page_image_path'] = "url('".get_bloginfo("stylesheet_directory")."/variations/".$options['page_image_directory'];
 
@@ -122,8 +122,6 @@ $options['thread-alt-bgcolor'] = "#f8f8f8";
 $options['commentfield'] = "#000000";
 
 $options['searchbox-color'] = "#FFFFFF";
-
-$options['header-width'] = $options['site-width'];
 
 /******************************************************************************
  * Initialization
