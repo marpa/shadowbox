@@ -1786,7 +1786,7 @@ function save_options() {
 		.left01block:hover {
 			background-color: ".$options['left01-color-hover-rgb'].";
 			border-top: 1px ".$options['left01-hover-border-style']." ".$options['left01-border-top'].";
-			border-left01: 1px ".$options['left01-hover-border-style']." ".$options['left01-border-left01'].";
+			border-bottom: 1px ".$options['left01-hover-border-style']." ".$options['left01-border-left01'].";
 			border-left: 1px ".$options['left01-hover-border-style']." ".$options['left01-border-left'].";
 			border-right: 1px ".$options['left01-hover-border-style']." ".$options['left01-border-right'].";
 		}
@@ -1803,7 +1803,7 @@ function save_options() {
 		.right01block:hover {
 			background-color: ".$options['right01-color-hover-rgb'].";
 			border-top: 1px ".$options['right01-hover-border-style']." ".$options['right01-border-top'].";
-			border-right01: 1px ".$options['right01-hover-border-style']." ".$options['right01-border-right01'].";
+			border-bottom: 1px ".$options['right01-hover-border-style']." ".$options['right01-border-right01'].";
 			border-left: 1px ".$options['right01-hover-border-style']." ".$options['right01-border-left'].";
 			border-right: 1px ".$options['right01-hover-border-style']." ".$options['right01-border-right'].";
 		}
