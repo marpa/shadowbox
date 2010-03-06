@@ -48,12 +48,7 @@ if ($options['background'] == "shadowbox-white") {
 	$options['page_bottom_background_image'] = $options['page_image_path']."/".$options['page-image-width']."-bottom.png')";
 	$options['page_bottom_padding'] = "30";
 	
-	$options['left01-border-style'] = "solid";
-	$options['right01-border-style'] = "solid";
-	$options['right02-border-style'] = "solid";
-	$options['top-border-style'] = "solid";
-	$options['bottom-border-style'] = "none";
-	$options['header-border-style'] = "solid";
+	$options['header-outer-border-style'] = "solid";
 	$options['header-border02-height'] = 1;
 
 	$options['header-width'] = $options['site-width'];

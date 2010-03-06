@@ -95,7 +95,7 @@ $variation_config['model'][4]  = 'background_repeat';
 $variation_config['model'][5]  = 'background_position';
 $variation_config['model'][6]  = 'bglinkcolor';
 $variation_config['model'][7]  = 'bgtextcolor';
-$variation_config['model'][8]  = 'header-width';
+//$variation_config['model'][8]  = 'header-width';
 $variation_config['model'][9]  = 'headerleftcustom';
 $variation_config['model'][10]  = 'header-meta-left';
 $variation_config['model'][11]  = 'header-image-options';
@@ -142,7 +142,13 @@ $variation_config['model'][51]  = 'custom_background-source-url';
 $variation_config['model'][52]  = 'custom_background-source-credit';
 $variation_config['model'][53]  = 'revert';
 $variation_config['model'][54]  = 'header-blogtitle-size';
-
+$variation_config['model'][55]  = 'header-border-style';
+$variation_config['model'][56]  = 'top-border-style';
+$variation_config['model'][57]  = 'content-border-style';
+$variation_config['model'][58]  = 'left01-border-style';
+$variation_config['model'][59]  = 'right01-border-style';
+$variation_config['model'][60]  = 'right02-border-style';
+$variation_config['model'][61]  = 'bottom-border-style';
 
 
 /******************************************************************************

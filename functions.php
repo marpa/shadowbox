@@ -704,16 +704,6 @@ function variation_options() {
 			}
 			print "\n\t\t\t\t\t\t\t</select>";
 		}
-		// header opacity
-		if (in_array("header-opacity", $variation_config['model'])) {
-			print " <span style='font-size: 10px; color: ".$options['bgtextcolor'].";'>Header Opacity:</span>\n";
-			print "\n\t\t\t\t\t\t\t<select name='header-opacity' style='font-size: 10px;' onchange='this.form.submit();'>";							
-			foreach ($options_values['header-opacity'] as $label => $value) {
-				print "\n\t\t\t\t\t\t\t\t<option value='".$value."'".($options['header-opacity'] == $value ? ' selected' : '') . ">".$label."</option>";
-			}
-			print "\n\t\t\t\t\t\t\t</select>";
-		}				 
-				
 		// header image options
 		if (in_array("header-image-options", $variation_config['model'])) {
 			print " <span style='font-size: 10px; color: ".$options['bgtextcolor'].";'>Header Image:</span>\n";
@@ -731,7 +721,39 @@ function variation_options() {
 				if ($options['header-image-options'] == "custom" && $custom_header_set == 0) 
 					print "<span class ='editheaderlink'><a href='".get_bloginfo('url')."/wp-admin/themes.php?page=custom-header'>Edit Custom Header Image</a></span>";
 			}
-		}		
+		}
+		print "<br/>";
+
+		// header width options
+		if (in_array("header-width", $variation_config['model'])) {
+			print "<span style='font-size: 10px; color: ".$options['bgtextcolor'].";'>Header Width:</span>\n";
+			print "<select name='header-width' style='font-size: 10px;' onchange='this.form.submit();'>\n";							
+			foreach ($options_values['header-width'] as $label => $value) {
+				print "\n<option value='".$value."'".($options['header-width'] == $value ? ' selected' : '') . ">".$label."</option>";
+			}					
+			print "</select>";
+		}
+
+		// header border
+		if (in_array("header-border-style", $variation_config['model'])) {
+			print " <span style='font-size: 10px; color: ".$options['bgtextcolor'].";'>Header Border:</span>\n";
+			print "\n\t\t\t\t\t\t\t<select name='header-border-style' style='font-size: 10px;' onchange='this.form.submit();'>";							
+			foreach ($options_values['border-style'] as $label => $value) {
+				print "\n\t\t\t\t\t\t\t\t<option value='".$value."'".($options['header-border-style'] == $value ? ' selected' : '') . ">".$label."</option>";
+			}
+			print "\n\t\t\t\t\t\t\t</select>";
+		}				 
+		// header opacity
+		if (in_array("header-opacity", $variation_config['model'])) {
+			print " <span style='font-size: 10px; color: ".$options['bgtextcolor'].";'>Header Opacity:</span>\n";
+			print "\n\t\t\t\t\t\t\t<select name='header-opacity' style='font-size: 10px;' onchange='this.form.submit();'>";							
+			foreach ($options_values['header-opacity'] as $label => $value) {
+				print "\n\t\t\t\t\t\t\t\t<option value='".$value."'".($options['header-opacity'] == $value ? ' selected' : '') . ">".$label."</option>";
+			}
+			print "\n\t\t\t\t\t\t\t</select>";
+		}				 
+
+				
 		print "
 		</td>		
 	</tr>
@@ -752,14 +774,13 @@ function variation_options() {
 	/*********************************************************
 	 * theme model and options
 	 *********************************************************/
-	
-	print "
+	print "	
 	<table width = '".$model_site_width."' align='center' cellpadding='0' cellspacing='0' style='border: 1px solid #CCCCCC; background-color: ".$options['content-background'].";'>
 	<tr>
 	<td>		
 		<table width = '100%' cellpadding='10' style='background-color: transparent;'>
 			<tr>
-				<td colspan='4' valign='top' height='".$options['header-block-height']."' class='headerblock'>";
+				<td colspan='4' valign='top' height='".$options['header-block-height']."' class='headerblock' style='margin-right:100px;'>";
 					
 					// blog title and description model
 					if ($options['header-text-display'] != "hide") {
@@ -813,7 +834,14 @@ function variation_options() {
 					}
 					print "\n\t\t\t\t\t\t\t</select>";
 				}
-			
+				// border
+				if (in_array("top-border-style", $variation_config['model'])) {
+					print "\n\t\t\t\t\t\t\t<select name='top-border-style' style='font-size: 10px;' onchange='this.form.submit();'>";							
+					foreach ($options_values['border-style'] as $label => $value) {
+						print "\n\t\t\t\t\t\t\t\t<option value='".$value."'".($options['top-border-style'] == $value ? ' selected' : '') . ">".$label."</option>";
+					}
+					print "\n\t\t\t\t\t\t\t</select>";
+				}				 							
 				print"
 				</div>
 				</td>
@@ -898,7 +926,14 @@ function variation_options() {
 					}
 					print "\n\t\t\t\t\t\t\t</select>";
 				}				 
-				
+				// border
+				if (in_array("content-border-style", $variation_config['model'])) {
+					print "\n\t\t\t\t\t\t\t<select name='content-border-style' style='font-size: 10px;' onchange='this.form.submit();'>";							
+					foreach ($options_values['border-style'] as $label => $value) {
+						print "\n\t\t\t\t\t\t\t\t<option value='".$value."'".($options['content-border-style'] == $value ? ' selected' : '') . ">".$label."</option>";
+					}
+					print "\n\t\t\t\t\t\t\t</select>";
+				}				 				
 				print "
 				</div>
 				<table width = '100%' cellpadding='0'>
@@ -934,8 +969,15 @@ function variation_options() {
 									print "\n\t\t\t\t\t\t\t<option value='".$value."'".($options['left01-width'] == $value ? ' selected' : '') . ">".$label."</option>";
 								}
 								print "\n\t\t\t\t\t\t\t</select><br/>";
-							}	
-							
+							}							
+							// border
+							if (in_array("left01-border-style", $variation_config['model'])) {
+								print "\n\t\t\t\t\t\t\t<select name='left01-border-style' style='font-size: 10px;' onchange='this.form.submit();'>";							
+								foreach ($options_values['border-style'] as $label => $value) {
+									print "\n\t\t\t\t\t\t\t\t<option value='".$value."'".($options['left01-border-style'] == $value ? ' selected' : '') . ">".$label."</option>";
+								}
+								print "\n\t\t\t\t\t\t\t</select>";
+							}				 				
 							if (is_active_sidebar("sidebar-1") && $options['left01-width'] == 0) {
 								print "<span style='font-size: 10px;'>hidden widgets!</span>";
 							}
@@ -977,7 +1019,14 @@ function variation_options() {
 									}
 									print "\n\t\t\t\t\t\t\t</select><br/>";
 							}
-							
+							// border
+							if (in_array("right01-border-style", $variation_config['model'])) {
+								print "\n\t\t\t\t\t\t\t<select name='right01-border-style' style='font-size: 10px;' onchange='this.form.submit();'>";							
+								foreach ($options_values['border-style'] as $label => $value) {
+									print "\n\t\t\t\t\t\t\t\t<option value='".$value."'".($options['right01-border-style'] == $value ? ' selected' : '') . ">".$label."</option>";
+								}
+								print "\n\t\t\t\t\t\t\t</select>";
+							}				 											
 							if (is_active_sidebar("sidebar-2") && $options['right01-width'] == 0) {
 								print "<span style='font-size: 10px;'>hidden widgets!</span>";
 							}
@@ -1014,6 +1063,14 @@ function variation_options() {
 								print "\n\t\t\t\t\t\t\t<option value='".$value."'".($options['right02-width'] == $value ? ' selected' : '') . ">".$label."</option>";
 							}
 							print "\n\t\t\t\t\t\t\t</select><br/>";
+						// border
+						if (in_array("right02-border-style", $variation_config['model'])) {
+							print "\n\t\t\t\t\t\t\t<select name='right02-border-style' style='font-size: 10px;' onchange='this.form.submit();'>";							
+							foreach ($options_values['border-style'] as $label => $value) {
+								print "\n\t\t\t\t\t\t\t\t<option value='".$value."'".($options['right02-border-style'] == $value ? ' selected' : '') . ">".$label."</option>";
+							}
+							print "\n\t\t\t\t\t\t\t</select>";
+						}				 				
 							
 						if (is_active_sidebar("sidebar-3") && $options['right02-width'] == 0) {
 							print "<span style='font-size: 10px;'>hidden widgets!</span>";
@@ -1291,6 +1348,14 @@ function variation_options() {
 			}
 			print "\n\t\t\t\t\t\t\t</select>";
 		}
+		// border
+		if (in_array("bottom-border-style", $variation_config['model'])) {
+			print "\n\t\t\t\t\t\t\t<select name='bottom-border-style' style='font-size: 10px;' onchange='this.form.submit();'>";							
+			foreach ($options_values['border-style'] as $label => $value) {
+				print "\n\t\t\t\t\t\t\t\t<option value='".$value."'".($options['bottom-border-style'] == $value ? ' selected' : '') . ">".$label."</option>";
+			}
+			print "\n\t\t\t\t\t\t\t</select>";
+		}				 				
 
 		print "
 		</div>
@@ -1525,12 +1590,13 @@ function save_options() {
 		.contentblock, .widecolumn, .narrowcolumn {
 			color: ".$options['content-text-color'].";
 			background-color: ".$options['content-color-rgb'].";
-			border-top: 1px none ".$options['content-border-top'].";
-			border-bottom: 1px none ".$options['content-border-bottom'].";
-			border-left: 1px none ".$options['content-border-left'].";
-			border-right: 1px none ".$options['content-border-right'].";
-			padding-right: 30px;
+			border-top: 1px ".$options['content-border-style'] ." ".$options['content-border-top'].";
+			border-bottom: 1px ".$options['content-border-style'] ." ".$options['content-border-bottom'].";
+			border-left: 1px ".$options['content-border-style'] ." ".$options['content-border-left'].";
+			border-right: 1px ".$options['content-border-style'] ." ".$options['content-border-right'].";
+			padding-right: 20px;
 			padding-left: 20px;
+			padding-bottom: 20px;
 		}
 
 		h1, h2, h3 {
@@ -1604,6 +1670,10 @@ function save_options() {
 		
 		.bottomblock:hover {
 			background-color: ".$options['bottom-color-hover-rgb'].";
+			border-top: 1px ".$options['bottom-hover-border-style']." ".$options['bottom-border-top'].";
+			border-bottom: 1px ".$options['bottom-hover-border-style']." ".$options['bottom-border-bottom'].";
+			border-left: 1px ".$options['bottom-hover-border-style']." ".$options['bottom-border-left'].";
+			border-right: 1px ".$options['bottom-hover-border-style']." ".$options['bottom-border-right'].";		
 		}		
 
 		.bottomblock a {
@@ -1715,6 +1785,10 @@ function save_options() {
 
 		.left01block:hover {
 			background-color: ".$options['left01-color-hover-rgb'].";
+			border-top: 1px ".$options['left01-hover-border-style']." ".$options['left01-border-top'].";
+			border-left01: 1px ".$options['left01-hover-border-style']." ".$options['left01-border-left01'].";
+			border-left: 1px ".$options['left01-hover-border-style']." ".$options['left01-border-left'].";
+			border-right: 1px ".$options['left01-hover-border-style']." ".$options['left01-border-right'].";
 		}
 				
 		.right01block {
@@ -1728,6 +1802,10 @@ function save_options() {
 		
 		.right01block:hover {
 			background-color: ".$options['right01-color-hover-rgb'].";
+			border-top: 1px ".$options['right01-hover-border-style']." ".$options['right01-border-top'].";
+			border-right01: 1px ".$options['right01-hover-border-style']." ".$options['right01-border-right01'].";
+			border-left: 1px ".$options['right01-hover-border-style']." ".$options['right01-border-left'].";
+			border-right: 1px ".$options['right01-hover-border-style']." ".$options['right01-border-right'].";
 		}
 
 		.right02block {
@@ -1741,6 +1819,10 @@ function save_options() {
 
 		.right02block:hover {
 			background-color: ".$options['right02-color-hover-rgb'].";
+			border-top: 1px ".$options['right02-hover-border-style']." ".$options['right02-border-top'].";
+			border-right02: 1px ".$options['right02-hover-border-style']." ".$options['right02-border-right02'].";
+			border-left: 1px ".$options['right02-hover-border-style']." ".$options['right02-border-left'].";
+			border-right: 1px ".$options['right02-hover-border-style']." ".$options['right02-border-right'].";
 		}
 		
 		/* Begin sidebar text, width and visibility  */
@@ -2459,6 +2541,15 @@ function set_derivative_options() {
 				$options[$bar.'-border02-bottom'] = "#999999";
 			}			
 		} 
+		
+		/******************************************************************************
+		 * Bar borders 
+		 ******************************************************************************/
+		if ($options[$bar.'-border-style'] == "none") {
+			$options[$bar.'-hover-border-style'] = "none";
+		} else {
+			$options[$bar.'-hover-border-style'] = "solid";
+		}
 		
 
 		/******************************************************************************

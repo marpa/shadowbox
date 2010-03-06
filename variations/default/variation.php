@@ -65,7 +65,6 @@ if (isset($options['textcolor'])) {
 	$options['header-blogdescription-color'] = "#333333";
 }
 
-
 $options['header-meta-left-margin'] = "30px";
 $options['header-meta-right-margin'] = "30px";
 $options['footer-meta-left-margin'] = "30px";
@@ -81,19 +80,8 @@ $options['transparent-heading-color'] = "#333333";
 $options['transparent-link-color']  = $options['linkcolor'];
 $options['transparent-text-color']  = $options['textcolor'];
 
-
 $options['header-outer-border-style'] = "solid";
-$options['header-border-style'] = "solid";
-$options['header-hover-border-style'] = "solid";
 $options['header-border02-height'] = 1;
-
-$options['content-border-style'] = "solid";
-
-$options['left01-border-style'] = "solid";
-$options['right01-border-style'] = "solid";
-$options['right02-border-style'] = "solid";
-$options['top-border-style'] = "solid";
-$options['bottom-border-style'] = "none";
 
 $options['page_image_directory'] = "shadowbox-default";	
 $options['page_image_path'] = "url('".get_bloginfo("stylesheet_directory")."/variations/".$options['page_image_directory'];
@@ -158,6 +146,15 @@ if (!isset($options['right01-opacity'])) $options['right01-opacity'] = "1";
 if (!isset($options['right02-opacity'])) $options['right02-opacity'] = "1";
 if (!isset($options['bottom-opacity'])) $options['bottom-opacity'] = "1";
 
+if (!isset($options['header-border-style'])) $options['header-border-style'] = "solid";
+if (!isset($options['top-border-style'])) $options['content-border-style'] = "solid";
+if (!isset($options['content-border-style'])) $options['content-border-style'] = "none";
+if (!isset($options['left01-border-style'])) $options['left01-border-style'] = "solid";
+if (!isset($options['right01-border-style'])) $options['right01-border-style'] = "solid";
+if (!isset($options['right02-border-style'])) $options['right02-border-style'] = "solid";
+if (!isset($options['bottom-border-style'])) $options['bottom-border-style'] = "none";
+
+
 if (!isset($options['header-width'])) $options['header-width'] = $options['site-width'];
 if (!isset($options['left01-width'])) $options['left01-width'] = "0";
 if (!isset($options['right01-width'])) $options['right01-width'] = "200";
@@ -204,14 +201,10 @@ $options_values['header-opacity'] = array(
 	'0%'=> '0'
 	);
 
-$options_values['header-border'] = array(
-	'None' => 'none',
-	'Solid' => 'solid',
-	);
-
-$options_values['content-border'] = array(
-	'None' => 'none',
-	'Solid' => 'solid',
+$options_values['border-style'] = array(
+	'No Border' => 'none',
+	'Dotted Border' => 'dotted',
+	'Solid Border' => 'solid'
 	);
 
 $options_values['background_repeat'] = array(
