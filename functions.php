@@ -1786,7 +1786,7 @@ function save_options() {
 		.left01block:hover {
 			background-color: ".$options['left01-color-hover-rgb'].";
 			border-top: 1px ".$options['left01-hover-border-style']." ".$options['left01-border-top'].";
-			border-bottom: 1px ".$options['left01-hover-border-style']." ".$options['left01-border-left01'].";
+			border-bottom: 1px ".$options['left01-hover-border-style']." ".$options['left01-border-left'].";
 			border-left: 1px ".$options['left01-hover-border-style']." ".$options['left01-border-left'].";
 			border-right: 1px ".$options['left01-hover-border-style']." ".$options['left01-border-right'].";
 		}
@@ -1803,7 +1803,7 @@ function save_options() {
 		.right01block:hover {
 			background-color: ".$options['right01-color-hover-rgb'].";
 			border-top: 1px ".$options['right01-hover-border-style']." ".$options['right01-border-top'].";
-			border-bottom: 1px ".$options['right01-hover-border-style']." ".$options['right01-border-right01'].";
+			border-bottom: 1px ".$options['right01-hover-border-style']." ".$options['right01-border-right'].";
 			border-left: 1px ".$options['right01-hover-border-style']." ".$options['right01-border-left'].";
 			border-right: 1px ".$options['right01-hover-border-style']." ".$options['right01-border-right'].";
 		}
@@ -1820,7 +1820,7 @@ function save_options() {
 		.right02block:hover {
 			background-color: ".$options['right02-color-hover-rgb'].";
 			border-top: 1px ".$options['right02-hover-border-style']." ".$options['right02-border-top'].";
-			border-right02: 1px ".$options['right02-hover-border-style']." ".$options['right02-border-right02'].";
+			border-bottom: 1px ".$options['right02-hover-border-style']." ".$options['right02-border-right'].";
 			border-left: 1px ".$options['right02-hover-border-style']." ".$options['right02-border-left'].";
 			border-right: 1px ".$options['right02-hover-border-style']." ".$options['right02-border-right'].";
 		}
@@ -1989,6 +1989,7 @@ function save_options() {
 		.tag a:hover {
 			text-decoration: ".$options['tag-link-hover-decoration'].";
 			background-color: ".$options['category-link-background'].";
+			border:1px solid #ccc; 
 		}
 		
 		/* Begin category links */
@@ -2008,6 +2009,7 @@ function save_options() {
 		.category a:hover {
 			text-decoration: ".$options['category-link-hover-decoration'].";
 			background-color: ".$options['tag-link-background'].";
+			border:1px solid #ccc; 
 		}		
 		
 		/* Begin editing UI links */
