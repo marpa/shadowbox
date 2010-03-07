@@ -707,6 +707,7 @@ div.aligncenter {
 	list-style-image: none;
 	margin-bottom: 10px;
 	margin-left: -30px;
+	font-size: 12px;
 	padding: 0;
 }
 
@@ -840,8 +841,9 @@ div.aligncenter {
 	border-bottom: 1px none ;
 	border-left: 1px none ;
 	border-right: 1px none ;
-	padding-right: 30px;
+	padding-right: 20px;
 	padding-left: 20px;
+	padding-bottom: 20px;
 }
 
 h1, h2, h3 {
