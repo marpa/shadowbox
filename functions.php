@@ -1989,7 +1989,7 @@ function save_options() {
 		.tag a:hover {
 			text-decoration: ".$options['tag-link-hover-decoration'].";
 			background-color: ".$options['category-link-background'].";
-			border:1px solid #ccc; 
+			border:1px solid ".$options['linkcolor']."; 
 		}
 		
 		/* Begin category links */
@@ -2009,7 +2009,7 @@ function save_options() {
 		.category a:hover {
 			text-decoration: ".$options['category-link-hover-decoration'].";
 			background-color: ".$options['tag-link-background'].";
-			border:1px solid #ccc; 
+			border:1px solid ".$options['linkcolor']."; 
 		}		
 		
 		/* Begin editing UI links */
