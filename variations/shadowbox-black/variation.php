@@ -23,49 +23,17 @@ if ($options['background'] == "shadowbox-black") {
 	$options['bglinkcolor'] = "#FFFFFF";
 	$options['bgbordercolor'] = "#000000";		
 
-	$options['header-meta-left-margin'] = "30px";
-	$options['header-meta-right-margin'] = "30px";
-	$options['footer-meta-left-margin'] = "30px";
-	$options['footer-meta-right-margin'] = "20px";
+	$options['content-background'] = "#000000";
 	
 	$options['transparent-blogtitle-color'] = "#CCCC99";
 	$options['transparent-blogdescription-color'] = "#FFFFFF"; 
 	$options['transparent-heading-color'] = "#CCCC99";
 	$options['transparent-link-color']  = "#FFFFFF";
 	$options['transparent-text-color']  = "#FFFFFF";
-	
-
-	//$options['header-blogtitle-size'] = "20";
-	
-	$options['page_image_directory'] = "shadowbox-black";
-	$options['page_image_path'] = "url('".get_bloginfo("stylesheet_directory")."/variations/".$options['page_image_directory'];
-	
-	$options['page_top_background_image'] = $options['page_image_path']."/".$options['page-image-width']."-top.png')";
-	$options['page_top_padding'] = "30";	
-	
-	$options['page_main_background_image'] = $options['page_image_path']."/".$options['page-image-width']."-main.png')";
-	$options['page_main_padding'] = "50";	
-
-	$options['page_bottom_background_image'] = $options['page_image_path']."/".$options['page-image-width']."-bottom.png')";
-	$options['page_bottom_padding'] = "30";
-	
-	$options['header-outer-border-style'] = "solid";
-	$options['header-border02-height'] = 1;
+		
+	$options['page_image_directory'] = "shadowbox-black";	
 	
 	$options['searchbox-color'] = "#262626";
-
-	$options['header-width'] = $options['site-width'];
-
-	$options_values['site-width'] = array(
-		'1000px' => '1000',
-		'950px' => '950',
-		'900px' => '900',
-		'850px' => '850',
-		'800px' => '800',
-		'750px' => '750'
-	);
-
-	$options_values['header-width'] = array();
 
 	// option values
 	$options_values['headercolor'] = array(
