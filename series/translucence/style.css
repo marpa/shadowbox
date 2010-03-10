@@ -59,7 +59,7 @@ small {
 
 h1, h2, h3 {
 	font-family: Arial, Helvetica, Sans-Serif, Sans-Serif;
-	font-weight: bold;
+	font-weight: normal;
 	border-bottom: 1px solid #CCCCCC;
 	}
 
@@ -704,6 +704,7 @@ div.aligncenter {
 .page-widgets ul li {
 	list-style-type: none;
 	list-style-image: none;
+	font-size: 12px;
 	margin-bottom: 10px;
 	margin-left: -30px;
 	padding: 0;
@@ -1077,7 +1078,7 @@ div .hr {
 /* Begin sidebar links */
 .sidebarleft01 a {
 	color: #FFFFFF;
-	border-bottom:1px dotted #FFFFFF;
+	border-bottom:1px none #FFFFFF;
 }
 		
 .sidebarleft01 a:hover {
@@ -1087,7 +1088,7 @@ div .hr {
 
 .sidebarright01 a {
 	color: #FFFFFF;
-	border-bottom:1px dotted #FFFFFF;
+	border-bottom:1px none #FFFFFF;
 }
 		
 .sidebarright01 a:hover {
@@ -1097,7 +1098,7 @@ div .hr {
 
 .sidebarright02 a {
 	color: #EEEEEE;
-	border-bottom:1px dotted #EEEEEE;
+	border-bottom:1px none #EEEEEE;
 }
 
 .sidebarright02 a:hover {

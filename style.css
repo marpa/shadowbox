@@ -1079,7 +1079,7 @@ div .hr {
 /* Begin sidebar links */
 .sidebarleft01 a {
 	color: #003366;
-	border-bottom:1px dotted #003366;
+	border-bottom:1px none #003366;
 }
 		
 .sidebarleft01 a:hover {
@@ -1089,7 +1089,7 @@ div .hr {
 
 .sidebarright01 a {
 	color: #003366;
-	border-bottom:1px dotted #003366;
+	border-bottom:1px none #003366;
 }
 		
 .sidebarright01 a:hover {
@@ -1099,7 +1099,7 @@ div .hr {
 
 .sidebarright02 a {
 	color: #003366;
-	border-bottom:1px dotted #003366;
+	border-bottom:1px none #003366;
 }
 
 .sidebarright02 a:hover {

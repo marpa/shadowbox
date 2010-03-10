@@ -1854,7 +1854,7 @@ function save_options() {
 		/* Begin sidebar links */
 		.sidebarleft01 a {
 			color: ".$options['left01-link-color'].";
-			border-bottom:1px dotted ".$options['left01-link-color'].";
+			border-bottom:1px none ".$options['left01-link-color'].";
 		}
 				
 		.sidebarleft01 a:hover {
@@ -1864,7 +1864,7 @@ function save_options() {
 		
 		.sidebarright01 a {
 			color: ".$options['right01-link-color'].";
-			border-bottom:1px dotted ".$options['right01-link-color'].";
+			border-bottom:1px none ".$options['right01-link-color'].";
 		}
 				
 		.sidebarright01 a:hover {
@@ -1874,7 +1874,7 @@ function save_options() {
 
 		.sidebarright02 a {
 			color: ".$options['right02-link-color'].";
-			border-bottom:1px dotted ".$options['right02-link-color'].";
+			border-bottom:1px none ".$options['right02-link-color'].";
 		}
 
 		.sidebarright02 a:hover {
@@ -2573,6 +2573,7 @@ function set_derivative_options() {
 		// opacity			
 		$options[$bar.'-color-rgb'] = "rgba(".hex2rgb($options[$bar.'-color']).", ".$options[$bar.'-opacity'].")";
 		$options[$bar.'-color-hover-rgb'] = "rgba(".hex2rgb($options[$bar.'-color']).", ".($options[$bar.'-opacity']+.1).")";
+		$options[$bar.'-color-hover02-rgb'] = "rgba(".hex2rgb($options[$bar.'-color']).", ".($options[$bar.'-opacity']+.2).")";
 		$options[$bar.'-color-ie'] = ".".$bar."block {".ie_opacity_css($options[$bar.'-color'], $options[$bar.'-opacity'])."}";
 		
 		// visibility
