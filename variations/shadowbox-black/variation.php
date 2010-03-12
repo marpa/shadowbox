@@ -30,10 +30,7 @@ if ($options['background'] == "shadowbox-black") {
 	$options['transparent-heading-color'] = "#CCCC99";
 	$options['transparent-link-color']  = "#FFFFFF";
 	$options['transparent-text-color']  = "#FFFFFF";
-	
-
-	//$options['header-blogtitle-size'] = "20";
-	
+		
 	$options['page_image_directory'] = "shadowbox-black";
 	$options['page_image_path'] = "url('".get_bloginfo("stylesheet_directory")."/variations/".$options['page_image_directory'];
 	
