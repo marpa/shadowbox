@@ -34,6 +34,19 @@ if ($options['background'] == "shadowbox-transparent") {
 	$options['transparent-heading-color'] = "#333333";
 	$options['transparent-link-color']  = $options['linkcolor'];
 	$options['transparent-text-color']  = $options['textcolor'];
+	
+	$options['page_image_directory'] = "shadowbox-transparent";
+	$options['page_image_path'] = "url('".get_bloginfo("stylesheet_directory")."/variations/".$options['page_image_directory'];
+	
+	$options['page_top_background_image'] = $options['page_image_path']."/".$options['page-image-width']."-top.png')";
+	$options['page_top_padding'] = "30";	
+	
+	$options['page_main_background_image'] = $options['page_image_path']."/".$options['page-image-width']."-main.png')";
+	$options['page_main_padding'] = "50";	
+
+	$options['page_bottom_background_image'] = $options['page_image_path']."/".$options['page-image-width']."-bottom.png')";
+	$options['page_bottom_padding'] = "30";	
+
 
 }	
 	
