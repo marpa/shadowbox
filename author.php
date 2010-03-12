@@ -5,7 +5,12 @@ get_header(); ?>
 <tr>
 <td valign='top' class="left01block">
 
-<?php if ($options['left01-width'] != 0) include (TEMPLATEPATH . '/sidebar-left.php'); ?>
+<?php 
+if ($options['author-sidebar-left-display'] == "show" && $options['left01-width'] != '0') {
+	include (TEMPLATEPATH . '/sidebar-left.php');
+}
+
+?>
 
 </td>
 <td valign='top' class="contentblock">
@@ -77,6 +82,21 @@ get_header(); ?>
 </div>
 
 </td>
+	<td valign='top' class="right01block">	
+	<?php 
+	if ($options['author-sidebar-right-display'] == "show" && $options['right01-width'] != '0') {
+		include (TEMPLATEPATH . '/sidebar-right.php');
+	} 
+	?>
+
+	<td valign='top' class="right02block">	
+	<?php 
+	if ($options['author-sidebar-right02-display'] == "show" && $options['right02-width'] != '0') {
+		include (TEMPLATEPATH . '/sidebar-right02.php');
+	}
+	?>	
+	</td>
+
 </tr>
 
 </table>

@@ -11,11 +11,13 @@ get_header();
 <td valign='top' class="left01block">
 
 <?php 
-if (is_category() && $options['left01-width'] != 0) {
-	include (TEMPLATEPATH . '/sidebar-left.php'); 
-} else if (is_tag() && $options['right01-width'] == 0) {
-	include (TEMPLATEPATH . '/sidebar-left.php'); 
+
+if (is_category() && $options['category-sidebar-left-display'] == "show" && $options['left01-width'] != '0') {
+	include (TEMPLATEPATH . '/sidebar-left.php');
+} else if (is_tag() && $options['tag-sidebar-left-display'] == "show" && $options['left01-width'] != '0') {
+	include (TEMPLATEPATH . '/sidebar-left.php');
 }
+
 ?>
 
 </td>
@@ -107,16 +109,25 @@ if (is_category() && $options['left01-width'] != 0) {
 
 </div>
 
-</td>
-<td valign='top' class="right01block">
+	</td>
+	<td valign='top' class="right01block">	
+	<?php 
+	if (is_category() && $options['category-sidebar-right-display'] == "show" && $options['right01-width'] != '0') {
+		include (TEMPLATEPATH . '/sidebar-right.php');
+	} else if (is_tag() && $options['tag-sidebar-right-display'] == "show" && $options['right01-width'] != '0') {
+		include (TEMPLATEPATH . '/sidebar-right.php');
+	}
+	?>
 
-<?php 
-if (is_tag() && $options['right01-width'] != 0) {
-	include (TEMPLATEPATH . '/sidebar-right.php'); 
-} else if (is_category() && $options['right01-width'] != 0 && $options['left01-width'] == 0) {
-	include (TEMPLATEPATH . '/sidebar-right.php'); 
-}
-?>
+	<td valign='top' class="right02block">	
+	<?php 
+	if (is_category() && $options['category-sidebar-right02-display'] == "show" && $options['right02-width'] != '0') {
+		include (TEMPLATEPATH . '/sidebar-right02.php');
+	} else if (is_tag() && $options['tag-sidebar-right02-display'] == "show" && $options['right02-width'] != '0') {
+		include (TEMPLATEPATH . '/sidebar-right02.php');
+	}
+	?>	
+	</td>
 
 
 </td>

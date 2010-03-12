@@ -8,16 +8,16 @@ get_header();
 ?>
 <table width='100%' cellpadding='0'>
 <tr>
-<td valign='top' class="left01block">
-
-<?php 
-if ($options['post-sidebar-left-display'] == "show" && $options['left01-width'] != '0') {
-	include (TEMPLATEPATH . '/sidebar-left.php'); 
-}		
-?>
-
-</td>
-<td valign='top' class="contentblock">
+	<td valign='top' class="left01block">
+	
+	<?php 
+	if ($options['post-sidebar-left-display'] == "show" && $options['left01-width'] != '0') {
+		include (TEMPLATEPATH . '/sidebar-left.php'); 
+	}		
+	?>
+	
+	</td>
+	<td valign='top' class="contentblock">
 
 	<div id="content">
 
@@ -84,19 +84,27 @@ if ($options['post-sidebar-left-display'] == "show" && $options['left01-width'] 
 
 		<p>Sorry, no posts matched your criteria.</p>
 
-<?php endif; ?>
+	<?php endif; ?>
 
 	</div>
-</td>
-<td valign='top' class="right01block">
+	</td>
+	
+	<td valign='top' class="right01block">	
+	<?php 
+	if ($options['post-sidebar-right-display'] == "show" && $options['right01-width'] != '0') {
+		include (TEMPLATEPATH . '/sidebar-right.php'); 
+	}
+	?>
+	</td>
+	
+	<td valign='top' class="right02block">	
+	<?php 
+	if ($options['post-sidebar-right02-display'] == "show" && $options['right02-width'] != '0') {
+		include (TEMPLATEPATH . '/sidebar-right02.php'); 
+	}	
+	?>	
+	</td>
 
-<?php 
-if ($options['post-sidebar-right-display'] == "show" && $options['right01-width'] != '0') {
-	include (TEMPLATEPATH . '/sidebar-right.php'); 
-}
-?>
-
-</td>
 </tr>
 
 </table>

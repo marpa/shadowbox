@@ -258,6 +258,8 @@ function variation_options() {
 				
 	} else {
 		$model_site_width = $options['site-width']-22;
+		$model_header_width = $options['header-width']-$options['custom-header-width-offset']-7;
+		$model_page_width = $options['site-width']-$options['custom-header-width-offset']-7;
 		$model_header_text_width = $model_site_width - 200;
 		$model_content_width = $options['site-width'] - ($options['left01-width'] + $options['right01-width'] + $options['right02-width'] + 150);
 		$model_site_width = $model_site_width."";
@@ -387,6 +389,15 @@ function variation_options() {
 			line-height: 1.5em;
 			padding: 5px;
 			border: 1px solid #CCCCCC;
+		}
+		
+		.optionsrow {
+			border-bottom: 1px dotted;
+			font-size: 10px;
+		}
+		
+		.options-select {
+			font-size: 10px;
 		}
 		
 		.entry a:visited {
@@ -778,27 +789,31 @@ function variation_options() {
 	 * theme model and options
 	 *********************************************************/
 	print "	
-	<table width = '".$model_site_width."' align='center' cellpadding='0' cellspacing='0' style='border: 1px solid #CCCCCC; background-color: ".$options['content-background'].";'>
+	<div class='page_top'></div>
+	<div class='page_main'>	
+	<table width = '".$model_header_width."' cellpadding='10' style='background-color: transparent;'>
 	<tr>
-	<td>		
-		<table width = '100%' cellpadding='10' style='background-color: transparent;'>
-			<tr>
-				<td colspan='4' valign='top' height='".$options['header-block-height']."' class='headerblock' style='margin-right:100px;'>";
-					
-					// blog title and description model
-					if ($options['header-text-display'] != "hide") {
-						print "<div class='headertext'><a href = '#'>".get_bloginfo('name')."</a></div>";
-						print "<div class='description'>".get_bloginfo('description')."</div>";
-					} else {
-						print "<div style='font-size: 10px; color: ".$options['header-text-color'].";'><i>blog title and description hidden</i></div>";
-					}
-					print "
+		<td colspan='4' valign='top' height='".$options['header-block-height']."' class='headerblock' style='margin-right:100px;'>";
+			
+			// blog title and description model
+			if ($options['header-text-display'] != "hide") {
+				print "<div class='headertext'><a href = '#'>".get_bloginfo('name')."</a></div>";
+				print "<div class='description'>".get_bloginfo('description')."</div>";
+			} else {
+				print "<div style='font-size: 10px; color: ".$options['header-text-color'].";'><i>blog title and description hidden</i></div>";
+			}
+			print "
 
-				</td>
-			</tr>
+		</td>
+	</tr>
+	</table>
+
+	<table width = '".$model_page_width."' align='center' cellpadding='0' cellspacing='2' style='background-color: ".$options['content-background'].";'>
+	<tr>
+	<td>				
 			<tr>
 				<td colspan='4' style='background-color: transparent;'>
-				<table width='100%' cellspacing='1' cellpadding='0'>
+				<table width='100%' cellspacing='2' cellpadding='0'>
 				<tr>
 				<td width='80%' class='topblock'>";
 								
@@ -947,8 +962,8 @@ function variation_options() {
 							 * Left Sidebar Options
 							 *********************************************************/							
 							
-							print "<tr><td style='border-bottom: 1px dotted; text-align: left;'>";
-							print "<div style='font-size: 10px;'>Left Sidebar</div>\n";
+							print "<tr><td class='optionsrow'>";
+							print "<div>Left Sidebar</div>\n";
 							// color
 							if (in_array("left01-color", $variation_config['model'])) {
 								print "\n\t\t\t\t\t\t\t<select name='left01-color' style='font-size: 10px;' onchange='this.form.submit();'>";							
@@ -995,9 +1010,9 @@ function variation_options() {
 							/*********************************************************
 							 * Right Sidebar Options
 							 *********************************************************/
-							print "<tr><td style='border-bottom: 1px dotted; text-align: right;'>\n";
-							print "<div style='font-size: 10px;'>Right Sidebar</div>\n";
-							//print "<td style='border-bottom: 1px dotted; text-align: right;'>\n";
+							print "<tr><td class='optionsrow' style='text-align: right;'>\n";
+							print "<div>Right Sidebar</div>\n";
+							
 							// color
 							if (in_array("right01-color", $variation_config['model'])) {
 								print "\n\t\t\t\t\t\t\t<select name='right01-color' style='font-size: 10px;' onchange='this.form.submit();'>";							
@@ -1039,9 +1054,8 @@ function variation_options() {
 						/*********************************************************
 						 * Right Sidebar 02 Color
 						 *********************************************************/
-						print "<tr><td style='border-bottom: 1px dotted; text-align: right;'>\n";
-						print "<div style='font-size: 10px;'>2nd Right Sidebar</div>\n";
-						//print "<td style='border-bottom: 1px dotted; text-align: right;'>\n";
+						print "<tr><td class='optionsrow' style='text-align: right;'>\n";
+						print "<div>2nd Right Sidebar</div>\n";
 
 
 						if (in_array("right02-color", $variation_config['model'])) {
@@ -1085,35 +1099,79 @@ function variation_options() {
 					</table>						
 					</td></tr>
 				</table>
+				<hr/>
 				";
 				
 				/*********************************************************
 				 * Post model
 				 *********************************************************/
+				 
+				// post single sidebar options
+				print "<div style='float: right; clear: left; font-size: 10px;'>\n";								
+				if (in_array("post-single-sidebar", $variation_config['model'])) {
+						print "\n\t\t\t\t\t\t\t<span>single post pages include: </span>";
+						print "<select name='post-single-sidebar' style='font-size: 10px;' onchange='this.form.submit();'>";							
+						foreach ($options_values['sidebar-display'] as $label => $value) {
+							print "\n\t\t\t\t\t\t\t\t<option value='".$value."'".($options['post-single-sidebar'] == $value ? ' selected' : '') . ">".$label."</option>";
+						}
+						print "\n\t\t\t\t\t\t\t</select>";
+				}
+				print "
+				</div>
+				<div style='color: ".$options['linkcolor']."; font-size: 16px; font-weight: bold;'>Post Title</div>";
 				
+				// author sidebar options
+				print "<div style='float: right; clear: both; font-size: 10px;'>\n";
+				if (in_array("author-single-sidebar", $variation_config['model'])) {
+						print "\n\t\t\t\t\t\t\t<span>author pages include: </span>
+						<select name='author-single-sidebar' style='font-size: 10px;' onchange='this.form.submit();'>";							
+						foreach ($options_values['sidebar-display'] as $label => $value) {
+							print "\n\t\t\t\t\t\t\t\t<option value='".$value."'".($options['author-single-sidebar'] == $value ? ' selected' : '') . ">".$label."</option>";
+						}
+						print "\n\t\t\t\t\t\t\t</select>";
+				}						
+				print "						
+				</div>
+				<div style='font-size: 9px;'>April 16th, 2009 by Author</div>";
+								
+				// category sidebar options				
+				print "<div style='float: right; clear: both; font-size: 10px;'>\n";
+				if (in_array("category-single-sidebar", $variation_config['model'])) {
+						print "\n\t\t\t\t\t\t\t<span>category archive includes: </span>
+						<select name='category-single-sidebar' style='font-size: 10px;' onchange='this.form.submit();'>";							
+						foreach ($options_values['sidebar-display'] as $label => $value) {
+							print "\n\t\t\t\t\t\t\t\t<option value='".$value."'".($options['category-single-sidebar'] == $value ? ' selected' : '') . ">".$label."</option>";
+						}
+						print "\n\t\t\t\t\t\t\t</select>";
+				}						
+				print "
+				</div>
+				<div>
+				<span class='entry'>Categories: </span><span class='category'><a href='#'>Category</a></span>
+				</div>
+				<div class='entry' style='text-align: justify;'>
+				<p>Lorem ipsum dolor sit amet, <span class='entry-visited'>visited link</span> 
+				adipiscing elit. Donec ac felis non mauris tristique vehicula. 
+				Nunc commodo, justo vel imperdiet cursus, leo dui <a href='#'>link</a>, vel bibendum neque justo nec ipsum. 
+				Aliquam erat volutpat. <a href='#'>another link</a> leo tellus, sagittis id mollis non, pretium a tellus.</p>
+				</div>";
 				print "<div style='float: right; clear: left; font-size: 10px;'>\n";
+				// tag sidebar options
+				if (in_array("tag-single-sidebar", $variation_config['model'])) {
+						print "\n\t\t\t\t\t\t\t<span style='font-size: 10px;'>tag archive includes: </span>
+						<select name='tag-single-sidebar' style='font-size: 10px;' onchange='this.form.submit();'>";							
+						foreach ($options_values['sidebar-display'] as $label => $value) {
+							print "\n\t\t\t\t\t\t\t\t<option value='".$value."'".($options['tag-single-sidebar'] == $value ? ' selected' : '') . ">".$label."</option>";
+						}
+						print "\n\t\t\t\t\t\t\t</select>";
+				}							
 				
-					// post single sidebar options
-					if (in_array("post-single-sidebar", $variation_config['model'])) {
-							print "\n\t\t\t\t\t\t\tSingle Post Display: <select name='post-single-sidebar' style='font-size: 10px;' onchange='this.form.submit();'>";							
-							foreach ($options_values['post-single-sidebar'] as $label => $value) {
-								print "\n\t\t\t\t\t\t\t\t<option value='".$value."'".($options['post-single-sidebar'] == $value ? ' selected' : '') . ">".$label."</option>";
-							}
-							print "\n\t\t\t\t\t\t\t</select>";
-					}
-					print "
-						</div>
-						<div style='color: ".$options['linkcolor']."; font-size: 16px; font-weight: bold;'>Post Title</div>
-						<span style='font-size: 9px;'>April 16th, 2009 by Author</span><br/>
-						<span class='entry'>Categories: </span><span class='category'><a href='#'>Category</a></span>					
-						<div class='entry' style='text-align: justify;'>
-						<p>Lorem ipsum dolor sit amet, <span class='entry-visited'>visited link</span> 
-						adipiscing elit. Donec ac felis non mauris tristique vehicula. 
-						Nunc commodo, justo vel imperdiet cursus, leo dui <a href='#'>link</a>, vel bibendum neque justo nec ipsum. 
-						Aliquam erat volutpat. <a href='#'>another link</a> leo tellus, sagittis id mollis non, pretium a tellus.</p>
-						</div>
-						<span class='entry'>Tags: </span><span class='tag'><a href='#'>tag</a></span>					
-						<div class='entry' style='text-align: right;'>No Comments &#187;</div><br/>";
+				print"
+				</div>
+				<div>
+				<span class='entry'>Tags: </span><span class='tag'><a href='#'>tag</a></span>
+				</div>
+				<div class='entry' style='text-align: right;'>No Comments &#187;</div><hr/>";
 
 					/*********************************************************
 					 * Text, Link, Category and Tag options
@@ -1209,7 +1267,6 @@ function variation_options() {
 							</td></tr>
 						</table>						
 					</table>
-				
 			</td>";
 			
 			/*********************************************************
@@ -1399,13 +1456,18 @@ function variation_options() {
 	print "
 
 	</td><td valign='bottom' width='20%'>
+
+	</td></tr>
+	</table>
+	</div>
+	<div class='page_bottom'></div>
 	<div style='font-size: 9px; text-align: right; color: ".$options['bgtextcolor'].";'>";
-		print $options['theme-name'];
+	print $options['theme-name'];
 	print "
 	| WordPress
 	</div>
-	</td></tr>
-	</table>";
+
+	";
 
 	print "</div>";
 		// footer meta left appgroups options	
@@ -2685,28 +2747,53 @@ function set_derivative_options() {
 		$options['category-link-hover-decoration'] = "none";
 		$options['category-link-color'] = $options['linkcolor'];
 	}
-	
+
+
 	/******************************************************************************
-	 * Single Post sidebar display
-	 * setting for determining which sidebars to show in single post view
+	 * Sidebar display options
+	 * Options for which sidebars to display on various pages
 	 ******************************************************************************/
-	if ($options['post-single-sidebar'] == 'right') {
-		$options['post-sidebar-right-display'] = "show";
-		$options['post-sidebar-left-display'] = "hide";
-		
-	} else if ($options['post-single-sidebar'] == 'left') {
-		$options['post-sidebar-left-display'] = "show";
-		$options['post-sidebar-right-display'] = "hide";
-		
-	} else if ($options['post-single-sidebar'] == 'both') {
-		$options['post-sidebar-right-display'] = "show";
-		$options['post-sidebar-left-display'] = "show";
-		
-	} else if ($options['post-single-sidebar'] == 'none') {
-		$options['post-sidebar-right-display'] = "hide";
-		$options['post-sidebar-left-display'] = "hide";	
+	$pages = array('post', 'category', 'tag', 'author', 'search');
+
+	foreach($pages as $page) {
+		if ($options[$page.'-single-sidebar'] == 'right01') {
+			$options[$page.'-sidebar-left-display'] = "hide";
+			$options[$page.'-sidebar-right-display'] = "show";
+			$options[$page.'-sidebar-right02-display'] = "hide";
+			
+		} else if ($options[$page.'-single-sidebar'] == 'left01') {
+			$options[$page.'-sidebar-left-display'] = "show";
+			$options[$page.'-sidebar-right-display'] = "hide";
+			$options[$page.'-sidebar-right02-display'] = "hide";
+	
+		} else if ($options[$page.'-single-sidebar'] == 'right02') {
+			$options[$page.'-sidebar-left-display'] = "hide";
+			$options[$page.'-sidebar-right-display'] = "hide";
+			$options[$page.'-sidebar-right02-display'] = "show";
+			
+		} else if ($options[$page.'-single-sidebar'] == 'left01right01') {
+			$options[$page.'-sidebar-left-display'] = "show";
+			$options[$page.'-sidebar-right-display'] = "show";
+			$options[$page.'-sidebar-right02-display'] = "hide";
+	
+		} else if ($options[$page.'-single-sidebar'] == 'left01right02') {
+			$options[$page.'-sidebar-left-display'] = "show";
+			$options[$page.'-sidebar-right-display'] = "hide";
+			$options[$page.'-sidebar-right02-display'] = "show";
+			
+		} else if ($options[$page.'-single-sidebar'] == 'right01right02') {
+			$options[$page.'-sidebar-left-display'] = "hide";
+			$options[$page.'-sidebar-right-display'] = "show";
+			$options[$page.'-sidebar-right02-display'] = "show";
+			
+		} else if ($options[$page.'-single-sidebar'] == 'none') {
+			$options[$page.'-sidebar-left-display'] = "hide";
+			$options[$page.'-sidebar-right-display'] = "hide";
+			$options[$page.'-sidebar-right02-display'] = "hide";
+		}	
 	}
-		
+	
+			
 	$options['page-image-width'] = $options['site-width']-50;
 
 }
