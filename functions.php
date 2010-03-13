@@ -258,7 +258,11 @@ function variation_options() {
 				
 	} else {
 		$model_site_width = $options['site-width']-22;
-		$model_header_width = $options['header-width']-$options['custom-header-width-offset']-7;
+		if ($options['site-width'] >= $options['header-width']) {
+			$model_header_width = $options['header-width']-$options['custom-header-width-offset']-7;
+		} else {
+			$model_header_width = $options['site-width']-$options['custom-header-width-offset']-7;
+		}
 		$model_page_width = $options['site-width']-$options['custom-header-width-offset']-7;
 		$model_header_text_width = $model_site_width - 200;
 		$model_content_width = $options['site-width'] - ($options['left01-width'] + $options['right01-width'] + $options['right02-width'] + 150);
