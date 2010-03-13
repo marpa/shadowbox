@@ -476,7 +476,7 @@ function variation_options() {
 			</td>
 		</tr>
 		<tr>
-		<td width='20%'>";
+		<td width='20%'>"; 
 			// header meta right appgroups options	
 			if (in_array("header-meta-left", $variation_config['model'])) {
 				print "<span style='font-size: 9px;'>Header Links:</span>\n";
@@ -510,15 +510,18 @@ function variation_options() {
 			}
 	
 			//site width
-			if (in_array("site-width", $variation_config['model'])) {
-				print " <span style='font-size: 10px;'>Site Width:</span>\n";
-				print "<select name='site-width' style='font-size: 10px;' onchange='this.form.submit();'>\n";							
-					// site width options
-					foreach ($options_values['site-width'] as $label => $value) {
-						print "\n<option value='".$value."'".($options['site-width'] == $value ? ' selected' : '') . ">".$label."</option>";
-					}					
-				print "</select>";
-			}
+			
+			get_option_selector ("Site Width", "site-width", $options_values['site-width']);
+			
+// 			if (in_array("site-width", $variation_config['model'])) {
+// 				print " <span style='font-size: 10px;'>Site Width:</span>\n";
+// 				print "<select name='site-width' style='font-size: 10px;' onchange='this.form.submit();'>\n";							
+// 					// site width options
+// 					foreach ($options_values['site-width'] as $label => $value) {
+// 						print "\n<option value='".$value."'".($options['site-width'] == $value ? ' selected' : '') . ">".$label."</option>";
+// 					}					
+// 				print "</select>";
+// 			}
 
 			//header width
 			if (in_array("header-width", $variation_config['model']) && count($options_values['header-width']) > 0) {
@@ -742,16 +745,6 @@ function variation_options() {
 		}
 		print "<br/>";
 
-		// header width options
-		if (in_array("header-width", $variation_config['model'])) {
-			print "<span style='font-size: 10px; color: ".$options['bgtextcolor'].";'>Header Width:</span>\n";
-			print "<select name='header-width' style='font-size: 10px;' onchange='this.form.submit();'>\n";							
-			foreach ($options_values['header-width'] as $label => $value) {
-				print "\n<option value='".$value."'".($options['header-width'] == $value ? ' selected' : '') . ">".$label."</option>";
-			}					
-			print "</select>";
-		}
-
 		// header border
 		if (in_array("header-border-style", $variation_config['model'])) {
 			print " <span style='font-size: 10px; color: ".$options['bgtextcolor'].";'>Header Border:</span>\n";
@@ -795,9 +788,9 @@ function variation_options() {
 	print "	
 	<div class='page_top'></div>
 	<div class='page_main'>	
-	<table width = '".$model_header_width."' cellpadding='10' style='background-color: transparent;'>
+	<table width = '".$model_header_width."' align='center' cellpadding='20' style='background-color: transparent;'>
 	<tr>
-		<td colspan='4' valign='top' height='".$options['header-block-height']."' class='headerblock' style='margin-right:100px;'>";
+		<td valign='top' height='".$options['header-block-height']."' class='headerblock' style='margin-right:100px;'>";
 			
 			// blog title and description model
 			if ($options['header-text-display'] != "hide") {
@@ -2907,6 +2900,26 @@ function print_option_feedback() {
     ";
 
 }
+
+/*********************************************************
+ * Theme option select field
+ *********************************************************/
+
+function get_option_selector ($option_title, $option_name, $option_values) {
+	global $variation_config, $options, $options_values;
+
+	if (in_array($option_name, $variation_config['model'])) {
+		print " <span style='font-size: 10px;'>".$option_title."</span>\n";
+		print "<select name='".$option_name."' style='font-size: 10px;' onchange='this.form.submit();'>\n";							
+			// options
+			foreach ($option_values as $label => $value) {
+				print "\n<option value='".$value."'".($options[$option_name] == $value ? ' selected' : '') . ">".$label."</option>";
+			}					
+		print "</select>";
+	}
+
+}
+
 
 /*********************************************************
  * Hext to RGB converter for setting transparency using RGBa
