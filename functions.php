@@ -512,28 +512,10 @@ function variation_options() {
 			//site width
 			
 			get_option_selector ("Site Width", "site-width", $options_values['site-width']);
-			
-// 			if (in_array("site-width", $variation_config['model'])) {
-// 				print " <span style='font-size: 10px;'>Site Width:</span>\n";
-// 				print "<select name='site-width' style='font-size: 10px;' onchange='this.form.submit();'>\n";							
-// 					// site width options
-// 					foreach ($options_values['site-width'] as $label => $value) {
-// 						print "\n<option value='".$value."'".($options['site-width'] == $value ? ' selected' : '') . ">".$label."</option>";
-// 					}					
-// 				print "</select>";
-// 			}
 
 			//header width
-			if (in_array("header-width", $variation_config['model']) && count($options_values['header-width']) > 0) {
-				print " <span style='font-size: 10px;'>Header Width:</span>\n";
-				print "<select name='header-width' style='font-size: 10px;' onchange='this.form.submit();'>\n";							
-					// site width options
-					foreach ($options_values['header-width'] as $label => $value) {
-						print "\n<option value='".$value."'".($options['header-width'] == $value ? ' selected' : '') . ">".$label."</option>";
-					}					
-				print "</select>";
-			}
-				
+			get_option_selector ("Header Width", "header-width", $options_values['header-width']);
+							
 			print "
 			</td>
 			<td width='20%' align='right'><span style='font-size: 9px;'>
@@ -544,91 +526,32 @@ function variation_options() {
 			if ($options['background'] == 'custom') {
 		
 				// background image url
-				if (in_array("background_image_url", $variation_config['model'])) {			
-					print "	
-					<span style='font-size: 10px;'>Background Image URL:</span>
-					<input name='background_image_url' type='text' size='70' style='font-size: 10px;' 
-					value='".(isset($options['background_image_url']) ? $options['background_image_url'] : '')."'/><br/>";
-				}
+				get_option_field ("Background Image URL", "background_image_url", 70);
 								
 				// background repeat
-				if (in_array("background_repeat", $variation_config['model'])) {			
-					print "
-					<span style='font-size: 10px;'>Background Repeat:</span>
-					<select name='custom_background_repeat' style='font-size: 10px;' onchange='this.form.submit();'>\n";							
-						// site width options
-						foreach ($options_values['background_repeat'] as $label => $value) {
-							print "\n<option value='".$value."'".($options['custom_background_repeat'] == $value ? ' selected' : '').">".$label."</option>";
-						}					
-					print "</select>";
-				}
+				get_option_selector ("Background Repeat", "custom_background_repeat", $options_values['background_repeat']);
 
 				// background position
-				if (in_array("background_position", $variation_config['model'])) {			
-					print "
-					<span style='font-size: 10px;'>Background Position:</span>
-					<select name='custom_background_position' style='font-size: 10px;' onchange='this.form.submit();'>\n";							
-						// site width options
-						foreach ($options_values['background_position'] as $label => $value) {
-							print "\n<option value='".$value."'".($options['custom_background_position'] == $value ? ' selected' : '') . ">".$label."</option>";
-						}					
-					print "</select>";
-				}
+				get_option_selector ("Background Position", "background_position", $options_values['background_position']);
 
 				// background color
-				if (in_array("custom_background_color", $variation_config['model'])) {			
-					print "
-					<span style='font-size: 10px;'>Background Color:</span>
-					<input name='custom_background_color' type='text' size='8' style='font-size: 10px;' 
-					value='".(isset($options['custom_background_color']) ? $options['custom_background_color'] : '')."'/><br/>";
-				}
+				get_option_field ("Background Color", "custom_background_color", 8);
 
 				// background text color
-				if (in_array("bgtextcolor", $variation_config['model'])) {			
-					print " <span style='font-size: 10px;'>Background Text Color:</span>\n";
-					print "<select name='custom_bgtextcolor' style='font-size: 10px;' onchange='this.form.submit();'>\n";							
-						// site width options
-						foreach ($options_values['textcolor'] as $label => $value) {
-							print "\n<option value='".$value."'".($options['custom_bgtextcolor'] == $value ? ' selected' : '') . ">".$label."</option>";
-						}					
-					print "</select>";
-				}
+				get_option_selector ("Background Text Color", "custom_bgtextcolor", $options_values['textcolor']);
 
 				// background link color
-				if (in_array("bglinkcolor", $variation_config['model'])) {			
-					print " <span style='font-size: 10px;'>Background Link Color:</span>\n";
-					print "<select name='custom_bglinkcolor' style='font-size: 10px;' onchange='this.form.submit();'>\n";							
-						// site width options
-						foreach ($options_values['textcolor'] as $label => $value) {
-							print "\n<option value='".$value."'".($options['custom_bglinkcolor'] == $value ? ' selected' : '') . ">".$label."</option>";
-						}					
-					print "</select>";
-				}				
-				// Blog title and background heading colors	
-				if (in_array("custom_header_color", $variation_config['model'])) {
-					print "
-					<span style='font-size: 10px;'>Translucent Blog Title Color:</span>
-					<input name='custom_header_color' type='text' size='8' style='font-size: 10px;' 
-					value='".(isset($options['custom_header_color']) ? $options['custom_header_color'] : '')."'/>
-					<span style='font-size: 9px;'>(when header opacity < 80%)</span>";
-				}
-				
-				// Background source url
-				if (in_array("custom_background-source-url", $variation_config['model'])) {
-					print "
-					<br/><span style='font-size: 10px;'>Variation source URL:</span>
-					<input name='custom_background-source-url' type='text' size='50' style='font-size: 10px;' 
-					value='".(isset($options['custom_background-source-url']) ? $options['custom_background-source-url'] : '')."'/>";
-				}
+				get_option_selector ("Background Link Color", "custom_bglinkcolor", $options_values['textcolor']);				
 
+				// Blog title and background heading colors	
+				get_option_field ("Translucent Blog Title Color", "custom_header_color", 8);
+				if (in_array("custom_header_color", $variation_config['model']))
+					print "<span style='font-size: 9px;'>(when header opacity < 80%)</span>";
+					
+				// Background source url
+				get_option_field ("Variation source URL", "custom_background-source-url", 50);
 				// Background source credit	
-				if (in_array("custom_background-source-credit", $variation_config['model'])) {
-					print "
-					<span style='font-size: 10px;'>Variation Name/Credit:</span>
-					<input name='custom_background-source-credit' type='text' size='20' style='font-size: 10px;' 
-					value='".(isset($options['custom_background-source-credit']) ? $options['custom_background-source-credit'] : '')."'/>";
-				}
-				
+				get_option_field ("Variation Name/Credit", "custom_background-source-credit", 20);
 			}				
 			print "</td>
 		</tr>
@@ -691,7 +614,7 @@ function variation_options() {
 	<tr>
 		<td width='20%'>";
 		
-		// header-text-display options
+		// header-text-display options		
 		if (in_array("header-text-display", $variation_config['model'])) {	
 			print "
 			<span style='color:".$options['bgtextcolor']."; font-size: 10px;'>Blog Title Position:
@@ -707,24 +630,11 @@ function variation_options() {
 		<td width='80%' colspan='2'>";
 				
 		// header height options
-		if (in_array("header-block-height", $variation_config['model'])) {
-			print " <span style='font-size: 10px; color: ".$options['bgtextcolor'].";'>Header Height:</span>\n";
-			print "<select name='header-block-height' style='font-size: 10px;' onchange='this.form.submit();'>\n";							
-			foreach ($options_values['header-block-height'] as $label => $value) {
-				print "\n<option value='".$value."'".($options['header-block-height'] == $value ? ' selected' : '') . ">".$label."</option>";
-			}					
-			print "</select>";
-		}
-				
+		get_option_selector ("Header Height", "header-block-height", $options_values['header-block-height']);
+
 		// header color
-		if (in_array("header-color", $variation_config['model'])) {
-			print " <span style='font-size: 10px; color: ".$options['bgtextcolor'].";'>Header Color:</span>\n";
-			print "\n\t\t\t\t\t\t\t<select name='header-color' style='font-size: 10px;' onchange='this.form.submit();'>";							
-			foreach ($options_values['sidebar-color'] as $label => $value) {
-				print "\n\t\t\t\t\t\t\t\t<option value='".$value."'".($options['header-color'] == $value ? ' selected' : '') . ">".$label."</option>";
-			}
-			print "\n\t\t\t\t\t\t\t</select>";
-		}
+		get_option_selector ("Header Color", "header-color", $options_values['sidebar-color']);
+		
 		// header image options
 		if (in_array("header-image-options", $variation_config['model'])) {
 			print " <span style='font-size: 10px; color: ".$options['bgtextcolor'].";'>Header Image:</span>\n";
@@ -746,29 +656,14 @@ function variation_options() {
 		print "<br/>";
 
 		// header border
-		if (in_array("header-border-style", $variation_config['model'])) {
-			print " <span style='font-size: 10px; color: ".$options['bgtextcolor'].";'>Header Border:</span>\n";
-			print "\n\t\t\t\t\t\t\t<select name='header-border-style' style='font-size: 10px;' onchange='this.form.submit();'>";							
-			foreach ($options_values['border-style'] as $label => $value) {
-				print "\n\t\t\t\t\t\t\t\t<option value='".$value."'".($options['header-border-style'] == $value ? ' selected' : '') . ">".$label."</option>";
-			}
-			print "\n\t\t\t\t\t\t\t</select>";
-		}				 
-		// header opacity
-		if (in_array("header-opacity", $variation_config['model'])) {
-			print " <span style='font-size: 10px; color: ".$options['bgtextcolor'].";'>Header Opacity:</span>\n";
-			print "\n\t\t\t\t\t\t\t<select name='header-opacity' style='font-size: 10px;' onchange='this.form.submit();'>";							
-			foreach ($options_values['header-opacity'] as $label => $value) {
-				print "\n\t\t\t\t\t\t\t\t<option value='".$value."'".($options['header-opacity'] == $value ? ' selected' : '') . ">".$label."</option>";
-			}
-			print "\n\t\t\t\t\t\t\t</select>";
-		}				 
+		get_option_selector ("Header Border", "header-border-style", $options_values['border-style']);
 
-				
+		// header opacity
+		get_option_selector ("Header Opacity", "header-opacity", $options_values['header-opacity']);
 		print "
 		</td>		
 	</tr>
-	<tr><td colspan='3'>";
+	<tr><td colspan='3'>";		
 		if ($options['model-instructions'] == "init" || $options['model-instructions'] == "on") {
 			print "
 			<div class='instructions' style='font-size: 8px;'>	
@@ -834,29 +729,13 @@ function variation_options() {
 				<div class='horizontalbar' style='font-size: 8px; float: right;'>";
 
 				// color
-				if (in_array("top-color", $variation_config['model'])) {
-					print "\n\t\t\t\t\t\t\t<select name='top-color' style='font-size: 10px;' onchange='this.form.submit();'>";							
-					foreach ($options_values['sidebar-color'] as $label => $value) {
-						print "\n\t\t\t\t\t\t\t\t<option value='".$value."'".($options['top-color'] == $value ? ' selected' : '') . ">".$label."</option>";
-					}
-					print "\n\t\t\t\t\t\t\t</select>";
-				}
+				get_option_selector ("", "top-color", $options_values['sidebar-color']);
+
 				// opacity
-				if (in_array("top-opacity", $variation_config['model'])) {
-					print "\n\t\t\t\t\t\t\t<select name='top-opacity' style='font-size: 10px;' onchange='this.form.submit();'>";							
-					foreach ($options_values['sidebar-opacity'] as $label => $value) {
-						print "\n\t\t\t\t\t\t\t\t<option value='".$value."'".($options['top-opacity'] == $value ? ' selected' : '') . ">".$label."</option>";
-					}
-					print "\n\t\t\t\t\t\t\t</select>";
-				}
+				get_option_selector ("", "top-opacity", $options_values['sidebar-opacity']);
+
 				// border
-				if (in_array("top-border-style", $variation_config['model'])) {
-					print "\n\t\t\t\t\t\t\t<select name='top-border-style' style='font-size: 10px;' onchange='this.form.submit();'>";							
-					foreach ($options_values['border-style'] as $label => $value) {
-						print "\n\t\t\t\t\t\t\t\t<option value='".$value."'".($options['top-border-style'] == $value ? ' selected' : '') . ">".$label."</option>";
-					}
-					print "\n\t\t\t\t\t\t\t</select>";
-				}				 							
+				get_option_selector ("", "top-border-style", $options_values['border-style']);
 				print"
 				</div>
 				</td>
@@ -925,30 +804,15 @@ function variation_options() {
 				 * Content Sidebar Options
 				 *********************************************************/			
 				print "<span style='font-size: 10px;'>Content</span>\n";
+				
 				// color
-				if (in_array("content-color", $variation_config['model'])) {
-					print "\n\t\t\t\t\t\t\t<select name='content-color' style='font-size: 10px;' onchange='this.form.submit();'>";							
-					foreach ($options_values['sidebar-color'] as $label => $value) {
-						print "\n\t\t\t\t\t\t\t\t<option value='".$value."'".($options['content-color'] == $value ? ' selected' : '') . ">".$label."</option>";
-					}
-					print "\n\t\t\t\t\t\t\t</select>";
-				}
+				get_option_selector ("", "content-color", $options_values['sidebar-color']);
+
 				// opacity
-				if (in_array("content-opacity", $variation_config['model'])) {
-					print "\n\t\t\t\t\t\t\t<select name='content-opacity' style='font-size: 10px;' onchange='this.form.submit();'>";							
-					foreach ($options_values['sidebar-opacity'] as $label => $value) {
-						print "\n\t\t\t\t\t\t\t\t<option value='".$value."'".($options['content-opacity'] == $value ? ' selected' : '') . ">".$label."</option>";
-					}
-					print "\n\t\t\t\t\t\t\t</select>";
-				}				 
+				get_option_selector ("", "content-opacity", $options_values['sidebar-opacity']);
+
 				// border
-				if (in_array("content-border-style", $variation_config['model'])) {
-					print "\n\t\t\t\t\t\t\t<select name='content-border-style' style='font-size: 10px;' onchange='this.form.submit();'>";							
-					foreach ($options_values['border-style'] as $label => $value) {
-						print "\n\t\t\t\t\t\t\t\t<option value='".$value."'".($options['content-border-style'] == $value ? ' selected' : '') . ">".$label."</option>";
-					}
-					print "\n\t\t\t\t\t\t\t</select>";
-				}				 				
+				get_option_selector ("", "content-border-style", $options_values['border-style']);
 				print "
 				</div>
 				<table width = '100%' cellpadding='0'>
@@ -962,37 +826,13 @@ function variation_options() {
 							print "<tr><td class='optionsrow'>";
 							print "<div>Left Sidebar</div>\n";
 							// color
-							if (in_array("left01-color", $variation_config['model'])) {
-								print "\n\t\t\t\t\t\t\t<select name='left01-color' style='font-size: 10px;' onchange='this.form.submit();'>";							
-								foreach ($options_values['sidebar-color'] as $label => $value) {
-									print "\n\t\t\t\t\t\t\t\t<option value='".$value."'".($options['left01-color'] == $value ? ' selected' : '') . ">".$label."</option>";
-								}
-								print "\n\t\t\t\t\t\t\t</select>";
-							}
+							get_option_selector ("", "left01-color", $options_values['sidebar-color']);
 							// opacity
-							if (in_array("left01-opacity", $variation_config['model'])) {
-								print "\n\t\t\t\t\t\t\t<select name='left01-opacity' style='font-size: 10px;' onchange='this.form.submit();'>";							
-								foreach ($options_values['sidebar-opacity'] as $label => $value) {
-									print "\n\t\t\t\t\t\t\t\t<option value='".$value."'".($options['left01-opacity'] == $value ? ' selected' : '') . ">".$label."</option>";
-								}
-								print "\n\t\t\t\t\t\t\t</select>";
-							}
+							get_option_selector ("", "left01-opacity", $options_values['sidebar-opacity']);
 							//width
-							if (in_array("left01-width", $variation_config['model'])) {
-								print "\n\t\t\t\t\t\t\t<select name='left01-width' style='font-size: 10px;' onchange='this.form.submit();'>";
-								foreach ($options_values['sidebar-width'] as $label => $value) {
-									print "\n\t\t\t\t\t\t\t<option value='".$value."'".($options['left01-width'] == $value ? ' selected' : '') . ">".$label."</option>";
-								}
-								print "\n\t\t\t\t\t\t\t</select><br/>";
-							}							
+							get_option_selector ("", "left01-width", $options_values['sidebar-width']);
 							// border
-							if (in_array("left01-border-style", $variation_config['model'])) {
-								print "\n\t\t\t\t\t\t\t<select name='left01-border-style' style='font-size: 10px;' onchange='this.form.submit();'>";							
-								foreach ($options_values['border-style'] as $label => $value) {
-									print "\n\t\t\t\t\t\t\t\t<option value='".$value."'".($options['left01-border-style'] == $value ? ' selected' : '') . ">".$label."</option>";
-								}
-								print "\n\t\t\t\t\t\t\t</select>";
-							}				 				
+							get_option_selector ("", "left01-border-style", $options_values['border-style']);
 							if (is_active_sidebar("sidebar-1") && $options['left01-width'] == 0) {
 								print "<span style='font-size: 10px;'>hidden widgets!</span>";
 							}
@@ -1004,93 +844,54 @@ function variation_options() {
 					</td><td>					
 						<table width = '100%' cellpadding='0'>";
 					
-							/*********************************************************
-							 * Right Sidebar Options
-							 *********************************************************/
-							print "<tr><td class='optionsrow' style='text-align: right;'>\n";
-							print "<div>Right Sidebar</div>\n";
-							
-							// color
-							if (in_array("right01-color", $variation_config['model'])) {
-								print "\n\t\t\t\t\t\t\t<select name='right01-color' style='font-size: 10px;' onchange='this.form.submit();'>";							
-								foreach ($options_values['sidebar-color'] as $label => $value) {
-									print "\n\t\t\t\t\t\t\t<option value='".$value."'".($options['right01-color'] == $value ? ' selected' : '') . ">".$label."</option>";
-								}
-								print "\n\t\t\t\t\t\t\t</select>";
-							}						
-							// opacity
-							if (in_array("right01-opacity", $variation_config['model'])) {
-								print "\n\t\t\t\t\t\t\t<select name='right01-opacity' style='font-size: 10px;' onchange='this.form.submit();'>";							
-								foreach ($options_values['sidebar-opacity'] as $label => $value) {
-									print "\n\t\t\t\t\t\t\t\t<option value='".$value."'".($options['right01-opacity'] == $value ? ' selected' : '') . ">".$label."</option>";
-								}
-								print "\n\t\t\t\t\t\t\t</select>";
-							}
-							// width
-							if (in_array("right01-width", $variation_config['model'])) {
-								print "\n\t\t\t\t\t\t\t<select name='right01-width' style='font-size: 10px;' onchange='this.form.submit();'>";
-									foreach ($options_values['sidebar-width'] as $label => $value) {
-										print "\n\t\t\t\t\t\t\t<option value='".$value."'".($options['right01-width'] == $value ? ' selected' : '') . ">".$label."</option>";
-									}
-									print "\n\t\t\t\t\t\t\t</select><br/>";
-							}
-							// border
-							if (in_array("right01-border-style", $variation_config['model'])) {
-								print "\n\t\t\t\t\t\t\t<select name='right01-border-style' style='font-size: 10px;' onchange='this.form.submit();'>";							
-								foreach ($options_values['border-style'] as $label => $value) {
-									print "\n\t\t\t\t\t\t\t\t<option value='".$value."'".($options['right01-border-style'] == $value ? ' selected' : '') . ">".$label."</option>";
-								}
-								print "\n\t\t\t\t\t\t\t</select>";
-							}				 											
-							if (is_active_sidebar("sidebar-2") && $options['right01-width'] == 0) {
-								print "<span style='font-size: 10px;'>hidden widgets!</span>";
-							}
+						/*********************************************************
+						 * Right Sidebar Options
+						 *********************************************************/
+						print "<tr><td class='optionsrow' style='text-align: right;'>\n";
+						print "<div>Right Sidebar</div>\n";
+						
+						// color
+						get_option_selector ("", "right01-color", $options_values['sidebar-color']);
 
-							print "</td></tr>";
+						// opacity
+						get_option_selector ("", "right01-opacity", $options_values['sidebar-opacity']);
+
+						// width
+						get_option_selector ("", "right01-width", $options_values['sidebar-width']);
+
+						// border
+						get_option_selector ("", "right01-border-style", $options_values['border-style']);
+						
+						// hidden widgets warning
+						if (is_active_sidebar("sidebar-2") && $options['right01-width'] == 0) {
+							print "<span style='font-size: 10px;'>hidden widgets!</span>";
+						}
+
+						print "</td></tr>";
 					
 						/*********************************************************
-						 * Right Sidebar 02 Color
+						 * 2nd Right Sidebar Options
 						 *********************************************************/
 						print "<tr><td class='optionsrow' style='text-align: right;'>\n";
 						print "<div>2nd Right Sidebar</div>\n";
 
+						// color
+						get_option_selector ("", "right02-color", $options_values['sidebar-color']);
 
-						if (in_array("right02-color", $variation_config['model'])) {
-							print "\n\t\t\t\t\t\t\t<select name='right02-color' style='font-size: 10px;' onchange='this.form.submit();'>";							
-							foreach ($options_values['sidebar-color'] as $label => $value) {
-								print "\n\t\t\t\t\t\t\t<option value='".$value."'".($options['right02-color'] == $value ? ' selected' : '') . ">".$label."</option>";
-							}
-							print "\n\t\t\t\t\t\t\t</select>";
-						}
 						// opacity
-						if (in_array("right02-opacity", $variation_config['model'])) {
-							print "\n\t\t\t\t\t\t\t<select name='right02-opacity' style='font-size: 10px;' onchange='this.form.submit();'>";							
-							foreach ($options_values['sidebar-opacity'] as $label => $value) {
-								print "\n\t\t\t\t\t\t\t\t<option value='".$value."'".($options['right02-opacity'] == $value ? ' selected' : '') . ">".$label."</option>";
-							}
-							print "\n\t\t\t\t\t\t\t</select>";
-						}
+						get_option_selector ("", "right02-opacity", $options_values['sidebar-opacity']);
+
 						// width
-						if (in_array("right02-width", $variation_config['model'])) {
-							print "\n\t\t\t\t\t\t\t<select name='right02-width' style='font-size: 10px;' onchange='this.form.submit();'>";
-							foreach ($options_values['sidebar-width'] as $label => $value) {
-								print "\n\t\t\t\t\t\t\t<option value='".$value."'".($options['right02-width'] == $value ? ' selected' : '') . ">".$label."</option>";
-							}
-							print "\n\t\t\t\t\t\t\t</select><br/>";
+						get_option_selector ("", "right02-width", $options_values['sidebar-width']);
+
 						// border
-						if (in_array("right02-border-style", $variation_config['model'])) {
-							print "\n\t\t\t\t\t\t\t<select name='right02-border-style' style='font-size: 10px;' onchange='this.form.submit();'>";							
-							foreach ($options_values['border-style'] as $label => $value) {
-								print "\n\t\t\t\t\t\t\t\t<option value='".$value."'".($options['right02-border-style'] == $value ? ' selected' : '') . ">".$label."</option>";
-							}
-							print "\n\t\t\t\t\t\t\t</select>";
-						}				 				
-							
+						get_option_selector ("", "right02-border-style", $options_values['border-style']);
+						
+						// hidden widgets warning
 						if (is_active_sidebar("sidebar-3") && $options['right02-width'] == 0) {
 							print "<span style='font-size: 10px;'>hidden widgets!</span>";
 						}
 
-						}
 						print "
 						</td></tr>								
 					</table>						
@@ -1104,166 +905,105 @@ function variation_options() {
 				 *********************************************************/
 				 
 				// post single sidebar options
-				print "<div style='float: right; clear: left; font-size: 10px;'>\n";								
-				if (in_array("post-single-sidebar", $variation_config['model'])) {
-						print "\n\t\t\t\t\t\t\t<span>single post pages include: </span>";
-						print "<select name='post-single-sidebar' style='font-size: 10px;' onchange='this.form.submit();'>";							
-						foreach ($options_values['sidebar-display'] as $label => $value) {
-							print "\n\t\t\t\t\t\t\t\t<option value='".$value."'".($options['post-single-sidebar'] == $value ? ' selected' : '') . ">".$label."</option>";
-						}
-						print "\n\t\t\t\t\t\t\t</select>";
-				}
+				print "<div style='float: right; clear: left; font-size: 10px;'>\n";
+				get_option_selector ("single post pages include", "post-single-sidebar", $options_values['sidebar-display']);
 				print "
 				</div>
 				<div style='color: ".$options['linkcolor']."; font-size: 16px; font-weight: bold;'>Post Title</div>";
 				
 				// author sidebar options
 				print "<div style='float: right; clear: both; font-size: 10px;'>\n";
-				if (in_array("author-single-sidebar", $variation_config['model'])) {
-						print "\n\t\t\t\t\t\t\t<span>author pages include: </span>
-						<select name='author-single-sidebar' style='font-size: 10px;' onchange='this.form.submit();'>";							
-						foreach ($options_values['sidebar-display'] as $label => $value) {
-							print "\n\t\t\t\t\t\t\t\t<option value='".$value."'".($options['author-single-sidebar'] == $value ? ' selected' : '') . ">".$label."</option>";
-						}
-						print "\n\t\t\t\t\t\t\t</select>";
-				}						
-				print "						
+				get_option_selector ("author pages include", "author-single-sidebar", $options_values['sidebar-display']);
+ 				print "						
 				</div>
 				<div style='font-size: 9px;'>April 16th, 2009 by Author</div>";
 								
 				// category sidebar options				
 				print "<div style='float: right; clear: both; font-size: 10px;'>\n";
-				if (in_array("category-single-sidebar", $variation_config['model'])) {
-						print "\n\t\t\t\t\t\t\t<span>category archive includes: </span>
-						<select name='category-single-sidebar' style='font-size: 10px;' onchange='this.form.submit();'>";							
-						foreach ($options_values['sidebar-display'] as $label => $value) {
-							print "\n\t\t\t\t\t\t\t\t<option value='".$value."'".($options['category-single-sidebar'] == $value ? ' selected' : '') . ">".$label."</option>";
-						}
-						print "\n\t\t\t\t\t\t\t</select>";
-				}						
+				get_option_selector ("category archive includes", "category-single-sidebar", $options_values['sidebar-display']);
 				print "
 				</div>
+				
 				<div>
 				<span class='entry'>Categories: </span><span class='category'><a href='#'>Category</a></span>
 				</div>
+				
 				<div class='entry' style='text-align: justify;'>
 				<p>Lorem ipsum dolor sit amet, <span class='entry-visited'>visited link</span> 
 				adipiscing elit. Donec ac felis non mauris tristique vehicula. 
 				Nunc commodo, justo vel imperdiet cursus, leo dui <a href='#'>link</a>, vel bibendum neque justo nec ipsum. 
 				Aliquam erat volutpat. <a href='#'>another link</a> leo tellus, sagittis id mollis non, pretium a tellus.</p>
 				</div>";
-				print "<div style='float: right; clear: left; font-size: 10px;'>\n";
+								
 				// tag sidebar options
-				if (in_array("tag-single-sidebar", $variation_config['model'])) {
-						print "\n\t\t\t\t\t\t\t<span style='font-size: 10px;'>tag archive includes: </span>
-						<select name='tag-single-sidebar' style='font-size: 10px;' onchange='this.form.submit();'>";							
-						foreach ($options_values['sidebar-display'] as $label => $value) {
-							print "\n\t\t\t\t\t\t\t\t<option value='".$value."'".($options['tag-single-sidebar'] == $value ? ' selected' : '') . ">".$label."</option>";
-						}
-						print "\n\t\t\t\t\t\t\t</select>";
-				}							
-				
+				print "<div style='float: right; clear: left; font-size: 10px;'>\n";
+				get_option_selector ("tag archive includes", "tag-single-sidebar", $options_values['sidebar-display']);
 				print"
 				</div>
 				<div>
 				<span class='entry'>Tags: </span><span class='tag'><a href='#'>tag</a></span>
 				</div>
+				
 				<div class='entry' style='text-align: right;'>No Comments &#187;</div><hr/>";
 
-					/*********************************************************
-					 * Text, Link, Category and Tag options
-					 *********************************************************/
-					
-					print "
+				/*********************************************************
+				 * Text, Link, Category and Tag options
+				 *********************************************************/
+				
+				print "
+				<table width = '100%' cellpadding='0'>
+				<tr><td valign='top'>	
+
 					<table width = '100%' cellpadding='0'>
-					<tr><td valign='top'>	
-
-						<table width = '100%' cellpadding='0'>
-							<tr>
-							<td style='border-bottom: 1px dotted;'><span style='font-size: 10px; color:".$options['textcolor'].";'>Text color</span></td>							
-							<td style='border-bottom: 1px dotted; text-align: right;'>";
-							
-							// text color options
-							if (in_array("textcolor", $variation_config['model'])) {
-								print "\n\t\t\t\t\t\t\t<select name='textcolor' style='font-size: 10px;' onchange='this.form.submit();'>";							
-								foreach ($options_values['textcolor'] as $label => $value) {
-									print "\n\t\t\t\t\t\t\t\t<option value='".$value."'".($options['textcolor'] == $value ? ' selected' : '') . ">".$label."</option>";
-								}
-								print "\n\t\t\t\t\t\t\t</select>";
-							}
-							
-							print "		 							
-							</td>								
-							</tr><tr>
-							<td style='border-bottom: 1px dotted;'><span style='font-size: 10px; color:".$options['linkcolor'].";'>Link color</span></td>
-							<td style='border-bottom: 1px dotted; text-align: right;'>";
-							
-							// link color options
-							if (in_array("linkcolor", $variation_config['model'])) {
-								print "\n\t\t\t\t\t\t\t<select name='linkcolor' style='font-size: 10px;' onchange='this.form.submit();'>";							
-								foreach ($options_values['linkcolor'] as $label => $value) {
-									print "\n\t\t\t\t\t\t\t\t<option value='".$value."'".($options['linkcolor'] == $value ? ' selected' : '') . ">".$label."</option>";
-								}
-								print "\n\t\t\t\t\t\t\t</select>\n";
-							}
-							print "
-							</td>								
-							</tr><tr>";
-							
-							// Link style options
-							print "
-							<td style='border-bottom: 1px dotted;'><span class='postlink' style='font-size: 10px; color:".$options['linkcolor'].";'>Link Style</span> 
-							 (<span style='font-size: 10px; color:".$options['linkcolor_visited'].";'>visited link</span>)</td>								
-							<td style='border-bottom: 1px dotted; text-align: right;'>";
-							
-							if (in_array("entry-link-style", $variation_config['model'])) {
-								print "\n\t\t\t\t\t\t\t<select name='entry-link-style' style='font-size: 10px;' onchange='this.form.submit();'>";							
-								foreach ($options_values['entry-link-style'] as $label => $value) {
-									print "\n\t\t\t\t\t\t\t\t<option value='".$value."'".($options['entry-link-style'] == $value ? ' selected' : '') . ">".$label."</option>";
-								}
-								print "\n\t\t\t\t\t\t\t</select>";
-							}
-
-
-							print "
-							</td></tr>							
-						</table>
-					</td><td valign='top' width='50%'>
-						<table width = '100%' cellpadding='0'>
-							<tr>";
-							
-							// category link style
-							print "
-							<td style='border-bottom: 1px dotted;'><span class='category' style='font-size: 10px;'>Category Link Style</span></td>
-							<td style='border-bottom: 1px dotted; text-align: right;'>";
-							
-							if (in_array("category-link-style", $variation_config['model'])) {
-								print "\n\t\t\t\t\t\t\t<select name='category-link-style' style='font-size: 10px;' onchange='this.form.submit();'>";							
-								foreach ($options_values['category-link-style'] as $label => $value) {
-									print "\n\t\t\t\t\t\t\t\t<option value='".$value."'".($options['category-link-style'] == $value ? ' selected' : '') . ">".$label."</option>";
-								}
-								print "\n\t\t\t\t\t\t\t</select>";
-							}
-							print "
-							</td>								
-							</tr><tr>";
-							
-							// Tag link style
-							print "
-							<td style='border-bottom: 1px dotted;'><span class='tag' style='font-size: 10px;'>Tag Link Style</span></td>
-							<td style='border-bottom: 1px dotted; text-align: right;'>\n";
-							
-							if (in_array("tag-link-style", $variation_config['model'])) {
-								print "\n\t\t\t\t\t\t\t<select name='tag-link-style' style='font-size: 10px;' onchange='this.form.submit();'>";							
-								foreach ($options_values['tag-link-style'] as $label => $value) {
-									print "\n\t\t\t\t\t\t\t\t<option value='".$value."'".($options['tag-link-style'] == $value ? ' selected' : '') . ">".$label."</option>";
-								}
-								print "\n\t\t\t\t\t\t\t</select>";
-							}
-							print "
-							</td></tr>
-						</table>						
+						<tr>
+						<td style='border-bottom: 1px dotted;'><span style='font-size: 10px; color:".$options['textcolor'].";'>Text color</span></td>							
+						<td style='border-bottom: 1px dotted; text-align: right;'>";
+						
+						// text color options
+						get_option_selector ("", "textcolor", $options_values['textcolor']);
+						print "		 							
+						</td>								
+						</tr><tr>
+						<td style='border-bottom: 1px dotted;'><span style='font-size: 10px; color:".$options['linkcolor'].";'>Link color</span></td>
+						<td style='border-bottom: 1px dotted; text-align: right;'>";							
+						// link color options
+						get_option_selector ("", "linkcolor", $options_values['linkcolor']);
+						print "
+						</td>								
+						</tr><tr>";
+						
+						// Link style options
+						print "
+						<td style='border-bottom: 1px dotted;'><span class='postlink' style='font-size: 10px; color:".$options['linkcolor'].";'>Link Style</span> 
+						 (<span style='font-size: 10px; color:".$options['linkcolor_visited'].";'>visited link</span>)</td>								
+						<td style='border-bottom: 1px dotted; text-align: right;'>";
+						get_option_selector ("", "entry-link-style", $options_values['entry-link-style']);							
+						print "
+						</td></tr>							
 					</table>
+				</td><td valign='top' width='50%'>
+					<table width = '100%' cellpadding='0'>
+						<tr>";
+						
+						// category link style
+						print "
+						<td style='border-bottom: 1px dotted;'><span class='category' style='font-size: 10px;'>Category Link Style</span></td>
+						<td style='border-bottom: 1px dotted; text-align: right;'>";
+						
+						get_option_selector ("", "category-link-style", $options_values['category-link-style']);
+						print "
+						</td>								
+						</tr><tr>";
+						
+						// Tag link style
+						print "
+						<td style='border-bottom: 1px dotted;'><span class='tag' style='font-size: 10px;'>Tag Link Style</span></td>
+						<td style='border-bottom: 1px dotted; text-align: right;'>\n";							
+						get_option_selector ("", "tag-link-style", $options_values['tag-link-style']);
+						print "
+						</td></tr>
+					</table>						
+				</table>
 			</td>";
 			
 			/*********************************************************
@@ -1384,36 +1124,20 @@ function variation_options() {
 		}		
 		print "	
 		<h2 style='padding-top: 0px; font-size: 10px; float: left;'>Bottom Bar</h2>
-		<div class='editwidgetlink' style='text-align: left; width: 65%; float: left;'>
+		<div class='editwidgetlink' style='text-align: left; width: 40%; float: left;'>
 		<a style='color:".$options['bottom-link-color']."; font-size: 10px; margin: 1px; padding: 1px;' href='".get_bloginfo('url')."/wp-admin/widgets.php'>Edit Widgets</a>
 		</div>
 		<div class='horizontalbar' style='font-size: 8px; float: right;'>";
 		
 		// color
-		if (in_array("bottom-color", $variation_config['model'])) {
-			print "\n\t\t\t\t\t\t\t<select name='bottom-color' style='font-size: 10px;' onchange='this.form.submit();'>";							
-			foreach ($options_values['sidebar-color'] as $label => $value) {
-				print "\n\t\t\t\t\t\t\t\t<option value='".$value."'".($options['bottom-color'] == $value ? ' selected' : '') . ">".$label."</option>";
-			}
-			print "\n\t\t\t\t\t\t\t</select>";
-		}
-		// opacity
-		if (in_array("bottom-opacity", $variation_config['model'])) {
-			print "\n\t\t\t\t\t\t\t<select name='bottom-opacity' style='font-size: 10px;' onchange='this.form.submit();'>";							
-			foreach ($options_values['sidebar-opacity'] as $label => $value) {
-				print "\n\t\t\t\t\t\t\t\t<option value='".$value."'".($options['bottom-opacity'] == $value ? ' selected' : '') . ">".$label."</option>";
-			}
-			print "\n\t\t\t\t\t\t\t</select>";
-		}
-		// border
-		if (in_array("bottom-border-style", $variation_config['model'])) {
-			print "\n\t\t\t\t\t\t\t<select name='bottom-border-style' style='font-size: 10px;' onchange='this.form.submit();'>";							
-			foreach ($options_values['border-style'] as $label => $value) {
-				print "\n\t\t\t\t\t\t\t\t<option value='".$value."'".($options['bottom-border-style'] == $value ? ' selected' : '') . ">".$label."</option>";
-			}
-			print "\n\t\t\t\t\t\t\t</select>";
-		}				 				
+		get_option_selector ("", "bottom-color", $options_values['sidebar-color']);
 
+		// opacity
+		get_option_selector ("", "bottom-opacity", $options_values['sidebar-opacity']);
+
+		// border
+		get_option_selector ("", "bottom-border-style", $options_values['border-style']);			 				
+		
 		print "
 		</div>
 		</td>
@@ -1458,25 +1182,27 @@ function variation_options() {
 	</table>
 	</div>
 	<div class='page_bottom'></div>
-	<div style='font-size: 9px; text-align: right; color: ".$options['bgtextcolor'].";'>";
+	
+	<div style='font-size: 9px; float: right; clear: left; color: ".$options['bgtextcolor'].";'>";
 	print $options['theme-name'];
-	print "
-	| WordPress
+	print " | WordPress
 	</div>
-
+	<div style='font-size: 9px; color: ".$options['bgtextcolor'].";'>
 	";
 
-	print "</div>";
-		// footer meta left appgroups options	
+
+	// footer meta left appgroups options	
+	
 	if (in_array("footer-meta-left", $variation_config['model'])) {
 		print "<span style='font-size: 9px;'>Footer Links:</span>\n";
 		print "<select name='footer-meta-left' style='font-size: 10px;'  onchange='this.form.submit();'>";
+		
 		foreach (array_keys($variation_config['footer_meta_left_options']) as $meta_left_option) {						
 			print "<option value='".$variation_config['footer_meta_left_options'][$meta_left_option]['option_name']."' ";
 			print ($options['footer-meta-left'] == $variation_config['footer_meta_left_options'][$meta_left_option]['option_name'] ? ' selected' : '') . ">";
 			print $variation_config['footer_meta_left_options'][$meta_left_option]['option_label']."</option>";						
 		}
-		print "</select>";
+		print "</select></div>";
 	}
 	// end options		
 
@@ -1485,19 +1211,17 @@ function variation_options() {
 	 *********************************************************/
     print
     "<table width = '".$model_site_width."' align='center' cellpadding='5' cellspacing='5' border='0'>
-    <tr><td valign='top'>
+    <tr><td>
     <span class='submit'><input type='submit' value='Update' name='save'/></span>
     </td><td>
     <div class='instructions'>	
 	When chosing options think about colors and contrasts that complement your content.  For example, if your site focuses on links, be sure your link color contrasts with your 
 	text color so links will stand out.  Chose the black theme for blogs that highlight images.  <br/>
 	</div>
+	</td><td>
+	<span class='submit'><input type='submit' value='Revert to Default' name='reset'/></span>
 	</td></tr>
 	</table>
-	<div style='float: right;'>
-	<span class='submit'><input type='submit' value='Revert to Default' name='reset'/></span><br/>
-	<span style='font-size: 10px;'>(Recreates Variations options)</span>
-	</div>
 	</form>";
 
 }	
@@ -2917,8 +2641,19 @@ function get_option_selector ($option_title, $option_name, $option_values) {
 			}					
 		print "</select>";
 	}
-
 }
+
+function get_option_field ($option_title, $option_name, $option_field_width) {
+	global $variation_config, $options, $options_values;
+
+	if (in_array($option_name, $variation_config['model'])) {			
+		print "	
+		<span style='font-size: 10px;'>".$option_title.":</span>
+		<input name='".$option_name."' type='text' size='".$option_field_width."' style='font-size: 10px;' 
+		value='".(isset($options[$option_name]) ? $options[$option_name] : '')."'/><br/>";
+	}
+}
+
 
 
 /*********************************************************
