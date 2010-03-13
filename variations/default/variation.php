@@ -319,8 +319,8 @@ $options_values['sidebar-display'] = array(
 	'1st Right Sidebar' => 'right01',
 	'2nd Right Sidebar' => 'right02',
 	'Both Right Sidebars' => 'right01right02',
-	'Left & 1st Right' => 'left01right01',
-	'Left & 2nd Right' => 'left01right02',
+	'Left &amp; 1st Right' => 'left01right01',
+	'Left &amp; 2nd Right' => 'left01right02',
 	'No Sidebars' => 'none',
 );
 
