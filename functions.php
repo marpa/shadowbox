@@ -492,8 +492,7 @@ function variation_options() {
 			</td>
 			<td style='text-align: center;'>";	
 			// background options		
-			if (in_array("background", $variation_config['model'])) {
-				
+			if (in_array("background", $variation_config['model'])) {				
 				print "
 				<span style='font-size: 10px;'>Variation:</span>
 				<select name='background' style='font-size: 10px;' onchange='this.form.submit();'>";
@@ -509,8 +508,7 @@ function variation_options() {
 				print "</select>";
 			}
 	
-			//site width
-			
+			//site width			
 			get_option_selector ("Site Width", "site-width", $options_values['site-width']);
 
 			//header width
@@ -527,6 +525,7 @@ function variation_options() {
 		
 				// background image url
 				get_option_field ("Background Image URL", "background_image_url", 70);
+				print "<br/>";
 								
 				// background repeat
 				get_option_selector ("Background Repeat", "custom_background_repeat", $options_values['background_repeat']);
@@ -549,6 +548,7 @@ function variation_options() {
 					print "<span style='font-size: 9px;'>(when header opacity < 80%)</span>";
 					
 				// Background source url
+				print "<br/>";
 				get_option_field ("Variation source URL", "custom_background-source-url", 50);
 				// Background source credit	
 				get_option_field ("Variation Name/Credit", "custom_background-source-credit", 20);
@@ -630,14 +630,18 @@ function variation_options() {
 		<td width='80%' colspan='2'>";
 				
 		// header height options
+		print "<span style='color:".$options['bgtextcolor']."'>";
 		get_option_selector ("Header Height", "header-block-height", $options_values['header-block-height']);
-
+		print "</span>";
+		
 		// header color
+		print "<span style='color:".$options['bgtextcolor']."'>";
 		get_option_selector ("Header Color", "header-color", $options_values['sidebar-color']);
+		print "</span>";
 		
 		// header image options
 		if (in_array("header-image-options", $variation_config['model'])) {
-			print " <span style='font-size: 10px; color: ".$options['bgtextcolor'].";'>Header Image:</span>\n";
+			print " <span style='font-size: 10px; color:".$options['bgtextcolor']."'>Header Image:</span>\n";
 
 			if ($options['header-image-options'] == "custom" && $custom_header_set == 1) {
 				print "<span class ='editheaderlink'><a href='".get_bloginfo('url')."/wp-admin/themes.php?page=custom-header'>Edit Custom Header Image</a></span>";
@@ -656,10 +660,14 @@ function variation_options() {
 		print "<br/>";
 
 		// header border
+		print "<span style='color:".$options['bgtextcolor']."'>";
 		get_option_selector ("Header Border", "header-border-style", $options_values['border-style']);
-
+		print "</span>";
+		
 		// header opacity
+		print "<span style='color:".$options['bgtextcolor']."'>";
 		get_option_selector ("Header Opacity", "header-opacity", $options_values['header-opacity']);
+		print "</span>";
 		print "
 		</td>		
 	</tr>
@@ -2584,7 +2592,22 @@ function print_option_feedback() {
 				$error = "true";
 			} 
 
-		} 
+		} 		
+		
+		if (is_active_sidebar("sidebar-1") && $options['left01-width'] == 0) {
+			$message .= " <br/><br/>Your left sidebar is hidden but contains widgets.";
+			$error = "true";
+		}
+
+		if (is_active_sidebar("sidebar-2") && $options['right01-width'] == 0) {
+			$message .= " <br/><br/>Your right sidebar is hidden but contains widgets.";
+			$error = "true";
+		}
+
+		if (is_active_sidebar("sidebar-3") && $options['right02-width'] == 0) {
+			$message .= " <br/><br/>Your 2nd right sidebar is hidden but contains widgets.";
+			$error = "true";
+		}
 	
 	
 		if ($options['linkcolor_visited'] == "#b85b5a" && ($options['textcolor'] == "#666666" || $options['textcolor'] == "#424242")) {
@@ -2594,22 +2617,30 @@ function print_option_feedback() {
 			$error = "true";
 		} 
 		
+		$pages = array('post', 'category', 'tag', 'author', 'search');
 		
-		if ($options['post-sidebar-right-display'] == "show" && $options['right01-visibility'] == "hidden") {
-			$message .= " <br/><br/>You wanted to show your right sidebar on single post pages but you have hidden it...";
-			$error = "true";
-		} 
+		foreach($pages as $page) {
+		
+			if ($options[$page.'-sidebar-right-display'] == "show" && $options['right01-width'] == 0) {
+				$message .= " <br/>You wanted to show your right sidebar on ".$page." pages but you have hidden it...";
+				$error = "true";
+			} 
 	
-		if ($options['post-sidebar-left-display'] == "show" && $options['left01-visibility'] == "hidden") {
-			$message .= " <br/><br/>You wanted to show your left sidebar on single post pages but you have hidden it...";
-			$error = "true";
-		} 
+			if ($options[$page.'-sidebar-right02-display'] == "show" && $options['right02-width'] == 0) {
+				$message .= " <br/>You wanted to show your 2nd right sidebar on ".$page." pages but you have hidden it...";
+				$error = "true";
+			} 
+		
+			if ($options[$page.'-sidebar-left-display'] == "show" && $options['left01-visibility'] == "hidden") {
+				$message .= " <br/>You wanted to show your left sidebar on ".$page." pages but you have hidden it...";
+				$error = "true";
+			} 			
+		}
 		
 		if ($error == "false") {
 			$message .= " Visit the site";
-		} else {
-			$message .= " <br/><br/>Take a look at the site and see if it is the looks the way you had hoped";
 		}
+
 	}
 	
     print
@@ -2626,13 +2657,14 @@ function print_option_feedback() {
 }
 
 /*********************************************************
- * Theme option select field
+ * Get select field for a given theme option
  *********************************************************/
 
 function get_option_selector ($option_title, $option_name, $option_values) {
 	global $variation_config, $options, $options_values;
 
 	if (in_array($option_name, $variation_config['model'])) {
+		print "<span style='white-space:nowrap;'>";
 		print " <span style='font-size: 10px;'>".$option_title."</span>\n";
 		print "<select name='".$option_name."' style='font-size: 10px;' onchange='this.form.submit();'>\n";							
 			// options
@@ -2640,17 +2672,23 @@ function get_option_selector ($option_title, $option_name, $option_values) {
 				print "\n<option value='".$value."'".($options[$option_name] == $value ? ' selected' : '') . ">".$label."</option>";
 			}					
 		print "</select>";
+		print "</span> ";
 	}
 }
+
+/*********************************************************
+ * Get an input field for a given theme option
+ *********************************************************/
 
 function get_option_field ($option_title, $option_name, $option_field_width) {
 	global $variation_config, $options, $options_values;
 
 	if (in_array($option_name, $variation_config['model'])) {			
-		print "	
+		print "
+		<span style='white-space:nowrap'>
 		<span style='font-size: 10px;'>".$option_title.":</span>
 		<input name='".$option_name."' type='text' size='".$option_field_width."' style='font-size: 10px;' 
-		value='".(isset($options[$option_name]) ? $options[$option_name] : '')."'/><br/>";
+		value='".(isset($options[$option_name]) ? $options[$option_name] : '')."'/></span>";
 	}
 }
 
