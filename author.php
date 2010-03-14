@@ -79,7 +79,7 @@ if ($options['author-sidebar-left-display'] == "show" && $options['left01-width'
 				<h2>None</h2>
 				<p><?php echo $curauth->nickname ?> has not created any posts.</p>
 			<?php endif; ?>			
-</div>
+	</div>
 
 </td>
 	<td valign='top' class="right01block">	

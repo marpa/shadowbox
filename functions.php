@@ -961,13 +961,24 @@ function variation_options() {
 				<span class='entry'>Tags: </span><span class='tag'><a href='#'>tag</a></span>
 				</div>
 				
-				<div class='entry' style='text-align: right;'>No Comments &#187;</div><hr/>";
+				<div class='entry' style='text-align: right;'>No Comments &#187;</div><br/>";
+
+				// search sidebar options
+				print "<div style='float: right; clear: both; font-size: 10px;'>";
+				get_option_selector ("<span style='font-size: 9px;'>search archive includes</span><br/>", "search-single-sidebar", $options_values['sidebar-display']);
+				print "</div>";
+
+				// archives sidebar options
+				print "<div style=' font-size: 10px;'>";
+				get_option_selector ("<span style='font-size: 9px;'>archives page includes</span><br/>", "archives-single-sidebar", $options_values['sidebar-display']);
+				print "</div>";
 
 				/*********************************************************
 				 * Text, Link, Category and Tag options
 				 *********************************************************/
 				
 				print "
+				<divs tyle='float: left; clear: both;'><hr/>
 				<table width = '100%' cellpadding='0'>
 				<tr><td valign='top'>	
 
@@ -1021,6 +1032,7 @@ function variation_options() {
 						</td></tr>
 					</table>						
 				</table>
+				</div>
 			</td>";
 			
 			/*********************************************************
@@ -2509,7 +2521,7 @@ function set_derivative_options() {
 	 * Sidebar display options
 	 * Options for which sidebars to display on various pages
 	 ******************************************************************************/
-	$pages = array('post', 'category', 'tag', 'author', 'search');
+	$pages = array('post', 'category', 'tag', 'author', 'search', 'archives');
 
 	foreach($pages as $page) {
 		if ($options[$page.'-single-sidebar'] == 'right01') {

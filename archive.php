@@ -16,6 +16,10 @@ if (is_category() && $options['category-sidebar-left-display'] == "show" && $opt
 	include (TEMPLATEPATH . '/sidebar-left.php');
 } else if (is_tag() && $options['tag-sidebar-left-display'] == "show" && $options['left01-width'] != '0') {
 	include (TEMPLATEPATH . '/sidebar-left.php');
+} else if ((is_day() || is_month() || is_year())
+	&& $options['archives-sidebar-left-display'] == "show" 
+	&& $options['left01-width'] != '0') {
+	include (TEMPLATEPATH . '/sidebar-left.php');
 }
 
 ?>
@@ -47,6 +51,7 @@ if (is_category() && $options['category-sidebar-left-display'] == "show" && $opt
 		</div>
 		</div>
 		<div><h2 single_tag_title="pagetitle">Tags &raquo; &#8216;<?php single_tag_title(); ?>&#8217;</h2></div>
+		
  	  <?php /* If this is a daily archive */ } elseif (is_day()) { ?>
 		<h2 class="pagetitle">Archive for <?php the_time('F jS, Y'); ?></h2>
  	  <?php /* If this is a monthly archive */ } elseif (is_month()) { ?>
@@ -116,6 +121,10 @@ if (is_category() && $options['category-sidebar-left-display'] == "show" && $opt
 		include (TEMPLATEPATH . '/sidebar-right.php');
 	} else if (is_tag() && $options['tag-sidebar-right-display'] == "show" && $options['right01-width'] != '0') {
 		include (TEMPLATEPATH . '/sidebar-right.php');
+	} else if ((is_day() || is_month() || is_year())
+		&& $options['archives-sidebar-right-display'] == "show" 
+		&& $options['left01-width'] != '0') {
+		include (TEMPLATEPATH . '/sidebar-right.php');
 	}
 	?>
 
@@ -124,6 +133,10 @@ if (is_category() && $options['category-sidebar-left-display'] == "show" && $opt
 	if (is_category() && $options['category-sidebar-right02-display'] == "show" && $options['right02-width'] != '0') {
 		include (TEMPLATEPATH . '/sidebar-right02.php');
 	} else if (is_tag() && $options['tag-sidebar-right02-display'] == "show" && $options['right02-width'] != '0') {
+		include (TEMPLATEPATH . '/sidebar-right02.php');
+	} else if ((is_day() || is_month() || is_year())
+		&& $options['archives-sidebar-right02-display'] == "show" 
+		&& $options['left01-width'] != '0') {
 		include (TEMPLATEPATH . '/sidebar-right02.php');
 	}
 	?>	
