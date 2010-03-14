@@ -7,13 +7,14 @@
 get_header();
 ?>
 <table width='100%' cellpadding='0'>
-<tr>
-	<td valign='top' class="left01block">
-	
+<tr>	
 	<?php 
 	if ($options['post-sidebar-left-display'] == "show" && $options['left01-width'] != '0') {
+		print "<td valign='top' class='left01block'>";
 		include (TEMPLATEPATH . '/sidebar-left.php'); 
-	}		
+	} else {
+		print "<td valign='top' class='left01block' style='width: 0px;'>";
+	}
 	?>
 	
 	</td>
@@ -89,20 +90,24 @@ get_header();
 	</div>
 	</td>
 	
-	<td valign='top' class="right01block">	
 	<?php 
 	if ($options['post-sidebar-right-display'] == "show" && $options['right01-width'] != '0') {
+		print "<td valign='top' class='right01block'>";
 		include (TEMPLATEPATH . '/sidebar-right.php'); 
+	} else {
+		print "<td valign='top' class='right01block' style='width: 0px; border: none;'>";
 	}
 	?>
 	</td>
 	
-	<td valign='top' class="right02block">	
 	<?php 
 	if ($options['post-sidebar-right02-display'] == "show" && $options['right02-width'] != '0') {
+		print "<td valign='top' class='right02block'>";
 		include (TEMPLATEPATH . '/sidebar-right02.php'); 
-	}	
-	?>	
+	} else {
+		print "<td valign='top' class='right02block' style='width: 0px; border: none;'>";
+	}
+	?>
 	</td>
 
 </tr>
