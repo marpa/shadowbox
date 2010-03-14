@@ -4,7 +4,7 @@ if (file_exists(dirname(__FILE__).'/config.php')) {
 } else if (file_exists(dirname(__FILE__).'/config-sample.php')) {
 	require_once('config-sample.php');
 }
-//error_reporting(E_ERROR | E_WARNING | E_PARSE);
+error_reporting(E_ERROR | E_WARNING | E_PARSE);
 
 /******************************************************************************
  * Preset Widgets
@@ -1194,7 +1194,20 @@ function variation_options() {
 	</table>
 	<table width='100%' cellpadding='5'>
 	<tr><td width='80%'>
-	<div class='metatext'>";
+	</td>
+	<td valign='bottom' width='20%'>
+
+	</td></tr>
+	</table>
+	</div>
+	<div class='page_bottom'></div>
+	
+	<div style='font-size: 9px; float: right; clear: left; color: ".$options['bgtextcolor'].";'>";
+	print $options['theme-name'];
+	print " | WordPress
+	</div>
+	
+	<div style='font-size: 9px; color: ".$options['bgtextcolor'].";'>";
 
 		if ($options['footerleft'] == "") {
 			print "no links defined...";
@@ -1220,26 +1233,14 @@ function variation_options() {
 	
 			print "</div>\n";
 		}
-		
-	print "
+	print "</div>";
+	// end options		
 
-	</td><td valign='bottom' width='20%'>
+	/*********************************************************
+	 * ShadowBox Theme instructions and Save Changes button
+	 *********************************************************/
 
-	</td></tr>
-	</table>
-	</div>
-	<div class='page_bottom'></div>
-	
-	<div style='font-size: 9px; float: right; clear: left; color: ".$options['bgtextcolor'].";'>";
-	print $options['theme-name'];
-	print " | WordPress
-	</div>
-	<div style='font-size: 9px; color: ".$options['bgtextcolor'].";'>
-	";
-
-
-	// footer meta left appgroups options	
-	
+    	// footer meta left appgroups options		
 	if (in_array("footer-meta-left", $variation_config['model'])) {
 		print "<span style='font-size: 9px;'>Footer Links:</span>\n";
 		print "<select name='footer-meta-left' style='font-size: 10px;'  onchange='this.form.submit();'>";
@@ -1249,15 +1250,11 @@ function variation_options() {
 			print ($options['footer-meta-left'] == $variation_config['footer_meta_left_options'][$meta_left_option]['option_name'] ? ' selected' : '') . ">";
 			print $variation_config['footer_meta_left_options'][$meta_left_option]['option_label']."</option>";						
 		}
-		print "</select></div>";
+		print "</select>";
+		
 	}
-	// end options		
-
-	/*********************************************************
-	 * ShadowBox Theme instructions and Save Changes button
-	 *********************************************************/
-    print
-    "<table width = '".$model_site_width."' align='center' cellpadding='5' cellspacing='5' border='0'>
+	print "
+    <table width = '".$model_site_width."' align='center' cellpadding='5' cellspacing='5' border='0'>
     <tr><td>
     <span class='submit'><input type='submit' value='Update' name='save'/></span>
     </td><td>
