@@ -536,11 +536,12 @@ function variation_options() {
 				// background color
 				get_option_field ("Background Color", "custom_background_color", 8);
 
+				// background link color
+				get_option_field ("Background Link Color", "custom_bglinkcolor", 8);	
+				
 				// background text color
 				get_option_selector ("Background Text Color", "custom_bgtextcolor", $options_values['textcolor']);
-
-				// background link color
-				get_option_selector ("Background Link Color", "custom_bglinkcolor", $options_values['textcolor']);				
+			
 
 				// Blog title and background heading colors	
 				get_option_field ("Translucent Blog Title Color", "custom_header_color", 8);
@@ -638,10 +639,20 @@ function variation_options() {
 		print "<span style='color:".$options['bgtextcolor']."'>";
 		get_option_selector ("Header Color", "header-color", $options_values['sidebar-color']);
 		print "</span>";
+
+		// header opacity
+		print "<span style='color:".$options['bgtextcolor']."'>";
+		get_option_selector ("Header Opacity", "header-opacity", $options_values['header-opacity']);
+		print "</span>";
 		
+		// header border
+		print "<span style='color:".$options['bgtextcolor']."'>";
+		get_option_selector ("Header Border", "header-border-style", $options_values['border-style']);
+		print "</span>";
+				
 		// header image options
 		if (in_array("header-image-options", $variation_config['model'])) {
-			print " <span style='font-size: 10px; color:".$options['bgtextcolor']."'>Header Image:</span>\n";
+			print " <span style='white-space:nowrap'><span style='font-size: 10px; color:".$options['bgtextcolor']."'>Header Image:</span>\n";
 
 			if ($options['header-image-options'] == "custom" && $custom_header_set == 1) {
 				print "<span class ='editheaderlink'><a href='".get_bloginfo('url')."/wp-admin/themes.php?page=custom-header'>Edit Custom Header Image</a></span>";
@@ -657,16 +668,6 @@ function variation_options() {
 					print "<span class ='editheaderlink'><a href='".get_bloginfo('url')."/wp-admin/themes.php?page=custom-header'>Edit Custom Header Image</a></span>";
 			}
 		}
-		print "<br/>";
-
-		// header border
-		print "<span style='color:".$options['bgtextcolor']."'>";
-		get_option_selector ("Header Border", "header-border-style", $options_values['border-style']);
-		print "</span>";
-		
-		// header opacity
-		print "<span style='color:".$options['bgtextcolor']."'>";
-		get_option_selector ("Header Opacity", "header-opacity", $options_values['header-opacity']);
 		print "</span>";
 		print "
 		</td>		
@@ -766,9 +767,18 @@ function variation_options() {
 					<div style='font-size: 10px; text-align: center; color: ".$options['left01-heading-color'].";'>&larr; ".$model_left_sidebar_width." px &rarr; </div>
 					<div style='font-size: 8px;'>					
 					<h2 style='margin-bottom: 2px; margin-top: 2px; color: ".$options['left01-heading-color'].";'>Left Sidebar</h2>
-					<div class='editwidgetlink' style='font-size: 10px;'>
-					<a style='color:".$options['left01-link-color'].";' href='".get_bloginfo('url')."/wp-admin/widgets.php'>Edit Widgets</a>";
+					<div class='editwidgetlink' style='font-size: 10px;'>";
 					
+					if (is_active_sidebar("sidebar-1")) {
+						print "<a style='color:".$options['left01-link-color'].";' href='".get_bloginfo('url')."/wp-admin/widgets.php'>Edit Widgets</a>";
+					} else {
+						print "<a style='color:".$options['left01-link-color'].";' href='".get_bloginfo('url')."/wp-admin/widgets.php'>Add Widgets</a>";
+						print "<div style='font-size: 10px; padding-left: 10px; color: ".$options['textcolor'].";'>no widgets...</div>";
+						print "<div style='font-size: 9px; padding-left: 10px; color: ".$options['textcolor'].";'>add widgets or hide sidebar...</div>";
+					}
+					
+					print "</div>";
+										
 					if ($options['model-instructions'] == "init" || $options['model-instructions'] == "on") {
 						print "
 						<div class='instructions' style='font-size: 8px;'>	
@@ -792,7 +802,6 @@ function variation_options() {
 						";							
 					}
 					print "
-					</div>
 					</div>
 				</td>";
 			}
@@ -914,21 +923,21 @@ function variation_options() {
 				 
 				// post single sidebar options
 				print "<div style='float: right; clear: left; font-size: 10px;'>\n";
-				get_option_selector ("single post pages include", "post-single-sidebar", $options_values['sidebar-display']);
+				get_option_selector ("<span style='font-size: 9px;'>single post pages include</span>", "post-single-sidebar", $options_values['sidebar-display']);
 				print "
 				</div>
 				<div style='color: ".$options['linkcolor']."; font-size: 16px; font-weight: bold;'>Post Title</div>";
 				
 				// author sidebar options
 				print "<div style='float: right; clear: both; font-size: 10px;'>\n";
-				get_option_selector ("author pages include", "author-single-sidebar", $options_values['sidebar-display']);
+				get_option_selector ("<span style='font-size: 9px;'>author pages include</span>", "author-single-sidebar", $options_values['sidebar-display']);
  				print "						
 				</div>
 				<div style='font-size: 9px;'>April 16th, 2009 by Author</div>";
 								
 				// category sidebar options				
 				print "<div style='float: right; clear: both; font-size: 10px;'>\n";
-				get_option_selector ("category archive includes", "category-single-sidebar", $options_values['sidebar-display']);
+				get_option_selector ("<span style='font-size: 9px;'>category archive includes</span>", "category-single-sidebar", $options_values['sidebar-display']);
 				print "
 				</div>
 				
@@ -945,7 +954,7 @@ function variation_options() {
 								
 				// tag sidebar options
 				print "<div style='float: right; clear: left; font-size: 10px;'>\n";
-				get_option_selector ("tag archive includes", "tag-single-sidebar", $options_values['sidebar-display']);
+				get_option_selector ("<span style='font-size: 9px;'>tag archive includes</span>", "tag-single-sidebar", $options_values['sidebar-display']);
 				print"
 				</div>
 				<div>
@@ -1025,8 +1034,18 @@ function variation_options() {
 					<div style='font-size: 8px; margin: 4px;'>
 					<div style='font-size: 8px;'>
 					<h2 style='margin-bottom: 2px; margin-top: 2px; color: ".$options['right01-heading-color'].";'>Right Sidebar</h2></div>
-					<div class='editwidgetlink' style='font-size: 10px;'>
-					<a style='color:".$options['right01-link-color'].";' href='".get_bloginfo('url')."/wp-admin/widgets.php'>Edit Widgets</a>";
+					<div class='editwidgetlink' style='font-size: 10px;'>";
+
+					if (is_active_sidebar("sidebar-2")) {
+						print "<a style='color:".$options['right01-link-color'].";' href='".get_bloginfo('url')."/wp-admin/widgets.php'>Edit Widgets</a>";
+					} else {
+						print "<a style='color:".$options['right01-link-color'].";' href='".get_bloginfo('url')."/wp-admin/widgets.php'>Add Widgets</a>";
+						print "<div style='font-size: 10px; padding-left: 10px; color: ".$options['textcolor'].";'>no widgets...</div>";
+						print "<div style='font-size: 9px; padding-left: 10px; color: ".$options['textcolor'].";'>add widgets or hide sidebar...</div>";
+					}
+					
+					print "</div>";
+					
 					if ($options['model-instructions'] == "init" || $options['model-instructions'] == "on") {
 						print "
 						<div class='instructions' style='font-size: 8px;'>	
@@ -1058,7 +1077,6 @@ function variation_options() {
 						";		
 					}
 					print "
-					</div>
 					</div>	
 				</td>";
 			}
@@ -1073,8 +1091,18 @@ function variation_options() {
 					<div style='font-size: 8px; margin: 4px;'>
 					<div style='font-size: 8px;'>
 					<h2 style='margin-bottom: 2px; margin-top: 2px; color: ".$options['right02-heading-color'].";'>2nd Right Sidebar</h2></div>
-					<div class='editwidgetlink' style='font-size: 10px;'>
-					<a style='color:".$options['right02-link-color'].";' href='".get_bloginfo('url')."/wp-admin/widgets.php'>Edit Widgets</a>";
+					<div class='editwidgetlink' style='font-size: 10px;'>";
+
+					if (is_active_sidebar("sidebar-3")) {
+						print "<a style='color:".$options['right02-link-color'].";' href='".get_bloginfo('url')."/wp-admin/widgets.php'>Edit Widgets</a>";
+					} else {
+						print "<a style='color:".$options['right02-link-color'].";' href='".get_bloginfo('url')."/wp-admin/widgets.php'>Add Widgets</a>";
+						print "<div style='font-size: 10px; padding-left: 10px; color: ".$options['textcolor'].";'>no widgets...</div>";
+						print "<div style='font-size: 9px; padding-left: 10px; color: ".$options['textcolor'].";'>add widgets or hide sidebar...</div>";
+					}
+
+					print "</div>";
+					
 					if ($options['model-instructions'] == "init" || $options['model-instructions'] == "on") {
 						print "
 						<div class='instructions' style='font-size: 8px;'>	
@@ -1104,7 +1132,6 @@ function variation_options() {
 						";		
 					}
 					print "
-					</div>
 					</div>	
 				</td>";
 			}
