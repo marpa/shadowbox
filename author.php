@@ -100,12 +100,11 @@ if ($options['author-sidebar-left-display'] == "show" && $options['left01-width'
 </tr>
 
 </table>
-<table>
-<tr><td>
-<?php //include (TEMPLATEPATH . '/bottombar.php'); ?>
-</td></tr>
+<table width='100%' class='bottomblock'>
+<tr>
+<?php include (TEMPLATEPATH . '/sidebar-bottom.php'); ?>
+</tr>
 </table>
-		
 
 <?php get_footer(); ?>
 	

@@ -13,7 +13,7 @@ Template Name: Archives
 <tr>
 <td valign='top' class="left01block">
 
-<?php //include (TEMPLATEPATH . '/sidebar-left.php'); ?>
+<?php include (TEMPLATEPATH . '/sidebar-left.php'); ?>
 </td>
 <td valign='top' class="contentblock">
 
@@ -35,15 +35,16 @@ Template Name: Archives
 </td>
 <td valign='top' class="right01block">
 
-<?php //include (TEMPLATEPATH . '/sidebar-right.php'); ?>
+<?php include (TEMPLATEPATH . '/sidebar-right.php'); ?>
 
 </td>
 </tr>
 
 </table>
-<table>
+
+<table width='100%' class='bottomblock'>
 <tr>
-<?php //include (TEMPLATEPATH . '/sidebar-bottom.php'); ?>
+<?php include (TEMPLATEPATH . '/sidebar-bottom.php'); ?>
 </tr>
 </table>
 

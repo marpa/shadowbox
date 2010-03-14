@@ -134,10 +134,11 @@ if (is_category() && $options['category-sidebar-left-display'] == "show" && $opt
 </tr>
 
 </table>
-<table>
-<tr><td>
-<?php //include (TEMPLATEPATH . '/bottombar.php'); ?>
-</td></tr>
+
+<table width='100%' class='bottomblock'>
+<tr>
+<?php include (TEMPLATEPATH . '/sidebar-bottom.php'); ?>
+</tr>
 </table>
 
 
