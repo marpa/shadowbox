@@ -13,7 +13,7 @@ get_header();
 		print "<td valign='top' class='left01block'>";
 		include (TEMPLATEPATH . '/sidebar-left.php'); 
 	} else {
-		print "<td valign='top' class='left01block' style='width: 0px;'>";
+		print "<td valign='top' class='left01block' style='width: 0px; border: none;'>";
 	}
 	?>
 	
