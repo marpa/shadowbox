@@ -149,6 +149,11 @@ $variation_config['model'][58]  = 'left01-border-style';
 $variation_config['model'][59]  = 'right01-border-style';
 $variation_config['model'][60]  = 'right02-border-style';
 $variation_config['model'][61]  = 'bottom-border-style';
+$variation_config['model'][62]  = 'category-single-sidebar';
+$variation_config['model'][63]  = 'tag-single-sidebar';
+$variation_config['model'][64]  = 'author-single-sidebar';
+$variation_config['model'][65]  = 'search-single-sidebar';
+$variation_config['model'][66]  = 'archives-single-sidebar';
 
 
 /******************************************************************************
