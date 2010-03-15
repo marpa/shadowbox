@@ -10,7 +10,7 @@
 <!DOCTYPE changelog SYSTEM "../dtds/changelog.dtd">
 
 <changelog name="ShadowBox">
-	<version number="1.5.3" date="2010-03-14">
+	<version number="1.5.3" date="2010-03-15">
 		<releaseNotes>
 			This release refines the theme options model to be more accurate and adds theme options for specifying what sidebars to include in single, author and archive pages.  This release also includes refinements in theme css and initialization.
 		</releaseNotes>
@@ -23,7 +23,7 @@
 		</change>		
 		<change author='alex' date='2010-03-14'>
 			Theme Options UX: Add info about widgets in theme model so users can see if a given
-			sidebar has no active widgets.
+			sidebar has active widgets.
 		</change>			
 		<change author='alex' date='2010-03-14'>
 			Theme Options UX: Added page images to theme model and refined so is more like actual
