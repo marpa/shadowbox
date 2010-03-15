@@ -25,7 +25,7 @@ if ($options['background'] == "translucence-black") {
 	$options['transparent-blogdescription-color'] = "#FFFFFF"; 
 	$options['transparent-heading-color'] = "#CCCC99";
 	$options['transparent-link-color']  = "#FFFFFF";
-	$options['transparent-text-color']  = "#FFFFFF";
+	$options['transparent-text-color']  = "#F2F2F2";
 		
 	$options['bgtextcolor'] = "#CCCCCC";
 	$options['bglinkcolor'] = "#FFFFFF";
@@ -40,17 +40,17 @@ if ($options['background'] == "translucence-black") {
 	$options['thread-alt-bgcolor'] = "#000000";
 	$options['commentfield'] = "#FFFFFF";
 
-	$options['left01-border-left'] = "#FFFFCC";
-	$options['left01-border-bottom'] = "#FFFFCC";
-	$options['left01-border-right'] = "#FFFFCC";
-
-	$options['right01-border-left'] = "#FFFFCC";
-	$options['right01-border-bottom'] = "#FFFFCC";
-	$options['right01-border-right'] = "#FFFFCC";
-
-	$options['right02-border-left'] = "#FFFFCC";
-	$options['right02-border-bottom'] = "#FFFFCC";
-	$options['right02-border-right'] = "#FFFFCC";
+// 	$options['left01-border-left'] = "#FFFFCC";
+// 	$options['left01-border-bottom'] = "#FFFFCC";
+// 	$options['left01-border-right'] = "#FFFFCC";
+// 
+// 	$options['right01-border-left'] = "#FFFFCC";
+// 	$options['right01-border-bottom'] = "#FFFFCC";
+// 	$options['right01-border-right'] = "#FFFFCC";
+// 
+// 	$options['right02-border-left'] = "#FFFFCC";
+// 	$options['right02-border-bottom'] = "#FFFFCC";
+// 	$options['right02-border-right'] = "#FFFFCC";
 	
 	$options['searchbox-color'] = "#262626";
 
@@ -74,9 +74,11 @@ if ($options['background'] == "translucence-black") {
 	);
 	
 	$options_values['textcolor'] = array(
-		'Light Gray' => '#CCCCCC',
-		'Gray' => '#666666',
-		'Silver' => '#F9F9F9'
+		'White' => '#FFFFFF',
+		'10% Gray' => '#EEEEEE',
+		'20% Gray' => '#CCCCCC',
+		'30% Gray' => '#888888',
+		'40% Gray' => '#777777'
 	);
 
 	$options_values['category-link-style'] = array(
