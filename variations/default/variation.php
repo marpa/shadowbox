@@ -128,7 +128,6 @@ if (!isset($options['header-text-display'])) $options['header-text-display'] = "
 if (!isset($options['entry-link-style'])) $options['entry-link-style'] = "ww";
 if (!isset($options['tag-link-style'])) $options['tag-link-style'] = "yellow-box";
 if (!isset($options['category-link-style'])) $options['category-link-style'] = "yellow-box";
-if (!isset($options['post-single-sidebar'])) $options['post-single-sidebar'] = "right";
 
 if (!isset($options['header-color'])) $options['header-color'] = "#F9F9F9";
 if (!isset($options['top-color'])) $options['top-color'] = "#FFFFFF";
@@ -159,6 +158,13 @@ if (!isset($options['header-width'])) $options['header-width'] = $options['site-
 if (!isset($options['left01-width'])) $options['left01-width'] = "0";
 if (!isset($options['right01-width'])) $options['right01-width'] = "200";
 if (!isset($options['right02-width'])) $options['right02-width'] = "0";
+
+if (!isset($options['post-single-sidebar'])) $options['post-single-sidebar'] = "right01";
+if (!isset($options['category-single-sidebar'])) $options['category-single-sidebar'] = "right01";
+if (!isset($options['tag-single-sidebar'])) $options['tag-single-sidebar'] = "right01";
+if (!isset($options['author-single-sidebar'])) $options['author-single-sidebar'] = "right01";
+if (!isset($options['search-single-sidebar'])) $options['search-single-sidebar'] = "right01";
+if (!isset($options['archives-single-sidebar'])) $options['archives-single-sidebar'] = "right01";
 
 
 /*********************************************************
@@ -306,13 +312,6 @@ $options_values['tag-link-style'] = array(
 		'Yellow Box' => 'yellow-box'
 );
 
-
-$options_values['post-single-sidebar'] = array(
-	'Left Sidebar' => 'left',
-	'Right Sidebar' => 'right',
-	'Both Sidebars' => 'both',
-	'No Sidebars' => 'none'
-);
 
 $options_values['sidebar-display'] = array(
 	'Left Sidebar' => 'left01',
