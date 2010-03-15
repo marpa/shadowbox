@@ -2,10 +2,35 @@
 ShadowBox Change Log
 
 
-v. 1.5.3 (the future)
+v. 1.5.3 (2010-03-14)
 ----------------------------------------------------
-This release refines theme options initialization and refines CSS.
+This release refines the theme options model to be more accurate and adds theme
+options for specifying what sidebars to include in single, author and archive pages.
+This release also includes refinements in theme css and initialization.
 		
+		
+	* New feature: 
+		Theme option: added options for specifying sidebars to include on tag,
+		category, single past, author and archives pages.
+		(2010-03-14 - Alex Chapin)
+		
+	* Change: 
+		Views: added bottom bar to all pages.
+		(2010-03-14 - Alex Chapin)		
+		
+	* Change: 
+		Theme Options UX: Add info about widgets in theme model so users can see if
+		a given sidebar has no active widgets.
+		(2010-03-14 - Alex Chapin)			
+		
+	* Change: 
+		Theme Options UX: Added page images to theme model and refined so is more
+		like actual tamplates.
+		(2010-03-14 - Alex Chapin)	
+		
+	* Change: 
+		CSS: removed dotted bottom border from sidebar links.
+		(2010-03-12 - Alex Chapin)
 		
 	* Change: 
 		CSS: Added current-page-item styling to distinguish links to other pages.
