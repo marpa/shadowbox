@@ -51,13 +51,17 @@ $variation_config['header_image_options']['transparent'] = array (
 		option_value => 'header-transparent.png'
 	);
 
+$variation_config['header_image_options']['whitegradient'] = array (
+		option_name =>	'whitegradient',
+		option_label =>	'White Gradient',
+		option_value => 'header-trans-white-1200x100.png'
+	);
+
 $variation_config['header_image_options']['custom'] = array (
 		option_name =>	'custom',
 		option_label =>	'Custom',
-		option_value => 'header-transparent.png'
+		option_value => 'header-trans-white-1200x100.png'
 	);
-	
-
 
 /******************************************************************************
  * Footer meta left options
@@ -145,7 +149,11 @@ $variation_config['model'][58]  = 'left01-border-style';
 $variation_config['model'][59]  = 'right01-border-style';
 $variation_config['model'][60]  = 'right02-border-style';
 $variation_config['model'][61]  = 'bottom-border-style';
-
+$variation_config['model'][62]  = 'category-single-sidebar';
+$variation_config['model'][63]  = 'tag-single-sidebar';
+$variation_config['model'][64]  = 'author-single-sidebar';
+$variation_config['model'][65]  = 'search-single-sidebar';
+$variation_config['model'][66]  = 'archives-single-sidebar';
 
 
 /******************************************************************************
@@ -153,6 +161,8 @@ $variation_config['model'][61]  = 'bottom-border-style';
  * Variation names should match name of variation folder
  * Comment out all variations that are NOT disabled
  ******************************************************************************/
+
+$variation_config['variations_disabled'] = array();
 
 // $variation_config['variations_disabled'][0] = 'custom';
 // $variation_config['variations_disabled'][1] = 'shadowbox-white';
@@ -165,17 +175,3 @@ $variation_config['model'][61]  = 'bottom-border-style';
 // $variation_config['variations_disabled'][8] = 'shadowbox-gray';
 // $variation_config['variations_disabled'][9] = 'shadowbox-gray-white';
 // $variation_config['variations_disabled'][10] = 'shadowbox-white-gray';
-// $variation_config['variations_disabled'][11] = 'translucence-white';
-// $variation_config['variations_disabled'][12] = 'translucence-black';
-// $variation_config['variations_disabled'][13] = 'translucence-blue';
-// $variation_config['variations_disabled'][14] = 'translucence-green';	
-// $variation_config['variations_disabled'][15] = 'translucence-yellow';
-// $variation_config['variations_disabled'][16] = 'translucence-yellow-white';
-// $variation_config['variations_disabled'][17] = 'translucence-white-yellow';
-// $variation_config['variations_disabled'][18] = 'translucence-gray';
-// $variation_config['variations_disabled'][19] = 'translucence-gray-white';
-// $variation_config['variations_disabled'][20] = 'translucence-white-gray';
-// $variation_config['variations_disabled'][21] = 'translucence-middseal';
-// $variation_config['variations_disabled'][22] = 'translucence-classics';
-// $variation_config['variations_disabled'][23] = 'translucence-middscape';
-// $variation_config['variations_disabled'][24] = 'translucence-middscape-blue';
