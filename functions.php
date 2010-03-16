@@ -1003,16 +1003,7 @@ function variation_options() {
 						get_option_selector ("", "linkcolor", $options_values['linkcolor']);
 						print "
 						</td>								
-						</tr><tr>";
-						
-						// Link style options
-						print "
-						<td style='border-bottom: 1px dotted;'><span class='postlink' style='font-size: 10px; color:".$options['linkcolor'].";'>Link Style</span> 
-						 (<span style='font-size: 10px; color:".$options['linkcolor_visited'].";'>visited link</span>)</td>								
-						<td style='border-bottom: 1px dotted; text-align: right;'>";
-						get_option_selector ("", "entry-link-style", $options_values['entry-link-style']);							
-						print "
-						</td></tr>							
+						</tr>						
 					</table>
 				</td><td valign='top' width='50%'>
 					<table width = '100%' cellpadding='0'>
@@ -1020,7 +1011,7 @@ function variation_options() {
 						
 						// category link style
 						print "
-						<td style='border-bottom: 1px dotted;'><span class='category' style='font-size: 10px;'>Category Link Style</span></td>
+						<td style='border-bottom: 1px dotted;'><span class='category' style='font-size: 10px;'><a href='#'>Category Link</a></span></td>
 						<td style='border-bottom: 1px dotted; text-align: right;'>";
 						
 						get_option_selector ("", "category-link-style", $options_values['category-link-style']);
@@ -1030,14 +1021,22 @@ function variation_options() {
 						
 						// Tag link style
 						print "
-						<td style='border-bottom: 1px dotted;'><span class='tag' style='font-size: 10px;'>Tag Link Style</span></td>
+						<td style='border-bottom: 1px dotted;'><span class='tag' style='font-size: 10px;'><a href='#'>Tag Link</a></span></td>
 						<td style='border-bottom: 1px dotted; text-align: right;'>\n";							
 						get_option_selector ("", "tag-link-style", $options_values['tag-link-style']);
 						print "
-						</td></tr>
+						</td>
+						</tr><tr>";
+						// Entry link style
+						print "
+						<td style='border-bottom: 1px dotted;'><span class='entry' style='font-size: 10px;'><a href='#'>Entry Link</a></span></td>
+						<td style='border-bottom: 1px dotted; text-align: right;'>\n";							
+						get_option_selector ("", "entry-link-style", $options_values['entry-link-style']);
+						print "
+						
+
 					</table>						
 				</table>
-				</div>
 			</td>";
 			
 			/*********************************************************
