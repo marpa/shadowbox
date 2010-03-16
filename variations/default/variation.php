@@ -284,9 +284,9 @@ $options_values['linkcolor'] = array(
 	);
 	
 $options_values['entry-link-style'] = array(
-	'None' => 'none',
+	'No Underline' => 'none',
 	'Underline' => 'underline',
-	'Underline & Highlight' => 'ww'
+	'Underline &amp; Highlight' => 'ww'
 );
 
 $options_values['textcolor'] = array(
@@ -301,14 +301,16 @@ $options_values['textcolor'] = array(
 
 
 $options_values['category-link-style'] = array(
-		'Right Sidebar Box' => 'right-sidebar-box',
 		'Left Sidebar Box' => 'left-sidebar-box',
+		'Right Sidebar Box' => 'right-sidebar-box',
+		'2nd Right Sidebar Box' => 'right02-sidebar-box',
 		'Yellow Box' => 'yellow-box'
 );
 
 $options_values['tag-link-style'] = array(
-		'Right Sidebar Box' => 'right-sidebar-box',
 		'Left Sidebar Box' => 'left-sidebar-box',
+		'Right Sidebar Box' => 'right-sidebar-box',
+		'2nd Right Sidebar Box' => 'right02-sidebar-box',
 		'Yellow Box' => 'yellow-box'
 );
 
