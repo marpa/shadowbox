@@ -983,7 +983,7 @@ function variation_options() {
 				 *********************************************************/
 				
 				print "
-				<divs tyle='float: left; clear: both;'><hr/>
+				<hr/>
 				<table width = '100%' cellpadding='0'>
 				<tr><td valign='top'>	
 
@@ -1155,9 +1155,6 @@ function variation_options() {
 			</tr>
 		</table>
 	
-	</td></tr>
-	<tr>
-		<td colspan='3' style='background-color: transparent;'>
 		<table width='100%' cellspacing='2' cellpadding='0'>
 		<tr>
 		<td class='bottomblock'>";	
@@ -1194,8 +1191,7 @@ function variation_options() {
 		</td>
 		</tr>
 		</table>
-	</tr>
-	</table>
+
 	<table width='100%' cellpadding='5'>
 	<tr><td width='80%'>
 	</td>
@@ -1825,7 +1821,7 @@ function save_options() {
 		
 		.tag a:hover {
 			text-decoration: ".$options['tag-link-hover-decoration'].";
-			background-color: ".$options['category-link-background'].";
+			background-color: ".$options['tag-link-background'].";
 			border:1px solid ".$options['linkcolor']."; 
 		}
 		
@@ -1845,7 +1841,7 @@ function save_options() {
 
 		.category a:hover {
 			text-decoration: ".$options['category-link-hover-decoration'].";
-			background-color: ".$options['tag-link-background'].";
+			background-color: ".$options['category-link-background'].";
 			border:1px solid ".$options['linkcolor']."; 
 		}		
 		
@@ -2665,7 +2661,7 @@ function get_option_selector ($option_title, $option_name, $option_values) {
 
 	if (in_array($option_name, $variation_config['model'])) {
 		print "<span style='white-space:nowrap;'>";
-		print " <span style='font-size: 10px;'>".$option_title."</span>\n";
+		if ($option_title != "") print " <span style='font-size: 10px;'>".$option_title."</span>\n";
 		print "<select name='".$option_name."' style='font-size: 10px;' onchange='this.form.submit();'>\n";							
 			// options
 			foreach ($option_values as $label => $value) {
@@ -2684,10 +2680,9 @@ function get_option_field ($option_title, $option_name, $option_field_width) {
 	global $variation_config, $options, $options_values;
 
 	if (in_array($option_name, $variation_config['model'])) {			
-		print "
-		<span style='white-space:nowrap'>
-		<span style='font-size: 10px;'>".$option_title.":</span>
-		<input name='".$option_name."' type='text' size='".$option_field_width."' style='font-size: 10px;' 
+		print "<span style='white-space:nowrap'>";
+		if ($option_title != "") print "<span style='font-size: 10px;'>".$option_title.":</span>\n";
+		print "<input name='".$option_name."' type='text' size='".$option_field_width."' style='font-size: 10px;' 
 		value='".(isset($options[$option_name]) ? $options[$option_name] : '')."'/></span>";
 	}
 }
