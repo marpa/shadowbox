@@ -2261,41 +2261,6 @@ function set_derivative_options() {
 
 
 	/******************************************************************************
-	 * Entry link style options
-	 ******************************************************************************/	
-	// none
-	if ($options['entry-link-style'] == "none") {
-		$options['entry-link-border'] = "none";
-		$options['entry-link-hover-border'] = "solid";
-		$options['entry-link-hover-background_color'] = $options['content-color'];
-		$options['entry-link-decoration'] = "none";
-		$options['entry-link-hover-decoration'] = "underline";
-	
-	// underline
-	} else if ($options['entry-link-style'] == "underline") {
-		$options['entry-link-border'] = "dotted";
-		$options['entry-link-hover-border'] = "solid"; 
-		$options['entry-link-hover-background_color'] = $options['content-color'];
-		$options['entry-link-decoration'] = "none";
-		$options['entry-link-hover-decoration'] = "underline";
-				
-	//underline and highlight
-	} else if ($options['entry-link-style'] == "ww") {
-		$options['entry-link-border'] = "dotted ";
-		$options['entry-link-hover-border'] = "solid";
-		$options['entry-link-decoration'] = "none";
-		$options['entry-link-hover-decoration'] = "none";
-		if ($options['content-color'] == '#000000') {
-			$options['entry-link-hover-background_color'] = "#262626";
-		} else if ($options['content-color'] == '#262626') {
-			$options['entry-link-hover-background_color'] = "#000000";
-		} else {
-			$options['entry-link-hover-background_color'] = "#efc";
-		}
-		
-	}
-
-	/******************************************************************************
 	 * sidebar color and link options
 	 ******************************************************************************/	
 
@@ -2435,105 +2400,83 @@ function set_derivative_options() {
 	}
 	
 	/******************************************************************************
-	 * Tag link style options
-	 ******************************************************************************/	
+	 * Entry, Tag and Category link style options
+	 ******************************************************************************/
 
-	if ($options['tag-link-style'] == "none") {
-		$options['tag-link-border'] = "none";
-		$options['tag-link-decoration'] = "none";
-		$options['tag-link-hover-border'] = "none";
-		$options['tag-link-hover-decoration'] = "underline";
-		$options['tag-link-background'] = "none";
-		$options['tag-link-color'] = $options['linkcolor'];
-		
-	} else if ($options['tag-link-style'] == "underline") {
-		$options['tag-link-border'] = "none";
-		$options['tag-link-decoration'] = "underline";
-		$options['tag-link-hover-border'] = "none"; 
-		$options['tag-link-hover-decoration'] = "underline";
-		$options['tag-link-background'] = "none";
-		$options['tag-link-color'] = $options['linkcolor'];
-		
-	} else if ($options['tag-link-style'] == "right-sidebar-box") {
-		$options['tag-link-border'] = "solid";
-		$options['tag-link-decoration'] = "none";
-		$options['tag-link-hover-border'] = "solid";
-		$options['tag-link-hover-decoration'] = "none";
-		$options['tag-link-background'] = $options['right01-color'];
-		$options['tag-link-hover-decoration'] = "none";
-		$options['tag-link-color'] = $options['linkcolor'];
-
-		
-	} else if ($options['tag-link-style'] == "left-sidebar-box") {
-		$options['tag-link-border'] = "solid";
-		$options['tag-link-decoration'] = "none";
-		$options['tag-link-hover-border'] = "solid";
-		$options['tag-link-hover-decoration'] = "none";
-		$options['tag-link-background'] = $options['left01-color'];
-		$options['tag-link-hover-decoration'] = "none"; 
-		$options['tag-link-color'] = $options['linkcolor'];
+	$link_types = array('entry', 'tag', 'category');
 	
-	//ww style links
-	} else if ($options['tag-link-style'] == "yellow-box") {
-		$options['tag-link-border'] = "solid";
-		$options['tag-link-decoration'] = "none";
-		$options['tag-link-hover-border'] = "solid";
-		$options['tag-link-hover-decoration'] = "none";
-		$options['tag-link-background'] = "#FFF8C6";
-		$options['tag-link-hover-decoration'] = "none";
-		$options['tag-link-color'] = $options['linkcolor'];
-	} 
+	foreach($link_types as $link_type) {
+		if ($options[$link_type.'-link-style'] == "none") {
+			$options[$link_type.'-link-border'] = "none";
+			$options[$link_type.'-link-decoration'] = "none";
+			$options[$link_type.'-link-hover-border'] = "solid";
+			$options[$link_type.'-link-hover-background_color'] = $options['content-color'];
+			$options[$link_type.'-link-hover-decoration'] = "underline";
+			$options[$link_type.'-link-background'] = "none";
+			$options[$link_type.'-link-color'] = $options['linkcolor'];
+			
+		} else if ($options[$link_type.'-link-style'] == "underline") {
+			$options[$link_type.'-link-border'] = "dotted";
+			$options[$link_type.'-link-decoration'] = "none";
+			$options[$link_type.'-link-hover-border'] = "solid"; 
+			$options[$link_type.'-link-hover-background_color'] = $options['content-color'];
+			$options[$link_type.'-link-hover-decoration'] = "underline";
+			$options[$link_type.'-link-background'] = "none";
+			$options[$link_type.'-link-color'] = $options['linkcolor'];
+
+		} else if ($options[$link_type.'-link-style'] == "ww") {
+			$options[$link_type.'-link-border'] = "dotted ";
+			$options[$link_type.'-link-hover-border'] = "solid";
+			$options[$link_type.'-link-decoration'] = "none";
+			$options[$link_type.'-link-hover-decoration'] = "none";
+			if ($options['content-color'] == '#000000') {
+				$options[$link_type.'-link-hover-background_color'] = "#262626";
+			} else if ($options['content-color'] == '#262626') {
+				$options[$link_type.'-link-hover-background_color'] = "#000000";
+			} else {
+				$options[$link_type.'-link-hover-background_color'] = "#efc";
+			}
+			
+		} else if ($options[$link_type.'-link-style'] == "right-sidebar-box") {
+			$options[$link_type.'-link-border'] = "solid";
+			$options[$link_type.'-link-decoration'] = "none";
+			$options[$link_type.'-link-hover-border'] = "solid";
+			$options[$link_type.'-link-hover-decoration'] = "none";
+			$options[$link_type.'-link-background'] = $options['right01-color'];
+			$options[$link_type.'-link-hover-decoration'] = "none";
+			$options[$link_type.'-link-color'] = $options['right01-link-color'];
 	
-	/******************************************************************************
-	 * Category link style options
-	 ******************************************************************************/	
-
-	if ($options['category-link-style'] == "none") {
-		$options['category-link-border'] = "none";
-		$options['category-link-decoration'] = "none";
-		$options['category-link-hover-border'] = "none";
-		$options['category-link-hover-decoration'] = "underline";
-		$options['category-link-background'] = "none";
-		$options['category-link-color'] = $options['linkcolor'];
-		
-	} else if ($options['category-link-style'] == "underline") {
-		$options['category-link-border'] = "none";
-		$options['category-link-decoration'] = "underline";
-		$options['category-link-hover-border'] = "none"; 
-		$options['category-link-hover-decoration'] = "underline";
-		$options['category-link-background'] = "none";
-		$options['category-link-color'] = $options['linkcolor'];
-		
-	} else if ($options['category-link-style'] == "left-sidebar-box") {
-		$options['category-link-border'] = "solid";
-		$options['category-link-decoration'] = "none";
-		$options['category-link-hover-border'] = "solid";
-		$options['category-link-hover-decoration'] = "none";
-		$options['category-link-background'] = $options['left01-color'];
-		$options['category-link-hover-decoration'] = "none";
-		$options['category-link-color'] = $options['linkcolor'];
-
-		
-	}	else if ($options['category-link-style'] == "right-sidebar-box") {
-		$options['category-link-border'] = "solid";
-		$options['category-link-decoration'] = "none";
-		$options['category-link-hover-border'] = "solid";
-		$options['category-link-hover-decoration'] = "none";
-		$options['category-link-background'] = $options['right01-color'];
-		$options['category-link-hover-decoration'] = "none";
-		$options['category-link-color'] = $options['linkcolor'];
+		} else if ($options[$link_type.'-link-style'] == "right02-sidebar-box") {
+			$options[$link_type.'-link-border'] = "solid";
+			$options[$link_type.'-link-decoration'] = "none";
+			$options[$link_type.'-link-hover-border'] = "solid";
+			$options[$link_type.'-link-hover-decoration'] = "none";
+			$options[$link_type.'-link-background'] = $options['right02-color'];
+			$options[$link_type.'-link-hover-decoration'] = "none";
+			$options[$link_type.'-link-color'] = $options['right02-link-color'];
 	
-	// WW style links
-	}	else if ($options['category-link-style'] == "yellow-box") {
-		$options['category-link-border'] = "solid";
-		$options['category-link-decoration'] = "none";
-		$options['category-link-hover-border'] = "solid";
-		$options['category-link-hover-decoration'] = "none";
-		$options['category-link-background'] = "#e9e9c9";
-		$options['category-link-hover-decoration'] = "none";
-		$options['category-link-color'] = $options['linkcolor'];
-	}
-
+			
+		} else if ($options[$link_type.'-link-style'] == "left-sidebar-box") {
+			$options[$link_type.'-link-border'] = "solid";
+			$options[$link_type.'-link-decoration'] = "none";
+			$options[$link_type.'-link-hover-border'] = "solid";
+			$options[$link_type.'-link-hover-decoration'] = "none";
+			$options[$link_type.'-link-background'] = $options['left01-color'];
+			$options[$link_type.'-link-hover-decoration'] = "none"; 
+			$options[$link_type.'-link-color'] = $options['left01-link-color'];
+		
+		//ww style links
+		} else if ($options[$link_type.'-link-style'] == "yellow-box") {
+			$options[$link_type.'-link-border'] = "solid";
+			$options[$link_type.'-link-decoration'] = "none";
+			$options[$link_type.'-link-hover-border'] = "solid";
+			$options[$link_type.'-link-hover-decoration'] = "none";
+			$options[$link_type.'-link-background'] = "#FFF8C6";
+			$options[$link_type.'-link-hover-decoration'] = "none";
+			$options[$link_type.'-link-color'] = $options['linkcolor'];
+		} 
+		
+	}	
 
 	/******************************************************************************
 	 * Sidebar display options
