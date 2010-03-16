@@ -521,7 +521,7 @@ function variation_options() {
 							
 			print "
 			</td>
-			<td width='20%' align='right'><span style='font-size: 9px;'>
+			<td width='20%' align='right'>
 			</td>
 		</tr>
 		<tr>
