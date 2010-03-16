@@ -2762,65 +2762,7 @@ function read_css_file($css_file) {
         print("Unable to read css file: $css_file");
         return(false);
     }
-
-    $cssarray = array();
-    $state = "ENDBLOCK";
-    $newskin = "";
-    $ignore = 0;
-    $cursel = "";
-    
-   // $default_css = "";
-    
-    foreach( $default_css as $line ) {
-    	//printpre ($line);
-    	
-    	 if (preg_match("$*Variation non-configurable options/", $line, $matches)) {
-    	 	printpre($matches[1]);
-    	 }
-    	
-        if( preg_match("/^\s*$/", $style) )
-            continue;
-
-        $style = trim($style);
-
-        if( $state == "ENDBLOCK" )
-        {
-            $cursel = $style;
-            if( ! is_array($cssarray[$cursel]) )
-                $cssarray[$cursel] = array();
-            $state = "STARTBLOCK";
-            continue;
-        }
-
-        if( $state == "STARTBLOCK" && preg_match("/^\{$/", $style) )
-        {
-            $state = "INBLOCK";
-            continue;
-        }
-
-        if( $state == "INBLOCK" && preg_match("/^\}$/", $style) )
-        {
-            $state = "ENDBLOCK";
-            continue;
-        }
-
-        if( $state == "INBLOCK" && preg_match("/^([^:]+):\s*([^;]+);$/", $style, $matches) )
-            $cssarray[$cursel][$matches[1]] = $matches[2];
-    }
-
-	printpre($cssarray);
-    return($cssarray);
 }
-
-if ( ! defined( 'WP_CONTENT_URL' ) )
-    define( 'WP_CONTENT_URL', get_option( 'siteurl' ) . '/wp-content' );
-
-function util_get_skin_files()
-{
-    $default_css_file = glob(TEMPLATEPATH . $css_file);
-    return(array_merge($ahimsaskins, $customskins));
-}
-
 
 /*********************************************************
  * debugging
