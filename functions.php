@@ -1898,6 +1898,20 @@ function save_options() {
 			border-bottom: none;
 		}
 
+		.entry h2:hover {
+			border-bottom: 1px solid #CCCCCC;
+		}
+
+		
+		.entry h2 a {
+			text-decoration: none;
+			border-bottom: none;
+		}
+		
+		.entry h2 a:hover {
+			border-bottom: none;
+			text-decoration: none;
+		}
 				
 		/* Begin comments */
 		#commentform textarea {
