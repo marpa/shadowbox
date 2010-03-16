@@ -1056,8 +1056,8 @@ function variation_options() {
 						print "<a style='color:".$options['right01-link-color'].";' href='".get_bloginfo('url')."/wp-admin/widgets.php'>Edit Widgets</a>";
 					} else {
 						print "<a style='color:".$options['right01-link-color'].";' href='".get_bloginfo('url')."/wp-admin/widgets.php'>Add Widgets</a>";
-						print "<div style='font-size: 10px; padding-left: 10px; color: ".$options['textcolor'].";'>no widgets...</div>";
-						print "<div style='font-size: 9px; padding-left: 10px; color: ".$options['textcolor'].";'>add widgets or hide sidebar...</div>";
+						print "<div style='font-size: 10px; padding-left: 10px; color: ".$options['right01-heading-color'].";'>no widgets...</div>";
+						print "<div style='font-size: 9px; padding-left: 10px; color: ".$options['right01-heading-color'].";'>add widgets or hide sidebar...</div>";
 					}
 					
 					print "</div>";
@@ -1113,8 +1113,8 @@ function variation_options() {
 						print "<a style='color:".$options['right02-link-color'].";' href='".get_bloginfo('url')."/wp-admin/widgets.php'>Edit Widgets</a>";
 					} else {
 						print "<a style='color:".$options['right02-link-color'].";' href='".get_bloginfo('url')."/wp-admin/widgets.php'>Add Widgets</a>";
-						print "<div style='font-size: 10px; padding-left: 10px; color: ".$options['textcolor'].";'>no widgets...</div>";
-						print "<div style='font-size: 9px; padding-left: 10px; color: ".$options['textcolor'].";'>add widgets or hide sidebar...</div>";
+						print "<div style='font-size: 10px; padding-left: 10px; color: ".$options['right02-heading-color'].";'>no widgets...</div>";
+						print "<div style='font-size: 9px; padding-left: 10px; color: ".$options['right02-heading-color'].";'>add widgets or hide sidebar...</div>";
 					}
 
 					print "</div>";
