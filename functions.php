@@ -431,6 +431,11 @@ function variation_options() {
 			border-bottom: none;
 		}
 
+		.entry a:hover {
+			background-color: ".$options['entry-link-hover-background_color'].";
+			border-bottom: 1px ".$options['entry-link-hover-border'].";		
+		}
+		
 		h1, h2, h3 {	
 			border-bottom: none;		
 		}		
