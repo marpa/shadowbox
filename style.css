@@ -65,7 +65,7 @@ h1, h2, h3 {
 	}
 
 h1 {
-	font-size: 4em;
+	font-size: 2em;
 	text-align: center;
 	}
 
@@ -258,7 +258,7 @@ acronym, abbr, span.caps
 /*	Begin Headers */
 h1 {
 	padding-top: 20px;
-	padding-left: 10px;
+	padding-left: 0px;
 	margin: 0;
 	text-align: left;
 	}
@@ -1154,6 +1154,20 @@ div .hr {
 .post h2 a {
 	display: block;
 	border-bottom: none;
+}
+
+.entry h2:hover {
+	border-bottom: 1px solid #CCCCCC;
+}
+
+.entry h2 a {
+	text-decoration: none;
+	border-bottom: none;
+}
+
+.entry h2 a:hover {
+	border-bottom: none;
+	text-decoration: none;
 }
 
 .entry a {
