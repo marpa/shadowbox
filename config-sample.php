@@ -77,6 +77,7 @@ $variation_config['footer_meta_left_options']['custom'] = array (
 
 /******************************************************************************
  * Miscellaneous Config
+ * When set to "on" always shows log in link in upper right corner
  ******************************************************************************/
 $variation_config['headermeta'] = "on";
 
@@ -86,7 +87,6 @@ $variation_config['headermeta'] = "on";
  * This is a list of all the theme options that will be displayed in the 
  * theme options UI
  ******************************************************************************/
-
 
 $variation_config['model'][1]  = 'site-width';
 $variation_config['model'][2]  = 'background_image_url';

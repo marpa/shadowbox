@@ -42,19 +42,18 @@ print $options['right02-color-ie']."\n";
 		<span class="bgtextcolor">
 		<?php print stripslashes($options['headerright']);
 		 
-		if ($options['headermeta'] == "on") {
-			if (wp_get_current_user()->user_level > 4) print "<a href='".get_bloginfo('siteurl')."/wp-admin/'>Dashboard</a>";
-			if (wp_get_current_user()->user_level > 7) print " | <a href='".get_bloginfo('siteurl')."/wp-admin/themes.php?page=Variations'>Design</a>";
+		if (wp_get_current_user()->user_level > 4) print "<a href='".get_bloginfo('siteurl')."/wp-admin/'>Dashboard</a>";
+		if (wp_get_current_user()->user_level > 7) print " | <a href='".get_bloginfo('siteurl')."/wp-admin/themes.php?page=Variations'>Design</a>";
 			
+		if ($options['headermeta'] == "on") {
 			if (wp_get_current_user()->user_level > 0) {
 				print " | <a href='".get_bloginfo('siteurl')."/wp-admin/profile.php'>";
 				print wp_get_current_user()->display_name."</a>";
 			}
 			if (is_user_logged_in() == 'true') print " - ";	
-
+			
 			print wp_loginout('','')."";
-
-		}
+		}		
 		?>	
 		</span><br/>
 	</div>

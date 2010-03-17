@@ -521,7 +521,22 @@ function variation_options() {
 							
 			print "
 			</td>
-			<td width='20%' align='right'>
+			<td width='20%' align='right'>";
+	
+			// log in link options		
+			if (in_array("headermeta", $variation_config['model']) && $variation_config['headermeta'] != "on") {	
+				print "
+				<span style='color:".$options['bgtextcolor']."; font-size: 10px;'>Log in:
+				<select name='headermeta' style='font-size: 10px;' onchange='this.form.submit();'>
+					<option value='on' ".($options['headermeta'] == 'on' ? ' selected' : '') . ">Show</option>
+					<option value='off' ".($options['headermeta'] == 'off' ? ' selected' : '') . ">Hide</option>
+				</select>
+				</span>";
+			} else {
+				$options['headermeta'] = 'on';
+			}
+
+			print "
 			</td>
 		</tr>
 		<tr>
@@ -576,7 +591,7 @@ function variation_options() {
 		<td colspan='3'>
 			<table width='100%' cellspacing='0' cellpadding='5'>
 			<tr>
-			<td width='90%'>
+			<td width='70%'>
 			<div class='metatext'>";
 			
 			if ($options['headerleft'] == "") {
@@ -603,15 +618,23 @@ function variation_options() {
 			print "
 			</div>	
 			</td>
-			<td width='20%' valign='top'>";
+			<td width='30%' valign='top'>";
+			
+			print "<div class='metatext' style='float: right; clear: both;'>";
+			
 			// header right meta options
-			if ($variation_config['headermeta'] = "on") {
-				$options['headermeta'] = "on";
-				print "<div style='font-size: 9px; float: right; clear: both; color: ".$options['bgtextcolor'].";'>Log in</div>";
-			} else {
-				print "<div style='font-size: 9px; float: right; clear: both; color: ".$options['bglinkcolor'].";'></div>";
+			print $options['headerright'];
+			print "Dashboard ";
+			
+			
+			// Log in link options
+			if ($options['headermeta'] == "on") {
+				print " | ".wp_get_current_user()->display_name;
+				print " - Log out";
 			}
+			
 			print "
+			</div>
 			</td>
 			</tr>
 			</table>
