@@ -128,7 +128,7 @@ print "<td valign='top' class='left01block'>";
 		include (TEMPLATEPATH . '/sidebar-right.php');
 	} else if ((is_day() || is_month() || is_year())
 		&& $options['archives-sidebar-right-display'] == "show" 
-		&& $options['left01-width'] != '0') {
+		&& $options['right01-width'] != '0') {
 		print "<td valign='top' class='right01block'>";
 		include (TEMPLATEPATH . '/sidebar-right.php');
 	} else {
@@ -146,7 +146,7 @@ print "<td valign='top' class='left01block'>";
 		include (TEMPLATEPATH . '/sidebar-right02.php');
 	} else if ((is_day() || is_month() || is_year())
 		&& $options['archives-sidebar-right02-display'] == "show" 
-		&& $options['left01-width'] != '0') {
+		&& $options['right02-width'] != '0') {
 		print "<td valign='top' class='right02block'>";
 		include (TEMPLATEPATH . '/sidebar-right02.php');
 	} else {
