@@ -16,6 +16,7 @@ get_header();
 		</p>
 
 	</div>
+	
 
 <?php// get_sidebar(); ?>
 

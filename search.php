@@ -19,7 +19,7 @@ get_header(); ?>
 
 <td valign='top' class="contentblock">
 
-	<div id="content" class="widecolumn">
+	<div id="content">
 
 
 	<?php if (have_posts()) : ?>

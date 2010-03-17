@@ -4,7 +4,7 @@ if (file_exists(dirname(__FILE__).'/config.php')) {
 } else if (file_exists(dirname(__FILE__).'/config-sample.php')) {
 	require_once('config-sample.php');
 }
-error_reporting(E_ERROR | E_WARNING | E_PARSE);
+//error_reporting(E_ALL);
 
 /******************************************************************************
  * Preset Widgets
@@ -217,7 +217,6 @@ function variation_options() {
     } else if ($_POST['action'] == 'save') {
 		save_options();        
 	}
-	
 	
 	//read_css_file("style.css");
 	
