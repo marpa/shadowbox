@@ -219,6 +219,7 @@ acronym, abbr, span.caps
 .post {
 	margin: 0 0 30px;
 	text-align: justify;
+	line-height: 1.5em;
 	}
 
 .post hr {
@@ -327,11 +328,13 @@ img.alignleft {
 	Do not work in Internet Explorer, which merely default to normal bullets. */
 
 html>body .entry ul {
-
+	margin: 3px 0 3px 3px;
+	padding-right: 5px;
+	padding-left: 20px;
 	}
 
 html>body .entry li {
-	margin: 7px 0 8px 10px;
+	margin: 3px 0 3px 3px;
 	}
 
 .entry ol li {
@@ -339,7 +342,7 @@ html>body .entry li {
 }
 
 .entry ol {
-	padding: 0 0 0 35px;
+	padding: 0 0 0 25px;
 	margin: 0;
 	}
 
@@ -1160,12 +1163,12 @@ div .hr {
 	border-bottom: 1px solid #CCCCCC;
 }
 
-.entry h2 a {
+.entry h2 a, .entry h3 a {
 	text-decoration: none;
 	border-bottom: none;
 }
 
-.entry h2 a:hover {
+.entry h2 a:hover, .entry h3 a:hover {
 	border-bottom: none;
 	text-decoration: none;
 }
