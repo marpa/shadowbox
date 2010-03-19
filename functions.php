@@ -470,8 +470,7 @@ function variation_options() {
 			</td>
 			<td width='60%' align='left'>
 			<div class='instructions' style='font-size: 9px;'>	
-			<i>Below is just a model of your blog's layout and colors. It does not show 
-			background gradient colors such as gray-white, nor all the details of your blog's header, borders or sidebar widgets</i>&nbsp;&nbsp;
+			<i>Below is a model of your blog's layout and colors. It does not show all the details of your blog's header, borders or sidebar widgets</i>&nbsp;&nbsp;
 			 <strong>Show recommendations: </strong><input type='checkbox' name='model-instructions' id='model-instructions' ".(isset($options['model-instructions']) && $options['model-instructions'] == "on" ? ' checked' : '') . " onchange='this.form.submit();'/>
 			</div>			
 			</td>
