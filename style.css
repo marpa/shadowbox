@@ -1,11 +1,11 @@
 /*
 Theme Name: ShadowBox
-Theme URI: http://segueproject.org/wordpress/themes/
+Theme URI: http://blogs.middlebury.edu/middblogthemes/themes/shadowbox/
 Description: Flexible and extensible theme with a WYSIWYG theme editor that includes options for 1-3 sidebars, custom header image and a dozen variations. 
-Version: 1.5.2
+Version: 1.5.3
 Author: Alex Chapin
-Author URI: http://www.alexchapin.com
-Tags: theme-options, custom-header, custom-colors, one-column, two-columns, three-columns, left-sidebar, right-sidebar, fixed-width, flexible-width,   sticky-post, light, dark, white, black
+Author URI: http://blogs.middlebury.edu/achapin
+Tags:
 */
 
 
@@ -1171,6 +1171,10 @@ div .hr {
 .entry h2 a:hover, .entry h3 a:hover {
 	border-bottom: none;
 	text-decoration: none;
+}
+
+.entry {
+	text-align: justify;
 }
 
 .entry a {
