@@ -120,7 +120,9 @@ if (!isset($options['site-width'])) $options['site-width'] = "900";
 if (!isset($options['header-block-height'])) $options['header-block-height'] = "100";
 if (!isset($options['header-blogtitle-size'])) $options['header-blogtitle-size'] = "20";
 if (!isset($options['footer-meta-left'])) $options['footer-meta-left'] = "custom";
-if (!isset($options['header-meta-left'])) $options['header-meta-left'] = "network";
+if (!isset($options['header-meta-left'])) $options['header-meta-left'] = "custom";
+if (!isset($options['headerleftcustom'])) $options['headerleftcustom'] = "";
+if (!isset($options['footerleftcustom'])) $options['footerleftcustom'] = "";
 if (!isset($options['revert'])) $options['revert'] = 1;
 if (!isset($options['header-image-options'])) $options['header-image-options'] = "whitegradient";
 
@@ -128,6 +130,8 @@ if (!isset($options['header-text-display'])) $options['header-text-display'] = "
 if (!isset($options['entry-link-style'])) $options['entry-link-style'] = "ww";
 if (!isset($options['tag-link-style'])) $options['tag-link-style'] = "yellow-box";
 if (!isset($options['category-link-style'])) $options['category-link-style'] = "yellow-box";
+if (!isset($options['entry-text-align'])) $options['entry-text-align'] = "justify";
+
 
 if (!isset($options['header-color'])) $options['header-color'] = "#F9F9F9";
 if (!isset($options['top-color'])) $options['top-color'] = "#FFFFFF";
@@ -146,7 +150,7 @@ if (!isset($options['right02-opacity'])) $options['right02-opacity'] = "1";
 if (!isset($options['bottom-opacity'])) $options['bottom-opacity'] = "1";
 
 if (!isset($options['header-border-style'])) $options['header-border-style'] = "solid";
-if (!isset($options['top-border-style'])) $options['top-border-style'] = "solid";
+if (!isset($options['top-border-style'])) $options['content-border-style'] = "none";
 if (!isset($options['content-border-style'])) $options['content-border-style'] = "none";
 if (!isset($options['left01-border-style'])) $options['left01-border-style'] = "solid";
 if (!isset($options['right01-border-style'])) $options['right01-border-style'] = "solid";
@@ -287,7 +291,6 @@ $options_values['entry-text-align'] = array(
 	'Justify' => 'justify',
 	'Left' => 'left'
 );
-
 	
 $options_values['entry-link-style'] = array(
 	'No Underline' => 'none',
@@ -330,6 +333,7 @@ $options_values['sidebar-display'] = array(
 	'Left &amp; 2nd Right' => 'left01right02',
 	'No Sidebars' => 'none',
 );
+
 	
 	
 ?>
