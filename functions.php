@@ -2609,13 +2609,7 @@ function print_option_feedback() {
 
 		if ($options['background_color'] == '#0F0F0F') {
 			$message .= " Black is a good choice for blogs that focus on images, particularly photos.";
-			
-			if ($options['linkcolor'] == "#FFFFCC" && $options['textcolor'] == "#CCCCCC") {
-				$message .= " <br/><br/>The color of your links (pale yellow) is very close to the color of your text (light gray).  This means
-				that your links will not stand out from your text...  Chose gray or silver for your text color (or yellow for your link color) if you want your links to be more visible.";
-				$error = "true";
-			}	
-			
+						
 			if ($options['header-image-options'] == "whitegradient") {
 				$message .= " <br/><br/>The white gradient image really doesn't look good here.  Best to upload your own custom image or use none.";
 				$error = "true";
@@ -2637,15 +2631,7 @@ function print_option_feedback() {
 			$message .= " <br/><br/>Your 2nd right sidebar is hidden but contains widgets.";
 			$error = "true";
 		}
-	
-	
-		if ($options['linkcolor_visited'] == "#b85b5a" && ($options['textcolor'] == "#666666" || $options['textcolor'] == "#424242")) {
-			$message .= " <br/><br/>Opps, the color of your visited links is very close to the color of your text.  This means
-			that after visiting a link, it won't be easily visible in your text...  
-			Chose gray or light gray for your link color if you want your links to be more visible.";
-			$error = "true";
-		} 
-		
+			
 		$pages = array('post', 'category', 'tag', 'author', 'search');
 		
 		foreach($pages as $page) {
