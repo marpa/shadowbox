@@ -9,7 +9,7 @@
 $variation_config = array();
 
 $variation_config['theme-url'] = "http://segueproject.org/wordpress/themes/";
-$variation_config['theme-name'] = "Translucence";
+$variation_config['theme-name'] = "ShadowBox";
 
 /******************************************************************************
  * Header meta left options
@@ -44,24 +44,19 @@ $variation_config['header_meta_right_options'] = array (
  * Header Image Options
  * (put all header images in images directory
  ******************************************************************************/
-
 $variation_config['header_image_options']['transparent'] = array (
 		option_name =>	'transparent',
 		option_label =>	'None',
 		option_value => 'header-transparent.png'
 	);
 
-$variation_config['header_image_options']['whitegradient'] = array (
-		option_name =>	'whitegradient',
-		option_label =>	'White Gradient',
-		option_value => 'header-trans-white-1200x100.png'
-	);
 
 $variation_config['header_image_options']['custom'] = array (
 		option_name =>	'custom',
 		option_label =>	'Custom',
 		option_value => 'header-trans-white-1200x100.png'
 	);
+
 
 /******************************************************************************
  * Footer meta left options
@@ -77,6 +72,7 @@ $variation_config['footer_meta_left_options']['custom'] = array (
 
 /******************************************************************************
  * Miscellaneous Config
+ * When set to "on" always shows log in link in upper right corner
  ******************************************************************************/
 $variation_config['headermeta'] = "on";
 
@@ -86,7 +82,6 @@ $variation_config['headermeta'] = "on";
  * This is a list of all the theme options that will be displayed in the 
  * theme options UI
  ******************************************************************************/
-
 
 $variation_config['model'][1]  = 'site-width';
 $variation_config['model'][2]  = 'background_image_url';
@@ -154,6 +149,7 @@ $variation_config['model'][63]  = 'tag-single-sidebar';
 $variation_config['model'][64]  = 'author-single-sidebar';
 $variation_config['model'][65]  = 'search-single-sidebar';
 $variation_config['model'][66]  = 'archives-single-sidebar';
+$variation_config['model'][67]  = 'entry-text-align';
 
 
 /******************************************************************************
@@ -165,13 +161,16 @@ $variation_config['model'][66]  = 'archives-single-sidebar';
 $variation_config['variations_disabled'] = array();
 
 // $variation_config['variations_disabled'][0] = 'custom';
-// $variation_config['variations_disabled'][1] = 'shadowbox-white';
-// $variation_config['variations_disabled'][2] = 'shadowbox-black';
-// $variation_config['variations_disabled'][3] = 'shadowbox-blue';
-// $variation_config['variations_disabled'][4] = 'shadowbox-green';	
-// $variation_config['variations_disabled'][5] = 'shadowbox-yellow';
-// $variation_config['variations_disabled'][6] = 'shadowbox-yellow-white';
-// $variation_config['variations_disabled'][7] = 'shadowbox-white-yellow';
-// $variation_config['variations_disabled'][8] = 'shadowbox-gray';
-// $variation_config['variations_disabled'][9] = 'shadowbox-gray-white';
-// $variation_config['variations_disabled'][10] = 'shadowbox-white-gray';
+// $variation_config['variations_disabled'][11] = 'translucence-white';
+// $variation_config['variations_disabled'][12] = 'translucence-black';
+// $variation_config['variations_disabled'][13] = 'translucence-blue';
+// $variation_config['variations_disabled'][14] = 'translucence-green';	
+// $variation_config['variations_disabled'][15] = 'translucence-yellow';
+// $variation_config['variations_disabled'][16] = 'translucence-yellow-white';
+// $variation_config['variations_disabled'][17] = 'translucence-white-yellow';
+// $variation_config['variations_disabled'][18] = 'translucence-gray';
+// $variation_config['variations_disabled'][19] = 'translucence-gray-white';
+// $variation_config['variations_disabled'][20] = 'translucence-white-gray';
+// $variation_config['variations_disabled'][22] = 'translucence-classics';
+// $variation_config['variations_disabled'][23] = 'translucence-middscape';
+// $variation_config['variations_disabled'][24] = 'translucence-middscape-blue';

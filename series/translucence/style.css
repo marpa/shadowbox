@@ -64,8 +64,8 @@ h1, h2, h3 {
 	}
 
 h1 {
-	font-size: 4em;
-	text-align: center;
+	font-size: 2.0em;
+	text-align: left;
 	}
 
 #headerimg .description {
@@ -218,6 +218,7 @@ acronym, abbr, span.caps
 .post {
 	margin: 0 0 30px;
 	text-align: justify;
+	line-height: 1.5em;
 	}
 
 .post hr {
@@ -257,7 +258,7 @@ acronym, abbr, span.caps
 /*	Begin Headers */
 h1 {
 	padding-top: 20px;
-	padding-left: 10px;
+	padding-left: 0px;
 	margin: 0;
 	text-align: left;
 	}
@@ -326,11 +327,13 @@ img.alignleft {
 	Do not work in Internet Explorer, which merely default to normal bullets. */
 
 html>body .entry ul {
-
+	margin: 3px 0 3px 3px;
+	padding-right: 5px;
+	padding-left: 20px;
 	}
 
 html>body .entry li {
-	margin: 7px 0 8px 10px;
+	margin: 3px 0 3px 3px;
 	}
 
 .entry ol li {
@@ -338,7 +341,7 @@ html>body .entry li {
 }
 
 .entry ol {
-	padding: 0 0 0 35px;
+	padding: 0 0 0 25px;
 	margin: 0;
 	}
 
@@ -1170,6 +1173,20 @@ div .hr {
 .entry a:visited {
 	color: #777777;		
 	border-bottom: 1px dotted ;
+}
+
+.post h2:hover {
+	border-bottom: 1px solid #003366;
+}
+
+.entry h2 a, .entry h3 a {
+	text-decoration: none;
+	border-bottom: none;
+}
+
+.entry h2 a:hover, .entry h3 a:hover {
+	border-bottom: none;
+	text-decoration: none;
 }
 
 .entry .morelink a {

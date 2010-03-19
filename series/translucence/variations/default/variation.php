@@ -30,7 +30,7 @@ if ($options['background'] != "custom") {
 	$options['background-source-credit'] = "";
 }
 
-if ($shadowbox_config['headermeta'] = "on") $options['headermeta'] = "on";
+if ($variation_config['headermeta'] = "on") $options['headermeta'] = "on";
 
 $options['site-margin-top'] = "0";	
 $options['page-image-width'] = $options['site-width']-50;
@@ -119,7 +119,9 @@ if (!isset($options['site-width'])) $options['site-width'] = "900";
 if (!isset($options['header-block-height'])) $options['header-block-height'] = "100";
 if (!isset($options['header-blogtitle-size'])) $options['header-blogtitle-size'] = "30";
 if (!isset($options['footer-meta-left'])) $options['footer-meta-left'] = "custom";
-if (!isset($options['header-meta-left'])) $options['header-meta-left'] = "network";
+if (!isset($options['header-meta-left'])) $options['header-meta-left'] = "custom";
+if (!isset($options['headerleftcustom'])) $options['headerleftcustom'] = "";
+if (!isset($options['footerleftcustom'])) $options['footerleftcustom'] = "";
 if (!isset($options['revert'])) $options['revert'] = 1;
 if (!isset($options['header-image-options'])) $options['header-image-options'] = "transparent";
 
@@ -128,6 +130,7 @@ if (!isset($options['header-text-display'])) $options['header-text-display'] = "
 if (!isset($options['entry-link-style'])) $options['entry-link-style'] = "ww";
 if (!isset($options['tag-link-style'])) $options['tag-link-style'] = "yellow-box";
 if (!isset($options['category-link-style'])) $options['category-link-style'] = "yellow-box";
+if (!isset($options['entry-text-align'])) $options['entry-text-align'] = "justify";
 
 if (!isset($options['header-color'])) $options['header-color'] = "#364559";
 if (!isset($options['top-color'])) $options['top-color'] = "#364559";
@@ -151,7 +154,7 @@ if (!isset($options['content-border-style'])) $options['content-border-style'] =
 if (!isset($options['left01-border-style'])) $options['left01-border-style'] = "dotted";
 if (!isset($options['right01-border-style'])) $options['right01-border-style'] = "dotted";
 if (!isset($options['right02-border-style'])) $options['right02-border-style'] = "dotted";
-if (!isset($options['bottom-border-style'])) $options['bottom-border-style'] = "dotted";
+if (!isset($options['bottom-border-style'])) $options['bottom-border-style'] = "none";
 
 if (!isset($options['header-width'])) $options['header-width'] = $options['site-width'];
 if (!isset($options['left01-width'])) $options['left01-width'] = "0";
@@ -288,11 +291,16 @@ $options_values['linkcolor'] = array(
 	'Black' => '#222222',
 	'Gold'	=>	'#625B1D'
 	);
+
+$options_values['entry-text-align'] = array(
+	'Justify' => 'justify',
+	'Left' => 'left'
+);
 	
 $options_values['entry-link-style'] = array(
-	'None' => 'none',
+	'No Underline' => 'none',
 	'Underline' => 'underline',
-	'Underline & Highlight' => 'ww'
+	'Underline &amp; Highlight' => 'ww'
 );
 
 $options_values['textcolor'] = array(
@@ -310,14 +318,16 @@ $options_values['textcolor'] = array(
 
 
 $options_values['category-link-style'] = array(
-		'Right Sidebar Box' => 'right-sidebar-box',
 		'Left Sidebar Box' => 'left-sidebar-box',
+		'Right Sidebar Box' => 'right-sidebar-box',
+		'2nd Right Sidebar Box' => 'right02-sidebar-box',
 		'Yellow Box' => 'yellow-box'
 );
 
 $options_values['tag-link-style'] = array(
-		'Right Sidebar Box' => 'right-sidebar-box',
 		'Left Sidebar Box' => 'left-sidebar-box',
+		'Right Sidebar Box' => 'right-sidebar-box',
+		'2nd Right Sidebar Box' => 'right02-sidebar-box',
 		'Yellow Box' => 'yellow-box'
 );
 
@@ -331,6 +341,5 @@ $options_values['sidebar-display'] = array(
 	'Left &amp; 2nd Right' => 'left01right02',
 	'No Sidebars' => 'none',
 );
-	
-	
+
 ?>
