@@ -971,7 +971,7 @@ function variation_options() {
 				<span class='entry'>Categories: </span><span class='category'><a href='#'>Category</a></span>
 				</div>
 				
-				<div class='entry' style='text-align: justify;'>
+				<div class='entry'>
 				<p>Lorem ipsum dolor sit amet, <span class='entry-visited'>visited link</span> 
 				adipiscing elit. Donec ac felis non mauris tristique vehicula. 
 				Nunc commodo, justo vel imperdiet cursus, leo dui <a href='#'>link</a>, vel bibendum neque justo nec ipsum. 
@@ -1010,6 +1010,14 @@ function variation_options() {
 
 					<table width = '100%' cellpadding='0'>
 						<tr>
+						<td style='border-bottom: 1px dotted;'><span style='font-size: 10px; color:".$options['textcolor'].";'>Text Alignment</span></td>							
+						<td style='border-bottom: 1px dotted; text-align: right;'>";
+						
+						// text color options
+						get_option_selector ("", "entry-text-align", $options_values['entry-text-align']);
+						print "		 							
+						</td>								
+						</tr>						<tr>
 						<td style='border-bottom: 1px dotted;'><span style='font-size: 10px; color:".$options['textcolor'].";'>Text color</span></td>							
 						<td style='border-bottom: 1px dotted; text-align: right;'>";
 						
@@ -1017,7 +1025,8 @@ function variation_options() {
 						get_option_selector ("", "textcolor", $options_values['textcolor']);
 						print "		 							
 						</td>								
-						</tr><tr>
+						</tr>
+						<tr>
 						<td style='border-bottom: 1px dotted;'><span style='font-size: 10px; color:".$options['linkcolor'].";'>Link color</span></td>
 						<td style='border-bottom: 1px dotted; text-align: right;'>";							
 						// link color options
@@ -1078,7 +1087,7 @@ function variation_options() {
 					} else {
 						print "<a style='color:".$options['right01-link-color'].";' href='".get_bloginfo('url')."/wp-admin/widgets.php'>Add Widgets</a>";
 						print "<div style='font-size: 10px; padding-left: 10px; color: ".$options['right01-heading-color'].";'>no widgets...</div>";
-						print "<div style='font-size: 9px; padding-left: 10px; color: ".$options['right01-heading-color'].";'>add widgets or hide sidebar...</div>";
+						print "<div style='font-size: 9px; padding-left: 10px; color: ".$options['right01-heading-color'].";'>add widgets or use defaults...</div>";
 					}
 					
 					print "</div>";
@@ -1766,6 +1775,9 @@ function save_options() {
 		
 		/* Begin entry/post links */
 		
+		.entry {
+			text-align: ".$options['entry-text-align'].";
+		}
 		
 		.entry a {
 			color: ".$options['linkcolor'].";	

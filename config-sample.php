@@ -154,6 +154,7 @@ $variation_config['model'][63]  = 'tag-single-sidebar';
 $variation_config['model'][64]  = 'author-single-sidebar';
 $variation_config['model'][65]  = 'search-single-sidebar';
 $variation_config['model'][66]  = 'archives-single-sidebar';
+$variation_config['model'][67]  = 'entry-text-align';
 
 
 /******************************************************************************
