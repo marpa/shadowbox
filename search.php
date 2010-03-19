@@ -12,10 +12,8 @@ get_header(); ?>
 	if ($options['search-sidebar-left-display'] == "show" && $options['left01-width'] != '0') {
 		print "<td valign='top' class='left01block'>";
 		include (TEMPLATEPATH . '/sidebar-left.php'); 
-	} else {
-		print "<td valign='top' class='left01block' style='width: 0px; border: none;'>";
+		print "</td>";
 	}
-	?>
 
 <td valign='top' class="contentblock">
 
@@ -67,22 +65,17 @@ get_header(); ?>
 	<?php 
 	if ($options['search-sidebar-right-display'] == "show" && $options['right01-width'] != '0') {
 		print "<td valign='top' class='right01block'>";
-		include (TEMPLATEPATH . '/sidebar-right.php'); 
-	} else {
-		print "<td valign='top' class='right01block' style='width: 0px; border: none;'>";
+		include (TEMPLATEPATH . '/sidebar-right.php');
+		print "</td>";
 	}
-	?>
-	</td>
 	
-	<?php 
 	if ($options['search-sidebar-right02-display'] == "show" && $options['right02-width'] != '0') {
 		print "<td valign='top' class='right02block'>";
-		include (TEMPLATEPATH . '/sidebar-right02.php'); 
-	} else {
-		print "<td valign='top' class='right02block' style='width: 0px; border: none;'>";
+		include (TEMPLATEPATH . '/sidebar-right02.php');
+		print "</td>";
 	}
 	?>
-	</td>
+
 </tr>
 
 </table>

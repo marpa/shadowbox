@@ -20,11 +20,14 @@
 	</td>
 	</tr>
 	<tr>
-	<td valign='top' class="left01block">
+	<?php 
+	if ($options['left01-width'] != '0') {
+		print "<td valign='top' class='left01block'>";
+		include (TEMPLATEPATH . '/sidebar-left.php'); 
+		print "</td>";
+	}
+	?>
 	
-	<?php if ($options['left01-width'] != 0) include (TEMPLATEPATH . '/sidebar-left.php'); ?>
-	
-	</td>
 	<td valign='top' class="contentblock">
 		<div id="content">
 		
@@ -82,16 +85,19 @@
 	
 		
 	</td>
-	<td valign='top' class="right01block">
+	<?php 
+	if ($options['right01-width'] != '0') {
+		print "<td valign='top' class='right01block'>";
+		include (TEMPLATEPATH . '/sidebar-right.php');
+		print "</td>";
+	}
 	
-	<?php if (!isset($options['right01-width']) || $options['right01-width'] != 0) include (TEMPLATEPATH . '/sidebar-right.php'); ?>
-	
-	</td>
-	<td valign='top' class="right02block">
-	
-	<?php if ($options['right02-width'] != 0) include (TEMPLATEPATH . '/sidebar-right02.php'); ?>
-	
-	</td>
+	if ($options['right02-width'] != '0') {
+		print "<td valign='top' class='right02block'>";
+		include (TEMPLATEPATH . '/sidebar-right02.php'); 
+		print "</td>";
+	}
+	?>
 	</tr>
 </table>
 
