@@ -28,7 +28,7 @@ if ($options['background'] != "custom") {
 	$options['background-source-credit'] = "";
 }
 
-if ($shadowbox_config['headermeta'] = "on") $options['headermeta'] = "on";
+if ($variation_config['headermeta'] = "on") $options['headermeta'] = "on";
 
 $options['site-margin-top'] = "0";	
 $options['page-image-width'] = $options['site-width']-50;
@@ -146,7 +146,7 @@ if (!isset($options['right02-opacity'])) $options['right02-opacity'] = "1";
 if (!isset($options['bottom-opacity'])) $options['bottom-opacity'] = "1";
 
 if (!isset($options['header-border-style'])) $options['header-border-style'] = "solid";
-if (!isset($options['top-border-style'])) $options['content-border-style'] = "solid";
+if (!isset($options['top-border-style'])) $options['top-border-style'] = "solid";
 if (!isset($options['content-border-style'])) $options['content-border-style'] = "none";
 if (!isset($options['left01-border-style'])) $options['left01-border-style'] = "solid";
 if (!isset($options['right01-border-style'])) $options['right01-border-style'] = "solid";
@@ -282,6 +282,12 @@ $options_values['linkcolor'] = array(
 	'Black' => '#222222',
 	'Gold'	=>	'#625B1D'
 	);
+
+$options_values['entry-text-align'] = array(
+	'Justify' => 'justify',
+	'Left' => 'left'
+);
+
 	
 $options_values['entry-link-style'] = array(
 	'No Underline' => 'none',
@@ -324,7 +330,6 @@ $options_values['sidebar-display'] = array(
 	'Left &amp; 2nd Right' => 'left01right02',
 	'No Sidebars' => 'none',
 );
-
 	
 	
 ?>
