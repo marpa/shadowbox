@@ -1,5 +1,5 @@
 
-ShadowBox v. 1.5.3 (2010-03-15)
+ShadowBox v. 1.5.3 (2010-03-19)
 =================================
 
 What is ShadowBox?
@@ -51,7 +51,7 @@ Bug Tracker
 ===================================================================
 
 
-v. 1.5.3 (2010-03-15)
+v. 1.5.3 (2010-03-19)
 ----------------------------------------------------
 This release refines the theme options model to be more accurate and adds theme
 options for specifying what sidebars to include in single, author and archive pages.

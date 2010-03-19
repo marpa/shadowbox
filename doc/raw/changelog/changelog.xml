@@ -10,10 +10,13 @@
 <!DOCTYPE changelog SYSTEM "../dtds/changelog.dtd">
 
 <changelog name="ShadowBox">
-	<version number="1.5.3" date="2010-03-15">
+	<version number="1.5.3" date="2010-03-19">
 		<releaseNotes>
 			This release refines the theme options model to be more accurate and adds theme options for specifying what sidebars to include in single, author and archive pages.  This release also includes refinements in theme css and initialization.
 		</releaseNotes>
+		<new author='alex' date='2010-03-19'>
+			Theme option: added option for setting text alignment of posts to left or justify.
+		</new>
 		<new author='alex' date='2010-03-14'>
 			Theme option: added options for specifying sidebars to include on tag, category, single
 			past, author and archives pages.
