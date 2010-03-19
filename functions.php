@@ -4,7 +4,8 @@ if (file_exists(dirname(__FILE__).'/config.php')) {
 } else if (file_exists(dirname(__FILE__).'/config-sample.php')) {
 	require_once('config-sample.php');
 }
-//error_reporting(E_ALL);
+// error_reporting(E_ALL);
+// error_reporting(E_ERROR | E_WARNING | E_PARSE);
 
 /******************************************************************************
  * Preset Widgets
@@ -470,7 +471,8 @@ function variation_options() {
 			</td>
 			<td width='60%' align='left'>
 			<div class='instructions' style='font-size: 9px;'>	
-			<i>Below is a model of your blog's layout and colors. It does not show all the details of your blog's header, borders or sidebar widgets</i>&nbsp;&nbsp;
+			<i>Below is a model of your blog's layout and colors. It does not show all the details of your blog's header, borders or sidebar widgets.  
+			As well, the width of sidebars and content areas may not be accurate in this preview.</i>&nbsp;&nbsp;
 			 <strong>Show recommendations: </strong><input type='checkbox' name='model-instructions' id='model-instructions' ".(isset($options['model-instructions']) && $options['model-instructions'] == "on" ? ' checked' : '') . " onchange='this.form.submit();'/>
 			</div>			
 			</td>
@@ -2062,6 +2064,7 @@ function set_variation_options() {
 	 ******************************************************************************/
 	
 	$variations = array();
+	$themes_allowed_tags = "";
 	
 	if (file_exists(dirname(__FILE__).'/variations')) {
 		$variation_path = dirname(__FILE__).'/variations';
@@ -2631,6 +2634,21 @@ function print_option_feedback() {
 			$message .= " <br/><br/>Your 2nd right sidebar is hidden but contains widgets.";
 			$error = "true";
 		}
+				
+		if ($options['left01-width'] == "125") {
+			$message .= "<br/>Your left sidebar is only 175px.  This may be too narrow for some widgets (e.g. calendar widget)";
+			$error = "true";
+		} 
+
+		if ($options['right01-width'] == "125") {
+			$message .= "<br/>Your right sidebar is only 175px.  This may be too narrow for some widgets (e.g. calendar widget)";
+			$error = "true";
+		} 
+
+		if ($options['right02-width'] == "125") {
+			$message .= "<br/>Your 2nd right sidebar is only 175px.  This may be too narrow for some widgets (e.g. calendar widget)";
+			$error = "true";
+		} 		
 			
 		$pages = array('post', 'category', 'tag', 'author', 'search');
 		
@@ -2726,7 +2744,7 @@ function get_option_field ($option_title, $option_name, $option_field_width) {
 	if ($l) {
 		unset($rgb_color);
 		//$out = "rgba(";
-		$rgb_color .= hexdec(substr($color, 0,1*$l)).", ";
+		$rgb_color = hexdec(substr($color, 0,1*$l)).", ";
 		$rgb_color .= hexdec(substr($color, 1*$l,1*$l)).", ";
 		$rgb_color .= hexdec(substr($color, 2*$l,1*$l));
 	} else $rgb_color = false;
