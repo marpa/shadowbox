@@ -150,7 +150,7 @@ if (!isset($options['right02-opacity'])) $options['right02-opacity'] = "1";
 if (!isset($options['bottom-opacity'])) $options['bottom-opacity'] = "1";
 
 if (!isset($options['header-border-style'])) $options['header-border-style'] = "solid";
-if (!isset($options['top-border-style'])) $options['content-border-style'] = "none";
+if (!isset($options['top-border-style'])) $options['top-border-style'] = "solid";
 if (!isset($options['content-border-style'])) $options['content-border-style'] = "none";
 if (!isset($options['left01-border-style'])) $options['left01-border-style'] = "solid";
 if (!isset($options['right01-border-style'])) $options['right01-border-style'] = "solid";
