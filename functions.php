@@ -1929,26 +1929,26 @@ function save_options() {
 			border-bottom: none;
 		}
 
-		.entry h2, .entry h3 {
+		.entry h2, .entry h3, .entry h1 {
 			color: ".$options['textcolor'].";
 			border-bottom: 1px solid #CCCCCC;
 		}
 
-		.entry h2:hover, .entry h3:hover {
+		.entry h2:hover, .entry h3:hover, .entry h1:hover {
 			border-bottom: 1px solid #CCCCCC;
 		}
 		
-		.entry h2 a, .entry h3 a {
+		.entry h2 a, .entry h3 a, .entry h1 a {
 			text-decoration: none;
 			border-bottom: none;
 		}
 		
-		.entry h2 a:hover, .entry h3 a:hover {
+		.entry h2 a:hover, .entry h3 a:hover, .entry h1 a:hover {
 			border-bottom: none;
 			text-decoration: none;
 		}
 
-		.entry h2 a:visited, .entry h3 a:visited {
+		.entry h2 a:visited, .entry h3 a:visited, .entry h1 a:visited {
 			text-decoration: none;
 			border-bottom: none;
 		}
