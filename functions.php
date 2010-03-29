@@ -1929,20 +1929,30 @@ function save_options() {
 			border-bottom: none;
 		}
 
-		.entry h2:hover {
+		.entry h2, .entry h3 {
+			color: ".$options['textcolor'].";
 			border-bottom: 1px solid #CCCCCC;
 		}
 
+		.entry h2:hover, .entry h3:hover {
+			border-bottom: 1px solid #CCCCCC;
+		}
 		
-		.entry h2 a {
+		.entry h2 a, .entry h3 a {
 			text-decoration: none;
 			border-bottom: none;
 		}
 		
-		.entry h2 a:hover {
+		.entry h2 a:hover, .entry h3 a:hover {
 			border-bottom: none;
 			text-decoration: none;
 		}
+
+		.entry h2 a:visited, .entry h3 a:visited {
+			text-decoration: none;
+			border-bottom: none;
+		}
+
 				
 		/* Begin comments */
 		#commentform textarea {

@@ -66,12 +66,6 @@ h1, h2, h3 {
 
 h1 {
 	font-size: 2em;
-	text-align: center;
-	}
-
-#headerimg .description {
-	font-size: 1.2em;
-	text-align: center;
 	}
 
 h2 {
@@ -80,6 +74,16 @@ h2 {
 
 h2.pagetitle {
 	font-size: 1.6em;
+	}
+	
+h3 {
+	font-size: 1.3em;
+	}
+
+
+#headerimg .description {
+	font-size: 1.2em;
+	text-align: center;
 	}
 
 	
@@ -114,13 +118,6 @@ h2.pagetitle {
 	padding-bottom: 10px;
 	font-size: 18px;
 	}
-
-
-
-h3 {
-	font-size: 1.3em;
-	}
-
 
 .commentlist li, #commentform input, #commentform textarea {
 	font: 0.9em 'Lucida Grande', Verdana, Arial, Sans-Serif;
@@ -258,19 +255,18 @@ acronym, abbr, span.caps
 
 /*	Begin Headers */
 h1 {
-	padding-top: 20px;
-	padding-left: 0px;
-	margin: 0;
-	text-align: left;
+	padding-bottom: 5px;
+	margin: 30px 0 0;
 	}
 
 h2 {
-	margin: 10px 0 0;
+	padding-bottom: 3px;
+	margin: 30px 0 0;
 	}
 
 
 h3 {
-	padding: 0;
+	padding-bottom: 1px;
 	margin: 30px 0 0;
 	}
 
@@ -940,6 +936,7 @@ div .hr {
 	padding-left: 10px;
 	color: #003366;
 	font-size: 27px;
+	text-shadow: #777777 1px 1px 0.08em;
 	font-weight: normal;	
 	border-bottom: none;
 }
@@ -1093,6 +1090,7 @@ div .hr {
 .sidebarright01 a {
 	color: #003366;
 	border-bottom:1px none #003366;
+	text-shadow: #CCCCCC 1px 1px 0.02em;
 }
 		
 .sidebarright01 a:hover {
@@ -1159,11 +1157,17 @@ div .hr {
 	border-bottom: none;
 }
 
-.entry h2:hover {
+.entry h2, .entry h3 {
+	color: #444444;
+	border-bottom: 1px solid #CCCCCC;
+}
+
+.entry h2:hover, .entry h2:hover {
 	border-bottom: 1px solid #CCCCCC;
 }
 
 .entry h2 a, .entry h3 a {
+	display: block;
 	text-decoration: none;
 	border-bottom: none;
 }
@@ -1172,6 +1176,7 @@ div .hr {
 	border-bottom: none;
 	text-decoration: none;
 }
+
 
 .entry {
 	text-align: justify;
@@ -1193,6 +1198,12 @@ div .hr {
 	color: #777777;		
 	border-bottom: 1px dotted ;
 }
+
+.entry h2 a:visited, .entry h3 a:visited {
+	text-decoration: none;
+	border-bottom: none;
+}
+
 
 .entry .morelink a {
 	display: block;			
