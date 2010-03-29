@@ -1090,7 +1090,6 @@ div .hr {
 .sidebarright01 a {
 	color: #003366;
 	border-bottom:1px none #003366;
-	text-shadow: #CCCCCC 1px 1px 0.02em;
 }
 		
 .sidebarright01 a:hover {
@@ -1143,6 +1142,7 @@ div .hr {
 
 .post h2 {
 	color: #003366;
+	text-shadow: #CCCCCC 1px 1px 0.02em;
 	display: block;
 	text-align: left;
 	border-bottom: 1px solid #CCCCCC;
@@ -1173,6 +1173,7 @@ div .hr {
 }
 
 .entry h2 a:hover, .entry h3 a:hover, .entry h1 a:hover {
+	display: block;
 	border-bottom: none;
 	text-decoration: none;
 }
@@ -1200,6 +1201,7 @@ div .hr {
 }
 
 .entry h2 a:visited, .entry h3 a:visited, .entry h1 a:visited {
+	display: block;
 	text-decoration: none;
 	border-bottom: none;
 }
