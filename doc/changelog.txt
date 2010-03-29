@@ -2,6 +2,28 @@
 ShadowBox Change Log
 
 
+v. 1.5.3 (the future)
+----------------------------------------------------
+This release refines sidebar visibility code, adds new variation and refines CSS
+		
+		
+	* Bug Fix: 
+		CSS: fixed css entry h1, h2 and h3 styles so more consistent styles with and
+		without links
+		(2010-03-28 - Alex Chapin)
+		
+	* Change: 
+		Theme Options UX: Added configurable option to show or hide log in link on
+		blog 
+		(2010-03-17 - Alex Chapin)			
+		
+	* New feature: 
+		Variations: added draft variation of Shadowbox series
+		(2010-03-15 - Alex Chapin)
+	
+
+
+
 v. 1.5.3 (2010-03-19)
 ----------------------------------------------------
 This release refines the theme options model to be more accurate and adds theme

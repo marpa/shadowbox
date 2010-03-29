@@ -10,6 +10,21 @@
 <!DOCTYPE changelog SYSTEM "../dtds/changelog.dtd">
 
 <changelog name="ShadowBox">
+	<version number="1.5.3" date="the future">
+		<releaseNotes>
+			This release refines sidebar visibility code, adds new variation and refines CSS
+		</releaseNotes>
+		<fix author='alex' date='2010-03-28'>
+			CSS: fixed css entry h1, h2 and h3 styles so more consistent styles with and without
+			links
+		</fix>
+		<change author='alex' date='2010-03-17'>
+			Theme Options UX: Added configurable option to show or hide log in link on blog
+		</change>			
+		<new author='alex' date='2010-03-15'>
+			Variations: added draft variation of Shadowbox series
+		</new>
+	</version>
 	<version number="1.5.3" date="2010-03-19">
 		<releaseNotes>
 			This release refines the theme options model to be more accurate and adds theme options for specifying what sidebars to include in single, author and archive pages.  This release also includes refinements in theme css and initialization.
