@@ -1949,6 +1949,7 @@ function save_options() {
 		}
 
 		.entry h2 a:visited, .entry h3 a:visited, .entry h1 a:visited {
+			display: block;
 			text-decoration: none;
 			border-bottom: none;
 		}
