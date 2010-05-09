@@ -79,7 +79,7 @@ $variation_config['footer_meta_left_options']['custom'] = array (
  * Miscellaneous Config
  * When set to "on" always shows log in link in upper right corner
  ******************************************************************************/
-$variation_config['headermeta'] = "on";
+//$variation_config['headermeta'] = "on";
 
 
 /******************************************************************************
