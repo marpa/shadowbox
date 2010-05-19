@@ -28,7 +28,7 @@ if ($options['background'] != "custom") {
 	$options['background-source-credit'] = "";
 }
 
-if ($variation_config['headermeta'] = "on") $options['headermeta'] = "on";
+//if ($variation_config['headermeta'] = "on") $options['headermeta'] = "on";
 
 $options['site-margin-top'] = "0";	
 $options['page-image-width'] = $options['site-width']-50;
