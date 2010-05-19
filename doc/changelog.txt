@@ -2,10 +2,20 @@
 ShadowBox Change Log
 
 
-v. 1.5.3 (the future)
+v. 1.5.4 (the future)
 ----------------------------------------------------
-This release refines sidebar visibility code, adds new variation and refines CSS
+This release adds a variation and header meta options and refines css
 		
+		
+	* Bug Fix: 
+		Theme Options: fixed bug that was stripping tags from custom left header and
+		footer 
+		(2010-05-19 - Alex Chapin)		
+		
+	* Bug Fix: 
+		CSS: fixed css entry h1, h2 and h3 styles so more consistent styles with and
+		without links
+		(2010-05-09 - Alex Chapin)		
 		
 	* Bug Fix: 
 		CSS: fixed css entry h1, h2 and h3 styles so more consistent styles with and

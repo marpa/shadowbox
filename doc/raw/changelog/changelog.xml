@@ -10,10 +10,17 @@
 <!DOCTYPE changelog SYSTEM "../dtds/changelog.dtd">
 
 <changelog name="ShadowBox">
-	<version number="1.5.3" date="the future">
+	<version number="1.5.4" date="the future">
 		<releaseNotes>
-			This release refines sidebar visibility code, adds new variation and refines CSS
+			This release adds a variation and header meta options and refines css
 		</releaseNotes>
+		<fix author='alex' date='2010-05-19'>
+			Theme Options: fixed bug that was stripping tags from custom left header and footer
+		</fix>		
+		<fix author='alex' date='2010-05-09'>
+			CSS: fixed css entry h1, h2 and h3 styles so more consistent styles with and without
+			links
+		</fix>		
 		<fix author='alex' date='2010-03-28'>
 			CSS: fixed css entry h1, h2 and h3 styles so more consistent styles with and without
 			links
