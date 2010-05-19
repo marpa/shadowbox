@@ -94,7 +94,6 @@ if (function_exists('register_sidebar')) {
 $theme_settings = $variation_config['theme-name']."_settings";
 $theme_css = $variation_config['theme-name']."_css";
 $theme_options = $variation_config['theme-name']." Options";
-//printpre($theme_settings);
 
 if (!is_array(get_option($theme_settings))) {
     add_option($theme_settings, array('init' => 1));    
@@ -209,6 +208,7 @@ function header_style() {
 function variation_options() {	
 	global $variation_config, $options, $options_values, $variation_css, $model_content_width, $variations, $header_image;
     global $theme_settings, $theme_css, $_POST;
+    
     	
 	if (isset($_POST['reset']) || $options['revert'] == 1) {
 		delete_options();
@@ -220,6 +220,7 @@ function variation_options() {
 	}
 	
 	//read_css_file("style.css");
+	//printpre ($options['headerleft']);
 	
 	set_variation_options();	
 		
@@ -1309,10 +1310,10 @@ function variation_options() {
 function save_options() {
     global $_POST, $options, $variation_css, $variation_config;
     global $theme_settings, $theme_css;
-	
+
 	// options are those exposed in the UI
 	set_primary_options();
-	
+
 	// options specific to a particular variation
 	set_variation_options();
 	
@@ -2001,14 +2002,14 @@ function save_options() {
  
 function set_primary_options() {
 	global $_POST, $options, $allowedposttags, $variation_config;
-	
+
 	foreach ($variation_config['model'] as $option => $value) {
 
 		//sanitize options that contain HTML
-		if ($option == "headerleftcustom") {
+		if ($value == "headerleftcustom") {
 			$options['headerleftcustom'] = wp_kses($_POST['headerleftcustom'], $allowedposttags);
-		} else if ($option == "footerleftcustom") {
-			$options['footerleftcustom'] = wp_kses($_POST['footerleftcustom'], $$allowedposttags);
+		} else if ($value == "footerleftcustom") {
+			$options['footerleftcustom'] = wp_kses($_POST['footerleftcustom'], $allowedposttags);
 		
 		// replaces any characters that are not allowed with null
 		} else if (isset($_POST[$value]))  {
