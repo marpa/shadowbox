@@ -14,7 +14,7 @@ get_header(); ?>
 		include (TEMPLATEPATH . '/sidebar-left.php'); 
 		print "</td>";
 	}
-
+	?>
 <td valign='top' class="contentblock">
 
 	<div id="content">
