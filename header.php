@@ -42,19 +42,20 @@ print $options['right02-color-ie']."\n";
 		<span class="bgtextcolor">
 		<?php print stripslashes($options['headerright']);
 		 
-		if (wp_get_current_user()->user_level > 4) print "<a href='".get_bloginfo('siteurl')."/wp-admin/'>Dashboard</a>";
-		if (wp_get_current_user()->user_level > 7) print " | <a href='".get_bloginfo('siteurl')."/wp-admin/themes.php?page=Variations'>Design</a>";
-			
-		if ($options['headermeta'] == "on" && wp_get_current_user()->user_level > 0) {
-				print " | <a href='".get_bloginfo('siteurl')."/wp-admin/profile.php'>";
-				print wp_get_current_user()->display_name."</a>";		
+		if (current_user_can( 'publish_pages' )) print "<a href='".get_bloginfo('siteurl')."/wp-admin/'>Dashboard</a>";
+		if (current_user_can( 'edit_themes' )) print " | <a href='".get_bloginfo('siteurl')."/wp-admin/themes.php?page=Variations'>Design</a>";
+		
+		if (current_user_can( 'edit_posts' )) {
+			print " | <a href='".get_bloginfo('siteurl')."/wp-admin/profile.php'>";
+			print wp_get_current_user()->display_name."</a>";
 		}
 		
-		if (is_user_logged_in() == 'true' || $options['headermeta'] == "on") { 
-			if (is_user_logged_in() == 'true') print " - ";
+		if ($options['headermeta'] == "on") {
+			if (is_user_logged_in() == 'true') print " - ";	
+
 			print wp_loginout('','')."";
+
 		}
-		
 		
 		?>	
 		</span><br/>

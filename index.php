@@ -33,7 +33,7 @@
 		
 		<?php
 		// display link to new post if user is at least an author
-		if (wp_get_current_user()->user_level > 1) {
+		if (current_user_can( 'edit_posts' )) {
 			print "<div class='postlink'>";
 			print "<a href='". get_bloginfo('url')."/wp-admin/post-new.php'>New Post</a>";
 			print "</div>"; 
