@@ -38,6 +38,10 @@ get_header(); ?>
 				<div class="postmetadata">
 				Posted in <span class='category'><?php the_category('</span><span class=\'category\'>') ?></span></div>
 
+				<div class="entry">
+					<?php the_excerpt(); ?>
+				</div>
+				
 				<div class="postmetadata">
 				<?php the_tags('Tags: <span class=\'tag\'>','</span><span class=\'tag\'>', '</span><br/>',' '); ?></div>
 
