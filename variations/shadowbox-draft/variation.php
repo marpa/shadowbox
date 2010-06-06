@@ -12,14 +12,16 @@ Tags: one-column, two-columns, three-columns, left-sidebar, right-sidebar, theme
 
 if ($options['background'] == "shadowbox-draft") {
 
-	$options['background_image_file'] = "none";
+	$options['background_image_file'] = "multiwidth01.png";
 	$options['background_image_directory'] = "shadowbox-draft";	
 	$options['background_image'] = "url('".get_bloginfo("stylesheet_directory");
 	$options['background_image'] .= "/variations/".$options['background_image_directory'];
 	$options['background_image'] .= "/".$options['background_image_file']."')";
+	$options['background_repeat'] = "repeat";
+	$options['background_position'] = "left top";	
 
 	// variation credit
-	$options['background-source-credit'] = "Translucence";
+	$options['background-source-credit'] = "Draft";
 	$options['background-source-url'] = "";
 
 	$options['background_color'] = "#FFFFFF";
