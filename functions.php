@@ -13,27 +13,34 @@ if (file_exists(dirname(__FILE__).'/config.php')) {
  * developers have done this yet....
  ******************************************************************************/
 
-//update_option( 'sidebars_widgets', NULL );
-$default_widgets = get_option('sidebars_widgets');
+if ( isset( $_GET['activated'] ) && $current_theme == $target_theme ) {
+	update_option( 'widget_search', array( 2 => array( 'title' => '' ), '_multiwidget' => 1 ) );
+	update_option( 'widget_recent-posts', array( 2 => array( 'title' => '', 'number' => 5 ), '_multiwidget' => 1 ) );
+	update_option( 'widget_recent-comments', array( 2 => array( 'title' => '', 'number' => 5 ), '_multiwidget' => 1 ) );
+	update_option( 'widget_archives', array( 2 => array( 'title' => '', 'count' => 0, 'dropdown' => 0 ), '_multiwidget' => 1 ) );
+	update_option( 'widget_categories', array( 2 => array( 'title' => '', 'count' => 0, 'hierarchical' => 0, 'dropdown' => 0 ), '_multiwidget' => 1 ) );
+	update_option( 'widget_tag_cloud', array( 2 => array( 'title' => ''), '_multiwidget' => 1 ) );
+	update_option( 'widget_pages', array( 2 => array( 'title' => ''), '_multiwidget' => 1 ) );
+	
+	// Update the sidebars with those widgets
+	// sidebar-1 = left sidebar
+	// sidebar-2 = right sidebar
+	// sidebar-3 = 2nd right sidebar
+	update_option( 'sidebars_widgets', array(
+		'sidebar-2' => array(
+			'search-2',		
+			'recent-posts-2',
+			'recent-comments-2',
+		),
+		'sidebar-3' => array(
+			'pages-2',
+			'categories-2',
+			'tag_cloud-2',
+		),
+		'wp_inactive_widgets' => array(),
+	));
+}
 
-//printpre(get_option('sidebars_widgets'));
-
-// Pre-set Widgets
-$preset_widgets = array (
-	'sidebar-1'  => array( 'search', 'pages', 'categories', 'archives' ),
-	'sidebar-2'  => array( 'links', 'meta' ),
-	'sidebar-3'  => array( 'links' ),
-	'sidebar-4'  => array( 'search'),
-	'sidebar-5'  => array( 'links')
-);
-
-//$new_widgets = array_merge($default_widgets, $preset_widgets);
-
-//if ( isset( $_GET['activated']) ) {
-//	printpre($preset_widgets);
-//	update_option('sidebars_widgets', $preset_widgets);
-//	printpre( get_option( 'sidebars_widgets' ) );
-//}
 
 /*********************************************************
  *  Register sidebars
