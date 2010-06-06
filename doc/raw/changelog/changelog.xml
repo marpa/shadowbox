@@ -12,8 +12,14 @@
 <changelog name="ShadowBox">
 	<version number="1.5.4" date="the future">
 		<releaseNotes>
-			This release adds a variation and header meta options and refines css
+			This release adds a variation and header meta options, refines css and fixes bugs
 		</releaseNotes>
+		<change author='alex' date='2010-05-27'>
+			Template files: Added post excerpt to search page results listing
+		</change>			
+		<fix author='alex' date='2010-05-26'>
+			Template files: changed how current users is identified when printing out editing UI from wp_get_current_user()->user_level to current_user_can('capability')
+		</fix>		
 		<fix author='alex' date='2010-05-19'>
 			Theme Options: fixed bug that was stripping tags from custom left header and footer
 		</fix>		

@@ -4,8 +4,18 @@ ShadowBox Change Log
 
 v. 1.5.4 (the future)
 ----------------------------------------------------
-This release adds a variation and header meta options and refines css
+This release adds a variation and header meta options, refines css and fixes bugs
 		
+		
+	* Change: 
+		Template files: Added post excerpt to search page results listing
+		(2010-05-27 - Alex Chapin)			
+		
+	* Bug Fix: 
+		Template files: changed how current users is identified when printing out
+		editing UI from wp_get_current_user()->user_level to
+		current_user_can('capability') 
+		(2010-05-26 - Alex Chapin)		
 		
 	* Bug Fix: 
 		Theme Options: fixed bug that was stripping tags from custom left header and
