@@ -12,6 +12,8 @@ if (file_exists(dirname(__FILE__).'/config.php')) {
  * It is possible to preset widgets for a given theme but not many theme
  * developers have done this yet....
  ******************************************************************************/
+$current_theme = get_option( 'template' ); // variable stores the current theme
+$target_theme = $variation_config['theme-name']; // variable stores the theme we want to target
 
 if ( isset( $_GET['activated'] ) && $current_theme == $target_theme ) {
 	update_option( 'widget_search', array( 2 => array( 'title' => '' ), '_multiwidget' => 1 ) );
