@@ -26,11 +26,10 @@ $options['theme-name'] = $variation_config['theme-name'];
  * preset widgets defined in the theme config.php
  ******************************************************************************/
  $current_theme = get_option( 'template' ); // variable stores the current theme
- $target_theme = $theme_id; // variable stores the theme we want to target
-
+ $target_theme = $variation_config['theme-parent']; // variable stores the theme we want to target
 
 // add preset widgets only if theme is 1st activated and has not been activated previously
-if ( isset( $_GET['activated'] ) && $current_theme == $target_theme && !get_option($theme_css)) {
+if (isset($_POST['reset']) || (isset( $_GET['activated'] ) && $current_theme == $target_theme && !get_option($theme_css))) {
 	update_option( 'widget_search', array( 2 => array( 'title' => '' ), '_multiwidget' => 1 ) );
 	update_option( 'widget_recent-posts', array( 2 => array( 'title' => '', 'number' => 5 ), '_multiwidget' => 1 ) );
 	update_option( 'widget_recent-comments', array( 2 => array( 'title' => '', 'number' => 5 ), '_multiwidget' => 1 ) );
