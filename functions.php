@@ -8,11 +8,19 @@ if (file_exists(dirname(__FILE__).'/config.php')) {
 // error_reporting(E_ERROR | E_WARNING | E_PARSE);
 
 /*********************************************************
- * Define theme id
+ * Define theme id, settings, css and options
  *********************************************************/
 
 $theme_id = strtolower($variation_config['theme-name']);
 $theme_id = str_replace(" ", "_", $theme_id);
+
+$theme_settings = $theme_id."_settings";
+$theme_css = $theme_id."_css";
+$theme_options = $variation_config['theme-name']." Options";
+
+
+$options['theme-url'] = $variation_config['theme-url'];
+$options['theme-name'] = $variation_config['theme-name'];
 
 /******************************************************************************
  * Preset Widgets
@@ -40,8 +48,8 @@ $preset_widgets = array (
 		'wp_inactive_widgets' => array(),
 	);
 
-
-if ( isset( $_GET['activated'] ) && $current_theme == $target_theme ) {
+// add preset widgets only if theme is 1st activated and has not been activated previously
+if ( isset( $_GET['activated'] ) && $current_theme == $target_theme && !get_option($theme_css)) {
 	update_option( 'widget_search', array( 2 => array( 'title' => '' ), '_multiwidget' => 1 ) );
 	update_option( 'widget_recent-posts', array( 2 => array( 'title' => '', 'number' => 5 ), '_multiwidget' => 1 ) );
 	update_option( 'widget_recent-comments', array( 2 => array( 'title' => '', 'number' => 5 ), '_multiwidget' => 1 ) );
@@ -50,12 +58,8 @@ if ( isset( $_GET['activated'] ) && $current_theme == $target_theme ) {
 	update_option( 'widget_tag_cloud', array( 2 => array( 'title' => ''), '_multiwidget' => 1 ) );
 	update_option( 'widget_pages', array( 2 => array( 'title' => ''), '_multiwidget' => 1 ) );
 
-
-	update_option( 'sidebars_widgets', $preset_widgets);
-	
-	
+	update_option( 'sidebars_widgets', $preset_widgets);		
 }
-
 
 /*********************************************************
  *  Register sidebars
@@ -113,10 +117,6 @@ if (function_exists('register_sidebar')) {
  *  Get options
  ******************************************************************************/
   
-$theme_settings = $theme_id."_settings";
-$theme_css = $theme_id."_css";
-$theme_options = $variation_config['theme-name']." Options";
-
 if (!is_array(get_option($theme_settings))) {
     add_option($theme_settings, array('init' => 1));    
 } else {	
@@ -130,9 +130,6 @@ if (!get_option($theme_css)) {
 }
 
 set_variation_options();
-
-$options['theme-url'] = $variation_config['theme-url'];
-$options['theme-name'] = $variation_config['theme-name'];
 
 
 /*********************************************************
