@@ -18,35 +18,16 @@ $theme_settings = $theme_id."_settings";
 $theme_css = $theme_id."_css";
 $theme_options = $variation_config['theme-name']." Options";
 
-
 $options['theme-url'] = $variation_config['theme-url'];
 $options['theme-name'] = $variation_config['theme-name'];
 
 /******************************************************************************
  * Preset Widgets
- * It is possible to preset widgets for a given theme but not many theme
- * developers have done this yet....
+ * preset widgets defined in the theme config.php
  ******************************************************************************/
  $current_theme = get_option( 'template' ); // variable stores the current theme
  $target_theme = $theme_id; // variable stores the theme we want to target
 
-// Update the sidebars with those widgets
-// sidebar-1 = left sidebar
-// sidebar-2 = right sidebar
-// sidebar-3 = 2nd right sidebar 
-$preset_widgets = array (
-	 'sidebar-2' => array(
-			'search-2',		
-			'recent-posts-2',
-			'recent-comments-2',
-		),
-		'sidebar-3' => array(
-			'pages-2',
-			'categories-2',
-			'tag_cloud-2',
-		),
-		'wp_inactive_widgets' => array(),
-	);
 
 // add preset widgets only if theme is 1st activated and has not been activated previously
 if ( isset( $_GET['activated'] ) && $current_theme == $target_theme && !get_option($theme_css)) {
