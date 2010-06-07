@@ -121,6 +121,8 @@ $options['searchbox-color'] = "#FFFFFF";
  * Initialization
  * Set these only if not in the initial options array
  ******************************************************************************/
+if (!isset($options['headermeta'])) $options['headermeta'] = "on";
+
 if (!isset($options['background'])) $options['background'] = "shadowbox-gray-white";
 if (!isset($options['site-width'])) $options['site-width'] = "900";
 if (!isset($options['header-block-height'])) $options['header-block-height'] = "100";
