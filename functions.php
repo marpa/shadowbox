@@ -7,29 +7,27 @@ if (file_exists(dirname(__FILE__).'/config.php')) {
 // error_reporting(E_ALL);
 // error_reporting(E_ERROR | E_WARNING | E_PARSE);
 
+/*********************************************************
+ * Define theme id
+ *********************************************************/
+
+$theme_id = strtolower($variation_config['theme-name']);
+$theme_id = str_replace(" ", "_", $theme_id);
+
 /******************************************************************************
  * Preset Widgets
  * It is possible to preset widgets for a given theme but not many theme
  * developers have done this yet....
  ******************************************************************************/
-$current_theme = get_option( 'template' ); // variable stores the current theme
-$target_theme = $variation_config['theme-name']; // variable stores the theme we want to target
+ $current_theme = get_option( 'template' ); // variable stores the current theme
+ $target_theme = $theme_id; // variable stores the theme we want to target
 
-if ( isset( $_GET['activated'] ) && $current_theme == $target_theme ) {
-	update_option( 'widget_search', array( 2 => array( 'title' => '' ), '_multiwidget' => 1 ) );
-	update_option( 'widget_recent-posts', array( 2 => array( 'title' => '', 'number' => 5 ), '_multiwidget' => 1 ) );
-	update_option( 'widget_recent-comments', array( 2 => array( 'title' => '', 'number' => 5 ), '_multiwidget' => 1 ) );
-	update_option( 'widget_archives', array( 2 => array( 'title' => '', 'count' => 0, 'dropdown' => 0 ), '_multiwidget' => 1 ) );
-	update_option( 'widget_categories', array( 2 => array( 'title' => '', 'count' => 0, 'hierarchical' => 0, 'dropdown' => 0 ), '_multiwidget' => 1 ) );
-	update_option( 'widget_tag_cloud', array( 2 => array( 'title' => ''), '_multiwidget' => 1 ) );
-	update_option( 'widget_pages', array( 2 => array( 'title' => ''), '_multiwidget' => 1 ) );
-	
-	// Update the sidebars with those widgets
-	// sidebar-1 = left sidebar
-	// sidebar-2 = right sidebar
-	// sidebar-3 = 2nd right sidebar
-	update_option( 'sidebars_widgets', array(
-		'sidebar-2' => array(
+// Update the sidebars with those widgets
+// sidebar-1 = left sidebar
+// sidebar-2 = right sidebar
+// sidebar-3 = 2nd right sidebar 
+$preset_widgets = array (
+	 'sidebar-2' => array(
 			'search-2',		
 			'recent-posts-2',
 			'recent-comments-2',
@@ -40,7 +38,22 @@ if ( isset( $_GET['activated'] ) && $current_theme == $target_theme ) {
 			'tag_cloud-2',
 		),
 		'wp_inactive_widgets' => array(),
-	));
+	);
+
+
+if ( isset( $_GET['activated'] ) && $current_theme == $target_theme ) {
+	update_option( 'widget_search', array( 2 => array( 'title' => '' ), '_multiwidget' => 1 ) );
+	update_option( 'widget_recent-posts', array( 2 => array( 'title' => '', 'number' => 5 ), '_multiwidget' => 1 ) );
+	update_option( 'widget_recent-comments', array( 2 => array( 'title' => '', 'number' => 5 ), '_multiwidget' => 1 ) );
+	update_option( 'widget_archives', array( 2 => array( 'title' => '', 'count' => 0, 'dropdown' => 0 ), '_multiwidget' => 1 ) );
+	update_option( 'widget_categories', array( 2 => array( 'title' => '', 'count' => 0, 'hierarchical' => 0, 'dropdown' => 0 ), '_multiwidget' => 1 ) );
+	update_option( 'widget_tag_cloud', array( 2 => array( 'title' => ''), '_multiwidget' => 1 ) );
+	update_option( 'widget_pages', array( 2 => array( 'title' => ''), '_multiwidget' => 1 ) );
+
+
+	update_option( 'sidebars_widgets', $preset_widgets);
+	
+	
 }
 
 
@@ -99,10 +112,7 @@ if (function_exists('register_sidebar')) {
 /******************************************************************************
  *  Get options
  ******************************************************************************/
- 
-$theme_id = strtolower($variation_config['theme-name']);
-$theme_id = str_replace(" ", "_", $theme_id);
- 
+  
 $theme_settings = $theme_id."_settings";
 $theme_css = $theme_id."_css";
 $theme_options = $variation_config['theme-name']." Options";
