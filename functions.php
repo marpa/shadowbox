@@ -2042,6 +2042,7 @@ function set_primary_options() {
 		}	
 	}
 	
+	if ($variation_config['headermeta'] == "on") $options['headermeta'] = "on";
 
 	if (isset($_POST['model-instructions'])) {
 		$options['model-instructions'] = "on";
