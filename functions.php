@@ -100,8 +100,11 @@ if (function_exists('register_sidebar')) {
  *  Get options
  ******************************************************************************/
  
-$theme_settings = $variation_config['theme-name']."_settings";
-$theme_css = $variation_config['theme-name']."_css";
+$theme_id = strtolower($variation_config['theme-name']);
+$theme_id = str_replace(" ", "_", $theme_id);
+ 
+$theme_settings = $theme_id."_settings";
+$theme_css = $theme_id."_css";
 $theme_options = $variation_config['theme-name']." Options";
 
 if (!is_array(get_option($theme_settings))) {
