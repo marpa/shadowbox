@@ -39,6 +39,12 @@ $options['foreground_color'] = "#FFFFFF";
 $options['content-background'] = "#FFFFFF";
 $options['header-text-padding-left'] = "10";
 $options['header-blogtitle-size'] = "27";
+$options['header-text-shadow-color'] = "#777777";
+$options['header-text-shadow-offset'] = "1px 1px";
+$options['header-text-shadow-blur'] = "0.08em";
+$options['post-text-shadow-color'] = "#CCCCCC";
+$options['post-text-shadow-offset'] = "1px 1px";
+$options['post-text-shadow-blur'] = "0.02em";
 
 
 if (isset($options['linkcolor'])) {

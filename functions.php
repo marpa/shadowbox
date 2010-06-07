@@ -1571,6 +1571,7 @@ function save_options() {
 			color: ".$options['header-blogtitle-color'].";
 			font-size: ".$options['header-blogtitle-size']."px;
 			font-weight: normal;	
+			text-shadow: ".$options['header-text-shadow-color']." ".$options['header-text-shadow-offset']." ".$options['header-text-shadow-blur'].";
 			border-bottom: none;
 		}
 
@@ -1578,7 +1579,8 @@ function save_options() {
 			display: ".$options['show-header-text'].";
 			padding-top: ".$options['header-text-padding-top']."px;
 			padding-left: ".$options['header-text-padding-left']."px;
-			color: ".$options['header-blogtitle-color'].";	
+			color: ".$options['header-blogtitle-color'].";
+			text-shadow: ".$options['header-text-shadow-color']." ".$options['header-text-shadow-offset']." ".$options['header-text-shadow-blur'].";
 			border-bottom: none;
 		}
 
@@ -1925,6 +1927,7 @@ function save_options() {
 			color: ".$options['linkcolor'].";
 			display: block;
 			text-align: left;
+			text-shadow: ".$options['post-text-shadow-color']." ".$options['post-text-shadow-offset']." ".$options['post-text-shadow-blur'].";
 			border-bottom: 1px solid #CCCCCC;
 		}
 		

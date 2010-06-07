@@ -30,6 +30,13 @@ if ($options['background'] == "shadowbox-black") {
 	$options['transparent-heading-color'] = "#CCCC99";
 	$options['transparent-link-color']  = "#FFFFFF";
 	$options['transparent-text-color']  = "#FFFFFF";
+	
+	$options['header-text-shadow-color'] = "#777777";
+	$options['header-text-shadow-offset'] = "0px 0px";
+	$options['header-text-shadow-blur'] = "0.00em";
+	$options['post-text-shadow-color'] = "#CCCCCC";
+	$options['post-text-shadow-offset'] = "0px 0px";
+	$options['post-text-shadow-blur'] = "0.00em";
 		
 	$options['page_image_directory'] = "shadowbox-black";
 	$options['page_image_path'] = "url('".get_bloginfo("stylesheet_directory")."/variations/".$options['page_image_directory'];
