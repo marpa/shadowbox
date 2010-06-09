@@ -2,10 +2,20 @@
 ShadowBox Change Log
 
 
-v. 1.5.4 (the future)
+v. 1.5.4 (2010-06-10)
 ----------------------------------------------------
-This release adds a variation and header meta options, refines css and fixes bugs
+This release introduces option to preset theme widgets. Which widgets to preset for
+each widget area can be specified in the theme config. This release also adds a
+variation and header meta options, refines css and fixes bugs
 		
+		
+	* New feature: 
+		Theme Options: Added list of widgets in each sidebar in theme options view
+		(2010-06-09 - Alex Chapin)	
+		
+	* New feature: 
+		Theme Widgets: Added support for preset widgets when theme is activated
+		(2010-06-06 - Alex Chapin)	
 		
 	* Change: 
 		Template files: Added post excerpt to search page results listing

@@ -10,10 +10,16 @@
 <!DOCTYPE changelog SYSTEM "../dtds/changelog.dtd">
 
 <changelog name="ShadowBox">
-	<version number="1.5.4" date="the future">
+	<version number="1.5.4" date="2010-06-10">
 		<releaseNotes>
-			This release adds a variation and header meta options, refines css and fixes bugs
+			This release introduces option to preset theme widgets.  Which widgets to preset for each widget area can be specified in the theme config.  This release also adds a variation and header meta options, refines css and fixes bugs
 		</releaseNotes>
+		<new author='alex' date='2010-06-09'>
+			Theme Options: Added list of widgets in each sidebar in theme options view
+		</new>	
+		<new author='alex' date='2010-06-06'>
+			Theme Widgets: Added support for preset widgets when theme is activated
+		</new>	
 		<change author='alex' date='2010-05-27'>
 			Template files: Added post excerpt to search page results listing
 		</change>			
