@@ -109,6 +109,9 @@ if (!get_option($theme_css)) {
 $options['theme-url'] = $variation_config['theme-url'];
 $options['theme-name'] = $variation_config['theme-name'];
 
+$current_widgets = get_option ('sidebars_widgets');
+//printpre($current_widgets['sidebar-2']);
+
 set_variation_options();
 
 
@@ -229,6 +232,7 @@ function variation_options() {
 	$options = get_option($theme_settings);
 	$variation_css = get_option($theme_css);
 	
+	$current_widgets = get_option ('sidebars_widgets');	
     
 	/*********************************************************
 	 * Define theme layout model values
@@ -367,18 +371,18 @@ function variation_options() {
  		.editwidgetlink {
 			display: block;
  			color: ".$options['linkcolor'].";
- 			padding: 5px;		 		
+ 			
  		}
  		
  		.editwidgetlink a {
 			display: block;
  			color: ".$options['linkcolor'].";
+			border: 1px dotted;
  			padding: 5px;
- 			border: 1px dotted ".$options['linkcolor'].";
 		} 		
  		
  		.editwidgetlink a:hover {
-			 border: 1px solid ".$options['linkcolor'].";
+			 border: 1px solid;
 			 text-decoration: none;
 		}
 								
@@ -768,9 +772,18 @@ function variation_options() {
 				}		
 				print "
 				<h2 style='padding-top: 0px; font-size: 10px; float: left;'>Top Bar</h2>
-				<div class='editwidgetlink' style='text-align: center; width: 50%; float: left;'> 
+				<div class='editwidgetlink' style='text-align: center; float: left;'> 
 				<a style='color:".$options['top-link-color']."; font-size: 10px; margin: 1px; padding: 1px;' href='".get_bloginfo('url')."/wp-admin/widgets.php'>Edit Widgets</a>
-				</div>	
+				</div>";
+				if (is_array($current_widgets['sidebar-4'])) {
+					foreach ($current_widgets['sidebar-4'] as $widget) {
+						$widget = str_replace("-", " ", $widget);
+						$widget = str_replace("_", " ", $widget);
+						$widget = rtrim(ucwords($widget), "0..9");
+						print "<span style='font-size: 10px; padding-top: 10px; color: ".$options['top-link-color'].";'>".$widget."</span>";	
+					}
+				}
+				print "
 				<div class='horizontalbar' style='font-size: 8px; float: right;'>";
 
 				// color
@@ -801,12 +814,23 @@ function variation_options() {
 				print"
 				<td valign='top' width='".$model_left_sidebar_width."' class='left01block'>
 					<div style='font-size: 10px; text-align: center; color: ".$options['left01-heading-color'].";'>&larr; ".$model_left_sidebar_width." px &rarr; </div>
-					<div style='font-size: 8px;'>					
+					<div style='font-size: 8px; margin: 4px;'>					
 					<h2 style='margin-bottom: 2px; margin-top: 2px; color: ".$options['left01-heading-color'].";'>Left Sidebar</h2>
-					<div class='editwidgetlink' style='font-size: 10px;'>";
+					<div class='editwidgetlink' style='font-size: 10px; border-color: ".$options['leftt01-link-color']."'>";
 					
 					if (is_active_sidebar("sidebar-1")) {
-						print "<a style='color:".$options['left01-link-color'].";' href='".get_bloginfo('url')."/wp-admin/widgets.php'>Edit Widgets</a>";
+						print "<a style='color:".$options['left01-link-color']."; border-color:".$options['left01-link-color']." ' href='".get_bloginfo('url')."/wp-admin/widgets.php'>Edit Widgets</a></div><br/>";
+						if (is_array($current_widgets['sidebar-1'])) {
+							foreach ($current_widgets['sidebar-1'] as $widget) {
+								$widget = str_replace("-", " ", $widget);
+								$widget = str_replace("_", " ", $widget);
+								$widget = rtrim(ucwords($widget), "0..9");
+								print "<div class='widgetbox' style='color: ".$options['left01-heading-color']."; border-color: ".$options['left01-heading-color'].";'>";
+								print $widget;
+								print "</div>";	
+							}
+						}
+
 					} else {
 						print "<a style='color:".$options['left01-link-color'].";' href='".get_bloginfo('url')."/wp-admin/widgets.php'>Add Widgets</a>";
 						print "<div style='font-size: 10px; padding-left: 10px; color: ".$options['left01-heading-color'].";'>no widgets...</div>";
@@ -849,7 +873,7 @@ function variation_options() {
 			 *********************************************************/
 			
 			print "
-			<td width='".$model_content_width."' class='contentblock' style=' color: ".$options['textcolor'].";'>	
+			<td class='contentblock' style='color: ".$options['textcolor']."'>	
 				<div style='font-size: 10px; text-align: center;'> &larr; ".$model_content_width." px &rarr;</div>
 				<div style='font-size: 10px; text-align: center;'>";
 				
@@ -1090,12 +1114,23 @@ function variation_options() {
 					<div style='font-size: 8px; margin: 4px;'>
 					<div style='font-size: 8px;'>
 					<h2 style='margin-bottom: 2px; margin-top: 2px; color: ".$options['right01-heading-color'].";'>Right Sidebar</h2></div>
-					<div class='editwidgetlink' style='font-size: 10px;'>";
+					<div class='editwidgetlink' style='font-size: 10px; border-color: ".$options['right01-link-color']."'>";
 
 					if (is_active_sidebar("sidebar-2")) {
-						print "<a style='color:".$options['right01-link-color'].";' href='".get_bloginfo('url')."/wp-admin/widgets.php'>Edit Widgets</a>";
+						print "<a style='color:".$options['right01-link-color']."; border-color:".$options['right01-link-color']." ' href='".get_bloginfo('url')."/wp-admin/widgets.php'>Edit Widgets</a></div><br/>";
+						if (is_array($current_widgets['sidebar-2'])) {
+							foreach ($current_widgets['sidebar-2'] as $widget) {
+								$widget = str_replace("-", " ", $widget);
+								$widget = str_replace("_", " ", $widget);
+								$widget = rtrim(ucwords($widget), "0..9");
+								print "<div class='widgetbox' style='color: ".$options['right01-heading-color']."; border-color: ".$options['right01-heading-color'].";'>";
+								print $widget;
+								print "</div>";	
+							}
+						}
+						
 					} else {
-						print "<a style='color:".$options['right01-link-color'].";' href='".get_bloginfo('url')."/wp-admin/widgets.php'>Add Widgets</a>";
+						print "<a style='color:".$options['right01-link-color'].";' href='".get_bloginfo('url')."/wp-admin/widgets.php'>Add Widgets</a></div>";
 						print "<div style='font-size: 10px; padding-left: 10px; color: ".$options['right01-heading-color'].";'>no widgets...</div>";
 						print "<div style='font-size: 9px; padding-left: 10px; color: ".$options['right01-heading-color'].";'>add widgets or use defaults...</div>";
 						print "<div class='submit'><input type='submit' value='Add Default Widgets' name='default_widgets'/></div>";
@@ -1148,10 +1183,21 @@ function variation_options() {
 					<div style='font-size: 8px; margin: 4px;'>
 					<div style='font-size: 8px;'>
 					<h2 style='margin-bottom: 2px; margin-top: 2px; color: ".$options['right02-heading-color'].";'>2nd Right Sidebar</h2></div>
-					<div class='editwidgetlink' style='font-size: 10px;'>";
+					<div class='editwidgetlink' style='font-size: 10px; border-color: ".$options['right02-link-color']."'>";
 
 					if (is_active_sidebar("sidebar-3")) {
-						print "<a style='color:".$options['right02-link-color'].";' href='".get_bloginfo('url')."/wp-admin/widgets.php'>Edit Widgets</a>";
+						print "<a style='color:".$options['right02-link-color']."; border-color:".$options['right02-link-color']." ' href='".get_bloginfo('url')."/wp-admin/widgets.php'>Edit Widgets</a></div><br/>";
+						if (is_array($current_widgets['sidebar-3'])) {
+							foreach ($current_widgets['sidebar-3'] as $widget) {
+								$widget = str_replace("-", " ", $widget);
+								$widget = str_replace("_", " ", $widget);
+								$widget = rtrim(ucwords($widget), "0..9");
+								print "<div class='widgetbox' style='color: ".$options['right02-heading-color']."; border-color: ".$options['right02-heading-color'].";'>";
+								print $widget;
+								print "</div>";	
+							}
+						}
+
 					} else {
 						print "<a style='color:".$options['right02-link-color'].";' href='".get_bloginfo('url')."/wp-admin/widgets.php'>Add Widgets</a>";
 						print "<div style='font-size: 10px; padding-left: 10px; color: ".$options['right02-heading-color'].";'>no widgets...</div>";
