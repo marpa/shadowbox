@@ -18,9 +18,6 @@ $theme_settings = $theme_id."_settings";
 $theme_css = $theme_id."_css";
 $theme_options = $variation_config['theme-name']." Options";
 
-$options['theme-url'] = $variation_config['theme-url'];
-$options['theme-name'] = $variation_config['theme-name'];
-
 /******************************************************************************
  * Preset Widgets
  * preset widgets defined in the theme config.php
@@ -29,7 +26,7 @@ $options['theme-name'] = $variation_config['theme-name'];
  $target_theme = $variation_config['theme-parent']; // variable stores the theme we want to target
 
 // add preset widgets only if theme is 1st activated and has not been activated previously
-if (isset($_POST['reset']) || (isset( $_GET['activated'] ) && $current_theme == $target_theme && !get_option($theme_css))) {
+if (isset($_POST['default_widgets']) || (isset( $_GET['activated'] ) && $current_theme == $target_theme && !get_option($theme_css))) {
 	update_option( 'widget_search', array( 2 => array( 'title' => '' ), '_multiwidget' => 1 ) );
 	update_option( 'widget_recent-posts', array( 2 => array( 'title' => '', 'number' => 5 ), '_multiwidget' => 1 ) );
 	update_option( 'widget_recent-comments', array( 2 => array( 'title' => '', 'number' => 5 ), '_multiwidget' => 1 ) );
@@ -108,6 +105,9 @@ if (!get_option($theme_css)) {
 } else {
 	$variation_css = get_option($theme_css);	
 }
+
+$options['theme-url'] = $variation_config['theme-url'];
+$options['theme-name'] = $variation_config['theme-name'];
 
 set_variation_options();
 
@@ -1090,6 +1090,7 @@ function variation_options() {
 						print "<a style='color:".$options['right01-link-color'].";' href='".get_bloginfo('url')."/wp-admin/widgets.php'>Add Widgets</a>";
 						print "<div style='font-size: 10px; padding-left: 10px; color: ".$options['right01-heading-color'].";'>no widgets...</div>";
 						print "<div style='font-size: 9px; padding-left: 10px; color: ".$options['right01-heading-color'].";'>add widgets or use defaults...</div>";
+						print "<div class='submit'><input type='submit' value='Add Default Widgets' name='default_widgets'/></div>";
 					}
 					
 					print "</div>";
