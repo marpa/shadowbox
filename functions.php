@@ -2721,7 +2721,7 @@ function get_option_selector ($option_title, $option_name, $option_values) {
 	global $variation_config, $options, $options_values;
 
 	if (in_array($option_name, $variation_config['model'])) {
-		print "<span style='white-space:nowrap;'>";
+		print "<span style=''>";
 		if ($option_title != "") print " <span style='font-size: 10px;'>".$option_title."</span>\n";
 		print "<select name='".$option_name."' style='font-size: 10px;' onchange='this.form.submit();'>\n";							
 			// options
