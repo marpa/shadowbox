@@ -10,7 +10,7 @@
 	// display link to new post if user is at least an author
 	if (current_user_can( 'switch_themes' )) {
 		print "<div class='editlink'>";
-		print "<a href='". get_bloginfo('url')."/wp-admin/widgets.php?show=&amp;sidebar=sidebar-3'>Edit Widgets</a>";
+		print "<a style='border-color: ".$options['right02-link-color'].";' href='". get_bloginfo('url')."/wp-admin/widgets.php?show=&amp;sidebar=sidebar-3'>Edit Widgets</a>";
 		print "</div>"; 
 	}?>
 	
