@@ -365,7 +365,9 @@ function variation_options() {
  		}
 
 		.horizontalbar {
-			padding-top: 4px;	
+			padding-top: 4px;
+			padding-bottom: 4px;
+			margin-bottom: 4px;
 			text-align: right;
 		}
  		.editwidgetlink {
@@ -378,7 +380,8 @@ function variation_options() {
 			display: block;
  			color: ".$options['linkcolor'].";
 			border: 1px dotted;
- 			padding: 5px;
+ 			padding: 3px;
+ 			margin-bottom: 3px;
 		} 		
  		
  		.editwidgetlink a:hover {
@@ -449,7 +452,7 @@ function variation_options() {
 			border-width: 1px;
 			border-style: solid;
 			padding: 5px;
-			margin: 1px;		
+			margin: 3px;
 		}
 
 		".$options['header-color-ie']."
@@ -564,7 +567,8 @@ function variation_options() {
 
 				// background position
 				get_option_selector ("Background Position", "background_position", $options_values['background_position']);
-
+				print "<br/>";
+				
 				// background color
 				get_option_field ("Background Color", "custom_background_color", 8);
 
@@ -573,7 +577,7 @@ function variation_options() {
 				
 				// background text color
 				get_option_selector ("Background Text Color", "custom_bgtextcolor", $options_values['textcolor']);
-			
+				print "<br/>";
 
 				// Blog title and background heading colors	
 				get_option_field ("Translucent Blog Title Color", "custom_header_color", 8);
@@ -772,19 +776,7 @@ function variation_options() {
 				}		
 				print "
 				<h2 style='padding-top: 0px; font-size: 10px; float: left;'>Top Bar</h2>
-				<div class='editwidgetlink' style='text-align: center; float: left;'> 
-				<a style='color:".$options['top-link-color']."; font-size: 10px; margin: 1px; padding: 1px;' href='".get_bloginfo('url')."/wp-admin/widgets.php'>Edit Widgets</a>
-				</div>";
-				if (is_array($current_widgets['sidebar-4'])) {
-					foreach ($current_widgets['sidebar-4'] as $widget) {
-						$widget = str_replace("-", " ", $widget);
-						$widget = str_replace("_", " ", $widget);
-						$widget = rtrim(ucwords($widget), "0..9");
-						print "<span style='font-size: 10px; padding-top: 10px; color: ".$options['top-link-color'].";'>".$widget."</span>";	
-					}
-				}
-				print "
-				<div class='horizontalbar' style='font-size: 8px; float: right;'>";
+				<div class='horizontalbar' style='font-size: 8px; float: left;'>";
 
 				// color
 				get_option_selector ("", "top-color", $options_values['sidebar-color']);
@@ -794,6 +786,23 @@ function variation_options() {
 
 				// border
 				get_option_selector ("", "top-border-style", $options_values['border-style']);
+				print"
+				</div>
+				<div style='float: left;  margin-top: 3px; width: 100%'>
+				<div class='editwidgetlink' style='text-align: center; float: left; margin-top: -3px;'> 
+				<a style='color:".$options['top-link-color']."; font-size: 10px; border-color: ".$options['top-link-color']."' href='".get_bloginfo('url')."/wp-admin/widgets.php'>Edit Widgets</a>
+				</div>				
+				";
+				if (is_array($current_widgets['sidebar-4'])) {
+					foreach ($current_widgets['sidebar-4'] as $widget) {
+						$widget = str_replace("-", " ", $widget);
+						$widget = str_replace("_", " ", $widget);
+						$widget = rtrim(ucwords($widget), "0..9");
+						print "<span class='widgetbox' style='color: ".$options['top-heading-color']."; border-color: ".$options['top-heading-color'].";'>";
+						print $widget;
+						print "</span> ";					
+					}
+				}
 				print"
 				</div>
 				</td>
@@ -862,7 +871,7 @@ function variation_options() {
 						";							
 					}
 					print "
-					</div>
+					
 				</td>";
 			}
 			
@@ -1136,7 +1145,7 @@ function variation_options() {
 						print "<div class='submit'><input type='submit' value='Add Default Widgets' name='default_widgets'/></div>";
 					}
 					
-					print "</div>";
+					
 					
 					if ($options['model-instructions'] == "init" || $options['model-instructions'] == "on") {
 						print "
@@ -1235,7 +1244,6 @@ function variation_options() {
 						";		
 					}
 					print "
-					</div>	
 				</td>";
 			}
 			print "	
@@ -1259,11 +1267,7 @@ function variation_options() {
 		}		
 		print "	
 		<h2 style='padding-top: 0px; font-size: 10px; float: left;'>Bottom Bar</h2>
-		<div class='editwidgetlink' style='text-align: left; width: 40%; float: left;'>
-		<a style='color:".$options['bottom-link-color']."; font-size: 10px; margin: 1px; padding: 1px;' href='".get_bloginfo('url')."/wp-admin/widgets.php'>Edit Widgets</a>
-		</div>
-		<div class='horizontalbar' style='font-size: 8px; float: right;'>";
-		
+		<div class='horizontalbar' style='font-size: 8px; float: left;'>";
 		// color
 		get_option_selector ("", "bottom-color", $options_values['sidebar-color']);
 
@@ -1272,6 +1276,23 @@ function variation_options() {
 
 		// border
 		get_option_selector ("", "bottom-border-style", $options_values['border-style']);			 				
+		print"
+		</div>		
+		<div style='float: left;  margin-top: 3px; width: 100%'>
+		<div class='editwidgetlink' style='text-align: center; float: left; margin-top: -3px;'> 
+		<a style='color:".$options['top-link-color']."; font-size: 10px; border-color: ".$options['top-link-color']."' href='".get_bloginfo('url')."/wp-admin/widgets.php'>Edit Widgets</a>
+		</div>				
+		";
+		if (is_array($current_widgets['sidebar-5'])) {
+			foreach ($current_widgets['sidebar-5'] as $widget) {
+				$widget = str_replace("-", " ", $widget);
+				$widget = str_replace("_", " ", $widget);
+				$widget = rtrim(ucwords($widget), "0..9");
+				print "<span class='widgetbox' style='color: ".$options['bottom-heading-color']."; border-color: ".$options['bottom-heading-color'].";'>";
+				print $widget;
+				print "</span>";					
+			}
+		}
 		
 		print "
 		</div>
@@ -2767,7 +2788,7 @@ function get_option_selector ($option_title, $option_name, $option_values) {
 	global $variation_config, $options, $options_values;
 
 	if (in_array($option_name, $variation_config['model'])) {
-		print "<span style=''>";
+		print "<span style='white-space:nowrap;'>";
 		if ($option_title != "") print " <span style='font-size: 10px;'>".$option_title."</span>\n";
 		print "<select name='".$option_name."' style='font-size: 10px;' onchange='this.form.submit();'>\n";							
 			// options
@@ -2775,7 +2796,7 @@ function get_option_selector ($option_title, $option_name, $option_values) {
 				print "\n<option value='".$value."'".($options[$option_name] == $value ? ' selected' : '') . ">".$label."</option>";
 			}					
 		print "</select>";
-		print "</span> ";
+		print "</span> &nbsp;";
 	}
 }
 
