@@ -1,7 +1,7 @@
 <?php
 /*********************************************************
  * 
- * Configuration otions for ShadowBox theme
+ * Configuration otions for Translucence theme
  * To create your own configuration options save this file
  * as config.php
  *
@@ -9,7 +9,8 @@
 $variation_config = array();
 
 $variation_config['theme-url'] = "http://segueproject.org/wordpress/themes/";
-$variation_config['theme-name'] = "ShadowBox";
+$variation_config['theme-name'] = "Translucence";
+$variation_config['theme-parent'] = "translucence";
 
 /******************************************************************************
  * Header meta left options
@@ -71,10 +72,35 @@ $variation_config['footer_meta_left_options']['custom'] = array (
 	);
 
 /******************************************************************************
+ * Preset Widgets:
+ * specify widgets to include when theme is 1st activated
+ * sidebar-1 = left sidebar
+ * sidebar-2 = right sidebar
+ * sidebar-3 = 2nd right sidebar 
+ ******************************************************************************/
+
+// Update the sidebars with those widgets
+
+$preset_widgets = array (
+	 'sidebar-2' => array(
+			'search-2',		
+			'recent-posts-2',
+			'recent-comments-2',
+		),
+		'sidebar-3' => array(
+			'pages-2',
+			'categories-2',
+			'tag_cloud-2',
+		),
+		'wp_inactive_widgets' => array(),
+	);
+
+
+/******************************************************************************
  * Miscellaneous Config
  * When set to "on" always shows log in link in upper right corner
  ******************************************************************************/
-$variation_config['headermeta'] = "on";
+//$variation_config['headermeta'] = "on";
 
 
 /******************************************************************************

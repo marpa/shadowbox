@@ -30,8 +30,6 @@ if ($options['background'] != "custom") {
 	$options['background-source-credit'] = "";
 }
 
-if ($variation_config['headermeta'] = "on") $options['headermeta'] = "on";
-
 $options['site-margin-top'] = "0";	
 $options['page-image-width'] = $options['site-width']-50;
 $options['custom-header-width-offset'] = 7;
@@ -40,6 +38,12 @@ $options['foreground_color'] = "#FFFFFF";
 $options['content-background'] = "transparent";
 $options['header-text-padding-left'] = "10";
 $options['header-blogtitle-size'] = "30";
+$options['header-text-shadow-color'] = "#777777";
+$options['header-text-shadow-offset'] = "0px 0px";
+$options['header-text-shadow-blur'] = "0.00em";
+$options['post-text-shadow-color'] = "#CCCCCC";
+$options['post-text-shadow-offset'] = "0px 0px";
+$options['post-text-shadow-blur'] = "0.00em";
 
 
 if (isset($options['linkcolor'])) {
@@ -114,6 +118,8 @@ $options['searchbox-color'] = "#FFFFFF";
  * Initialization
  * Set these only if not in the initial options array
  ******************************************************************************/
+if (!isset($options['headermeta'])) $options['headermeta'] = "on";
+ 
 if (!isset($options['background'])) $options['background'] = "translucence-blue";
 if (!isset($options['site-width'])) $options['site-width'] = "900";
 if (!isset($options['header-block-height'])) $options['header-block-height'] = "100";
