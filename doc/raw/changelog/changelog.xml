@@ -12,7 +12,7 @@
 <changelog name="ShadowBox">
 	<version number="1.5.4" date="2010-06-10">
 		<releaseNotes>
-			This release introduces option to preset theme widgets.  Which widgets to preset for each widget area can be specified in the theme config.  This release also adds a variation and header meta options, refines css and fixes bugs
+			This release introduces option to preset theme widgets.  Which widgets to preset for each widget area can be specified in the theme config.  This release also adds a variation and header meta options, refines css and fixes bugs.
 		</releaseNotes>
 		<new author='alex' date='2010-06-09'>
 			Theme Options: Added list of widgets in each sidebar in theme options view
