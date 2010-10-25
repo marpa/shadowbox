@@ -10,6 +10,17 @@
 <!DOCTYPE changelog SYSTEM "../dtds/changelog.dtd">
 
 <changelog name="ShadowBox">
+	<version number="1.5.5" date="2010-10-25">
+		<releaseNotes>
+			This release fixes bug in author pages pagination.
+		</releaseNotes>
+		<fix author='alex' date='2010-10-25'>
+			Template files: fixed bug in author pages pagination
+		</fix>		
+		<change author='alex' date='2010-05-27'>
+			config: added quotes about config array keys to better php validation
+		</change>
+	</version>
 	<version number="1.5.4" date="2010-06-10">
 		<releaseNotes>
 			This release introduces option to preset theme widgets.  Which widgets to preset for each widget area can be specified in the theme config.  This release also adds a variation and header meta options, refines css and fixes bugs.

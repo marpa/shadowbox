@@ -1,5 +1,5 @@
 
-ShadowBox v. 1.5.4 (2010-06-10)
+ShadowBox v. 1.5.5 (2010-10-25)
 =================================
 
 What is ShadowBox?
@@ -9,9 +9,7 @@ ShadowBox is a customizable, flexible and extensible theme for WordPress
 
 Current Version Notes
 ---------------------
-This release introduces option to preset theme widgets. Which widgets to preset for
-each widget area can be specified in the theme config. This release also adds a
-variation and header meta options, refines css and fixes bugs.
+This release fixes bug in author pages pagination.
 
 
 Downloads
@@ -49,6 +47,12 @@ Bug Tracker
 | Prior ShadowBox Release Notes
 | (See the ShadowBox change log for more details)
 ===================================================================
+
+
+v. 1.5.5 (2010-10-25)
+----------------------------------------------------
+This release fixes bug in author pages pagination.
+
 
 
 v. 1.5.4 (2010-06-10)

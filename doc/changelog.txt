@@ -2,6 +2,22 @@
 ShadowBox Change Log
 
 
+v. 1.5.5 (2010-10-25)
+----------------------------------------------------
+This release fixes bug in author pages pagination.
+		
+		
+	* Bug Fix: 
+		Template files: fixed bug in author pages pagination
+		(2010-10-25 - Alex Chapin)		
+		
+	* Change: 
+		config: added quotes about config array keys to better php validation
+		(2010-05-27 - Alex Chapin)
+	
+
+
+
 v. 1.5.4 (2010-06-10)
 ----------------------------------------------------
 This release introduces option to preset theme widgets. Which widgets to preset for
