@@ -42,7 +42,6 @@ get_header(); ?>
 			<br/>
 									
 			<h3>Posts by <?php echo $curauth->display_name; ?>:</h3>
-			<?php query_posts('author=' . $curauth->ID . '&showposts=10'); ?>
 			<?php if (have_posts()) : while (have_posts()) : the_post(); ?>
 			
 				<div <?php post_class() ?> id="post-<?php the_ID(); ?>">
